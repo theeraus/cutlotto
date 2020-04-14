@@ -1,0 +1,142 @@
+.body{
+	scrollbar-face-color:#000000;
+	scrollbar-arrow-color:#FFFFFF;
+	scrollbar-track-color:#000000;
+	scrollbar-shadow-color:#FFFFFF;
+	scrollbar-highlight-color:#000000;
+	scrollbar-3dlight-color:#000000;
+	scrollbar-darkshadow-Color:#FFFFFF;
+	FONT-FAMILY: MS Sans Serif,Thonburi;
+	FONT-SIZE: 9pt;
+}
+
+.dialogBox {
+  	position : absolute;
+  	border : 0 solid black;
+  	top : 100px;
+  	left : 100px;
+  	visibility : hidden;
+}
+
+#foldheader{
+	cursor:pointer;
+	cursor:hand ;
+	FONT-FAMILY: MS Sans Serif,Thonburi;
+	font-weight:bold ;
+	FONT-SIZE: 9pt;
+	COLOR: #000000;
+	list-style-image:url(fold.gif);
+}
+
+#foldinglist{
+	list-style-image:url(list.gif);
+	FONT-FAMILY: MS Sans Serif,Thonburi;
+	font-weight:bold ;
+	FONT-SIZE: 9pt;
+	COLOR: #000000;
+	cursor:hand ;
+}
+
+#dropmenudiv{
+	position:absolute;
+	border:1px solid black;
+	FONT-FAMILY: MS Sans Serif,Thonburi;
+	FONT-SIZE: 10pt;
+	line-height:18px;
+	z-index:100;
+	cursor:hand ;
+}
+
+.txtDepart2{
+	FONT-FAMILY: New Roman, Times, serif;
+	font-weight: bold;
+	COLOR: #004983;
+	FONT-SIZE: 14pt; 
+}
+
+.txtDepart3{
+	FONT-FAMILY: New Roman, Times, serif;
+	font-weight: bold;
+	COLOR: #004983;
+	FONT-SIZE: 14pt; 
+}
+
+.tbnormal{
+	BORDER: 1 SOLID #004983;
+}
+
+.tdhead{
+	FONT-FAMILY: Times New Roman, Times, serif;
+	font-weight: bold;
+	COLOR: #000000;
+	background-color: #8DBBD5;
+}
+
+.tdhead2{
+	FONT-FAMILY: MS Sans Serif,Thonburi;
+	font-weight: bold;
+	COLOR: #000000;
+	FONT-SIZE: 9pt; 
+	background-color: #8DBBD5;
+}
+
+.tdbody{
+	FONT-FAMILY: MS Sans Serif,Thonburi;
+	font-weight: bold;
+	COLOR: #000000;
+	FONT-SIZE: 9pt; 
+}
+
+.tdbody_bg{
+	FONT-FAMILY: MS Sans Serif,Thonburi;
+	font-weight: bold;
+	COLOR: #000000;
+	FONT-SIZE: 9pt; 
+	background-color: #EBEBEB; 
+}
+
+.tdbody_ti{
+	FONT-FAMILY: MS Sans Serif,Thonburi;
+	COLOR: #000000;
+	FONT-SIZE: 9pt;
+}
+
+
+.tdbody_10{
+	FONT-FAMILY: MS Sans Serif,Thonburi;
+	font-weight: bold;
+	COLOR: #000000;
+	FONT-SIZE: 10pt; 
+}
+
+.tdbody_w{
+	FONT-FAMILY: MS Sans Serif,Thonburi;
+	font-weight: bold;
+	COLOR: #FFFFFF;
+	FONT-SIZE: 9pt; 
+}
+
+.ipnormal{
+	FONT-SIZE: 9pt; 
+	COLOR: #000000; 
+	FONT-FAMILY: MS Sans Serif,Thonburi;
+	BORDER:1 SOLID #004983;
+	background-color: #FFFFFF;
+}
+
+.txtStatus{
+	FONT-SIZE: 14pt; 
+	COLOR: #00A500; 
+	FONT-FAMILY: MS Sans Serif,Thonburi;
+	font-weight: bold;
+}
+.ae {
+	FONT-FAMILY: MS Sans Serif,Thonburi;
+	COLOR: #FFFFFF;
+	FONT-SIZE: 11pt;
+}
+.ae2 {
+	FONT-FAMILY: MS Sans Serif,Thonburi;
+	COLOR: #999999;
+	FONT-SIZE: 11pt;
+}

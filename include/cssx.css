@@ -1,0 +1,71 @@
+body { 
+	SCROLLBAR-FACE-COLOR: #ffffff;  
+	SCROLLBAR-HIGHLIGHT-COLOR: #CCCCCC; 
+	SCROLLBAR-SHADOW-COLOR: #FFFFFF; 
+	SCROLLBAR-ARROW-COLOR: #CCCCCC; 
+	SCROLLBAR-BASE-COLOR: #FFFFFF; 
+	scrollbar-3d-light-color: #CCCCCC; 
+	scrollbar-dark-shadow-color: #333333;
+	margin: 0px  0px; 
+	padding: 0px;
+	font-family: "MS Sans Serif", "Microsoft Sans Serif";
+	font-size: 12px;
+	background-color: #FFFFFF;
+}
+
+a:link { color: #000000; text-decoration: none}
+a:visited { color: #000000}
+a:active { color: #000000;}
+a:hover { color: #CCCCCC}
+A	{color:#FFFFFF; text-decoration: none}
+
+.input1 {
+	font-family: "MS Sans Serif", "Microsoft Sans Serif";
+	font-size: 9px;
+	color: #000000;
+	border: 1px solid #00509F;
+}
+
+.button_lower {
+	font-family: "MS Sans Serif", "Microsoft Sans Serif";
+	font-size: 12px;
+	font-weight:bold;
+	color: #FFFFFF;
+	background-color: #000000;
+}
+.button_upper {
+	font-family: "MS Sans Serif", "Microsoft Sans Serif";
+	font-size: 12px;
+	font-weight:bold;
+	color: #000000;
+	background-color: #FFFF00;
+}
+.button_ul {
+	font-family: "MS Sans Serif", "Microsoft Sans Serif";
+	font-size: 12px;
+	font-weight:bold;
+	color: #FFFF00;
+	background-color: #0F0FF9;
+}
+
+.button_send {
+	font-family: "MS Sans Serif", "Microsoft Sans Serif";
+	font-size: 12px;
+	font-weight:bold;
+	color: #FFFFFF;
+	background-color: #FF0000;
+}
+
+
+.tdbobyB {
+	font-family: "MS Sans Serif", "Microsoft Sans Serif";
+	font-size: 12px;
+	font-weight:bold;
+	color: #000000;
+}
+
+.tdboby {
+	font-family: "MS Sans Serif", "Microsoft Sans Serif";
+	font-size: 12px;
+	color: #000000;
+}

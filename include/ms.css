@@ -1,0 +1,71 @@
+.normal
+{
+	font-family: "MS Sans Serif", "Microsoft Sans Serif";
+	font-size: 9px;
+	color: #000000;
+}
+
+.txtbox{
+	font-family: "MS Sans Serif", "Microsoft Sans Serif";
+	font-size: 9px;
+	color: #000000;
+	border: 1px solid #B1B1B1;
+}
+
+.btt
+{
+	font-family: "MS Sans Serif", "Microsoft Sans Serif";
+	font-size: 9px;
+	border: solid 1px #797979;
+	color: #000000;
+	background: #D3D3D3;
+	padding: 0px 6px 0px 6px;
+}
+
+.btt_over
+{
+	font-family: "MS Sans Serif", "Microsoft Sans Serif";
+	font-size: 9px;
+	border: solid 1px #336633;
+	color: #FFFFFF;
+	background: #339933;
+	padding: 0px 6px 0px 6px;
+}
+
+.menu
+{
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	
+	font-size: 12px;
+	
+	color: #FFCC66;	
+	border: solid 1px #D3D3D3;
+	background: #D3D3D3;
+}
+
+.menu_over
+{
+
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	
+	font-size: 12px;
+	
+	color: #FFCC66;	
+	border: solid 1px #797979;
+	background: #D3D3D3;
+}
+
+.menu_tb
+{
+	font-family: "MS Sans Serif", "Microsoft Sans Serif";
+	font-size: 9px;
+	color: #000000;
+	background: #D3D3D3;
+}
+
+.menu_v
+{
+	font-family: "MS Sans Serif", "Microsoft Sans Serif";
+	font-size: 9px;
+	color: #868686;
+}

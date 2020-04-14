@@ -1,0 +1,17 @@
+<SCRIPT LANGUAGE="VBScript" RUNAT="Server">
+Sub Application_OnStart
+Application("constr")= "PROVIDER=SQLOLEDB;DATA SOURCE=103.76.180.21;UID=lotto;PWD=123456;DATABASE=LTMILLION "
+
+	Session("uid")			= "0"	    
+	Session("uname")		= ""	    
+	Session("utype")		= ""	   
+	Session("gameid")		= 0
+	Session("did")			= 0
+
+	if Session("sessionid") <> Session.SessionID then
+		Session("sessionid") = Session.SessionID
+	end if
+	Session.Timeout = 60*20
+End Sub
+
+</SCRIPT>

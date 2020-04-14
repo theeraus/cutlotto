@@ -1,0 +1,42 @@
+	
+	var mainMenu=new Array()
+	mainMenu[0] = 'Factory Information';
+	mainMenu[1] = 'Investment Analysis';
+	mainMenu[2] = 'Industry Analysis';
+	mainMenu[3] = 'Insight Statistic';
+	mainMenu[4] = 'Competitive intelligence';
+	mainMenu[5] = 'Customized';
+	
+	var menu1=new Array()
+	menu1[0]='<span onclick=goPage("s_name_presearch.htm")  id=memusub1 onMouseover="mouseon(this)" onMouseout="mouseout(this)">&nbsp;&nbsp;&bull; Name Search</span><br>'
+	menu1[1]='<span onclick=goPage("s_product_presearch.htm")  id=memusub2 onMouseover="mouseon(this)" onMouseout="mouseout(this)">&nbsp;&nbsp;&bull; Product Search</span><br>'
+	menu1[2]='<span onclick=goPage("s_condition_search.htm")  id=memusub2 onMouseover="mouseon(this)" onMouseout="mouseout(this)">&nbsp;&nbsp;&bull; Condition Search</span><br>'
+	var menu2=new Array()
+	menu2[0]='<span onclick=goPage("s_sector_alert.htm") id=memusub1 onMouseover="mouseon(this)" onMouseout="mouseout(this)">&nbsp;&nbsp;&bull; Sector Alert</span><br>'
+	menu2[1]='<span onclick=goPage("s_sector_alert.htm") id=memusub2 onMouseover="mouseon(this)" onMouseout="mouseout(this)">&nbsp;&nbsp;&bull; Corporate Alert</span><br>'
+	var menu3=new Array()
+	menu3[0]='<span onclick=goPage("s_stat_search_basic.htm") id=memusub1 onMouseover="mouseon(this)" onMouseout="mouseout(this)">&nbsp;&nbsp;&bull; Basic Statistic</span><br>'
+	menu3[1]='<span onclick=goPage("s_stat_search.htm") id=memusub2 onMouseover="mouseon(this)" onMouseout="mouseout(this)">&nbsp;&nbsp;&bull; Advanced Statistic</span><br>'
+
+	
+
+function changeStyle(obj, cla) {
+	obj.className = cla
+}
+
+function goPage(url) {
+	window.open(url, 'resultFrame');
+}
+
+function divDisplay(obj) {
+	obj.style.display = "block";
+}
+function mhHover(tbl, idx, cls)
+{
+	var t = document.getElementById(tbl);
+	if (t == null) return;
+	var d = t.getElementsByTagName("TD");
+	if (d == null) return;
+	if (d.length <= idx) return;
+	d[idx].className = cls;
+}

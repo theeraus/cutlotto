@@ -1,0 +1,25 @@
+	 <table width="723" border="0" cellspacing="0" cellpadding="0">
+		<tr> 
+		  <td><img src="images/box_topleft.gif" width="8" height="8"></td>
+		  <td><img src="images/box_top.gif" width="707" height="8"></td>
+		  <td><img src="images/box_topright.gif" width="8" height="8"></td>
+		</tr>
+		<tr>		
+           <td background="images/box_left.gif">&nbsp;</td>
+		   <td bgcolor="#F7F7F7">
+
+				<table>	
+					<tr><td>sdfsdfsdf</td></tr>
+					<tr><td>sdfsdfsdf</td></tr>
+					<tr><td>sdfsdfsdf</td></tr>
+					<tr><td>sdfsdfsdf</td></tr>
+				</table>
+
+		   </td>
+           <td background="images/box_right.gif">&nbsp;</td>
+         </tr>
+		<tr> 
+		  <td colspan="3"><img src="images/news_bottom.gif" width="723" height="8"></td>
+		</tr> 
+	</table>
+	-->

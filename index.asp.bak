@@ -1,0 +1,169 @@
+<%@ Language=VBScript %>
+<%OPTION EXPLICIT%>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-874">
+<!--#include file="include/adovbs.inc"-->
+<!--#include file="mdlGeneral.asp"-->
+<%
+dim srcPage
+if Trim(Request("page"))="" then
+	Session("uid")=0
+	Session("uname")=""
+	Session("utype")=""
+	Session("cutallid")=0
+end if
+'showstr "type "&Session("utype")
+%>
+<HTML>
+<HEAD>
+<script language="JavaScript" type="text/javascript">
+<!-- Copyright 2003, Sandeep Gangadharan -->
+<!-- For more free scripts go to http://sivamdesign.com/scripts/ -->
+<!-- 
+
+function sivamtime() {
+  now=new Date();
+  hour=now.getHours();
+  min=now.getMinutes();
+  sec=now.getSeconds();
+
+if (min<=9) { min="0"+min; }
+if (sec<=9) { sec="0"+sec; }
+if (hour>12) { hour=hour-12; add="pm"; }
+else { hour=hour; add="am"; }
+if (hour==12) { add="pm"; }
+
+time = ((hour<=9) ? "0"+hour : hour) + ":" + min + ":" + sec + " " + add;
+
+if (document.getElementById) { document.all.theTime.innerHTML = time; }
+else if (document.layers) {
+ document.layers.theTime.document.write(time);
+ document.layers.theTime.document.close(); }
+
+setTimeout("sivamtime()", 1000);
+}
+window.onload = sivamtime;
+
+// -->
+
+</script>
+<script type="text/javascript" src="include/switch.js"></script>
+<script language=javascript>
+function ClickRefresh(url,rf_rate) {
+	if (document.all.cmdrefresh.value=="Refresh อัตโนมัติ") {
+		document.all.cmdrefresh.value="หยุด Refresh อัตโนมัติ";
+		rf_rate="0";
+	} else {
+		document.all.cmdrefresh.value="Refresh อัตโนมัติ";
+		rf_rate="1";
+	}
+	url = url + '?stoprefresh='+rf_rate;
+	parent.document.all.bodyFrame.src = url;
+}
+	function showsendto(gosuu){
+		window.open("dealer_check_suu.asp?gosuu="+gosuu, "_blank","top=200,left=200,height=150,width=300,directories=0,resizable=0,scrollbars=0,fullscreen=0,location=0,menubar=0,status=0,toolbar=0");
+	}
+
+
+</script>
+<script type="text/javascript">
+//close window
+function window.onload()
+{
+window.attachEvent("onbeforeunload", Close);
+}
+
+function Close()
+{
+return 'Are you sure you want to close my lovely window?'
+}
+function closer() {
+	<%
+	if Trim(Request("page"))<>"" and Trim(Request("page"))<>"signin.asp" Then
+		'response.write " alert(' index This window is about to close.' ); " 
+		response.write  "window.open('logout.asp');"
+	end if 
+	%>
+}
+//close window
+</script>
+
+<LINK href="include/code.css" type=text/css rel=stylesheet>
+<script language="JavaScript" src="include/normalfunc.js"></script>
+<script language="JavaScript" src="include/js_function.js"></script>
+<TITLE>Welcome</TITLE>
+</HEAD>
+
+ <BODY topmargin=0 leftmargin=0 scroll=no onbeforeunload="closer();"> 
+
+
+<TABLE width=100% height=100% border=0>
+
+<%
+dim objRec
+dim strSql
+dim bMsg
+	bMsg=""
+
+	if Session("uid")<>"0"  And Session("uid")<>"" Then '--jum เพิ่ม And Session("uid")<>""
+		if Session("utype")="A" then
+		else
+			if Session("utype")="P" then
+				strSql = "Select * From tb_dealer_alert Where dealer_id= " & Session("did") & " "
+			elseif Session("utype")="D" Or Session("utype")="K"  then
+				strSql = "Select * From tb_dealer_alert Where dealer_id= " & Session("uid") & " "		
+			end if
+			set objRec = Server.CreateObject("ADODB.Recordset")
+			objRec.Open strSql, conn, adOpenForwardOnly, adLockReadOnly
+			if Not objRec.EOF then	
+				bMsg=""&objRec("message")
+			end if		
+		end if
+	end if
+	set objRec = nothing
+	set conn = nothing
+	if bMsg <> "" then
+%>
+	<TR height=20 bgColor=yellow >
+		<TD>
+				<marquee direction=left width="100%" height=20 scrollamount="2" scrolldelay="30" onMouseOver=stop(); onMouseOut=start();  id=MARQUEE1 class=textbig_red><%=bMsg%>
+<!-- 						<table width="100%" border="0" cellspacing="0" cellpadding="0" height="20">
+						 <tr>
+						   <td align="left" valign="top" height="20" class=head_red>bMsg</td>
+						</tr>
+						</table> -->
+				</marquee>	
+		</TD>
+	</TR>				
+<%	end if
+	if Trim(Request("page"))<>"" and Trim(Request("page"))<>"signin.asp" then
+%>
+<TR height=30 bgColor=#3300FF >
+	<TD>
+		<%Call ShowMenu1(Session("utype"))%>
+	</TD>
+</TR>
+<%	end if%>
+<TR height="100%">
+	<TD>
+<%
+
+		if Trim(Request("page"))="" then
+			srcPage="signin.asp"
+		else
+			srcPage=Request("page")
+		end if
+%>		
+		<IFRAME marginWidth=0 marginHeight=0 src="<%=srcPage%>" frameBorder=no width="100%" height="100%" name="bodyFrame">
+		</IFRAME>
+	</TD>
+</TR>
+</TABLE>
+</BODY>
+</HTML>
+<%
+	if Trim(Request("page"))<>"" and Trim(Request("page"))<>"signin.asp" Then
+%>
+
+<%
+	End if
+%>

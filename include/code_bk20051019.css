@@ -1,0 +1,458 @@
+A:link
+{
+    TEXT-DECORATION: none
+}
+A:visited
+{
+    TEXT-DECORATION: none
+}
+.text_grey
+{
+    FONT-SIZE: 12px;
+    COLOR: #666666;
+    FONT-FAMILY: 'MS Sans Serif';
+    TEXT-DECORATION: none
+}
+.text_green
+{
+    FONT-SIZE: 12px;
+    COLOR: limegreen;
+    FONT-FAMILY: 'MS Sans Serif';
+    TEXT-DECORATION: none
+}
+.text_white
+{
+
+    FONT-SIZE: 12px;
+    COLOR: #ffffff;
+    FONT-FAMILY: 'MS Sans Serif';
+    TEXT-DECORATION: none
+}
+.text_light
+{
+    FONT-SIZE: 12px;
+    COLOR: #cccccc;
+    FONT-FAMILY: 'MS Sans Serif';
+    TEXT-DECORATION: none
+}
+.text_blue
+{
+    FONT-SIZE: 12px;
+    COLOR: blue;
+    FONT-FAMILY: 'MS Sans Serif';
+    TEXT-DECORATION: none
+}
+.text_red
+{  
+	FONT-SIZE: 10pt; 
+	FONT-FAMILY: "Arial, MS Sans Serif,Thonburi";
+    COLOR: red;
+	background-color: #CCFFFF;
+	BORDER-RIGHT: #99A3A6 1px solid;
+	BORDER-TOP: #99A3A6 1px solid;
+	BORDER-LEFT: #99A3A6 0px solid;
+	BORDER-BOTTOM: #99A3A6 1px solid;
+}
+.text_black
+{
+	FONT-SIZE: 10pt; 
+	FONT-FAMILY: "Arial, MS Sans Serif,Thonburi";
+    COLOR: black;
+	background-color: #CCFFFF;
+	BORDER-RIGHT: #99A3A6 0px solid;
+	BORDER-TOP: #99A3A6 1px solid;
+	BORDER-LEFT: #99A3A6 1px solid;
+	BORDER-BOTTOM: #99A3A6 1px solid;
+}
+
+.text_reddw
+{  
+    FONT-SIZE: 10pt; 
+	FONT-FAMILY: "Arial, MS Sans Serif,Thonburi";
+    COLOR: #ff0000;
+	background-color: #CCFFFF;	
+	BORDER-RIGHT: #99A3A6 1px solid;
+	BORDER-TOP: #99A3A6 1px solid;
+	BORDER-LEFT: #99A3A6 1px solid;
+	BORDER-BOTTOM: #99A3A6 1px solid;
+
+	
+}
+.text_blackup
+{
+	FONT-SIZE: 10pt; 
+	FONT-FAMILY: "Arial, MS Sans Serif,Thonburi";
+    COLOR: black;
+	background-color: #CCFFFF;
+	BORDER-RIGHT: #99A3A6 1px solid;
+	BORDER-TOP: #99A3A6 1px solid;
+	BORDER-LEFT: #99A3A6 1px solid;
+	BORDER-BOTTOM: #99A3A6 1px solid;
+
+}
+
+.head_green
+{
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 14px;
+    COLOR: chartreuse;
+    LINE-HEIGHT: 14px;
+    FONT-FAMILY: 'MS Sans Serif';
+    TEXT-DECORATION: none
+}
+.head_white
+{
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 14px;
+    COLOR: #ffffff;
+    FONT-FAMILY: Verdana, 'MS Sans Serif';
+    TEXT-DECORATION: none
+}
+.head_grey
+{
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 14px;
+    COLOR: #666666;
+    FONT-FAMILY: 'MS Sans Serif'
+}
+.head_red
+{
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 14px;
+    COLOR: red;
+    FONT-FAMILY: 'MS Sans Serif';
+    TEXT-DECORATION: none
+}
+.head_blue
+{
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 14px;
+    COLOR: #3a84b4;
+    FONT-FAMILY: Verdana, 'MS Sans Serif';
+    TEXT-DECORATION: none
+}
+.head_black
+{
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 14px;
+    COLOR: black;
+    FONT-FAMILY: 'MS Sans Serif';
+    TEXT-DECORATION: none
+}
+.text_small
+{
+    FONT-WEIGHT: normal;
+    FONT-SIZE: 10px;
+    COLOR: #cccccc;
+    FONT-FAMILY: 'MS Sans Serif';
+    TEXT-DECORATION: none
+}
+.text_small_bold
+{
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 10px;
+    COLOR: #cccccc;
+    FONT-FAMILY: 'MS Sans Serif';
+    TEXT-DECORATION: none
+}
+.box1
+{
+    BORDER-RIGHT: #669900 1px solid;
+    BORDER-TOP: #669900 1px solid;
+    FONT-SIZE: 11px;
+    BORDER-LEFT: #669900 1px solid;
+    COLOR: #666666;
+    BORDER-BOTTOM: #669900 1px solid;
+    FONT-FAMILY: Tahoma;
+    BACKGROUND-COLOR: #ffffff;
+    TEXT-DECORATION: none
+}
+
+.text_small_bl
+{
+    FONT-SIZE: 12px;
+    COLOR: #333333;
+    FONT-FAMILY: 'MS Sans Serif';
+    TEXT-DECORATION: none
+}
+.textbig_green
+{
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 16px;
+    COLOR: #996633;
+    FONT-FAMILY: 'MS Sans Serif';
+    TEXT-DECORATION: none
+}
+.textbig_white
+{
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 12px;
+    COLOR: #ffffff;
+	FONT-FAMILY: "Arial, MS Sans Serif,Thonburi";
+    TEXT-DECORATION: none
+}
+.textbig_red
+{
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 16px;
+    COLOR: red;
+    FONT-FAMILY: 'MS Sans Serif';
+    TEXT-DECORATION: none
+}
+.tr_head
+{
+    BORDER-RIGHT: white;
+    BORDER-TOP: white;
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 13px;
+    BORDER-LEFT: white;
+    COLOR: #6600CC;
+    BORDER-BOTTOM: white;
+    FONT-FAMILY: Verdana, 'MS Sans Serif';
+    BACKGROUND-COLOR: #CCCCFF;
+    TEXT-DECORATION: none
+}
+.tr_det2
+{
+    FONT-SIZE: 11px;
+    COLOR: #0000cd;
+    FONT-FAMILY: Verdana, 'MS Sans Serif';
+    BACKGROUND-COLOR: #ffffff;
+    TEXT-DECORATION: none
+}
+.tr_det1
+{
+    FONT-SIZE: 11px;
+    COLOR: #0000cd;
+    FONT-FAMILY: Verdana, 'MS Sans Serif';
+    BACKGROUND-COLOR: #b0e0e6;
+    TEXT-DECORATION: none
+}
+.tr_head_info
+{
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 14px;
+    COLOR: #0000FF;
+    FONT-FAMILY: Verdana, 'MS Sans Serif';
+    BACKGROUND-COLOR: powderblue;
+    TEXT-DECORATION: none
+}
+.table_blue
+{
+    BORDER-RIGHT: royalblue 1px solid;
+    BORDER-TOP: royalblue 1px solid;
+    BORDER-LEFT: royalblue 1px solid;
+    BORDER-BOTTOM: royalblue 1px solid;
+}
+.dialogBox {
+  	position : absolute;
+  	border : 0 solid black;
+  	top : 100px;
+  	left : 100px;
+  	visibility : hidden;
+}
+
+body{
+	FONT-FAMILY: MS Sans Serif,Thonburi;
+	COLOR: #000000;
+	FONT-SIZE: 11pt; 
+}
+
+.tdHead{
+	background-color: #E5E5E5;
+	FONT-FAMILY: MS Sans Serif,Thonburi;
+	font-weight: bold;
+	COLOR:  #009966;
+	FONT-SIZE: 11pt; 
+}
+
+.tdsubHead{
+	background-color: #E5E5E5;
+	FONT-FAMILY: MS Sans Serif,Thonburi;
+	font-weight: bold;
+	COLOR: #009966;
+	FONT-SIZE: 11pt; 
+}
+
+.tdbody{
+	FONT-FAMILY: "Arial, MS Sans Serif,Thonburi";
+	COLOR: #333333;
+	FONT-SIZE: 11pt; 
+	BACKGROUND-COLOR: #FFFFFF;
+}
+
+.tdbodys{
+	FONT-FAMILY: MS Sans Serif,Thonburi;
+	COLOR:  #0072A8;
+	FONT-SIZE: 9pt; 
+}
+
+.tdbodysb{
+	FONT-FAMILY: MS Sans Serif,Thonburi;
+	font-weight: bold;
+	COLOR: #0072A8;
+	FONT-SIZE: 9pt; 
+}
+
+.tbnormal1{
+	BORDER: 1 SOLID #FFFFFF;
+}
+
+.input1{
+	FONT-SIZE: 10pt; 
+	COLOR: #000000; 
+	FONT-FAMILY: MS Sans Serif,Thonburi;
+	BORDER: 1 SOLID #99A3A6;
+	background-color: #FFFFFF;
+}
+.input_disable{
+	FONT-SIZE: 10pt; 
+	COLOR: #000000; 
+	FONT-FAMILY: MS Sans Serif,Thonburi;
+	BORDER: 1 SOLID #99A3A6;
+	background-color:   #E1E1E1;
+}
+.inputB{
+	FONT-SIZE: 9pt; 
+	COLOR: #333333; 
+	FONT-FAMILY: MS Sans Serif,Thonburi;
+	font-weight: bold;
+	BORDER: 1 SOLID #7B858A;
+	background-color: #FFFFFF;
+	cursor:hand ;
+}
+
+.text_barcode
+{
+    FONT-SIZE: 24px;
+    COLOR: blue;
+    FONT-FAMILY: 'C39HrP36DlTt';
+    TEXT-DECORATION: none
+}
+.button_lower {
+	font-family: "MS Sans Serif", "Microsoft Sans Serif";
+	font-size: 12px;
+	font-weight:bold;
+	color: #FFFFFF;
+	background-color: #000000;
+}
+.button_upper {
+	font-family: "MS Sans Serif", "Microsoft Sans Serif";
+	font-size: 12px;
+	font-weight:bold;
+	color: #000000;
+	background-color: #FFFF00;
+}
+.button_ul {
+	font-family: "MS Sans Serif", "Microsoft Sans Serif";
+	font-size: 12px;
+	font-weight:bold;
+	color: #FFFF00;
+	background-color: #0F0FF9;
+}
+
+.button_send {
+	font-family: "MS Sans Serif", "Microsoft Sans Serif";
+	font-size: 12px;
+	font-weight:bold;
+	color: #FFFFFF;
+	background-color: #FF0000;
+}
+.button_no {
+	font-family: "MS Sans Serif", "Microsoft Sans Serif";
+	font-size: 12px;
+	font-weight:bold;
+	color: #FFFFFF;
+	background-color: #993300;
+}
+.button_blue {
+	font-family: "MS Sans Serif", "Microsoft Sans Serif";
+	font-size: 12px;
+	font-weight:bold;
+	BORDER: 2 SOLID #7B858A;
+	color: #FFFFFF;
+	background-color: #46468E;
+}
+
+.button_red{
+	FONT-SIZE: 9pt; 
+	COLOR: yellow; 
+	FONT-FAMILY: MS Sans Serif;
+	font-weight: bold;
+	BORDER: 2 SOLID #7B858A;
+	background-color: red;
+	cursor:hand ;
+}
+.button_yellow{
+	FONT-SIZE: 9pt; 
+	COLOR: #333333; 
+	FONT-FAMILY: MS Sans Serif;
+	font-weight: bold;
+	BORDER: 2 SOLID #7B858A;
+	background-color: yellow;
+	cursor:hand ;
+}
+
+.button_green{
+	FONT-SIZE: 9pt; 
+	COLOR: yellow; 
+	FONT-FAMILY: MS Sans Serif;
+	font-weight: bold;
+	BORDER: 2 SOLID #7B858A;
+	background-color: #009900;
+	cursor:hand ;
+}
+.button_red1{
+	FONT-SIZE: 9pt; 
+	COLOR: yellow; 
+	FONT-FAMILY: MS Sans Serif;
+	font-weight: bold;
+	BORDER: 1 SOLID #7B858A;
+	background-color: red;
+	cursor:hand ;
+}
+.input1 {
+	FONT-FAMILY: "Arial, MS Sans Serif,Thonburi";
+	font-size: 11pt;
+	color: #000000;
+	border: 1px solid #00509F;
+}
+.tdbody_blue{
+	FONT-FAMILY: MS Sans Serif,Thonburi;
+	COLOR: #333333;
+	FONT-SIZE: 11pt; 
+	BACKGROUND-COLOR: #DFFFDF;
+}
+.tdbody_navy{
+	FONT-FAMILY: MS Sans Serif,Thonburi;
+	COLOR: #FFFFFF;
+	FONT-SIZE: 11pt; 
+	BACKGROUND-COLOR: #1D39C2;
+}
+
+.input2{
+	FONT-SIZE: 10pt; 
+	COLOR: #000000; 
+	FONT-FAMILY: "Arial, MS Sans Serif,Thonburi";
+	BORDER: 1 SOLID #99A3A6;
+	background-color: #CCFFFF;
+}
+
+.input3{
+	FONT-SIZE: 10pt; 
+	COLOR: #FFFFFF; 
+	FONT-FAMILY: "Arial, MS Sans Serif,Thonburi";
+	BORDER: 1 SOLID #3333FF;
+	background-color: #3333FF;
+}
+
+.tdbody1{
+	FONT-FAMILY: "Arial, MS Sans Serif,Thonburi";
+	COLOR: #000000;
+	FONT-SIZE: 11pt; 
+}
+.tdbody2{
+	FONT-FAMILY: MS Sans Serif,Thonburi;
+	COLOR: #FFFFFF;
+	FONT-SIZE: 11pt; 
+}

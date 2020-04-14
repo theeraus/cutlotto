@@ -1,0 +1,32 @@
+@import url(https://fonts.googleapis.com/css?family=Kanit);
+body, .btn {
+    font-family: "Poppins","Kanit", sans-serif !important;
+}
+
+
+.kt-widget-3 .kt-widget-3__content {
+    padding: 1.2rem;
+}
+
+.kt-widget-3 .kt-widget-3__content .kt-widget-3__content-info .kt-widget-3__content-section .kt-widget-3__content-number {
+    font-size: 2.4rem;
+    font-weight: 600;
+}
+
+table.table{
+    font-size: 1rem !important;
+}
+
+table tr td{
+    padding:5px;
+    font-size: 0.9rem !important;
+}
+
+.head_white , .textbig_white{
+    font-size: 1rem !important;
+    color: #fff;
+}
+
+.tdbody_red{
+    BACKGROUND-COLOR: #ffd8cc;
+}
