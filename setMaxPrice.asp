@@ -1,6 +1,9 @@
-<!--#include virtual="masterpage.asp"-->
-
-<% Sub ContentPlaceHolder() %>
+<%OPTION EXPLICIT%>
+<% Response.CacheControl = "no-cache" %>
+<% Response.AddHeader "Pragma", "no-cache" %> 
+<% Response.Expires = -1 %>
+<% Response.CodePage = 65001%>
+<!--#include file="mdlGeneral.asp"-->
 <%
 	if trim(Session("uid"))="" then 	response.redirect "signin.asp"
 	Dim objRS , objDB , SQL	
@@ -265,24 +268,39 @@
 '		response.redirect("firstpage_dealer.asp")
 	End if
 %>
-
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<title>.:: set max price ::. </title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-874">
+<meta http-equiv="cache-control" content="no-cache"> 
+<meta http-equiv="pragma" content="no-cache"> 
+<meta http-equiv="expires" content="-1">
+<link href="include/code.css" rel="stylesheet" type="text/css">
+<script language="JavaScript" src="include/normalfunc.js"></script>
+<script language="JavaScript" src="include/js_function.js"></script>
+</head>
+<body topmargin="0"  leftmargin="0">
 	<form name="form1" action="setMaxPrice.asp" method="post">
 		<input type="hidden" name="save">
-		<div class="table-responsive">
-	<TABLE  border="0"  cellpadding="1" cellspacing="1"  width="100%" class="table table-sm">
+	<TABLE  border="0"  cellpadding="1" cellspacing="1"  width="100%">
 	<TR>
 		<TD>
 			<TABLE>
 			<TR>
-				<TD><input type="button" class="btn btn btn-label btn-label-brand btn-bold" value="ตั้งราคาและตั้งแทงสูงสุด" class="button_blue"></TD>
-				<TD><input type="button" class="btn btn btn-label btn-label-brand btn-bold" id="b1" value="COPY ราคาจาก หมายเลข..ไปทั้งหมด" 
-
+				<TD><input type="button" value="ตั้งราคาและตั้งแทงสูงสุด" class="button_blue"></TD>
+				<TD><input type="button" id="b1" value="COPY ราคาจาก หมายเลข..ไปทั้งหมด" class="button_green"
+				onMouseOver="changeStyle(this,'button_green_over')"
+				onMouseOut="changeStyle(this,'button_green')" 
 				onClick="document.all.tb1.style.display='' ;document.all.tb2.style.display='none' "></TD>
-				<TD><input type="button" class="btn btn btn-label btn-label-brand btn-bold" value="COPY ราคาจาก หมายเลข..ไปยังหมายเลข..." 
-
+				<TD><input type="button" value="COPY ราคาจาก หมายเลข..ไปยังหมายเลข..." class="button_green"
+				onMouseOver="changeStyle(this,'button_green_over')"
+				onMouseOut="changeStyle(this,'button_green')" 
 				onClick="document.all.tb2.style.display='' ;document.all.tb1.style.display='none' "
 				></TD>
-				<TD><input type="button" class="btn btn btn-label btn-label-brand btn-bold" value="บันทึก/ออก" 
+				<TD><input type="button" value="บันทึก/ออก" class="button_green"
+				onMouseOver="changeStyle(this,'button_green_over')"
+				onMouseOut="changeStyle(this,'button_green')" 
 				onClick="click_submit();"
 				></TD>
 			</TR>
@@ -329,57 +347,56 @@
 	</TR>
 	<TR>
 		<TD>
-			<TABLE  border="0"  cellpadding="2" cellspacing="2"  width="100%" bgcolor="#000000"  class="table table-sm">
+			<TABLE  border="0"  cellpadding="2" cellspacing="2"  width="100%" bgcolor="#000000">
 			<TR class="head_white">
-				<TD rowspan="2" align="center" class="btn-primary">หมายเลข</TD>
-				<TD rowspan="2" align="center"  class="btn-primary">ชื่อ</TD>
-				<TD colspan="3" align="center" class="btn-warning">2 บน</TD>
-				<TD colspan="3" align="center"  class="btn-primary">3 บน</TD>
-				<TD colspan="3" align="center" class="btn-warning">3 โต๊ด</TD>
-				<TD colspan="3" align="center"  class="btn-primary">2 โต๊ด</TD>
-				<TD colspan="3" align="center" class="btn-warning">วิ่งบน</TD>
-				<TD colspan="3" align="center"  class="btn-primary">วิ่งล่าง</TD>
-				<TD colspan="3" align="center" class="btn-warning">2 ล่าง</TD>
-				<TD colspan="3" align="center"  class="btn-primary">3 ล่าง</TD>
+				<TD rowspan="2" align="center" bgcolor="#000000">หมายเลข</TD>
+				<TD rowspan="2" align="center" bgcolor="#000000">ชื่อ</TD>
+				<TD colspan="3" align="center" bgcolor="#FF0000">2 บน</TD>
+				<TD colspan="3" align="center" bgcolor="#000000">3 บน</TD>
+				<TD colspan="3" align="center" bgcolor="#FF0000">3 โต๊ด</TD>
+				<TD colspan="3" align="center" bgcolor="#000000">2 โต๊ด</TD>
+				<TD colspan="3" align="center"  bgcolor="#FF0000">วิ่งบน</TD>
+				<TD colspan="3" align="center" bgcolor="#000000">วิ่งล่าง</TD>
+				<TD colspan="3" align="center" bgcolor="#FF0000">2 ล่าง</TD>
+				<TD colspan="3" align="center" bgcolor="#000000">3 ล่าง</TD>
 			</TR>
 			<TR class="text_white">		
-				<TD class="btn-warning"><b>จ่าย</b></TD>
-				<TD class="btn-warning"><b>ลด%</b></TD>
-				<TD class="btn-warning"><b>แทงสูงสุด</b></TD>				
+				<TD bgcolor="#FF0000"><b>จ่าย</b></TD>
+				<TD bgcolor="#FF0000"><b>ลด%</b></TD>
+				<TD bgcolor="#FF0000"><b>แทงสูงสุด</b></TD>				
 
-				<TD  class="btn-primary"><b>จ่าย</b></TD>
-				<TD class="btn-primary"><b>ลด%</b></TD>
-				<TD  class="btn-primary"><b>แทงสูงสุด</b></TD>
+				<TD bgcolor="#000000"><b>จ่าย</b></TD>
+				<TD bgcolor="#000000"><b>ลด%</b></TD>
+				<TD bgcolor="#000000"><b>แทงสูงสุด</b></TD>
 
-				<TD class="btn-warning"><b>จ่าย</b></TD>
-				<TD class="btn-warning"><b>ลด%</b></TD>
-				<TD class="btn-warning"><b>แทงสูงสุด</b></TD>
+				<TD bgcolor="#FF0000"><b>จ่าย</b></TD>
+				<TD bgcolor="#FF0000"><b>ลด%</b></TD>
+				<TD bgcolor="#FF0000"><b>แทงสูงสุด</b></TD>
 
-				<TD  class="btn-primary"><b>จ่าย</b></TD>
-				<TD  class="btn-primary"><b>ลด%</b></TD>
-				<TD  class="btn-primary"><b>แทงสูงสุด</b></TD>
+				<TD bgcolor="#000000"><b>จ่าย</b></TD>
+				<TD bgcolor="#000000"><b>ลด%</b></TD>
+				<TD bgcolor="#000000"><b>แทงสูงสุด</b></TD>
 
-				<TD class="btn-warning"><b>จ่าย</b></TD>
-				<TD class="btn-warning"><b>ลด%</b></TD>
-				<TD class="btn-warning"><b>แทงสูงสุด</b></TD>
+				<TD bgcolor="#FF0000"><b>จ่าย</b></TD>
+				<TD bgcolor="#FF0000"><b>ลด%</b></TD>
+				<TD bgcolor="#FF0000"><b>แทงสูงสุด</b></TD>
 				
 
-				<TD  class="btn-primary"><b>จ่าย</b></TD>
-				<TD  class="btn-primary"><b>ลด%</b></TD>
-				<TD  class="btn-primary"><b>แทงสูงสุด</b></TD>
+				<TD bgcolor="#000000"><b>จ่าย</b></TD>
+				<TD bgcolor="#000000"><b>ลด%</b></TD>
+				<TD bgcolor="#000000"><b>แทงสูงสุด</b></TD>
 
-				<TD class="btn-warning"><b>จ่าย</b></TD>
-				<TD class="btn-warning"><b>ลด%</b></TD>
-				<TD class="btn-warning"><b>แทงสูงสุด</b></TD>
+				<TD bgcolor="#FF0000"><b>จ่าย</b></TD>
+				<TD bgcolor="#FF0000"><b>ลด%</b></TD>
+				<TD bgcolor="#FF0000"><b>แทงสูงสุด</b></TD>
 
-				<TD  class="btn-primary"><b>จ่าย</b></TD>
-				<TD  class="btn-primary"><b>ลด%</b></TD>
-				<TD  class="btn-primary"><b>แทงสูงสุด</b></TD>
+				<TD bgcolor="#000000"><b>จ่าย</b></TD>
+				<TD bgcolor="#000000"><b>ลด%</b></TD>
+				<TD bgcolor="#000000"><b>แทงสูงสุด</b></TD>
 
 			</TR>
 			<%
 			SQL="exec spJGetMaxMoney " & dealer_id & ", " & game_type
-
 			Set objRS=objDB.Execute(SQL)
 			dim row,row_
 			row=1
@@ -602,9 +619,9 @@
 		</TD>
 	</TR>
 	</TABLE>
-	</div>
 	</form>
-
+</BODY>
+</HTML>
 <script language="javascript">
 	function click_submit(){
 		// validate data
@@ -703,5 +720,3 @@
 		document.form1.submit();
 	}
 </script>
-
-<% end sub %>

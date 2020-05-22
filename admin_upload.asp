@@ -6,18 +6,26 @@
 <META NAME="Author" CONTENT="">
 <META NAME="Keywords" CONTENT="">
 <META NAME="Description" CONTENT="">
+	<link href="assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/skins/header/base/light.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/skins/header/menu/light.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/skins/brand/navy.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/skins/aside/navy.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/global.css" rel="stylesheet" type="text/css" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 </HEAD> 
 <SCRIPT LANGUAGE="JavaScript">
 <!-- Begin
-// §” —Ëß java script  ”À√—∫°“√µ√«® Õ∫°“√ªÈÕπ¢ÈÕ¡Ÿ≈
+// ‡∏Ñ‡∏≥‡∏™‡∏±‡πà‡∏á java script ‡∏™‡∏≥‡∏´‡∏£‡∏±‡∏ö‡∏Å‡∏≤‡∏£‡∏ï‡∏£‡∏ß‡∏à‡∏™‡∏≠‡∏ö‡∏Å‡∏≤‡∏£‡∏õ‡πâ‡∏≠‡∏ô‡∏Ç‡πâ‡∏≠‡∏°‡∏π‡∏•
 function validate(){
 
      if (document.upload.file.value=="") {
-          alert("°√ÿ≥“‡≈◊Õ° File ∑’ËµÈÕß°“√ upload..!");
+          alert("‡∏Å‡∏£‡∏∏‡∏ì‡∏≤‡πÄ‡∏•‡∏∑‡∏≠‡∏Å File ‡∏ó‡∏µ‡πà‡∏ï‡πâ‡∏≠‡∏á‡∏Å‡∏≤‡∏£ upload..!");
           document.upload.file.focus();
           return false;
      }
-     if (confirm("§ÿ≥µÈÕß°“√ Ëß file ∑’Ë§ÿ≥‡≈◊Õ°À√◊Õ‰¡Ë?")) {
+     if (confirm("‡∏Ñ‡∏∏‡∏ì‡∏ï‡πâ‡∏≠‡∏á‡∏Å‡∏≤‡∏£‡∏™‡πà‡∏á file ‡∏ó‡∏µ‡πà‡∏Ñ‡∏∏‡∏ì‡πÄ‡∏•‡∏∑‡∏≠‡∏Å‡∏´‡∏£‡∏∑‡∏≠‡πÑ‡∏°‡πà?")) {
           return true;
      } else {
           return false;
@@ -34,10 +42,10 @@ function validate(){
 <table width="400" border="0" align="center">
       <tr>
           <td width="27%">&nbsp;</td>
-          <td width="73%"><font size="2"><b>‰ø≈Ï Help</b></font></td>
+          <td width="73%"><font size="2"><b>‡πÑ‡∏ü‡∏•‡πå Help</b></font></td>
      </tr>
      <tr>
-          <td nowrap>File ∑’ËµÈÕß°“√ Upload</td>
+          <td nowrap>File ‡∏ó‡∏µ‡πà‡∏ï‡πâ‡∏≠‡∏á‡∏Å‡∏≤‡∏£ Upload</td>
           <td><input type="file" name="file" size="50"></td>
      </tr>
      <tr>

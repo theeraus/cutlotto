@@ -2,9 +2,10 @@
 <% Response.CacheControl = "no-cache" %>
 <% Response.AddHeader "Pragma", "no-cache" %> 
 <% Response.Expires = -1 %>
+<% Response.CodePage = 65001%>
 <!--#include file="include/config.inc"-->
 <%
-		' admin ����������� 3 ��ѡ 000-999 //2009-02-19
+		' admin ตั้งเจ้ามือได้ 3 หลัก 000-999 //2009-02-19
 		if trim(Session("uid"))="" then 	response.redirect "signin.asp"
 		Dim objRS , objDB , SQL	,SQL2
 		Dim dealer_id, tmp_Color
@@ -31,7 +32,7 @@
 			" and game_active='A' "
 			set objRS=objDB.Execute(SQL)
 		end if
-		if mode="edit" then ' �óշ�� user click �����¡��
+		if mode="edit" then ' กรณีที่ user click แก้ไขรายการ
 			'response.write "edit" & edit_user_id
 		end if
 
@@ -39,12 +40,20 @@
 <html>
 <head>
 <title>.:: Dealer price ::. </title>
-<meta http-equiv="Content-Type" content="text/html; charset=windows-874">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta http-equiv="cache-control" content="no-cache"> 
 <meta http-equiv="pragma" content="no-cache"> 
 <meta http-equiv="expires" content="-1">
 <link href="include/code.css" rel="stylesheet" type="text/css">
 <script language="JavaScript" src="include/normalfunc.js"></script>
+<link href="assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/skins/header/base/light.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/skins/header/menu/light.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/skins/brand/navy.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/skins/aside/navy.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/global.css" rel="stylesheet" type="text/css" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <style type="text/css">
   <!--
   div#blinking {text-decoration: blink;}
@@ -104,13 +113,13 @@ function blinkIt() {
 	<form name="form1" action="mt_listdealer_Price.asp" method="post">
 	<center><br>
 
-			<table  border="0"  cellpadding="1" cellspacing="1"  width="100%">
+			<table  border="0"  cellpadding="1" cellspacing="1"  width="100%" class="table">
 				<tr>
 					<td align="center">
 						<table  border="0" cellpadding="1" cellspacing="1" width="100%">							
 							<tr>
 								<td class="head_red" align="center">
-									�ʴ��ʹ��Һ�ԡ����ҹ ���ЧǴ�������蹵���º���Ẻ���1 ���Ẻ���2
+									แสดงยอดค่าบริการใช้งาน แต่ละงวดรายเอเย่นต์เทียบทั้งแบบที่1 และแบบที่2
 								</td>
 							</tr>
 						</table>
@@ -118,10 +127,10 @@ function blinkIt() {
 				</tr>
                 <tr>
 					<td align="center">
-						<table  border="0" cellpadding="1" cellspacing="1" width="100%">							
+						<table  border="0" cellpadding="1" cellspacing="1" width="100%" class="table">							
 							<tr>
 								<td class="head_red" align="center">
-									<select name="yyyymmgame" style="width:100" >
+									<select name="yyyymmgame" style="width:100"  >
                                         <%
                                             SQL2="exec spGetDealerprice_lookup"
 							                set objRS=objDB.Execute(SQL2)
@@ -133,7 +142,7 @@ function blinkIt() {
 							                wend 
 							            %>
 						            </select>
-                                    <input type="button" class="inputM" value="�ӹǹ������" style="cursor:hand; width: 100px;" onClick="click_search();">
+                                    <input type="button" class="btn btn-primary btn-sm" value="คำนวนค่าเช่า" style="cursor:hand; width: 100px;" onClick="click_search();">
 								</td>
 							</tr>
 						</table>
@@ -143,28 +152,28 @@ function blinkIt() {
 					<td align="center" colspan=2>
 						<table  border="0"  cellpadding="1" cellspacing="1" bgcolor="#000040">					
 							<tr>
-								<td class="textbig_white" align="center" bgcolor="#282828">����</td>
-                                <td class="textbig_white" align="center" bgcolor="#282828">�ѹ���</td>
-                                <td class="textbig_white" align="center" bgcolor="#282828">�����</td>
-                                <td class="textbig_white" align="center" bgcolor="#282828">�����ͤ�Թ</td>
-                                <td class="textbig_white" align="center" bgcolor="#282828">����</td>
-                                <td class="textbig_white" align="center" bgcolor="#282828">�ʹ����</td>
-                                <td class="textbig_white" align="center" bgcolor="#282828">�ӡѴǧ�Թ</td>
-                                <td class="textbig_white" align="center" bgcolor="#282828">������</td>
-                                <td class="textbig_white" align="center" bgcolor="#282828">�ʹ�Ѻ</td>
-                                <td class="textbig_white" align="center" bgcolor="#282828">��</td>
-                                <td class="textbig_white" align="center" bgcolor="#282828">��ҧ</td>
-                                <td class="textbig_white" align="center" bgcolor="#282828">�ӹǹ�����</td>
-                                <td class="textbig_white" align="center" bgcolor="#282828">����ʹ���</td>
-                                <td class="textbig_white" align="center" bgcolor="#282828">������</td>
-                                <td class="textbig_white" align="center" bgcolor="#282828">�ôԵ</td>
-                                <td class="textbig_white" align="center" bgcolor="#282828">�ʹ�Ѻ</td>
-                                <td class="textbig_white" align="center" bgcolor="#282828">�ʹ�Թ</td>
-                                <td class="textbig_white" align="center" bgcolor="#282828">����ʹ���</td>
-                                <td class="textbig_white" align="center" bgcolor="#282828">�ѹ������ҧ</td>
-                                <td class="textbig_white" align="center" bgcolor="#282828">����������</td>
-                                <td class="textbig_white" align="center" bgcolor="#282828">�ѹ�����ҹ����ش</td>
-                                <td class="textbig_white" align="center" bgcolor="#282828">�ӹǹ�����Ѩ�غѹ</td>
+								<td class="textbig_white" align="center" bgcolor="#282828">เกมส์</td>
+                                <td class="textbig_white" align="center" bgcolor="#282828">วันที่</td>
+                                <td class="textbig_white" align="center" bgcolor="#282828">ผู้ใช้</td>
+                                <td class="textbig_white" align="center" bgcolor="#282828">ผู้ล๊อคอิน</td>
+                                <td class="textbig_white" align="center" bgcolor="#282828">ชื่อ</td>
+                                <td class="textbig_white" align="center" bgcolor="#282828">ยอดจ่าย</td>
+                                <td class="textbig_white" align="center" bgcolor="#282828">จำกัดวงเงิน</td>
+                                <td class="textbig_white" align="center" bgcolor="#282828">ประเภท</td>
+                                <td class="textbig_white" align="center" bgcolor="#282828">ยอดรับ</td>
+                                <td class="textbig_white" align="center" bgcolor="#282828">บน</td>
+                                <td class="textbig_white" align="center" bgcolor="#282828">ล่าง</td>
+                                <td class="textbig_white" align="center" bgcolor="#282828">จำนวนผู้ใช้</td>
+                                <td class="textbig_white" align="center" bgcolor="#282828">รวมยอดเช่า</td>
+                                <td class="textbig_white" align="center" bgcolor="#282828">ประเภท</td>
+                                <td class="textbig_white" align="center" bgcolor="#282828">เครดิต</td>
+                                <td class="textbig_white" align="center" bgcolor="#282828">ยอดรับ</td>
+                                <td class="textbig_white" align="center" bgcolor="#282828">ยอดเกิน</td>
+                                <td class="textbig_white" align="center" bgcolor="#282828">รวมยอดเช่า</td>
+                                <td class="textbig_white" align="center" bgcolor="#282828">วันที่สร้าง</td>
+                                <td class="textbig_white" align="center" bgcolor="#282828">ผู้ใช้ทั้งหมด</td>
+                                <td class="textbig_white" align="center" bgcolor="#282828">วันที่ใช้งานล่าสุด</td>
+                                <td class="textbig_white" align="center" bgcolor="#282828">จำนวนผู้ใช้ปัจจุบัน</td>
 							</tr>
                             <%
 
@@ -240,17 +249,17 @@ function clickpic(p){
 	var t=p
 
 	//alert(t)
-	// �Ѱ���
+	// รัฐบาล
 	if (t==1){
 		document.mypic.src ="images/price_tos.jpg"
 		document.form1.game_type.value="2"
 	}
-	// ����Թ
+	// ออมสิน
 	if (t==2){
 		document.mypic.src = "images/price_oth.jpg";
 		document.form1.game_type.value="3"
 	}
-	// ����
+	// อื่นๆ
 	if (t==3){
 		document.mypic.src = "images/price_gov.jpg"
 		document.form1.game_type.value="1"
@@ -265,7 +274,7 @@ function click_edit(user_id){
 }
 
 function click_del(user_id,user_name){
-	if (confirm('�س��ͧ���ź��¡�� ' + user_name+' ?' )){
+	if (confirm('คุณต้องการลบรายการ ' + user_name+' ?' )){
 		document.form1.mode.value="delete";
 		document.form1.edit_user_id.value=user_id;
 		document.form1.submit();
@@ -279,12 +288,12 @@ function click_search(){
 function click_edit_save(user_id){
 	if (document.form1.limit_play.value=="")
 	{
-		alert("��سҡ�͡ ǧ�Թ �繵���Ţ��ҹ��")
+		alert("กรุณากรอก วงเงิน เป็นตัวเลขเท่านั้น")
 		return false
 	}
 	if (isNaN(document.form1.limit_play.value))
 	{
-		alert("��سҡ�͡ ǧ�Թ �繵���Ţ��ҹ��")
+		alert("กรุณากรอก วงเงิน เป็นตัวเลขเท่านั้น")
 		return false
 	}
 	document.form1.mode.value="edit_save";
@@ -302,46 +311,46 @@ function click_add(){
 }
 function click_add_save(){
 	if (document.form1.login_id.value==""){
-		alert('�Դ��Ҵ : ��سҡ�͡ �����Ţ ������')
+		alert('ผิดพลาด : กรุณากรอก หมายเลข เจ้ามือ')
 		document.form1.login_id.focus();
 		return
 	}
 	if (isNaN(document.form1.login_id.value)){
-		alert('�Դ��Ҵ : ��سҡ�͡ �����Ţ ������ �繵���Ţ��ҹ��')
+		alert('ผิดพลาด : กรุณากรอก หมายเลข เจ้ามือ เป็นตัวเลขเท่านั้น')
 		document.form1.login_id.focus();
 		return
 	}
 	if (document.form1.login_id.value.length!=3){
-		alert('�Դ��Ҵ : ��سҡ�͡ �����Ţ ������ �繵���Ţ 3 ��ѡ ��ҹ��')
+		alert('ผิดพลาด : กรุณากรอก หมายเลข เจ้ามือ เป็นตัวเลข 3 หลัก เท่านั้น')
 		document.form1.login_id.focus();
 		return
 	}
 
 	if (document.form1.user_name.value==""){
-		alert('�Դ��Ҵ : ��سҡ�͡ ���� ������')
+		alert('ผิดพลาด : กรุณากรอก ชื่อ เจ้ามือ')
 		document.form1.user_name.focus();
 		return
 	}
 	if (document.form1.user_password.value==""){
-		alert('�Դ��Ҵ : ��سҡ�͡ ���ʼ�ҹ')
+		alert('ผิดพลาด : กรุณากรอก รหัสผ่าน')
 		document.form1.user_password.focus();
 		return
 	}
 	/*
 	if (document.form1.sum_password.value==""){
-		alert('�Դ��Ҵ : ��سҡ�͡ ���ʴ��ʹ�Թ')
+		alert('ผิดพลาด : กรุณากรอก รหัสดูยอดเงิน')
 		document.form1.sum_password.focus();
 		return
 	} */
 	if (document.form1.limit_play.value=="")
 	{
-		alert("��سҡ�͡ ǧ�Թ �繵���Ţ��ҹ��")
+		alert("กรุณากรอก วงเงิน เป็นตัวเลขเท่านั้น")
 		return false
 	}
 
 	if (isNaN(document.form1.limit_play.value))
 	{
-		alert("��سҡ�͡ ǧ�Թ �繵���Ţ��ҹ��")
+		alert("กรุณากรอก วงเงิน เป็นตัวเลขเท่านั้น")
 		return false
 	}
 
@@ -349,7 +358,7 @@ function click_add_save(){
 	document.form1.submit();
 }
 
-//�� �� enter
+//เช็ค กด enter
 function chkEnter(obj){
 		var k=event.keyCode
 		if (k == 13){	

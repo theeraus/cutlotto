@@ -5,6 +5,7 @@
 <% Response.CacheControl = "no-cache" %>
 <% Response.AddHeader "Pragma", "no-cache" %> 
 <% Response.Expires = -1 %>
+<% Response.CodePage = 65001%>
 <%'check_session_valid()%>
 <!--#include file="mdlGeneral.asp"-->
 <%
@@ -26,7 +27,7 @@
 %>
 <html>
 <head>
-<title>.:: §π·∑ß : ‡ª≈’Ë¬π password ::. </title>
+<title>.:: ‡∏Ñ‡∏ô‡πÅ‡∏ó‡∏á : ‡πÄ‡∏õ‡∏•‡∏µ‡πà‡∏¢‡∏ô password ::. </title>
 <meta http-equiv="Content-Type" content="text/html; charset=windows-874">
 <meta http-equiv="cache-control" content="no-cache"> 
 <meta http-equiv="pragma" content="no-cache"> 
@@ -50,11 +51,11 @@ function blinkIt() {
 <% If  Not objRS.eof  then%>
 	<table  border="0"  cellpadding="1" cellspacing="1"    bgcolor="#004080">		
 		<tr>
-			<td class="head_black" align="center"  bgcolor="#F5F5F5">¥’≈‡≈Õ√Ï</td>
-            <td class="head_black" align="center" bgcolor="#F5F5F5" >«—π∑’Ë</td>	
-			<td class="head_black" align="center" bgcolor="#F5F5F5">‡µ‘¡‡ß‘π‡¢È“</td>
-			<td class="head_black" align="center" bgcolor="#F5F5F5" >µ—¥‡ß‘πÕÕ°</td>
-            <td class="head_black" align="center" bgcolor="#F5F5F5" >À¡“¬‡Àµÿ</td>		
+			<td class="head_black" align="center"  bgcolor="#F5F5F5">‡∏î‡∏µ‡∏•‡πÄ‡∏•‡∏≠‡∏£‡πå</td>
+            <td class="head_black" align="center" bgcolor="#F5F5F5" >‡∏ß‡∏±‡∏ô‡∏ó‡∏µ‡πà</td>	
+			<td class="head_black" align="center" bgcolor="#F5F5F5">‡πÄ‡∏ï‡∏¥‡∏°‡πÄ‡∏á‡∏¥‡∏ô‡πÄ‡∏Ç‡πâ‡∏≤</td>
+			<td class="head_black" align="center" bgcolor="#F5F5F5" >‡∏ï‡∏±‡∏î‡πÄ‡∏á‡∏¥‡∏ô‡∏≠‡∏≠‡∏Å</td>
+            <td class="head_black" align="center" bgcolor="#F5F5F5" >‡∏´‡∏°‡∏≤‡∏¢‡πÄ‡∏´‡∏ï‡∏∏</td>		
 		</tr>
 	<%
 		Dim st_blink,ed_blink

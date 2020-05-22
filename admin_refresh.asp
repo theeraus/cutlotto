@@ -1,5 +1,6 @@
 <%OPTION EXPLICIT%>
 <%check_session_valid()%>
+<% Response.CodePage = 65001%>
 <!--#include file="include/adovbs.inc"-->
 <!--#include file="include/config.inc"-->
 <!--#include file="mdlGeneral.asp"-->
@@ -22,7 +23,7 @@
 		view_dealer_id=Request("view_dealer_id")
 
 		if edit_user_id="" then edit_user_id=0
-		if mode="edit_save" then ' °√≥’∑’Ë user click ·°È‰¢√“¬°“√ ·≈È«∫—π∑÷°¢ÈÕ¡Ÿ≈
+		if mode="edit_save" then ' ‡∏Å‡∏£‡∏ì‡∏µ‡∏ó‡∏µ‡πà user click ‡πÅ‡∏Å‡πâ‡πÑ‡∏Ç‡∏£‡∏≤‡∏¢‡∏Å‡∏≤‡∏£ ‡πÅ‡∏•‡πâ‡∏ß‡∏ö‡∏±‡∏ô‡∏ó‡∏∂‡∏Å‡∏Ç‡πâ‡∏≠‡∏°‡∏π‡∏•
 			refresh_time = Request("refresh_time")
 			if trim(refresh_time)="" then refresh_time=0
 			SQL="Update sc_user set refresh_time = " & refresh_time & " where user_id= '" & edit_user_id & "'"
@@ -52,9 +53,17 @@
 <html>
 <head>
 <title>.:: config price ::. </title>
-<meta http-equiv="Content-Type" content="text/html; charset=windows-874">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link href="include/code.css" rel="stylesheet" type="text/css">
 <script language="JavaScript" src="include/normalfunc.js"></script>
+	<link href="assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/skins/header/base/light.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/skins/header/menu/light.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/skins/brand/navy.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/skins/aside/navy.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/global.css" rel="stylesheet" type="text/css" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script type="text/javascript">
 function blinkIt() {
  if (!document.all) return;
@@ -70,10 +79,10 @@ function blinkIt() {
 <body topmargin="0"  leftmargin="0" onload="setInterval('blinkIt()',500)">
 	<form name="form1" action="admin_refresh.asp" method="post">
 	<center><br>
-			<table  border="0"  cellpadding="1" cellspacing="1"  width="90%">
+			<table  border="0"  cellpadding="1" cellspacing="1"  width="100%" class="table">
 				<tr>
 					<td align="left" colspan=1>
-					<font color=red size="3">°¥∑’ËÀ¡“¬‡≈¢‡®È“¡◊Õ‡æ◊ËÕ¥Ÿ‡Õ‡¬ËπµÏ</font>
+					<font color=red size="3">‡∏Å‡∏î‡∏ó‡∏µ‡πà‡∏´‡∏°‡∏≤‡∏¢‡πÄ‡∏•‡∏Ç‡πÄ‡∏à‡πâ‡∏≤‡∏°‡∏∑‡∏≠‡πÄ‡∏û‡∏∑‡πà‡∏≠‡∏î‡∏π‡πÄ‡∏≠‡πÄ‡∏¢‡πà‡∏ô‡∏ï‡πå</font>
 					</td>
 					<td align="right" class="text_green">
 					<%
@@ -90,22 +99,22 @@ function blinkIt() {
 					End If 
 
 					%>
-						¢≥–π’È¡’§πÕÕπ‰≈πÏÕ¬ŸË .. <%=cnt_dealer%> + <%=cnt_player%> .. §π 
+						‡∏Ç‡∏ì‡∏∞‡∏ô‡∏µ‡πâ‡∏°‡∏µ‡∏Ñ‡∏ô‡∏≠‡∏≠‡∏ô‡πÑ‡∏•‡∏ô‡πå‡∏≠‡∏¢‡∏π‡πà .. <%=cnt_dealer%> + <%=cnt_player%> .. ‡∏Ñ‡∏ô 
 					</td>
 				</tr>
 				<tr>
 					<td align="center" colspan=2>
 						<table  border="0"  cellpadding="1" cellspacing="1" bgcolor="#000040" width="100%">
 							<tr>
-								<td class="textbig_white" align="right" colspan="2" bgcolor="#282828">À¡“¬‡≈¢</td>
-								<td class="textbig_white" align="center" bgcolor="#282828">™◊ËÕ</td>
+								<td class="textbig_white" align="right" colspan="2" bgcolor="#282828">‡∏´‡∏°‡∏≤‡∏¢‡πÄ‡∏•‡∏Ç</td>
+								<td class="textbig_white" align="center" bgcolor="#282828">‡∏ä‡∏∑‡πà‡∏≠</td>
 								<td class="textbig_white" align="center" bgcolor="#282828">Password</td>
-								<td class="textbig_white" align="center" bgcolor="#282828">§Ë“ Refresh</td>
-								<td class="textbig_white" align="center" bgcolor="#282828">„™È‡«≈“‡¥’¬«°—π</td>
-								<td class="textbig_white" align="center" bgcolor="#282828">«—π∑’Ë‡¢È“√–∫∫§√—Èß·√°</td>
-								<td class="textbig_white" align="center" bgcolor="#282828">‡¢È“√–∫∫§√—Èß ÿ¥∑È“¬</td>
-								<td class="textbig_white" align="center" bgcolor="#282828">IP ∑’Ë‡¢È“¡“≈Ë“ ÿ¥</td>
-								<td class="textbig_white" align="center" bgcolor="#282828"><input type=button onClick="return ClearUsage();" value="≈È“ß®”π«π§√—Èß – ¡" class="inputR"></td>
+								<td class="textbig_white" align="center" bgcolor="#282828">‡∏Ñ‡πà‡∏≤ Refresh</td>
+								<td class="textbig_white" align="center" bgcolor="#282828">‡πÉ‡∏ä‡πâ‡πÄ‡∏ß‡∏•‡∏≤‡πÄ‡∏î‡∏µ‡∏¢‡∏ß‡∏Å‡∏±‡∏ô</td>
+								<td class="textbig_white" align="center" bgcolor="#282828">‡∏ß‡∏±‡∏ô‡∏ó‡∏µ‡πà‡πÄ‡∏Ç‡πâ‡∏≤‡∏£‡∏∞‡∏ö‡∏ö‡∏Ñ‡∏£‡∏±‡πâ‡∏á‡πÅ‡∏£‡∏Å</td>
+								<td class="textbig_white" align="center" bgcolor="#282828">‡πÄ‡∏Ç‡πâ‡∏≤‡∏£‡∏∞‡∏ö‡∏ö‡∏Ñ‡∏£‡∏±‡πâ‡∏á‡∏™‡∏∏‡∏î‡∏ó‡πâ‡∏≤‡∏¢</td>
+								<td class="textbig_white" align="center" bgcolor="#282828">IP ‡∏ó‡∏µ‡πà‡πÄ‡∏Ç‡πâ‡∏≤‡∏°‡∏≤‡∏•‡πà‡∏≤‡∏™‡∏∏‡∏î</td>
+								<td class="textbig_white" align="center" bgcolor="#282828"><input type=button onClick="return ClearUsage();" value="‡∏•‡πâ‡∏≤‡∏á‡∏à‡∏≥‡∏ô‡∏ß‡∏ô‡∏Ñ‡∏£‡∏±‡πâ‡∏á‡∏™‡∏∞‡∏™‡∏°" class="btn btn-danger btn-sm"></td>
 							</tr>
 							
 							<%
@@ -113,8 +122,8 @@ function blinkIt() {
 							set objRS=objDB.Execute(SQL)
 							Dim c
 							c="#FFFFA4"
-							'--------- °√≥’∑’Ë user click ‡æ‘Ë¡¢ÈÕ¡Ÿ≈ ---------------------------------------------
-							'--------- °√≥’∑’Ë user click ‡æ‘Ë¡¢ÈÕ¡Ÿ≈ ---------------------------------------------
+							'--------- ‡∏Å‡∏£‡∏ì‡∏µ‡∏ó‡∏µ‡πà user click ‡πÄ‡∏û‡∏¥‡πà‡∏°‡∏Ç‡πâ‡∏≠‡∏°‡∏π‡∏• ---------------------------------------------
+							'--------- ‡∏Å‡∏£‡∏ì‡∏µ‡∏ó‡∏µ‡πà user click ‡πÄ‡∏û‡∏¥‡πà‡∏°‡∏Ç‡πâ‡∏≠‡∏°‡∏π‡∏• ---------------------------------------------
 							Dim stblink, enblink
 							while not objRS.eof
 								If objRS("is_online")=1 Then
@@ -125,12 +134,12 @@ function blinkIt() {
 									enblink=""
 								End If 
 								if mode="edit" and Cint(objRS("user_id"))=Cint(edit_user_id) then
-									'<!----------------------· ¥ß¢ÈÕ¡Ÿ≈ 1 √“¬°“√ user ------------------------------------->
+									'<!----------------------‡πÅ‡∏™‡∏î‡∏á‡∏Ç‡πâ‡∏≠‡∏°‡∏π‡∏• 1 ‡∏£‡∏≤‡∏¢‡∏Å‡∏≤‡∏£ user ------------------------------------->
 									%>
 									<tr>
 										<td bgcolor="#FFFFFF">
-											<input type=button value="∫—π∑÷°" class="inputG" style="cursor:hand; width: 75px;" onClick="click_edit_save('<%=objRs("user_id")%>');" >
-											<input type=button value="¬°‡≈‘°" class="inputR" style="cursor:hand; width: 75px;" onClick="click_cancel();" >
+											<input type=button value="‡∏ö‡∏±‡∏ô‡∏ó‡∏∂‡∏Å" class="btn btn-primary btn-sm" style="cursor:hand; width: 75px;" onClick="click_edit_save('<%=objRs("user_id")%>');" >
+											<input type=button value="‡∏¢‡∏Å‡πÄ‡∏•‡∏¥‡∏Å" class="btn btn-danger btn-sm" style="cursor:hand; width: 75px;" onClick="click_cancel();" >
 										</td>
 										<td class="tdbody" bgcolor="<%=c %>" align="left">
 											<input type="text" name="login_id" value="<%=objRS("login_id")%>" 
@@ -149,8 +158,8 @@ function blinkIt() {
 											class="input1"  size="5" maxlength="3">												
 										</td>
 										<td class="tdbody" bgcolor="<%=c %>" align="left">
-											&nbsp;<input type=button value="°—∫∑—ÈßÀ¡¥" class="inputE" onClick="click_edit_all('<%=objRS("user_id")%>','<%=objRS("refresh_time")%>');">&nbsp;
-											&nbsp;<input type=button value="°—∫‡Õ‡¬ËπµÏ" class="inputE" onClick="click_edit_player('<%=objRS("user_id")%>','<%=objRS("refresh_time")%>');" >&nbsp;
+											&nbsp;<input type=button value="‡∏Å‡∏±‡∏ö‡∏ó‡∏±‡πâ‡∏á‡∏´‡∏°‡∏î" class="btn btn-primary btn-sm" onClick="click_edit_all('<%=objRS("user_id")%>','<%=objRS("refresh_time")%>');">&nbsp;
+											&nbsp;<input type=button value="‡∏Å‡∏±‡∏ö‡πÄ‡∏≠‡πÄ‡∏¢‡πà‡∏ô‡∏ï‡πå" class="btn btn-primary btn-sm" onClick="click_edit_player('<%=objRS("user_id")%>','<%=objRS("refresh_time")%>');" >&nbsp;
 										</td>
 										<td class="tdbody" bgcolor="<%=c %>" align="left"></td>
 										<td class="tdbody" bgcolor="<%=c %>" align="left"></td>
@@ -159,11 +168,11 @@ function blinkIt() {
 									</tr>
 									<!-----------------------------------------------------------><%
 								else
-									'<!----------------------· ¥ß¢ÈÕ¡Ÿ≈ 1 √“¬°“√ user ------------------------------------->
+									'<!----------------------‡πÅ‡∏™‡∏î‡∏á‡∏Ç‡πâ‡∏≠‡∏°‡∏π‡∏• 1 ‡∏£‡∏≤‡∏¢‡∏Å‡∏≤‡∏£ user ------------------------------------->
 									%>
 									<tr>
 										<td bgcolor="#FFFFFF">
-											<input type=button value="·°È‰¢" class="inputE" style="cursor:hand; width: 75px;" onClick="click_edit('<%=objRs("user_id")%>');" >
+											<input type=button value="‡πÅ‡∏Å‡πâ‡πÑ‡∏Ç" class="btn btn-primary btn-sm" style="cursor:hand; width: 75px;" onClick="click_edit('<%=objRs("user_id")%>');" >
 										</td>
 										<td class="tdbody" bgcolor="<%=c %>" align="left" width="60" style="cursor=hand;"  onClick="click_viewplayer('<%=objRs("user_id")%>');"><%=objRS("login_id")%>	</td>
 										<td class="tdbody" bgcolor="<%=c %>" align="left" width="145"><%=stblink%><%=objRS("user_name")%><%=enblink%>	</td>
@@ -178,13 +187,13 @@ function blinkIt() {
 									<!----------------------------------------------------------->
 									<%
 								end if
-								'****************  À“ §π·∑ß „π ‡®È“¡◊Õ
+								'****************  ‡∏´‡∏≤ ‡∏Ñ‡∏ô‡πÅ‡∏ó‡∏á ‡πÉ‡∏ô ‡πÄ‡∏à‡πâ‡∏≤‡∏°‡∏∑‡∏≠
 								If   CStr(objRS("user_id")) = CStr(view_dealer_id) Then
 									SQL="select  * from sc_user where user_type='P'  and create_by= "&objRS("user_id")&"  order by login_id "
 									set objPY=objDB.Execute(SQL)
 									c="#FFFFA4"
-									'--------- °√≥’∑’Ë user click ‡æ‘Ë¡¢ÈÕ¡Ÿ≈ ---------------------------------------------
-									'--------- °√≥’∑’Ë user click ‡æ‘Ë¡¢ÈÕ¡Ÿ≈ ---------------------------------------------
+									'--------- ‡∏Å‡∏£‡∏ì‡∏µ‡∏ó‡∏µ‡πà user click ‡πÄ‡∏û‡∏¥‡πà‡∏°‡∏Ç‡πâ‡∏≠‡∏°‡∏π‡∏• ---------------------------------------------
+									'--------- ‡∏Å‡∏£‡∏ì‡∏µ‡∏ó‡∏µ‡πà user click ‡πÄ‡∏û‡∏¥‡πà‡∏°‡∏Ç‡πâ‡∏≠‡∏°‡∏π‡∏• ---------------------------------------------
 									while not objPY.eof
 										If objPY("is_online")=1 Then
 											stblink="<blink>"
@@ -194,12 +203,12 @@ function blinkIt() {
 											enblink=""
 										End If 
 										if mode="edit" and Cint(objPY("user_id"))=Cint(edit_user_id) then
-											'<!----------------------· ¥ß¢ÈÕ¡Ÿ≈ 1 √“¬°“√ user ------------------------------------->
+											'<!----------------------‡πÅ‡∏™‡∏î‡∏á‡∏Ç‡πâ‡∏≠‡∏°‡∏π‡∏• 1 ‡∏£‡∏≤‡∏¢‡∏Å‡∏≤‡∏£ user ------------------------------------->
 											%>
 											<tr>
 												<td bgcolor="#FFFFFF">
-													<input type=button value="∫—π∑÷°" class="inputG" style="cursor:hand; width: 75px;" onClick="click_edit_save('<%=objPY("user_id")%>');" >
-													<input type=button value="¬°‡≈‘°" class="inputR" style="cursor:hand; width: 75px;" onClick="click_cancel();" >
+													<input type=button value="‡∏ö‡∏±‡∏ô‡∏ó‡∏∂‡∏Å" class="btn btn-primary btn-sm" style="cursor:hand; width: 75px;" onClick="click_edit_save('<%=objPY("user_id")%>');" >
+													<input type=button value="‡∏¢‡∏Å‡πÄ‡∏•‡∏¥‡∏Å" class="btn btn-danger btn-sm" style="cursor:hand; width: 75px;" onClick="click_cancel();" >
 
 												</td>
 												<td class="tdbody" bgcolor="<%=c %>" align="left">
@@ -219,7 +228,7 @@ function blinkIt() {
 													class="input1"  size="5" maxlength="20">												
 												</td>
 												<td class="tdbody" bgcolor="<%=c %>" align="left">
-													&nbsp;<input type=button value="°—∫∑—ÈßÀ¡¥" class="inputE" onClick="click_edit_all('<%=objPY("user_id")%>','<%=objPY("refresh_time")%>');">&nbsp;
+													&nbsp;<input type=button value="‡∏Å‡∏±‡∏ö‡∏ó‡∏±‡πâ‡∏á‡∏´‡∏°‡∏î" class="btn btn-primary btn-sm" onClick="click_edit_all('<%=objPY("user_id")%>','<%=objPY("refresh_time")%>');">&nbsp;
 												</td>
 												<td class="tdbody" bgcolor="<%=c %>" align="left"></td>
 												<td class="tdbody" bgcolor="<%=c %>" align="left"></td>
@@ -228,11 +237,11 @@ function blinkIt() {
 											</tr>
 											<!-----------------------------------------------------------><%
 										else
-											'<!----------------------· ¥ß¢ÈÕ¡Ÿ≈ 1 √“¬°“√ user ------------------------------------->
+											'<!----------------------‡πÅ‡∏™‡∏î‡∏á‡∏Ç‡πâ‡∏≠‡∏°‡∏π‡∏• 1 ‡∏£‡∏≤‡∏¢‡∏Å‡∏≤‡∏£ user ------------------------------------->
 											%>
 											<tr>
 												<td bgcolor="#FFFFFF">
-													<input type=button value="·°È‰¢" class="inputE" style="cursor:hand; width: 75px;" onClick="click_edit('<%=objPY("user_id")%>');" >
+													<input type=button value="‡πÅ‡∏Å‡πâ‡πÑ‡∏Ç" class="btn btn-primary btn-sm" style="cursor:hand; width: 75px;" onClick="click_edit('<%=objPY("user_id")%>');" >
 												</td>
 												<td class="tdbody" bgcolor="<%=c %>" align="left" width="60"><%=objPY("login_id")%>	</td>
 												<td class="tdbody" bgcolor="<%=c %>" align="left" width="145">&nbsp;<%=stblink%><font color=red>>>></font>&nbsp;
@@ -251,15 +260,15 @@ function blinkIt() {
 										end if
 									objPY.MoveNext
 									Wend
-								End If ' °√≥’ ‡≈◊Õ°¥Ÿ∑’Ë‡®È“¡◊Õ
+								End If ' ‡∏Å‡∏£‡∏ì‡∏µ ‡πÄ‡∏•‡∏∑‡∏≠‡∏Å‡∏î‡∏π‡∏ó‡∏µ‡πà‡πÄ‡∏à‡πâ‡∏≤‡∏°‡∏∑‡∏≠
 
 								objRS.MoveNext
 							wend 
 							%>
 							<tr>
 								<td colspan=10 class=tdbody>
-								<font color=red size="3">°¥∑’ËÀ¡“¬‡≈¢‡®È“¡◊Õ‡æ◊ËÕ¥Ÿ‡Õ‡¬ËπµÏ</font><br>
-								<font color=red>>>></font>= ‡Õ‡¬ËπµÏ∑’ËÕ¬ŸË¿“¬„µÈ‡®È“¡◊Õ</td>
+								<font color=red size="3">‡∏Å‡∏î‡∏ó‡∏µ‡πà‡∏´‡∏°‡∏≤‡∏¢‡πÄ‡∏•‡∏Ç‡πÄ‡∏à‡πâ‡∏≤‡∏°‡∏∑‡∏≠‡πÄ‡∏û‡∏∑‡πà‡∏≠‡∏î‡∏π‡πÄ‡∏≠‡πÄ‡∏¢‡πà‡∏ô‡∏ï‡πå</font><br>
+								<font color=red>>>></font>= ‡πÄ‡∏≠‡πÄ‡∏¢‡πà‡∏ô‡∏ï‡πå‡∏ó‡∏µ‡πà‡∏≠‡∏¢‡∏π‡πà‡∏†‡∏≤‡∏¢‡πÉ‡∏ï‡πâ‡πÄ‡∏à‡πâ‡∏≤‡∏°‡∏∑‡∏≠</td>
 							</tr>
 						</table>
 					</td>
@@ -302,7 +311,7 @@ function click_edit_save(user_id){
 		document.form1.refresh_time.value=	document.form1.txtrefresh.value;
 		document.form1.submit();
 	} else {
-		alert("°√ÿ≥“√–∫ÿ §Ë“ Refresh ‡ªÁπµ—«‡≈¢ !")
+		alert("‡∏Å‡∏£‡∏∏‡∏ì‡∏≤‡∏£‡∏∞‡∏ö‡∏∏ ‡∏Ñ‡πà‡∏≤ Refresh ‡πÄ‡∏õ‡πá‡∏ô‡∏ï‡∏±‡∏ß‡πÄ‡∏•‡∏Ç !")
 	}
 }
 function click_status(user_id){
@@ -334,7 +343,7 @@ function click_edit_player(user_id,refreshtime) {
 }
 
 function ClearUsage() {
-	if (confirm("¬◊π¬—π°“√≈È“ß®”π«π§√—Èß – ¡")) {
+	if (confirm("‡∏¢‡∏∑‡∏ô‡∏¢‡∏±‡∏ô‡∏Å‡∏≤‡∏£‡∏•‡πâ‡∏≤‡∏á‡∏à‡∏≥‡∏ô‡∏ß‡∏ô‡∏Ñ‡∏£‡∏±‡πâ‡∏á‡∏™‡∏∞‡∏™‡∏°")) {
 			document.form1.mode.value="clear_usage";
 			document.form1.submit();
 			return true;

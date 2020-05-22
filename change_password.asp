@@ -1,4 +1,4 @@
-<%@ Language=VBScript %>
+<%@ Language=VBScript CodePage = 65001  %>
 <% Response.CacheControl = "no-cache" %>
 <% Response.AddHeader "Pragma", "no-cache" %> 
 <% Response.Expires = -1 %>
@@ -13,8 +13,8 @@
 		strSql = "select * from sc_user where user_id = " & Session("uid") & " and user_password = '"  & Request("txtoldpassword") & "'"
 		rs.Open strSql,conn
 		if rs.Eof then
-			strMsg = "Password เก่าไม่ถูกต้องกรุณาตรวจสอบใหม่ !"
-			call showmessage(strMsg&"&nbsp;&nbsp;[<a href='change_password.asp'>ย้อนกลับ</a>]")
+			strMsg = "Password ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝูก๏ฟฝ๏ฟฝอง๏ฟฝ๏ฟฝุณาต๏ฟฝวจ๏ฟฝอบ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ !"
+			call showmessage(strMsg&"&nbsp;&nbsp;[<a href='change_password.asp'>๏ฟฝ๏ฟฝอน๏ฟฝ๏ฟฝับ</a>]")
 			Response.end		
 		else
 			strSql  = "Update sc_user set user_password = '" & Request("txtnewpassword") & "' where user_id = " & Session("uid")
@@ -82,33 +82,33 @@ var chkkey
 
 <TABLE WIDTH="100%" BORDER=0 CELLSPACING=0 CELLPADDING=0 bgColor=white>
 	<TR class=head_white bgColor=#6495ed>
-		<TD align=middle colspan=3>เปลี่ยน Password</TD>
+		<TD align=middle colspan=3>๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝยน Password</TD>
 	</TR>
 	<TR class=text_blue>
 		<TD colspan=3 align=middle>   &nbsp;</TD>
 		
 	</TR>
 	<TR class=text_blue>
-		<TD> รหัสผ่านเก่า</TD>
+		<TD> ๏ฟฝ๏ฟฝ๏ฟฝสผ๏ฟฝาน๏ฟฝ๏ฟฝ๏ฟฝ</TD>
 		<TD><INPUT id=text1 type=password name=txtoldpassword style="WIDTH: 130px" 
             width=200 onKeyDown="txtoldpassword_checkkey();"></TD>
 		<TD></TD>
 	</TR>
 	<TR class=text_blue>
-		<TD> รหัสผ่านใหม่</TD>
+		<TD> ๏ฟฝ๏ฟฝ๏ฟฝสผ๏ฟฝาน๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ</TD>
 		<TD><INPUT id=text2 type=password name=txtnewpassword style="WIDTH: 130px" 
             width=200 onKeyDown="txtnewpassword_checkkey();"></TD>
 		<TD></TD>
 	</TR>
 	<TR class=text_blue>
-		<TD> ยืนยันรหัสใหม่</TD>
+		<TD> ๏ฟฝืน๏ฟฝัน๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ</TD>
 		<TD><INPUT id=text3 type=password 
             name=txtconfpassword style="WIDTH: 130px; HEIGHT: 22px" width=200 size=21 onKeyDown="txtconfpassword_checkkey();"></TD>
 		<TD></TD>
 	</TR>
         <TR>
           
-          <TD colspan=3 align=middle><INPUT id=button1 type=button align=left value="  เปลี่ยนรหัสผ่าน  " name=button1 onClick="return clicksubmit();"></TD></TR>
+          <TD colspan=3 align=middle><INPUT id=button1 type=button align=left value="  ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝยน๏ฟฝ๏ฟฝ๏ฟฝสผ๏ฟฝาน  " name=button1 onClick="return clicksubmit();"></TD></TR>
 </TABLE>
 </TD>
 	</TR>
@@ -119,22 +119,22 @@ var chkkey
 <script language="javascript">
 	function clicksubmit(){
 		if (document.FORM1.txtoldpassword.value ==""){
-			alert('กรุณาระบุ รหัสผ่านเก่า !!!')
+			alert('๏ฟฝ๏ฟฝุณ๏ฟฝ๏ฟฝะบ๏ฟฝ ๏ฟฝ๏ฟฝ๏ฟฝสผ๏ฟฝาน๏ฟฝ๏ฟฝ๏ฟฝ !!!')
 			document.FORM1.txtoldpassword.focus();
 			return false
 		}
 		if (document.FORM1.txtnewpassword.value ==""){
-			alert('กรุณาระบุ รหัสผ่านที่ต้องการเปลี่ยน !!!')
+			alert('๏ฟฝ๏ฟฝุณ๏ฟฝ๏ฟฝะบ๏ฟฝ ๏ฟฝ๏ฟฝ๏ฟฝสผ๏ฟฝาน๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝอง๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝยน !!!')
 			document.FORM1.txtnewpassword.focus();
 			return false
 		}
 		if (document.FORM1.txtconfpassword.value ==""){
-			alert('กรุณายืนยัน รหัสผ่าน !!!')
+			alert('๏ฟฝ๏ฟฝุณ๏ฟฝ๏ฟฝืน๏ฟฝัน ๏ฟฝ๏ฟฝ๏ฟฝสผ๏ฟฝาน !!!')
 			document.FORM1.txtconfpassword.focus();
 			return false
 		}
 		if (document.FORM1.txtnewpassword.value != document.FORM1.txtconfpassword.value){
-			alert('ยืนยันรหัสใหม่ ไม่ถูกต้อง !!!')
+			alert('๏ฟฝืน๏ฟฝัน๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ ๏ฟฝ๏ฟฝ๏ฟฝูก๏ฟฝ๏ฟฝอง !!!')
 			document.FORM1.txtnewpassword.focus();
 			return false
 		}

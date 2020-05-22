@@ -1,4 +1,4 @@
-<%@ Language=VBScript %>
+ <%@ Language=VBScript CodePage = 65001  %>
 <%OPTION EXPLICIT%>
 <% Response.CacheControl = "no-cache" %>
 <% Response.AddHeader "Pragma", "no-cache" %> 
@@ -8,14 +8,14 @@
 <!--#include file="include/config.inc"-->
 <!--#include file="mdlGeneral.asp"-->
 <%
-' 1. °√≥’‡≈◊Õ° Ëß¢È“¡ web 
-' 2. ®– submit ‰ª§ÈπÀ“¢ÈÕ¡Ÿ≈ user password ∑’Ë°”Àπ¥‰«È∑’Ë web1 «Ë“ ¢ÈÕ¡Ÿ≈¢Õß web 2 ∑’Ë®– Ëß‰ª¡’Õ–‰√
-' 3. ‡Õ“¢ÈÕ¡Ÿ≈¡“∑’Ë®– Ëß‰ª web 2 · ¥ß„π text box 
-' 4. °¥ submit ®–‡¢È“ function clicksubmit ®– Ëß§Ë“ sendback = yes ·≈È« Ëß‰ª action ∑’Ë web 2 ‡≈¬
-' 5. ‡¡◊ËÕ¡“∂÷ß∑’Ë web 2  ®–‡¢È“ ‡ß◊ËÕπ‰¢ sendback = yes 
-' 6. ‡Õ“¢ÈÕ¡Ÿ≈∑’Ë Ëß¡“ check user „π web 2 «Ë“∂Ÿ°µÈÕßÀ√◊Õ‰¡Ë
-' 7.  Ëß‡¢È“ function  senddealer 
-' 8. ∂È“ user ºË“π®– —Ëß„ÀÈ ÀπÈ“ dealer_tudroum ∑’Ë form2 submit      **** µ√ßπ’È¬—ß‰¡Ë·πË„®«Ë“∑”∑’Ë web ‰Àπ
+' 1. ‡∏Å‡∏£‡∏ì‡∏µ‡πÄ‡∏•‡∏∑‡∏≠‡∏Å‡∏™‡πà‡∏á‡∏Ç‡πâ‡∏≤‡∏° web 
+' 2. ‡∏à‡∏∞ submit ‡πÑ‡∏õ‡∏Ñ‡πâ‡∏ô‡∏´‡∏≤‡∏Ç‡πâ‡∏≠‡∏°‡∏π‡∏• user password ‡∏ó‡∏µ‡πà‡∏Å‡∏≥‡∏´‡∏ô‡∏î‡πÑ‡∏ß‡πâ‡∏ó‡∏µ‡πà web1 ‡∏ß‡πà‡∏≤ ‡∏Ç‡πâ‡∏≠‡∏°‡∏π‡∏•‡∏Ç‡∏≠‡∏á web 2 ‡∏ó‡∏µ‡πà‡∏à‡∏∞‡∏™‡πà‡∏á‡πÑ‡∏õ‡∏°‡∏µ‡∏≠‡∏∞‡πÑ‡∏£
+' 3. ‡πÄ‡∏≠‡∏≤‡∏Ç‡πâ‡∏≠‡∏°‡∏π‡∏•‡∏°‡∏≤‡∏ó‡∏µ‡πà‡∏à‡∏∞‡∏™‡πà‡∏á‡πÑ‡∏õ web 2 ‡πÅ‡∏™‡∏î‡∏á‡πÉ‡∏ô text box 
+' 4. ‡∏Å‡∏î submit ‡∏à‡∏∞‡πÄ‡∏Ç‡πâ‡∏≤ function clicksubmit ‡∏à‡∏∞‡∏™‡πà‡∏á‡∏Ñ‡πà‡∏≤ sendback = yes ‡πÅ‡∏•‡πâ‡∏ß‡∏™‡πà‡∏á‡πÑ‡∏õ action ‡∏ó‡∏µ‡πà web 2 ‡πÄ‡∏•‡∏¢
+' 5. ‡πÄ‡∏°‡∏∑‡πà‡∏≠‡∏°‡∏≤‡∏ñ‡∏∂‡∏á‡∏ó‡∏µ‡πà web 2  ‡∏à‡∏∞‡πÄ‡∏Ç‡πâ‡∏≤ ‡πÄ‡∏á‡∏∑‡πà‡∏≠‡∏ô‡πÑ‡∏Ç sendback = yes 
+' 6. ‡πÄ‡∏≠‡∏≤‡∏Ç‡πâ‡∏≠‡∏°‡∏π‡∏•‡∏ó‡∏µ‡πà‡∏™‡πà‡∏á‡∏°‡∏≤ check user ‡πÉ‡∏ô web 2 ‡∏ß‡πà‡∏≤‡∏ñ‡∏π‡∏Å‡∏ï‡πâ‡∏≠‡∏á‡∏´‡∏£‡∏∑‡∏≠‡πÑ‡∏°‡πà
+' 7. ‡∏™‡πà‡∏á‡πÄ‡∏Ç‡πâ‡∏≤ function  senddealer 
+' 8. ‡∏ñ‡πâ‡∏≤ user ‡∏ú‡πà‡∏≤‡∏ô‡∏à‡∏∞‡∏™‡∏±‡πà‡∏á‡πÉ‡∏´‡πâ ‡∏´‡∏ô‡πâ‡∏≤ dealer_tudroum ‡∏ó‡∏µ‡πà form2 submit      **** ‡∏ï‡∏£‡∏á‡∏ô‡∏µ‡πâ‡∏¢‡∏±‡∏á‡πÑ‡∏°‡πà‡πÅ‡∏ô‡πà‡πÉ‡∏à‡∏ß‡πà‡∏≤‡∏ó‡∏≥‡∏ó‡∏µ‡πà web ‡πÑ‡∏´‡∏ô
 '
 
 %>
@@ -30,13 +30,13 @@
 			document.FORM1.action = document.FORM1.toweb.value+"dealer_tudroum_send.asp";
 		} else {
 			if (document.FORM1.txtUserName.value==''){
-				alert('°√ÿ≥“ªÈÕπ √À—  À√◊Õ™◊ËÕ ºŸÈ„™Èß“π')
+				alert('‡∏Å‡∏£‡∏∏‡∏ì‡∏≤‡∏õ‡πâ‡∏≠‡∏ô ‡∏£‡∏´‡∏±‡∏™ ‡∏´‡∏£‡∏∑‡∏≠‡∏ä‡∏∑‡πà‡∏≠ ‡∏ú‡∏π‡πâ‡πÉ‡∏ä‡πâ‡∏á‡∏≤‡∏ô')
 				document.FORM1.button1.disabled=false;
 				document.FORM1.txtUserName.focus();
 				return false
 			}
 			if (document.FORM1.password1.value==''){
-				alert('°√ÿ≥“ªÈÕπ √À— ºË“π')
+				alert('‡∏Å‡∏£‡∏∏‡∏ì‡∏≤‡∏õ‡πâ‡∏≠‡∏ô ‡∏£‡∏´‡∏±‡∏™‡∏ú‡πà‡∏≤‡∏ô')
 				document.FORM1.button1.disabled=false;
 				document.FORM1.password1.focus();
 				return false
@@ -60,7 +60,7 @@
 			window.opener.open(document.FORM2.fromweb.value + "dealer_play_out.asp","_self");
 //			window.close();
 		} else if (chk=="CLOSE")	{
-			alert("‰¡Ë “¡“√∂ Ëß‡®È“¡◊Õπ’È‰¥È ‡π◊ËÕß®“°‡®È“¡◊Õª‘¥√—∫·∑ß·≈È«...");
+			alert("‡πÑ‡∏°‡πà‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡∏™‡πà‡∏á‡πÄ‡∏à‡πâ‡∏≤‡∏°‡∏∑‡∏≠‡∏ô‡∏µ‡πâ‡πÑ‡∏î‡πâ ‡πÄ‡∏ô‡∏∑‡πà‡∏≠‡∏á‡∏à‡∏≤‡∏Å‡πÄ‡∏à‡πâ‡∏≤‡∏°‡∏∑‡∏≠‡∏õ‡∏¥‡∏î‡∏£‡∏±‡∏ö‡πÅ‡∏ó‡∏á‡πÅ‡∏•‡πâ‡∏ß...");
 		} else {
 			//document.FORM2.txtdealer.value="";
 			document.FORM2.txtUserName="";
@@ -69,7 +69,7 @@
 			document.FORM2.sendfrom.value="";
 			document.FORM2.sendweb.value="";
 			document.FORM2.sendweb2.value="";		
-			alert("°“√ Log In ‰¡Ë∂Ÿ°µÈÕß ! °√ÿ≥“≈Õß„À¡Ë...");
+			alert("‡∏Å‡∏≤‡∏£ Log In ‡πÑ‡∏°‡πà‡∏ñ‡∏π‡∏Å‡∏ï‡πâ‡∏≠‡∏á ! ‡∏Å‡∏£‡∏∏‡∏ì‡∏≤‡∏•‡∏≠‡∏á‡πÉ‡∏´‡∏°‡πà...");
 		}
 	}
 
@@ -116,9 +116,9 @@ var chkkey
 	dim objRS
 	dim sendweb
 	if Request("sendback")="yes" then 
-		' ∑’Ëπ’Ë∑”∑’Ë web 2 ·≈È«
-		' ‡™Á§ user ∑’Ë web 2 · ¥ß«Ë“∂Ÿ° Ëß¡“®“° web  1
-		' ¬°‡≈‘° ‡™Á§ txtdealer
+		' ‡∏ó‡∏µ‡πà‡∏ô‡∏µ‡πà‡∏ó‡∏≥‡∏ó‡∏µ‡πà web 2 ‡πÅ‡∏•‡πâ‡∏ß
+		' ‡πÄ‡∏ä‡πá‡∏Ñ user ‡∏ó‡∏µ‡πà web 2 ‡πÅ‡∏™‡∏î‡∏á‡∏ß‡πà‡∏≤‡∏ñ‡∏π‡∏Å‡∏™‡πà‡∏á‡∏°‡∏≤‡∏à‡∏≤‡∏Å web  1
+		' ‡∏¢‡∏Å‡πÄ‡∏•‡∏¥‡∏Å ‡πÄ‡∏ä‡πá‡∏Ñ txtdealer
 
 		chkOk = "no"
 		strSql = "SELECT     sc_user.*, sc_user_1.user_name AS dealer_fname FROM         sc_user INNER JOIN sc_user sc_user_1 ON sc_user.create_by = sc_user_1.user_id " _
@@ -131,12 +131,12 @@ var chkkey
 			chkOK = "yes"
 			bdealer=rs("create_by")
 			bplayer=rs("user_id")
-			' comment ‡æ√“–¬—ß‰¡Ë√ŸÈ‡Àµÿº≈
+			' comment ‡πÄ‡∏û‡∏£‡∏≤‡∏∞‡∏¢‡∏±‡∏á‡πÑ‡∏°‡πà‡∏£‡∏π‡πâ‡πÄ‡∏´‡∏ï‡∏∏‡∏ú‡∏•
 			Session("uid") = rs("create_by")
 			if CheckGame(bdealer)<>"OPEN" then
 				chkOk = "CLOSE"
 			end if
-			'check ‡æ◊ËÕ¥÷ß game id ¢Õß user ª—®®ÿ∫—π¡“„™È
+			'check ‡πÄ‡∏û‡∏∑‡πà‡∏≠‡∏î‡∏∂‡∏á game id ‡∏Ç‡∏≠‡∏á user ‡∏õ‡∏±‡∏à‡∏à‡∏∏‡∏ö‡∏±‡∏ô‡∏°‡∏≤‡πÉ‡∏ä‡πâ
 			call CheckGame(Session("uid"))
 		end if
 
@@ -248,7 +248,7 @@ var chkkey
 				Session("user_send_toweb") = sendweb
 
 			end if
-		else  ' ‰¡Ë‰¥È‡≈◊Õ° ¢È“¡‡«Á∫
+		else  ' ‡πÑ‡∏°‡πà‡πÑ‡∏î‡πâ‡πÄ‡∏•‡∏∑‡∏≠‡∏Å ‡∏Ç‡πâ‡∏≤‡∏°‡πÄ‡∏ß‡πá‡∏ö
 			buser=trim(Request("txtUserName"))
 			bpass=trim(Request("password1"))
 			'bdealer=trim(Request("txtdealer"))		
@@ -257,16 +257,16 @@ var chkkey
 
 			chkOk = "no"
 			Set rs = server.createobject("ADODB.Recordset")
-			'∂È“ User name ‡ªÁπ™ËÕß«Ë“ß· ¥ß«Ë“‡ªÁπ ‡®È“¡◊Õ √À— ‡®È“¡◊Õ °—∫ æ“ ‡«Õ√Ï¥‰¡Ë«Ë“ß
-			'∂È“ ‡®È“¡◊Õ «Ë“ß user ‰¡Ë«Ë“ß æ“ ‡«√Ï¥‰¡Ë«Ë“ß ‡ªÁπ admin
-			'∂È“‰¡Ë«Ë“ß∑—Èß  “¡ ‡ªÁπ§π·∑ß
-			'¬°‡≈‘°
+			'‡∏ñ‡πâ‡∏≤ User name ‡πÄ‡∏õ‡πá‡∏ô‡∏ä‡πà‡∏≠‡∏á‡∏ß‡πà‡∏≤‡∏á‡πÅ‡∏™‡∏î‡∏á‡∏ß‡πà‡∏≤‡πÄ‡∏õ‡πá‡∏ô ‡πÄ‡∏à‡πâ‡∏≤‡∏°‡∏∑‡∏≠ ‡∏£‡∏´‡∏±‡∏™‡πÄ‡∏à‡πâ‡∏≤‡∏°‡∏∑‡∏≠ ‡∏Å‡∏±‡∏ö ‡∏û‡∏≤‡∏™‡πÄ‡∏ß‡∏≠‡∏£‡πå‡∏î‡πÑ‡∏°‡πà‡∏ß‡πà‡∏≤‡∏á
+			'‡∏ñ‡πâ‡∏≤ ‡πÄ‡∏à‡πâ‡∏≤‡∏°‡∏∑‡∏≠ ‡∏ß‡πà‡∏≤‡∏á user ‡πÑ‡∏°‡πà‡∏ß‡πà‡∏≤‡∏á ‡∏û‡∏≤‡∏™‡πÄ‡∏ß‡∏£‡πå‡∏î‡πÑ‡∏°‡πà‡∏ß‡πà‡∏≤‡∏á ‡πÄ‡∏õ‡πá‡∏ô admin
+			'‡∏ñ‡πâ‡∏≤‡πÑ‡∏°‡πà‡∏ß‡πà‡∏≤‡∏á‡∏ó‡∏±‡πâ‡∏á ‡∏™‡∏≤‡∏° ‡πÄ‡∏õ‡πá‡∏ô‡∏Ñ‡∏ô‡πÅ‡∏ó‡∏á
+			'‡∏¢‡∏Å‡πÄ‡∏•‡∏¥‡∏Å
 			if 1=0 then
-			if buser = "" and bdealer <> "" and bpass <> "" then ' ‡®È“¡◊Õ
-				response.write "<script language='JavaScript'>alert('°√ÿ≥“µ√«® Õ∫°“√ Log In °√ÿ≥“ Log In ‡ªÁπ§π·∑ß¢Õß‡®È“¡◊Õ∑’ËµÈÕß°“√ Ëß...');document.FORM1.button1.disabled=false;</script>"
+			if buser = "" and bdealer <> "" and bpass <> "" then ' ‡πÄ‡∏à‡πâ‡∏≤‡∏°‡∏∑‡∏≠
+				response.write "<script language='JavaScript'>alert('‡∏Å‡∏£‡∏∏‡∏ì‡∏≤‡∏ï‡∏£‡∏ß‡∏à‡∏™‡∏≠‡∏ö‡∏Å‡∏≤‡∏£ Log In ‡∏Å‡∏£‡∏∏‡∏ì‡∏≤ Log In ‡πÄ‡∏õ‡πá‡∏ô‡∏Ñ‡∏ô‡πÅ‡∏ó‡∏á‡∏Ç‡∏≠‡∏á‡πÄ‡∏à‡πâ‡∏≤‡∏°‡∏∑‡∏≠‡∏ó‡∏µ‡πà‡∏ï‡πâ‡∏≠‡∏á‡∏Å‡∏≤‡∏£‡∏™‡πà‡∏á...');document.FORM1.button1.disabled=false;</script>"
 			elseif buser <> "" and bdealer = "" and bpass <> "" then ' admin
-				response.write "<script language='JavaScript'>alert('°√ÿ≥“µ√«® Õ∫°“√ Log In °√ÿ≥“ Log In ‡ªÁπ§π·∑ß¢Õß‡®È“¡◊Õ∑’ËµÈÕß°“√ Ëß...');document.FORM1.button1.disabled=false;</script>"
-			elseif buser <> "" and bdealer <> "" and bpass <> "" then '§π·∑ß
+				response.write "<script language='JavaScript'>alert('‡∏Å‡∏£‡∏∏‡∏ì‡∏≤‡∏ï‡∏£‡∏ß‡∏à‡∏™‡∏≠‡∏ö‡∏Å‡∏≤‡∏£ Log In ‡∏Å‡∏£‡∏∏‡∏ì‡∏≤ Log In ‡πÄ‡∏õ‡πá‡∏ô‡∏Ñ‡∏ô‡πÅ‡∏ó‡∏á‡∏Ç‡∏≠‡∏á‡πÄ‡∏à‡πâ‡∏≤‡∏°‡∏∑‡∏≠‡∏ó‡∏µ‡πà‡∏ï‡πâ‡∏≠‡∏á‡∏Å‡∏≤‡∏£‡∏™‡πà‡∏á...');document.FORM1.button1.disabled=false;</script>"
+			elseif buser <> "" and bdealer <> "" and bpass <> "" then '‡∏Ñ‡∏ô‡πÅ‡∏ó‡∏á
 				strSql = "SELECT     sc_user.*, sc_user_1.user_name AS dealer_fname FROM         sc_user INNER JOIN sc_user sc_user_1 ON sc_user.create_by = sc_user_1.user_id " _
 					& "Where (sc_user.user_name='" & buser & "' or sc_user.login_id='"& buser &"')  And sc_user.user_disable=0 "
 				strSql = strSql & " And (sc_user_1.user_name ='" & bdealer & "' or sc_user_1.login_id='" & bdealer & "') and sc_user.user_type='P'"
@@ -286,13 +286,13 @@ var chkkey
 						bdealer=rs("create_by")
 						bplayer=rs("user_id")
 						if bweb <> "" then
-							'comment ‡æ√“–¬—ß‰¡Ë√ÿÈ‡Àµÿº≈
+							'comment ‡πÄ‡∏û‡∏£‡∏≤‡∏∞‡∏¢‡∏±‡∏á‡πÑ‡∏°‡πà‡∏£‡∏∏‡πâ‡πÄ‡∏´‡∏ï‡∏∏‡∏ú‡∏•
 							'Session("uid") = rs("create_by")
 						end if
 						if CheckGame(bdealer)<>"OPEN" then
 							chkOk = "CLOSE"
 						end if
-						'check ‡æ◊ËÕ¥÷ß game id ¢Õß user ª—®®ÿ∫—π¡“„™È
+						'check ‡πÄ‡∏û‡∏∑‡πà‡∏≠‡∏î‡∏∂‡∏á game id ‡∏Ç‡∏≠‡∏á user ‡∏õ‡∏±‡∏à‡∏à‡∏∏‡∏ö‡∏±‡∏ô‡∏°‡∏≤‡πÉ‡∏ä‡πâ
 						call CheckGame(Session("uid"))
 					end if
 				end if
@@ -300,7 +300,7 @@ var chkkey
 
 				response.write "<script language='JavaScript'>senddealer('"&chkOk&"',"&bdealer&","&bplayer&",'"&bweb&"');</script>"
 			end if  '  strsql <> ''
-		end if   ' ‰¡Ë‰¥È‡≈◊Õ° ¢È“¡‡«Á∫
+		end if   ' ‡πÑ‡∏°‡πà‡πÑ‡∏î‡πâ‡πÄ‡∏•‡∏∑‡∏≠‡∏Å ‡∏Ç‡πâ‡∏≤‡∏°‡πÄ‡∏ß‡πá‡∏ö
 
 
 '				else
@@ -335,10 +335,10 @@ var chkkey
 
 <FORM id=FORM1 name=FORM1 action="dealer_tudroum_send.asp" method=post>
 <!--
-============  ª√—∫‡≈¢°√≥’∑’Ë‡ªÁπ ŸÈ∫π ===============  26/10/52
-„ÀÈª√—∫‡≈¢‚¥¬°“√ ®”π«π‡ß‘π∑’Ë ŸÈ·µË≈–‡≈¢ * ®”π«π®Ë“¬  / ¥È«¬®”π«π·∑ßÕÕ°
+============  ‡∏õ‡∏£‡∏±‡∏ö‡πÄ‡∏•‡∏Ç‡∏Å‡∏£‡∏ì‡∏µ‡∏ó‡∏µ‡πà‡πÄ‡∏õ‡πá‡∏ô‡∏™‡∏π‡πâ‡∏ö‡∏ô ===============  26/10/52
+‡πÉ‡∏´‡πâ‡∏õ‡∏£‡∏±‡∏ö‡πÄ‡∏•‡∏Ç‡πÇ‡∏î‡∏¢‡∏Å‡∏≤‡∏£ ‡∏à‡∏≥‡∏ô‡∏ß‡∏ô‡πÄ‡∏á‡∏¥‡∏ô‡∏ó‡∏µ‡πà‡∏™‡∏π‡πâ‡πÅ‡∏ï‡πà‡∏•‡∏∞‡πÄ‡∏•‡∏Ç * ‡∏à‡∏≥‡∏ô‡∏ß‡∏ô‡∏à‡πà‡∏≤‡∏¢  / ‡∏î‡πâ‡∏ß‡∏¢‡∏à‡∏≥‡∏ô‡∏ß‡∏ô‡πÅ‡∏ó‡∏á‡∏≠‡∏≠‡∏Å
 
-get §Ë“ ®”π«π®Ë“¬ ·≈– ®”π«π·∑ßÕÕ°
+get ‡∏Ñ‡πà‡∏≤ ‡∏à‡∏≥‡∏ô‡∏ß‡∏ô‡∏à‡πà‡∏≤‡∏¢ ‡πÅ‡∏•‡∏∞ ‡∏à‡∏≥‡∏ô‡∏ß‡∏ô‡πÅ‡∏ó‡∏á‡∏≠‡∏≠‡∏Å
 -->
 <%
 Dim  rsPricePO
@@ -362,7 +362,7 @@ Dim txtNewVal, i
 				out2tod=trim(rsPricePO("out2tod"))
 				out1up=trim(rsPricePO("out1up"))
 
-				' §”π«π 2up
+				' ‡∏Ñ‡∏≥‡∏ô‡∏ß‡∏ô 2up
 				If pay2up > 0 And out2up > 0 Then 
 					arrMoney=split(Request("txt2upmoney"),",")
 					for i = 0 to Ubound(arrMoney)
@@ -378,7 +378,7 @@ Dim txtNewVal, i
 					txtReturn2Up=Request("txt2upmoney")
 				End if
 
-				' §”π«π 3up
+				' ‡∏Ñ‡∏≥‡∏ô‡∏ß‡∏ô 3up
 				If pay3up > 0 And out3up > 0 Then 
 					arrMoney=split(Request("txt3upmoney"),",")
 					for i = 0 to Ubound(arrMoney)
@@ -394,7 +394,7 @@ Dim txtNewVal, i
 					txtReturn3Up=Request("txt3upmoney")
 				End if
 
-				' §”π«π 3tod
+				' ‡∏Ñ‡∏≥‡∏ô‡∏ß‡∏ô 3tod
 				If pay3tod > 0 And out3tod > 0 Then 
 					arrMoney=split(Request("txt3todmoney"),",")
 					for i = 0 to Ubound(arrMoney)
@@ -410,7 +410,7 @@ Dim txtNewVal, i
 					txtReturn3Tod=Request("txt3todmoney")
 				End if
 
-				' §”π«π 1up
+				' ‡∏Ñ‡∏≥‡∏ô‡∏ß‡∏ô 1up
 				If pay1up > 0 And out1up > 0 Then 
 					arrMoney=split(Request("txt1upmoney"),",")
 					for i = 0 to Ubound(arrMoney)
@@ -474,10 +474,10 @@ Dim txtNewVal, i
 
 <TABLE WIDTH="100%" BORDER=0 CELLSPACING=0 CELLPADDING=0 bgColor=white>
 	<TR class=head_white bgColor=red>
-		<TD align=middle colspan=4>°√ÿ≥“ Log in ¥È«¬ User <br>¢Õß‡®È“¡◊Õ∑’Ë§ÿ≥µÈÕß°“√ ËßµËÕ</TD>
+		<TD align=middle colspan=4>‡∏Å‡∏£‡∏∏‡∏ì‡∏≤ Log in ‡∏î‡πâ‡∏ß‡∏¢ User <br>‡∏Ç‡∏≠‡∏á‡πÄ‡∏à‡πâ‡∏≤‡∏°‡∏∑‡∏≠‡∏ó‡∏µ‡πà‡∏Ñ‡∏∏‡∏ì‡∏ï‡πâ‡∏≠‡∏á‡∏Å‡∏≤‡∏£‡∏™‡πà‡∏á‡∏ï‡πà‡∏≠</TD>
 	</TR>
 	<TR class=text_blue>
-		<TD colspan=1 align=middle> Ëß¢È“¡ WEB  Ëß</TD>		
+		<TD colspan=1 align=middle>‡∏™‡πà‡∏á‡∏Ç‡πâ‡∏≤‡∏° WEB ‡∏™‡πà‡∏á</TD>		
 		<TD colspan=3 align=middle>   &nbsp;</TD>		
 	</TR>
 	<TR class=text_blue>
@@ -487,20 +487,20 @@ Dim txtNewVal, i
 	call ShowListView("sc_user", "user_name", "user_id", "sendweb", sendweb, "create_by=" & Session("uid") & " and user_type='W'" ,true, 150, "onChange='document.FORM1.submit();'")
 %>					
 		</TD>
-<!-- 	ª√—∫·°È„ÀÈ login ¡’  2  box  ‡À¡◊Õπ°“√ login „À¡Ë 6/6/09	
-		<TD>&nbsp;&nbsp;°≈ÿË¡</TD>
+<!-- 	‡∏õ‡∏£‡∏±‡∏ö‡πÅ‡∏Å‡πâ‡πÉ‡∏´‡πâ login ‡∏°‡∏µ  2  box  ‡πÄ‡∏´‡∏°‡∏∑‡∏≠‡∏ô‡∏Å‡∏≤‡∏£ login ‡πÉ‡∏´‡∏°‡πà 6/6/09	
+		<TD>&nbsp;&nbsp;‡∏Å‡∏•‡∏∏‡πà‡∏°</TD>
 		<TD><INPUT id=text1 name=txtdealer style="WIDTH: 130px" 
             width=200 onKeyDown="txtdealer_checkkey();" value="<%=bdealer %>"></TD>
 		<TD></TD>
 	</TR>
 	<TR class=text_blue> -->
-		<TD>&nbsp;&nbsp;™◊ËÕºŸÈ„™È</TD>
+		<TD>&nbsp;&nbsp;‡∏ä‡∏∑‡πà‡∏≠‡∏ú‡∏π‡πâ‡πÉ‡∏ä‡πâ</TD>
 		<TD><INPUT id=text1 name=txtUserName style="WIDTH: 130px" 
             width=200 onKeyDown="txtUserName_checkkey();" value="<%=buser%>" readonly></TD>
 		<TD></TD>
 	</TR>
 	<TR class=text_blue>
-		<TD>&nbsp;&nbsp;√À— ºË“π</TD>
+		<TD>&nbsp;&nbsp;‡∏£‡∏´‡∏±‡∏™‡∏ú‡πà‡∏≤‡∏ô</TD>
 		<TD><INPUT id=password1 type=password 
             name=password1 style="WIDTH: 130px; HEIGHT: 22px" width=200 size=21 
             onKeyDown="password1_checkkey();" value="<%=bpass%>" readonly></TD>
@@ -508,7 +508,7 @@ Dim txtNewVal, i
 	</TR>
         <TR>
           
-          <TD colspan=3 align=middle><INPUT id=button1 type=button align=left value=" Ëß‡®È“¡◊Õ" class="inputE" name=button1 style="cursor:hand; width: 100px;"  onClick="document.FORM1.button1.disabled=true;return clicksubmit();"><input type=button class="inputR" value=" ª‘¥ " style="cursor:hand; width: 90px;" onClick="window.close();" ></TD></TR>
+          <TD colspan=3 align=middle><INPUT id=button1 type=button align=left value="‡∏™‡πà‡∏á‡πÄ‡∏à‡πâ‡∏≤‡∏°‡∏∑‡∏≠" class="inputE" name=button1 style="cursor:hand; width: 100px;"  onClick="document.FORM1.button1.disabled=true;return clicksubmit();"><input type=button class="inputR" value=" ‡∏õ‡∏¥‡∏î " style="cursor:hand; width: 90px;" onClick="window.close();" ></TD></TR>
 </TABLE>
 
 </TD>

@@ -5,13 +5,10 @@ function home() {
 }
 
 function gotoPage(url) {
-    console.log(url)
-    // $("#content_main" ).html("<div>Loadding . . .</div>");
-    // $("#content_main" ).load( url );
-    //parent.document.all.bodyFrame.src = url;
-   // $("#main_frame").attr("src",url)
+    parent.document.all.bodyFrame.src = url;
     //window.location=url;
 }
+
 
 
 function gotoPageOnTop(url) {
@@ -50,25 +47,3 @@ function Right(str, n) {
         return String(str).substring(iLen, iLen - n);
     }
 }
-
-var getUrlParameter = function getUrlParameter(sParam) {
-    var sPageURL = window.location.search.substring(1),
-        sURLVariables = sPageURL.split('&'),
-        sParameterName,
-        i;
-
-    for (i = 0; i < sURLVariables.length; i++) {
-        sParameterName = sURLVariables[i].split('=');
-
-        if (sParameterName[0] === sParam) {
-            return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
-        }
-    }
-};
-
-// $(function(){
-//     var page = getUrlParameter('page');
-//     if(page !==""){
-//         $("#content_main" ).load(page);
-//     }
-// });

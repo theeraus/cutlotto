@@ -1,4 +1,4 @@
-<%@ Language=VBScript %>
+ <%@ Language=VBScript CodePage = 65001  %>
 <%OPTION EXPLICIT%>
 <% Response.CacheControl = "no-cache" %>
 <% Response.AddHeader "Pragma", "no-cache" %> 
@@ -46,7 +46,7 @@
 		printType  = Request("printtype")
 		selectType = Request("selecttype")
 
-		if printtype = "printticket" then  '¡“®“°ÀπÈ“æ‘¡æÏ‚æ¬‡®È“¡◊Õ
+		if printtype = "printticket" then  '‡∏°‡∏≤‡∏à‡∏≤‡∏Å‡∏´‡∏ô‡πâ‡∏≤‡∏û‡∏¥‡∏°‡∏û‡πå‡πÇ‡∏û‡∏¢‡πÄ‡∏à‡πâ‡∏≤‡∏°‡∏∑‡∏≠
 
 			arrTk = split(Request("ticket"),",")
 			strCri = " And player_id = " & arrPlayer(0)
@@ -79,7 +79,7 @@
 %>			
 <html>
 <head>
-<title>.:: ‡°Á∫¢ÈÕ¡Ÿ≈ ::. </title>
+<title>.:: ‡πÄ‡∏Å‡πá‡∏ö‡∏Ç‡πâ‡∏≠‡∏°‡∏π‡∏• ::. </title>
 <meta http-equiv="Content-Type" content="text/html; charset=windows-874">
 <meta http-equiv="cache-control" content="no-cache"> 
 <meta http-equiv="pragma" content="no-cache"> 
@@ -119,8 +119,8 @@ function doPrint()   {
 		end if
 		Rs.Close
 		'Rs2.Close
-'‡æ‘Ë¡„À¡Ë „ÀÈ save Õ¬Ë“ß‡¥’¬«·≈È«®∫‡≈¬
-		Response.write "<script language=javascript>alert('∑”°“√∫—π∑÷°¢ÈÕ¡Ÿ≈‡√’¬∫√ÈÕ¬·≈È« !'); window.opener.close(); window.close();</script>"
+'‡πÄ‡∏û‡∏¥‡πà‡∏°‡πÉ‡∏´‡∏°‡πà ‡πÉ‡∏´‡πâ save ‡∏≠‡∏¢‡πà‡∏≤‡∏á‡πÄ‡∏î‡∏µ‡∏¢‡∏ß‡πÅ‡∏•‡πâ‡∏ß‡∏à‡∏ö‡πÄ‡∏•‡∏¢
+		Response.write "<script language=javascript>alert('‡∏ó‡∏≥‡∏Å‡∏≤‡∏£‡∏ö‡∏±‡∏ô‡∏ó‡∏∂‡∏Å‡∏Ç‡πâ‡∏≠‡∏°‡∏π‡∏•‡πÄ‡∏£‡∏µ‡∏¢‡∏ö‡∏£‡πâ‡∏≠‡∏¢‡πÅ‡∏•‡πâ‡∏ß !'); window.opener.close(); window.close();</script>"
 		response.end
 	end if
 %>
@@ -134,13 +134,13 @@ function doPrint()   {
 'showstr SQL
 		set rsTk=objDB.Execute(SQL)	
 		if not rsTk.eof Then
-			' «π· ¥ß∑’≈– ticket
+			' ‡∏ß‡∏ô‡πÅ‡∏™‡∏î‡∏á‡∏ó‡∏µ‡∏•‡∏∞ ticket
 			do while not rsTk.eof
 				'Response.write "<PB>"
 				If rsTk("rec_status")="2" Or rsTk("rec_status")="3" then
 					call ShowTicket(rsTk("ticket_id"), saveid)
 				Else
-					call ShowTicketReject(rsTk("ticket_id"), saveid) ' CASE ∑’Ë‰¡Ë√—∫ / √Õ√—∫
+					call ShowTicketReject(rsTk("ticket_id"), saveid) ' CASE ‡∏ó‡∏µ‡πà‡πÑ‡∏°‡πà‡∏£‡∏±‡∏ö / ‡∏£‡∏≠‡∏£‡∏±‡∏ö
 				End if
 				rsTk.MoveNext
 				if not rsTk.Eof then
@@ -148,7 +148,7 @@ function doPrint()   {
 				end if
 			loop
 		end If
-		' Ë«π¢Õß„∫∑’Ë ‰¡Ë√—∫ / √Õ√—∫
+		'‡∏™‡πà‡∏ß‡∏ô‡∏Ç‡∏≠‡∏á‡πÉ‡∏ö‡∏ó‡∏µ‡πà ‡πÑ‡∏°‡πà‡∏£‡∏±‡∏ö / ‡∏£‡∏≠‡∏£‡∏±‡∏ö
 		SQL="Select ticket_id, rec_status from tb_ticket where game_id = " & gameid 
 		SQL=SQL & " and rec_status not in (2,3) " 	
 		if strCri <> "" then SQL = SQL & strCri
@@ -156,7 +156,7 @@ function doPrint()   {
 		set rsTk=objDB.Execute(SQL)	
 		if not rsTk.eof then
 			do while not rsTk.eof
-				call ShowTicketReject(rsTk("ticket_id"), saveid) ' CASE ∑’Ë‰¡Ë√—∫ / √Õ√—∫
+				call ShowTicketReject(rsTk("ticket_id"), saveid) ' CASE ‡∏ó‡∏µ‡πà‡πÑ‡∏°‡πà‡∏£‡∏±‡∏ö / ‡∏£‡∏≠‡∏£‡∏±‡∏ö
 				rsTk.MoveNext
 				if not rsTk.Eof then
 					Response.write "<br style='page-break-before:always;'>"
@@ -165,13 +165,13 @@ function doPrint()   {
 		end If
 
 
-		' ‡æ‘Ë¡ °“√∫—π∑÷°µ—¥
+		' ‡πÄ‡∏û‡∏¥‡πà‡∏° ‡∏Å‡∏≤‡∏£‡∏ö‡∏±‡∏ô‡∏ó‡∏∂‡∏Å‡∏ï‡∏±‡∏î
 		if printType = "file" and saveid > 0  then
 			SQL = "exec spInsertTBSaveCut " & saveid & "," & gameid & ""
 '			showstr SQL
 			set Rs=objDB.Execute(SQL)			
 			'Rs.Close
-			Response.write "<script language=javascript>alert('∑”°“√∫—π∑÷°¢ÈÕ¡Ÿ≈‡√’¬∫√ÈÕ¬·≈È« !'); window.opener.close(); window.close();</script>"
+			Response.write "<script language=javascript>alert('‡∏ó‡∏≥‡∏Å‡∏≤‡∏£‡∏ö‡∏±‡∏ô‡∏ó‡∏∂‡∏Å‡∏Ç‡πâ‡∏≠‡∏°‡∏π‡∏•‡πÄ‡∏£‡∏µ‡∏¢‡∏ö‡∏£‡πâ‡∏≠‡∏¢‡πÅ‡∏•‡πâ‡∏ß !'); window.opener.close(); window.close();</script>"
 		end if
 %>
 	</form>
@@ -205,22 +205,22 @@ function ShowTicket(ticket_id, saveid)
 		if not objRS.eof Then
 				rec_status=objRS("rec_status")
 				if objRS("rec_status") = 0 then 
-					recstatus = "¬—ß‰¡Ë Ëß"
+					recstatus = "‡∏¢‡∏±‡∏á‡πÑ‡∏°‡πà‡∏™‡πà‡∏á"
 				elseif objRS("rec_status") = 1 then 
-					recstatus = " Ëß ¬—ß‰¡Ë‰¥È√—∫"
+					recstatus = "‡∏™‡πà‡∏á ‡∏¢‡∏±‡∏á‡πÑ‡∏°‡πà‡πÑ‡∏î‡πâ‡∏£‡∏±‡∏ö"
 				elseif objRS("rec_status") = 2 then 
-					recstatus = "√—∫∑—ÈßÀ¡¥"
+					recstatus = "‡∏£‡∏±‡∏ö‡∏ó‡∏±‡πâ‡∏á‡∏´‡∏°‡∏î"
 				elseif objRS("rec_status") = 3 then 
-					recstatus = "√—∫∫“ß Ë«π"
+					recstatus = "‡∏£‡∏±‡∏ö‡∏ö‡∏≤‡∏á‡∏™‡πà‡∏ß‡∏ô"
 				elseif objRS("rec_status") = 4 then 
-					recstatus = "‰¡Ë√—∫"
+					recstatus = "‡πÑ‡∏°‡πà‡∏£‡∏±‡∏ö"
 				end if
 				keyer = GetValueFromTable("sc_user", "user_name", "user_id=" & objRS("key_id") )
-				savetickethead  = "‡≈¢∑’Ë " & objRS("login_id") & "   ™◊ËÕ " & objRS("player_name") & "   „∫∑’Ë "  & objRS("ticket_number") & "   ¬Õ¥·∑ß√«¡  " &  formatnumber(GetTotalPlay(objRS("player_id"),objRS("game_id")),0)  & "  ¬Õ¥„∫π’È  " & formatnumber(objRS("total_play_amt"),0)
-				savetickethead2  = "«—π∑’Ë  "  & objRS("ticket_date") & "     Ëß  "  & objRS("ticket_time") & "    √—∫  " &  objRS("rec_time")  & "    §π§’¬Ï  " & keyer & "     ∂“π–  " & recstatus
+				savetickethead  = "‡πÄ‡∏•‡∏Ç‡∏ó‡∏µ‡πà " & objRS("login_id") & "   ‡∏ä‡∏∑‡πà‡∏≠ " & objRS("player_name") & "   ‡πÉ‡∏ö‡∏ó‡∏µ‡πà "  & objRS("ticket_number") & "   ‡∏¢‡∏≠‡∏î‡πÅ‡∏ó‡∏á‡∏£‡∏ß‡∏°  " &  formatnumber(GetTotalPlay(objRS("player_id"),objRS("game_id")),0)  & "  ‡∏¢‡∏≠‡∏î‡πÉ‡∏ö‡∏ô‡∏µ‡πâ  " & formatnumber(objRS("total_play_amt"),0)
+				savetickethead2  = "‡∏ß‡∏±‡∏ô‡∏ó‡∏µ‡πà  "  & objRS("ticket_date") & "    ‡∏™‡πà‡∏á  "  & objRS("ticket_time") & "    ‡∏£‡∏±‡∏ö  " &  objRS("rec_time")  & "    ‡∏Ñ‡∏ô‡∏Ñ‡∏µ‡∏¢‡πå  " & keyer & "    ‡∏™‡∏ñ‡∏≤‡∏ô‡∏∞  " & recstatus
 				saveplayerid = objRS("player_id")
 				saveplayer = objRS("player_name")
-'********* ‡ª≈’Ë¬π°“√ save ‰ª save „π store ∑—ÈßÀ¡¥∑’‡¥’¬«   09/02/10
+'********* ‡πÄ‡∏õ‡∏•‡∏µ‡πà‡∏¢‡∏ô‡∏Å‡∏≤‡∏£ save ‡πÑ‡∏õ save ‡πÉ‡∏ô store ‡∏ó‡∏±‡πâ‡∏á‡∏´‡∏°‡∏î‡∏ó‡∏µ‡πÄ‡∏î‡∏µ‡∏¢‡∏ß   09/02/10
 '				if saveid > 0 then 
 '					'********** save game
 '					SQL = "exec spInsertTBSaveGameTicket " & saveid & ", " & objRS("player_id") & ", '" & objRS("player_name") & "', " & ticket_id & ", '" & savetickethead & "', '" & savetickethead2 & "'"
@@ -235,7 +235,7 @@ function ShowTicket(ticket_id, saveid)
 			<table  border="0"  cellpadding="1" cellspacing="0" width="800">
 				<tr>
 					<td class="tdbody" colspan=12><%=savetickethead%></td>
-<!-- 					<td class="tdbody" colspan=12>‡≈¢∑’Ë&nbsp;<%=objRS("login_id")%>&nbsp;&nbsp;&nbsp;™◊ËÕ&nbsp;<%=objRS("player_name")%>&nbsp;&nbsp;&nbsp;„∫∑’Ë &nbsp;<%=objRS("ticket_number")%>&nbsp;&nbsp;&nbsp;¬Õ¥·∑ß√«¡  &nbsp;<%=formatnumber(GetTotalPlay(objRS("player_id"),objRS("game_id")),0)%>&nbsp;¬Õ¥„∫π’È &nbsp;<%=formatnumber(objRS("total_play_amt"),0)%></td> -->
+<!-- 					<td class="tdbody" colspan=12>‡πÄ‡∏•‡∏Ç‡∏ó‡∏µ‡πà&nbsp;<%=objRS("login_id")%>&nbsp;&nbsp;&nbsp;‡∏ä‡∏∑‡πà‡∏≠&nbsp;<%=objRS("player_name")%>&nbsp;&nbsp;&nbsp;‡πÉ‡∏ö‡∏ó‡∏µ‡πà &nbsp;<%=objRS("ticket_number")%>&nbsp;&nbsp;&nbsp;‡∏¢‡∏≠‡∏î‡πÅ‡∏ó‡∏á‡∏£‡∏ß‡∏°  &nbsp;<%=formatnumber(GetTotalPlay(objRS("player_id"),objRS("game_id")),0)%>&nbsp;‡∏¢‡∏≠‡∏î‡πÉ‡∏ö‡∏ô‡∏µ‡πâ &nbsp;<%=formatnumber(objRS("total_play_amt"),0)%></td> -->
 				</tr>
 				<tr>
 					<td class="tdbody" colspan=12><%=savetickethead2%></td>
@@ -254,7 +254,7 @@ function ShowTicket(ticket_id, saveid)
 			i=1
 			if not objRS.eof then
 				while not objRS.eof
-' anon comment 040209   ¬È“¬‰ª save ∑’≈– ticket „π spInsertTBSaveGameTicket
+' anon comment 040209   ‡∏¢‡πâ‡∏≤‡∏¢‡πÑ‡∏õ save ‡∏ó‡∏µ‡∏•‡∏∞ ticket ‡πÉ‡∏ô spInsertTBSaveGameTicket
 '					if  saveticketid > 0 then
 '						tmpChk = 1
 '						if objRS("check_status")="" or Isnull(objRS("check_status")) then tmpChk = 0
@@ -265,7 +265,7 @@ function ShowTicket(ticket_id, saveid)
 						ar_disp(i,1)=objRS("updown_type")
 						ar_disp(i,2)=objRS("str_updown_type")
 						ar_disp(i,3)=objRS("key_number")
-						If CInt(rec_status) <= 1  Then ' ‡®È“¡◊Õ¬—ß‰¡Ë‰¥È√—∫ 
+						If CInt(rec_status) <= 1  Then ' ‡πÄ‡∏à‡πâ‡∏≤‡∏°‡∏∑‡∏≠‡∏¢‡∏±‡∏á‡πÑ‡∏°‡πà‡πÑ‡∏î‡πâ‡∏£‡∏±‡∏ö 
 							ar_disp(i,4)=objRS("key_money")  'jum 2007-09-10
 						Else
 							ar_disp(i,4)=objRS("dealer_rec") ' objRS("key_money") jum 2007-09-10
@@ -275,7 +275,7 @@ function ShowTicket(ticket_id, saveid)
 					i=i+1
 					objRS.MoveNext
 				wend
-				'---- · ¥ß‚æ¬ ·∂«≈– 33 §Ë“
+				'---- ‡πÅ‡∏™‡∏î‡∏á‡πÇ‡∏û‡∏¢ ‡πÅ‡∏ñ‡∏ß‡∏•‡∏∞ 33 ‡∏Ñ‡πà‡∏≤
 				%><table  border="0"  cellpadding="1" cellspacing="1" width="600" bgcolor="#D4D4D4"><%
 				for i=1 to 33
 					j=i+line_per_page
@@ -345,7 +345,7 @@ function ShowTicket(ticket_id, saveid)
 	</table>
 <%
 end Function
-function ShowTicketReject(ticket_id, saveid) ' · ¥ß¢ÈÕ¡Ÿ≈ ticket ∑’Ë‰¡Ë√—∫  rec_status=4
+function ShowTicketReject(ticket_id, saveid) ' ‡πÅ‡∏™‡∏î‡∏á‡∏Ç‡πâ‡∏≠‡∏°‡∏π‡∏• ticket ‡∏ó‡∏µ‡πà‡πÑ‡∏°‡πà‡∏£‡∏±‡∏ö  rec_status=4
 	dim objRS, objDB, Rs
 	dim saveticketid
 	dim savetickethead
@@ -370,22 +370,22 @@ function ShowTicketReject(ticket_id, saveid) ' · ¥ß¢ÈÕ¡Ÿ≈ ticket ∑’Ë‰¡Ë√—∫  rec_
 		if not objRS.eof Then
 				rec_status=objRS("rec_status")
 				if objRS("rec_status") = 0 then 
-					recstatus = "¬—ß‰¡Ë Ëß"
+					recstatus = "‡∏¢‡∏±‡∏á‡πÑ‡∏°‡πà‡∏™‡πà‡∏á"
 				elseif objRS("rec_status") = 1 then 
-					recstatus = " Ëß ¬—ß‰¡Ë‰¥È√—∫"
+					recstatus = "‡∏™‡πà‡∏á ‡∏¢‡∏±‡∏á‡πÑ‡∏°‡πà‡πÑ‡∏î‡πâ‡∏£‡∏±‡∏ö"
 				elseif objRS("rec_status") = 2 then 
-					recstatus = "√—∫∑—ÈßÀ¡¥"
+					recstatus = "‡∏£‡∏±‡∏ö‡∏ó‡∏±‡πâ‡∏á‡∏´‡∏°‡∏î"
 				elseif objRS("rec_status") = 3 then 
-					recstatus = "√—∫∫“ß Ë«π"
+					recstatus = "‡∏£‡∏±‡∏ö‡∏ö‡∏≤‡∏á‡∏™‡πà‡∏ß‡∏ô"
 				elseif objRS("rec_status") = 4 then 
-					recstatus = "‰¡Ë√—∫"
+					recstatus = "‡πÑ‡∏°‡πà‡∏£‡∏±‡∏ö"
 				end if
 				keyer = GetValueFromTable("sc_user", "user_name", "user_id=" & objRS("key_id") )
-				savetickethead  = "‡≈¢∑’Ë " & objRS("login_id") & "   ™◊ËÕ " & objRS("player_name") & "   „∫∑’Ë "  & objRS("ticket_number") & "   ¬Õ¥·∑ß√«¡  " &  formatnumber(GetTotalPlay(objRS("player_id"),objRS("game_id")),0)  & "  ¬Õ¥„∫π’È  " & formatnumber(objRS("total_play_amt"),0)
-				savetickethead2  = "«—π∑’Ë  "  & objRS("ticket_date") & "     Ëß  "  & objRS("ticket_time") & "    √—∫  " &  objRS("rec_time")  & "    §π§’¬Ï  " & keyer & "     ∂“π–  " & recstatus
+				savetickethead  = "‡πÄ‡∏•‡∏Ç‡∏ó‡∏µ‡πà " & objRS("login_id") & "   ‡∏ä‡∏∑‡πà‡∏≠ " & objRS("player_name") & "   ‡πÉ‡∏ö‡∏ó‡∏µ‡πà "  & objRS("ticket_number") & "   ‡∏¢‡∏≠‡∏î‡πÅ‡∏ó‡∏á‡∏£‡∏ß‡∏°  " &  formatnumber(GetTotalPlay(objRS("player_id"),objRS("game_id")),0)  & "  ‡∏¢‡∏≠‡∏î‡πÉ‡∏ö‡∏ô‡∏µ‡πâ  " & formatnumber(objRS("total_play_amt"),0)
+				savetickethead2  = "‡∏ß‡∏±‡∏ô‡∏ó‡∏µ‡πà  "  & objRS("ticket_date") & "    ‡∏™‡πà‡∏á  "  & objRS("ticket_time") & "    ‡∏£‡∏±‡∏ö  " &  objRS("rec_time")  & "    ‡∏Ñ‡∏ô‡∏Ñ‡∏µ‡∏¢‡πå  " & keyer & "    ‡∏™‡∏ñ‡∏≤‡∏ô‡∏∞  " & recstatus
 				saveplayerid = objRS("player_id")
 				saveplayer = objRS("player_name")
-'********* ‡ª≈’Ë¬π°“√ save ‰ª save „π store ∑—ÈßÀ¡¥∑’‡¥’¬«   09/02/10
+'********* ‡πÄ‡∏õ‡∏•‡∏µ‡πà‡∏¢‡∏ô‡∏Å‡∏≤‡∏£ save ‡πÑ‡∏õ save ‡πÉ‡∏ô store ‡∏ó‡∏±‡πâ‡∏á‡∏´‡∏°‡∏î‡∏ó‡∏µ‡πÄ‡∏î‡∏µ‡∏¢‡∏ß   09/02/10
 '				if saveid > 0 then 
 '				'********** save game
 '					SQL = "exec spInsertTBSaveGameTicket " & saveid & ", " & objRS("player_id") & ", '" & objRS("player_name") & "', " & ticket_id & ", '" & savetickethead & "', '" & savetickethead2 & "'"
@@ -413,7 +413,7 @@ function ShowTicketReject(ticket_id, saveid) ' · ¥ß¢ÈÕ¡Ÿ≈ ticket ∑’Ë‰¡Ë√—∫  rec_
 			i=1
 			if not objRS.eof then
 				while not objRS.eof
-' anon comment 040209   ¬È“¬‰ª save ∑’≈– ticket „π spInsertTBSaveGameTicket
+' anon comment 040209   ‡∏¢‡πâ‡∏≤‡∏¢‡πÑ‡∏õ save ‡∏ó‡∏µ‡∏•‡∏∞ ticket ‡πÉ‡∏ô spInsertTBSaveGameTicket
 '					if  saveticketid > 0 then
 '						tmpChk = 1
 '						if objRS("check_status")="" or Isnull(objRS("check_status")) then tmpChk = 0
@@ -424,7 +424,7 @@ function ShowTicketReject(ticket_id, saveid) ' · ¥ß¢ÈÕ¡Ÿ≈ ticket ∑’Ë‰¡Ë√—∫  rec_
 						ar_disp(i,1)=objRS("updown_type")
 						ar_disp(i,2)=objRS("str_updown_type")
 						ar_disp(i,3)=objRS("key_number")
-						If CInt(rec_status) <= 1  Then ' ‡®È“¡◊Õ¬—ß‰¡Ë‰¥È√—∫ 
+						If CInt(rec_status) <= 1  Then ' ‡πÄ‡∏à‡πâ‡∏≤‡∏°‡∏∑‡∏≠‡∏¢‡∏±‡∏á‡πÑ‡∏°‡πà‡πÑ‡∏î‡πâ‡∏£‡∏±‡∏ö 
 							ar_disp(i,4)=objRS("key_money")  'jum 2007-09-10
 						Else
 							ar_disp(i,4)=objRS("dealer_rec") ' objRS("key_money") jum 2007-09-10
@@ -434,7 +434,7 @@ function ShowTicketReject(ticket_id, saveid) ' · ¥ß¢ÈÕ¡Ÿ≈ ticket ∑’Ë‰¡Ë√—∫  rec_
 					i=i+1
 					objRS.MoveNext
 				wend
-				'---- · ¥ß‚æ¬ ·∂«≈– 33 §Ë“
+				'---- ‡πÅ‡∏™‡∏î‡∏á‡πÇ‡∏û‡∏¢ ‡πÅ‡∏ñ‡∏ß‡∏•‡∏∞ 33 ‡∏Ñ‡πà‡∏≤
 				%><table  border="0"  cellpadding="1" cellspacing="1" width="600" bgcolor="#D4D4D4"><%
 				for i=1 to 33
 					j=i+line_per_page

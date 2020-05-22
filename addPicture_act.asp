@@ -1,4 +1,4 @@
-<%@ Language=VBScript %>
+<%@ Language=VBScript CodePage = 65001  %>
 <% Response.CacheControl = "no-cache" %>
 <% Response.AddHeader "Pragma", "no-cache" %> 
 <% Response.Expires = -1 %>
@@ -57,7 +57,7 @@ dim pathPicTmp, pathPic, tmpfile
 <HTML>
 <HEAD>
 <META NAME="GENERATOR" Content="Microsoft Visual Studio 6.0">
-<meta http-equiv="Content-Type" content="text/html;  charset=windows-874">
+<meta http-equiv="Content-Type" content="text/html;  charset=utf-8">
 <meta http-equiv="cache-control" content="no-cache"> 
 <meta http-equiv="pragma" content="no-cache"> 
 <meta http-equiv="expires" content="-1">
@@ -70,17 +70,17 @@ dim pathPicTmp, pathPic, tmpfile
 <table width="300" border="0." cellspacing="0" cellpadding="0" align="center">
 <tr valign="top"> 
 <td align="center" class="normal"> 
-		<%showmessage "�ӡ�� Upload file ���º��������"%>
+		<%showmessage "ทำการ Upload file เรียบร้อยแล้ว"%>
 </td>
 </tr>
 </td>
 <td align="center" class="normal"> 
-		���ͺ�Դ��� <a href="help.xls" target="_blank">�Ըա��ᷧ</a>
+		ทดสอบเปิดไฟล์ <a href="help.xls" target="_blank">วิธีการแทง</a>
 		<br><br><br><br>
 </td>
 </tr>
 <tr>
-	<td class="normal" align=center>[ <a href="javascript:history.back(1)">��͹��Ѻ</a> ]</td>
+	<td class="normal" align=center>[ <a href="javascript:history.back(1)">ย้อนกลับ</a> ]</td>
 </tr>
 </table>
 

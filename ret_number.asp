@@ -2,6 +2,7 @@
 <% Response.CacheControl = "no-cache" %>
 <% Response.AddHeader "Pragma", "no-cache" %> 
 <% Response.Expires = -1 %>
+<% Response.CodePage = 65001%>
 <%
 		dim refreshtime
 		if trim(Session("uid"))="" then 	response.redirect "signin.asp"

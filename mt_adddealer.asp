@@ -1,7 +1,8 @@
-<%@ Language=VBScript %>
+<%@ Language=VBScript CodePage = 65001  %>
 <% Response.CacheControl = "no-cache" %>
 <% Response.AddHeader "Pragma", "no-cache" %> 
 <% Response.Expires = -1 %>
+<% Response.CodePage = 65001%>
 <!--#include file="include/adovbs.inc"-->
 <!--#include file="mdlGeneral.asp"-->
 
@@ -21,7 +22,7 @@ function checkvalue()
 
 //	if(document.form.txtSeq.value == "")
 //	{
-//		alert("กรุณากำหนดลำดับวาระให้ถูกต้อง")
+//		alert("๏ฟฝ๏ฟฝุณาก๏ฟฝหน๏ฟฝ๏ฟฝำดับ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝูก๏ฟฝ๏ฟฝอง")
 //		document.form.txtSeq.focus()
 //		return false
 //	}	
@@ -217,7 +218,7 @@ End Function
       <TABLE id=TABLE2  cellSpacing=0 cellPadding=1  class="table_red"
       width="708" background="" border=0 align=center>
 		<tr bgcolor=red>
-		  <td class="head_white">ข้อมูลผู้ใช้ระบบ</td>
+		  <td class="head_white">๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝลผ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝะบ๏ฟฝ</td>
 		  <td class="head_blue" align=right>
 			<%
 			response.write session("msgResult")
@@ -227,22 +228,22 @@ End Function
 		</tr>
         <TR vAlign=center bgColor=#e6e6fa>
           <TD  class=text_blue>
-            <P align=right>รหัสผู้ใช้&nbsp;:</P></TD>
+            <P align=right>๏ฟฝ๏ฟฝ๏ฟฝสผ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ&nbsp;:</P></TD>
           <TD class=text_blue>
             <P align=left><INPUT id="txtuserid" name="txtuserid" size=10 value="<%=bID%>" Disabled></P></TD></TR>
         <TR bgColor=#e6e6fa>
           <TD vAlign=center class=text_blue>
-            <P align=right>ชื่อผู้ใช้&nbsp;:</P></TD>
+            <P align=right>๏ฟฝ๏ฟฝ๏ฟฝอผ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ&nbsp;:</P></TD>
           <TD class=text_blue>
             <P align=left><INPUT id="txtfname" name="txtfname" size=20 value="<%=bFname%>"></P></TD></TR>
         <TR bgColor=#e6e6fa>
           <TD vAlign=center class=text_blue>
-            <P align=right>นามสกุล&nbsp;:</P></TD>
+            <P align=right>๏ฟฝ๏ฟฝ๏ฟฝสก๏ฟฝ๏ฟฝ&nbsp;:</P></TD>
           <TD class=text_blue>
             <P align=left><INPUT id="txtlname" name="txtlname" size=20  value="<%=bLname%>"></P></TD></TR>
         <TR bgColor=#e6e6fa>
           <TD vAlign=center class=text_blue>
-            <P align=right>ชื่อเล่น&nbsp;:</P></TD>
+            <P align=right>๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ&nbsp;:</P></TD>
           <TD class=text_blue>
             <P align=left><INPUT id="txtnick" size=10 name="txtnick" value="<%=bNick%>"></P></TD></TR>
 <%
@@ -254,11 +255,11 @@ End Function
 %>
         <TR>
           <TD vAlign=top class=text_blue>
-            <P align=right>สถานะ&nbsp;:</P></TD>
+            <P align=right>สถาน๏ฟฝ&nbsp;:</P></TD>
           <TD class=text_blue><INPUT id=chkstatus type=checkbox name=chkBStatus <%=strDisable%>>Disable</TD></TR>
         <TR bgColor=#e6e6fa>
           <TD vAlign=top class=text_blue>
-            <P align=right>ที่อยู่&nbsp;:</P></TD>
+            <P align=right>๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ&nbsp;:</P></TD>
           <TD><INPUT id="txtaddr1" name="txtaddr1" size=50 value="<%=bAddr1%>"></TD></TR>			
         <TR bgColor=#e6e6fa>
           <TD vAlign=top class=text_blue>
@@ -266,15 +267,15 @@ End Function
           <TD><INPUT id="txtaddr2" name="txtaddr2" size=50 value="<%=bAddr2%>"></TD></TR>			
         <TR bgColor=#e6e6fa>
           <TD vAlign=top class=text_blue>
-            <P align=right>เบอร์มือถือ&nbsp;:</P></TD>
+            <P align=right>๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝอถ๏ฟฝ๏ฟฝ&nbsp;:</P></TD>
           <TD><INPUT id="txtmobile" name="txtmobile" size=30 value="<%=bMobile%>"></TD></TR>			
         <TR bgColor=#e6e6fa>
           <TD vAlign=top class=text_blue>
-            <P align=right>เบอร์โทรศัพท์&nbsp;:</P></TD>
+            <P align=right>๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝัพ๏ฟฝ๏ฟฝ&nbsp;:</P></TD>
           <TD><INPUT id="txttel" name="txttel" size=30 value="<%=bTel%>"></TD></TR>			
         <TR bgColor=#e6e6fa>
           <TD vAlign=top class=text_blue>
-            <P align=right>เบอร์โทรสาร&nbsp;:</P></TD>
+            <P align=right>๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ&nbsp;:</P></TD>
           <TD><INPUT id="txtfax" name="txtfax" size=30 value="<%=bFax%>"></TD></TR>			
         <TR bgColor=#e6e6fa>
           <TD vAlign=top class=text_blue>
@@ -282,21 +283,21 @@ End Function
           <TD><INPUT id="txtemail" name="txtemail" size=30 value="<%=bEmail%>"></TD></TR>			
         <TR bgColor=#e6e6fa>
           <TD vAlign=top class=text_blue>
-            <P align=right>ยอดค้างเก่า&nbsp;:</P></TD>
+            <P align=right>๏ฟฝอด๏ฟฝ๏ฟฝาง๏ฟฝ๏ฟฝ๏ฟฝ&nbsp;:</P></TD>
           <TD><INPUT id="txtremain" name="txtremain" size=30 value="<%=bRemain%>"></TD></TR>			
 <%
 		dim strselect
 %>
         <TR bgColor=#e6e6fa>
           <TD vAlign=top class=text_blue>
-            <P align=right>การรับโพย&nbsp;:</P></TD>
+            <P align=right>๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝับ๏ฟฝ๏ฟฝ&nbsp;:</P></TD>
           <TD><select id="cmbrec" name="cmbrec">
 <%				strselect=""
 				if bRecTk="2" then strselect="selected" %>
-			  <option value="2" <%=strselect%>>รอการยืนยัน</option>	
+			  <option value="2" <%=strselect%>>๏ฟฝอก๏ฟฝ๏ฟฝ๏ฟฝืน๏ฟฝัน</option>	
 <%				strselect=""
 				if bRecTk="1" then strselect="selected" %>
-			  <option value="1" <%=strselect%>>รับอัตโนมัติ</option>	
+			  <option value="1" <%=strselect%>>๏ฟฝับ๏ฟฝัต๏ฟฝ๏ฟฝัต๏ฟฝ</option>	
 			  </select>
 		  </TD></TR>			
 
@@ -307,17 +308,17 @@ End Function
             <P align=left><INPUT id="txtuser" width="173" name="txtuser" value="<%=bUser%>" ></P></TD></TR>
         <TR>
           <TD vAlign=center class=text_blue>
-            <P align=right>รหัสผ่าน&nbsp;:</P></TD>
+            <P align=right>๏ฟฝ๏ฟฝ๏ฟฝสผ๏ฟฝาน&nbsp;:</P></TD>
           <TD class=text_blue>
-            <P align=left><INPUT id=txtpass type=password name=txtpass>&nbsp;ยืนยันรหัสผ่าน :&nbsp;<INPUT id=txtconpass type=password name=txtconpass></P></TD></TR>
+            <P align=left><INPUT id=txtpass type=password name=txtpass>&nbsp;๏ฟฝืน๏ฟฝัน๏ฟฝ๏ฟฝ๏ฟฝสผ๏ฟฝาน :&nbsp;<INPUT id=txtconpass type=password name=txtconpass></P></TD></TR>
         <TR>
           <TD vAlign=center class=text_blue>
-            <P align=right>รหัสดูยอดเงิน&nbsp;:</P></TD>
+            <P align=right>๏ฟฝ๏ฟฝ๏ฟฝสด๏ฟฝ๏ฟฝอด๏ฟฝิน&nbsp;:</P></TD>
           <TD class=text_blue>
-            <P align=left><INPUT id=txtsumpass type=password name=txtsumpass>&nbsp;ยืนยันรหัสผ่าน :&nbsp;<INPUT id=txtconsumpass type=password name=txtconsumpass></P></TD></TR>
+            <P align=left><INPUT id=txtsumpass type=password name=txtsumpass>&nbsp;๏ฟฝืน๏ฟฝัน๏ฟฝ๏ฟฝ๏ฟฝสผ๏ฟฝาน :&nbsp;<INPUT id=txtconsumpass type=password name=txtconsumpass></P></TD></TR>
         <TR>
           <TD vAlign=top class=text_blue>
-            <P align=right>&nbsp;ประเภทผู้ใช้&nbsp;:</P></TD>
+            <P align=right>&nbsp;๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ&nbsp;:</P></TD>
           <TD class=text_blue>
 			  <select id="cmbtype" name="cmbtype">
 <% 
@@ -326,13 +327,13 @@ End Function
 			  <option value="A" <%=strselect%>>Admin</option>	
 <%				strselect=""
 				if bUType="D" then strselect="selected" %>
-			  <option value="D"<%=strselect%>>เจ้ามือ</option>	
+			  <option value="D"<%=strselect%>>๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ</option>	
 <%				strselect=""
 				if bUType="P" then strselect="selected" %>
-			  <option value="P"<%=strselect%>>คนแทง</option>	
+			  <option value="P"<%=strselect%>>๏ฟฝ๏ฟฝแทง</option>	
 <%				strselect=""
 				if bUType="K" then strselect="selected" %>
-			  <option value="K"<%=strselect%>>คนคีย์</option>	
+			  <option value="K"<%=strselect%>>๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ</option>	
 			  </select>
 		  </TD></TR>
 		<TR align=middle  bgcolor=red>
@@ -340,8 +341,8 @@ End Function
 			  <INPUT type="hidden" name="oldid" value=<%=preCode%>>
 			  <INPUT type="hidden" name="act" value="<%=iAct%>">
 			  <INPUT type="hidden" name="chkdisabled">
-			  <INPUT type="submit" value="บันทึก" name="button1" class="inputG" style="cursor:hand; width: 75px;" onclick="return checkvalue();">
-			  <INPUT type="reset" value="ยกเลิก" class="inputE" style="cursor:hand; width: 75px;" id=reset1 name=reset1>
+			  <INPUT type="submit" value="๏ฟฝัน๏ฟฝึก" name="button1" class="inputG" style="cursor:hand; width: 75px;" onclick="return checkvalue();">
+			  <INPUT type="reset" value="ยก๏ฟฝ๏ฟฝิก" class="inputE" style="cursor:hand; width: 75px;" id=reset1 name=reset1>
 			</td></TR>	            
        </TABLE>
 

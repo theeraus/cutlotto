@@ -2,7 +2,7 @@
 <% Response.CacheControl = "no-cache" %>
 <% Response.AddHeader "Pragma", "no-cache" %> 
 <% Response.Expires = -1 %>
-
+<% Response.CodePage = 65001%>
 <html>
 <head>
 <title>.:: config price ::. </title>
@@ -29,13 +29,13 @@ function blinkIt() {
 <%
 		if trim(Session("uid"))="" then 	response.redirect "signin.asp"
 		Dim parent_login_id, digit_len
-		parent_login_id=Trim(Session("logid")) ' // login_id �ͧ ��ᷧ
+		parent_login_id=Trim(Session("logid")) ' // login_id ของ คนแทง
 		digit_len=Len(parent_login_id)
 		Dim maxlength_login
 		maxlength_login=3
 		Select Case CInt(digit_len)
 			Case 3
-				maxlength_login=3  ' 6 ' ������ ��駤�ᷧ
+				maxlength_login=3  ' 6 ' เจ้ามือ ตั้งคนแทง
 			Case Else
 				maxlength_login=0
 		End Select 
@@ -82,10 +82,10 @@ function blinkIt() {
 			" and game_active='A' "
 			set objRS=objDB.Execute(SQL)
 		end if
-		if mode="edit" then ' �óշ�� user click �����¡��
+		if mode="edit" then ' กรณีที่ user click แก้ไขรายการ
 			'response.write "edit" & edit_user_id
 		end if
-		if mode="edit_save" then ' �óշ�� user click �����¡�� ���Ǻѹ�֡������
+		if mode="edit_save" then ' กรณีที่ user click แก้ไขรายการ แล้วบันทึกข้อมูล
 			Dim can_edit 
 			can_edit="yes"
 			user_name=Request("user_name")
@@ -96,17 +96,17 @@ function blinkIt() {
 			address_1=Request("address_1")
 			limit_play=Request("limit_play")
 			refresh_time=0 'Request("refresh_time")
-			'//���������������� user ��ӡѹ jum 20080627
+			'//ห้ามแก้ไขแล้วให้มี user ซ้ำกัน jum 20080627
 			SQL="select * from sc_user where user_type='P' and create_by=" & dealer_id & " and user_id<>'" & edit_user_id & "' and user_name='" & user_name & "'"
 			set objRS=objDB.Execute(SQL)
 			if not objRS.eof then
-					Response.write "<center><span class='tdbody1'><font color='red'>�Դ��Ҵ : �������ö�ӡ�úѹ�֡�������� ���ͧ�ҡ �ժ��͹������ !! " & user_name & "</font></span></center>"
+					Response.write "<center><span class='tdbody1'><font color='red'>ผิดพลาด : ไม่สามารถทำการบันทึกข้อมูลได้ เนื่องจาก มีชื่อนี้แล้ว !! " & user_name & "</font></span></center>"
 					can_edit="no"
 			End if
 			SQL="select * from sc_user where user_type='P' and create_by=" & dealer_id & " and user_id<>'" & edit_user_id & "' and login_id='" & login_id & "'"
 			set objRS=objDB.Execute(SQL)
 			if not objRS.eof then
-					Response.write "<center><span class='tdbody1'><font color='red'>�Դ��Ҵ : �������ö�ӡ�úѹ�֡�������� ���ͧ�ҡ �� �����Ţ ������� !! " & login_id & "</font></span></center>"
+					Response.write "<center><span class='tdbody1'><font color='red'>ผิดพลาด : ไม่สามารถทำการบันทึกข้อมูลได้ เนื่องจาก มี หมายเลข นี้แล้ว !! " & login_id & "</font></span></center>"
 					can_edit="no"
 			end if
 
@@ -136,7 +136,7 @@ function blinkIt() {
 				set objRS=objDB.Execute(SQL)
 			End if
 		end if
-		if mode="delete" then ' �óշ�� user click ź��¡��
+		if mode="delete" then ' กรณีที่ user click ลบรายการ
 			SQL="delete sc_user where [user_id]=" & edit_user_id
 			set objRS=objDB.Execute(SQL)
 		end if
@@ -144,21 +144,21 @@ function blinkIt() {
 			SQL="exec spEdit_status_by_user_id "  & edit_user_id
 			set objRS=objDB.Execute(SQL)
 		end If
-		'���͡�ͧ
+		'เลือกเอง
 		if mode="all_select" then
 			SQL="update sc_user set rec_ticket_type=1 where create_by=" & dealer_id
 			set objRS=objDB.Execute(SQL)
 			SQL="update sc_user set rec_ticket_type=1 where user_id=" & dealer_id
 			set objRS=objDB.Execute(SQL)
 		end If
-		'ᴧ������
+		'แดงทั้งหมด
 		if mode="all_red" then
 			SQL="update sc_user set rec_ticket_type=2 where create_by=" & dealer_id
 			set objRS=objDB.Execute(SQL)
 			SQL="update sc_user set rec_ticket_type=2 where user_id=" & dealer_id
 			set objRS=objDB.Execute(SQL)
 		end If
-		' ���������Ƿ�����
+		' กดปุ่มเขียวทั้งหมด
 		if mode="all_green" then
 			SQL="update sc_user set rec_ticket_type=3 where create_by=" & dealer_id
 			set objRS=objDB.Execute(SQL)
@@ -178,17 +178,17 @@ function blinkIt() {
 			address_1=Request("address_1")
 			refresh_time = 0 ' Request("refresh_time")
 			if not isnumeric(old_remain) then
-				Response.write "<center><span class='tdbody1'><font color='red'>�Դ��Ҵ : �������ö�ӡ�úѹ�֡�������� ���ͧ�ҡ �ʹ��ҧ��ҵ�ͧ�繵���Ţ !!!</font></span></center>"
+				Response.write "<center><span class='tdbody1'><font color='red'>ผิดพลาด : ไม่สามารถทำการบันทึกข้อมูลได้ เนื่องจาก ยอดค้างเก่าต้องเป็นตัวเลข !!!</font></span></center>"
 			else	
 				SQL="select * from sc_user where user_type='P' and create_by=" & dealer_id & " and user_name='" & user_name & "'"
 				set objRS=objDB.Execute(SQL)
 				if not objRS.eof then
-						Response.write "<center><span class='tdbody1'><font color='red'>�Դ��Ҵ : �������ö�ӡ�úѹ�֡�������� ���ͧ�ҡ �ժ��͹������ !! " & user_name & "</font></span></center>"
+						Response.write "<center><span class='tdbody1'><font color='red'>ผิดพลาด : ไม่สามารถทำการบันทึกข้อมูลได้ เนื่องจาก มีชื่อนี้แล้ว !! " & user_name & "</font></span></center>"
 				else
 						SQL="select * from sc_user where user_type='P' and create_by=" & dealer_id & " and login_id='" & login_id & "'"
 						set objRS=objDB.Execute(SQL)
 						if not objRS.eof then
-								Response.write "<center><span class='tdbody1'><font color='red'>�Դ��Ҵ : �������ö�ӡ�úѹ�֡�������� ���ͧ�ҡ �� �����Ţ ������� !! " & login_id & "</font></span></center>"
+								Response.write "<center><span class='tdbody1'><font color='red'>ผิดพลาด : ไม่สามารถทำการบันทึกข้อมูลได้ เนื่องจาก มี หมายเลข นี้แล้ว !! " & login_id & "</font></span></center>"
 						else
 							SQL="exec spAdd_sc_userNew '" & login_id & "','" & user_name & "','" & user_password & "','" & sum_password & _
 							"'," & old_remain & ",'" & address_1 & "'," & dealer_id & ", " & limit_play & "," & refresh_time
@@ -197,11 +197,11 @@ function blinkIt() {
 				end if
 			end if
 		end If
-		If mode="show" Then '�ʴ��Ҥ� % ��ǹŴ���˹��ᷧ ��ᷧ
+		If mode="show" Then 'แสดงราคา % ส่วนลดที่หน้าแทง คนแทง
 			SQL="update sc_user set show_price_player=1 where user_id=" & dealer_id
 			objDB.Execute(SQL)
 		End If
-		If mode="notshow" Then  '����ʴ��Ҥ� % ��ǹŴ���˹��ᷧ ��ᷧ
+		If mode="notshow" Then  'ไม่แสดงราคา % ส่วนลดที่หน้าแทง คนแทง
 			SQL="update sc_user set show_price_player=0 where user_id=" & dealer_id
 			objDB.Execute(SQL)
 		End if		
@@ -259,21 +259,21 @@ function blinkIt() {
 					%>
 					<td class="tdbody" style="cursor:hand;" onclick="click_select();">
 						<img src="<%=img_blue%>">
-						<%=select_prefix%>���͡�ͧ<%=select_postfix%>
+						<%=select_prefix%>เลือกเอง<%=select_postfix%>
 					</td>
 						<td class="tdbody" style="cursor:hand;" onclick="click_red();">
 						<img src="<%=img_red%>">
-						<%=red_prefix%>ᴧ������<%=red_postfix%>
+						<%=red_prefix%>แดงทั้งหมด<%=red_postfix%>
 					</td>
 					<td class="tdbody" style="cursor:hand;" onclick="click_green();">
 						<img src="<%=img_green%>">
-						<%=green_prefix%>���Ƿ�����<%=green_postfix%>
+						<%=green_prefix%>เขียวทั้งหมด<%=green_postfix%>
 					</td>
 					<td>
-						<input type="button" class="button_blue" value="����Ҥ���е��ᷧ�٧�ش" style="cursor:hand;" onClick="window.open('setMaxPrice.asp','_self')">
+						<input type="button" class="button_blue" value="ตั้งราคาและตั้งแทงสูงสุด" style="cursor:hand;" onClick="window.open('setMaxPrice.asp','_self')">
 					</td>
 					<td class="head_black">
-					��й���դ��͹�Ź����� 
+					ขณะนี้มีคนออนไลน์อยู่ 
 					<%
 					SQL="select count(*) as online_cnt from sc_user where create_by=" & dealer_id & " and is_online=1"
 					set objRS=objDB.Execute(SQL)
@@ -281,7 +281,7 @@ function blinkIt() {
 						response.write objRS("online_cnt")
 					End If 
 					%>
-					��
+					คน
 					</td>
 				</tr>
 			</table>
@@ -301,16 +301,16 @@ function blinkIt() {
 								onClick="click_rec_dealer()">&nbsp;
 								</td>
 								<td colspan="11" class="tdbody">
-									&nbsp;˹��ᷧ�������� 
+									&nbsp;หน้าแทงโพยเจ้ามือ 
 									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-									<span class="head_black"> �ʴ��Ҥ���ǹŴ���˹��ᷧ��
-									<input type="radio" name="show_price_player" value="1" <%=select_show%> onClick="click_show();"> �ʴ�
+									<span class="head_black"> แสดงราคาส่วนลดที่หน้าแทงโพย
+									<input type="radio" name="show_price_player" value="1" <%=select_show%> onClick="click_show();"> แสดง
 									&nbsp;&nbsp;&nbsp;&nbsp;
-									<input type="radio" name="show_price_player" value="0" <%=select_notshow%>  onClick="click_notshow();">  ����ʴ�
+									<input type="radio" name="show_price_player" value="0" <%=select_notshow%>  onClick="click_notshow();">  ไม่แสดง
 									</span>
 								</td>
 							</tr>
@@ -320,12 +320,12 @@ function blinkIt() {
 								<td bgcolor="#000066"></td>
 								<td bgcolor="#000066"></td>
 								<td class="textbig_white" align="right" colspan="1" bgcolor="#000066">
-								�����Ţ</td>
-								<td class="textbig_white" align="center" bgcolor="#000066">����</td>
+								หมายเลข</td>
+								<td class="textbig_white" align="center" bgcolor="#000066">ชื่อ</td>
 								<td class="textbig_white" align="center" bgcolor="#000066">Password</td>
-								<td class="textbig_white" align="center" bgcolor="#000066">�����Ѻ</td>
-								<td class="textbig_white" align="center" bgcolor="#000066">�ôԵ�٧�ش</td>
-								<td class="textbig_white" align="center" bgcolor="#000066">�ѹ�֡ �� ������� �����˵� ���</td>
+								<td class="textbig_white" align="center" bgcolor="#000066">รหัสลับ</td>
+								<td class="textbig_white" align="center" bgcolor="#000066">เครดิตสูงสุด</td>
+								<td class="textbig_white" align="center" bgcolor="#000066">บันทึก โทร ที่อยู่ หมายเหตุ ฯลฯ</td>
 							</tr>
 						
 							<%
@@ -334,16 +334,16 @@ function blinkIt() {
 							set objRS=objDB.Execute(SQL)
 							Dim c
 							c="#FFFFA4"
-							'--------- �óշ�� user click ���������� ---------------------------------------------
+							'--------- กรณีที่ user click เพิ่มข้อมูล ---------------------------------------------
 							if mode="add_new" then
 								tmp_Color="red"
 							%>
 								<tr>
 									<td width="8" class="tdbody1" bgcolor="<%=tmp_Color%>" style="cursor:hand;">&nbsp;</td>
 									<td bgcolor="#FFFFFF" colspan="3">
-										<span style="cursor:hand;" onClick="click_add_save();" class="head_blue">�ѹ�֡</span>
+										<span style="cursor:hand;" onClick="click_add_save();" class="head_blue">บันทึก</span>
 										/
-										<span style="cursor:hand;" onClick="click_cancel();" class="head_blue">¡��ԡ</span>
+										<span style="cursor:hand;" onClick="click_cancel();" class="head_blue">ยกเลิก</span>
 									</td>											
 									<td bgcolor="#FFFFFF">
 										<table cellspacing="0" cellpadding="0">
@@ -381,12 +381,12 @@ function blinkIt() {
 								</tr>
 							<%	
 							end if
-							'--------- �óշ�� user click ���������� ---------------------------------------------
+							'--------- กรณีที่ user click เพิ่มข้อมูล ---------------------------------------------
 							Dim st_blink, ed_blink
 							while not objRS.eof
 							
 								if mode="edit" and Cint(objRS("user_id"))=Cint(edit_user_id) then
-									'<!----------------------�ʴ������� 1 ��¡�� user ------------------------------------->
+									'<!----------------------แสดงข้อมูล 1 รายการ user ------------------------------------->
 									if objRS("rec_ticket")=1 then
 										tmp_Color="#33CC33"
 									else
@@ -397,11 +397,11 @@ function blinkIt() {
 										<td width="8" class="tdbody1" bgcolor="<%=tmp_Color%>" style="cursor:hand;" 
 										onClick="click_status('<%=objRs("user_id")%>');">&nbsp;</td>
 										<td bgcolor="#FFFFFF" colspan="3">
-											<span style="cursor:hand;" id="btt_save" onClick="click_edit_save('<%=objRs("user_id")%>');" class="head_blue">�ѹ�֡</span>
+											<span style="cursor:hand;" id="btt_save" onClick="click_edit_save('<%=objRs("user_id")%>');" class="head_blue">บันทึก</span>
 											/
-											<span style="cursor:hand;" onClick="click_cancel();" class="head_blue">¡��ԡ</span>
+											<span style="cursor:hand;" onClick="click_cancel();" class="head_blue">ยกเลิก</span>
 											/
-											<span style="cursor:hand;" class="head_blue" onClick="gotoPage('price_player_config_byuser.asp?player_id=<%=objRS("user_id")%>&game_type=<%=game_type%>');">����Ҥ�</span>
+											<span style="cursor:hand;" class="head_blue" onClick="gotoPage('price_player_config_byuser.asp?player_id=<%=objRS("user_id")%>&game_type=<%=game_type%>');">ตั้งราคา</span>
 										</td>				
 																			
 										<td class="tdbody" bgcolor="<%=c %>" align="left">
@@ -445,7 +445,7 @@ function blinkIt() {
 									</tr>
 									<!-----------------------------------------------------------><%
 								else
-									'<!----------------------�ʴ������� 1 ��¡�� user ------------------------------------->
+									'<!----------------------แสดงข้อมูล 1 รายการ user ------------------------------------->
 									if objRS("rec_ticket")="1" then
 										tmp_Color="#33CC33"
 									else
@@ -463,11 +463,11 @@ function blinkIt() {
 										<td width="8" class="tdbody1" bgcolor="<%=tmp_Color%>" style="cursor:hand;" 
 										onClick="click_status('<%=objRs("user_id")%>');">&nbsp;</td>
 										<td class="tdbody"  colspan="3" bgcolor="<%=c %>" >
-											<span style="cursor:hand;" onClick="click_edit('<%=objRs("user_id")%>');" class="head_blue">���</span>
+											<span style="cursor:hand;" onClick="click_edit('<%=objRs("user_id")%>');" class="head_blue">แก้ไข</span>
 											/
-											<span style="cursor:hand;"   onClick="click_del('<%=objRs("user_id")%>', '<%=objRs("user_name")%>');" class="head_blue">ź</span>
+											<span style="cursor:hand;"   onClick="click_del('<%=objRs("user_id")%>', '<%=objRs("user_name")%>');" class="head_blue">ลบ</span>
 											/
-											<span style="cursor:hand;" onClick="gotoPage('price_player_config_byuser.asp?player_id=<%=objRS("user_id")%>&game_type=<%=game_type%>');"class="head_blue">����Ҥ�</span>
+											<span style="cursor:hand;" onClick="gotoPage('price_player_config_byuser.asp?player_id=<%=objRS("user_id")%>&game_type=<%=game_type%>');"class="head_blue">ตั้งราคา</span>
 										</td>																				
 										<td class="tdbody" bgcolor="<%=c %>" align="left" width="60"><%=st_blink%><%=objRS("login_id")%><%=ed_blink%>	</td>
 										<td class="tdbody" bgcolor="<%=c %>" align="left" width="145"><%=st_blink%><%=objRS("user_name")%><%=ed_blink%>	</td>
@@ -509,17 +509,17 @@ function clickpic(p){
 	var t=p
 
 	//alert(t)
-	// �Ѱ���
+	// รัฐบาล
 	if (t==1){
 		document.mypic.src ="images/price_tos.jpg"
 		document.form1.game_type.value="2"
 	}
-	// ����Թ
+	// ออมสิน
 	if (t==2){
 		document.mypic.src = "images/price_oth.jpg";
 		document.form1.game_type.value="3"
 	}
-	// ����
+	// อื่นๆ
 	if (t==3){
 		document.mypic.src = "images/price_gov.jpg"
 		document.form1.game_type.value="1"
@@ -533,7 +533,7 @@ function click_edit(user_id){
 	document.form1.submit();
 }
 function click_del(user_id,user_name){
-	if (confirm('�س��ͧ���ź��¡�� ' + user_name+' ?' )){
+	if (confirm('คุณต้องการลบรายการ ' + user_name+' ?' )){
 		document.form1.mode.value="delete";
 		document.form1.edit_user_id.value=user_id;
 		document.form1.submit();
@@ -547,33 +547,33 @@ function click_cancel(){
 function click_edit_save(user_id){
 //
 if (document.form1.login_id.value==""){
-		alert('�Դ��Ҵ : ��سҡ�͡ �����Ţ ��ᷧ')
+		alert('ผิดพลาด : กรุณากรอก หมายเลข คนแทง')
 		document.form1.login_id.focus();
 		return false;
 	}
 	if (document.form1.user_name.value==""){
-		alert('�Դ��Ҵ : ��سҡ�͡ ���� ��ᷧ')
+		alert('ผิดพลาด : กรุณากรอก ชื่อ คนแทง')
 		document.form1.user_name.focus();
 		return false;
 	}
 	if (document.form1.user_password.value==""){
-		alert('�Դ��Ҵ : ��سҡ�͡ ���ʼ�ҹ')
+		alert('ผิดพลาด : กรุณากรอก รหัสผ่าน')
 		document.form1.user_password.focus();
 		return false;
 	}
 	if (document.form1.sum_password.value==""){
-		alert('�Դ��Ҵ : ��سҡ�͡ ���ʴ��ʹ�Թ')
+		alert('ผิดพลาด : กรุณากรอก รหัสดูยอดเงิน')
 		document.form1.sum_password.focus();
 		return false;
 	}
 	if (document.form1.limit_play.value==""){
-		alert('�Դ��Ҵ : ��سҡ�͡ �ôԵ�٧�ش')
+		alert('ผิดพลาด : กรุณากรอก เครดิตสูงสุด')
 		document.form1.limit_play.focus();
 		return false;
 	}
 
 	if (isNaN(document.form1.limit_play.value)){
-		alert('�Դ��Ҵ : ��سҡ�͡ �ôԵ�٧�ش �繵���Ţ��ҹ��')
+		alert('ผิดพลาด : กรุณากรอก เครดิตสูงสุด เป็นตัวเลขเท่านั้น')
 		document.form1.limit_play.focus();
 		return false;
 	}
@@ -594,50 +594,50 @@ function click_add(){
 	document.form1.submit();
 }
 function click_add_save(){
-	// �ӹǹ��ѡ��ͧ��ҡѺ  maxlength_login 
+	// จำนวนหลักต้องเท่ากับ  maxlength_login 
 	if ((document.form1.login_id.value).length!=<%=maxlength_login%>){
-		alert('�Դ��Ҵ : ��سҡ�͡ �����Ţ ��ᷧ ����ըӹǹ��ѡ '+ <%=maxlength_login%>)
+		alert('ผิดพลาด : กรุณากรอก หมายเลข คนแทง ให้มีจำนวนหลัก '+ <%=maxlength_login%>)
 		alert(document.form1.login_id.length +'----------'+document.form1.login_id.value)
 		document.form1.login_id.focus();
 		return false;
 	}
-	// ����Ţ��ҹ˹�ҵ�ͧ��ҡѺ  parent_login_id 
+	// ตัวเลขด้านหน้าต้องเท่ากับ  parent_login_id 
 	/*
 	if((document.form1.login_id.value).substring(0,<%=len(parent_login_id)%>)!='<%=parent_login_id%>' ){
-		alert("��͡ ���ʼ����ҹ ���١��ͧ ��ͧ��˹�Ҵ��� ::: "+<%=parent_login_id%>+" ::: ��ҹ��");
+		alert("กรอก รหัสผู้ใช้งาน ไม่ถูกต้อง ต้องนำหน้าด้วย ::: "+<%=parent_login_id%>+" ::: เท่านั้น");
 		document.form1.login_id.focus();
 		return false;
 	}
 	*/
 
 	if (document.form1.login_id.value==""){
-		alert('�Դ��Ҵ : ��سҡ�͡ �����Ţ ��ᷧ')
+		alert('ผิดพลาด : กรุณากรอก หมายเลข คนแทง')
 		document.form1.login_id.focus();
 		return false;
 	}
 	if (document.form1.user_name.value==""){
-		alert('�Դ��Ҵ : ��سҡ�͡ ���� ��ᷧ')
+		alert('ผิดพลาด : กรุณากรอก ชื่อ คนแทง')
 		document.form1.user_name.focus();
 		return false;
 	}
 	if (document.form1.user_password.value==""){
-		alert('�Դ��Ҵ : ��سҡ�͡ ���ʼ�ҹ')
+		alert('ผิดพลาด : กรุณากรอก รหัสผ่าน')
 		document.form1.user_password.focus();
 		return false;
 	}
 	if (document.form1.sum_password.value==""){
-		alert('�Դ��Ҵ : ��سҡ�͡ ���ʴ��ʹ�Թ')
+		alert('ผิดพลาด : กรุณากรอก รหัสดูยอดเงิน')
 		document.form1.sum_password.focus();
 		return false;
 	}
 	if (document.form1.limit_play.value==""){
-		alert('�Դ��Ҵ : ��سҡ�͡ �ôԵ�٧�ش')
+		alert('ผิดพลาด : กรุณากรอก เครดิตสูงสุด')
 		document.form1.limit_play.focus();
 		return false;
 	}
 
 	if (isNaN(document.form1.limit_play.value)){
-		alert('�Դ��Ҵ : ��سҡ�͡ �ôԵ�٧�ش �繵���Ţ��ҹ��')
+		alert('ผิดพลาด : กรุณากรอก เครดิตสูงสุด เป็นตัวเลขเท่านั้น')
 		document.form1.limit_play.focus();
 		return false;
 	}
@@ -645,7 +645,7 @@ function click_add_save(){
 	document.form1.mode.value="add_save";
 	document.form1.submit();
 }
-//�� �� enter
+//เช็ค กด enter
 function chkEnter(obj){
 		var k=event.keyCode
 		if (k == 13){	

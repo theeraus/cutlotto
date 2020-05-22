@@ -2,14 +2,20 @@
 <% Response.CacheControl = "no-cache" %>
 <% Response.AddHeader "Pragma", "no-cache" %> 
 <% Response.Expires = -1 %>
+<% Response.CodePage = 65001%>
 <%
+Response.ContentType = "text/html"
+Response.AddHeader "Content-Type", "text/html;charset=UTF-8"
+Response.CodePage = 65001
+Response.CharSet = "UTF-8"
+
 	if trim(Session("uid"))="" then 	response.redirect "signin.asp"
 'Response.write dealer_id & " sess " & Session("uid")
 %>
 <html>
 <head>
-<title>.:: ����ҤҤ�ᷧ : ������ ::. </title>
-<meta http-equiv="Content-Type" content="text/html; charset=windows-874">
+<title>.:: ตั้งราคาคนแทง : เจ้ามือ ::. </title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta http-equiv="cache-control" content="no-cache"> 
 <meta http-equiv="pragma" content="no-cache"> 
 <meta http-equiv="expires" content="-1">
@@ -60,7 +66,7 @@ function change (picurl,n) {
 		End If
 	end if	
 	if from_save="yes" then
-	'// ����Ҩҡ��� click �ѹ�֡
+	'// ถ้ามาจากการ click บันทึก
 		use_same_this=Request("use_same_this")
 		rec_ticket=Request("rec_ticket")		
 		SQL="update sc_user set rec_ticket=" & rec_ticket & " where [user_id]=" & player_id
@@ -95,7 +101,7 @@ function change (picurl,n) {
 			set objRS=objDB.Execute(SQL)
 		next 
 		if use_same_this="yes" then
-			'-- update �����Ţͧ player �ء������繢ͧ�����͹��������Ҥ� / % ��ҡѺ player ��� 
+			'-- update ข้อมูลของ player ทุกคนที่เป็นของเจ้ามือนี้ให้มีราคา / % เท่ากับ player นี้ 
 			SQL="exec spUpdate_tb_price_player_Lot " & dealer_id & ", " & player_id & "," & game_type
 			set objRS=objDB.Execute(SQL)
 'response.write SQL
@@ -146,13 +152,13 @@ function change (picurl,n) {
 			</td>
 		</tr>
 		<tr>
-			<td class="tdbody1" bgcolor="red" align="left">�����Ţ : <%=login_id%></td>
-			<td class="tdbody1" bgcolor="red" align="left" colspan="2">���� : <%=GetPlayerName(player_id)%></td>
+			<td class="tdbody1" bgcolor="red" align="left">หมายเลข : <%=login_id%></td>
+			<td class="tdbody1" bgcolor="red" align="left" colspan="2">ชื่อ : <%=GetPlayerName(player_id)%></td>
 		</tr>
 		<tr>
-			<td class="tdbody1" bgcolor="#ffd8cc" align="center">��Դ</td>
-			<td class="tdbody1" bgcolor="#ff9999" align="center">����</td>
-			<td class="tdbody1" bgcolor="#ff9999" align="center">Ŵ (%)</td>
+			<td class="tdbody1" bgcolor="#ffd8cc" align="center">ชนิด</td>
+			<td class="tdbody1" bgcolor="#ff9999" align="center">จ่าย</td>
+			<td class="tdbody1" bgcolor="#ff9999" align="center">ลด (%)</td>
 		</tr>
 		<%
 			SQL="exec spGet_tb_price_player_by_dealer_id_player_id_game_type " & 	dealer_id & "," & player_id & "," & game_type
@@ -190,19 +196,19 @@ function change (picurl,n) {
 	<table width="500"  border="0" cellspacing="1" cellpadding="1">
 		<tr  height="30">
 			<td class="tdbody" align="left" colspan="4">&nbsp;&nbsp;&nbsp;
-				<input type="button" class="inputE" value="���Ҥ����ǡѺ�����Ţ......" style="cursor:hand;width: 200px;" onClick="SearchPlayer()">
+				<input type="button" class="inputE" value="ใช้ราคาเดียวกับหมายเลข......" style="cursor:hand;width: 200px;" onClick="SearchPlayer()">
 			</td>
 		</tr>
 		<tr height="35">
-			<!---- ���Ҥҹ�� ---->
+			<!---- ใช้ราคานี้ ---->
 			<td class="tdbody" align="left" colspan="4">&nbsp;&nbsp;&nbsp; 
 				<input type="hidden" name="use_same_this" value="">
-				<input type="button" class="inputE" value="���Ҥҹ�������" style="cursor:hand;width: 200px;" onClick="clickuse_same_this('<%=GetGameDesc(game_type)%>')">
+				<input type="button" class="inputE" value="ใช้ราคานี้ทั้งหมด" style="cursor:hand;width: 200px;" onClick="clickuse_same_this('<%=GetGameDesc(game_type)%>')">
 			</td>
 		</tr>
 		<%
 		rec_ticket=GetPlayerRecTicket(player_id)
-		if rec_ticket=1 then '1=�Ѻ���
+		if rec_ticket=1 then '1=รับเลย
 			pic="images/rec_play.bmp"
 		else
 			pic="images/rec_play_q.GIF"				
@@ -211,7 +217,7 @@ function change (picurl,n) {
 		<tr height="30">
 			<td class="tdbody" align="left" colspan="4">&nbsp;&nbsp;&nbsp;
 				<input type="hidden" name="rec_ticket" value="<%=rec_ticket%>">
-				<input type="button" class="inputR" value="��Ҥ�����Ѻ��" style="cursor:hand; width: 120px;" name="p_rec_ticket" onClick="clickrec_ticket(document.form1.rec_ticket.value)">				
+				<input type="button" class="inputR" value="เข้าคิวรอรับโพย" style="cursor:hand; width: 120px;" name="p_rec_ticket" onClick="clickrec_ticket(document.form1.rec_ticket.value)">				
 			</td>
 		</tr>
 		<tr>
@@ -220,7 +226,7 @@ function change (picurl,n) {
 			<input type="hidden" name="player_id" value="<%=player_id%>">
 			<input type="hidden" name="game_type" value="<%=game_type%>">
 			<td class="tdbody" align="left" colspan="4">&nbsp;&nbsp;&nbsp;
-				<input type="button" class="inputG" value="�ѹ�֡/�͡" name="OK" style="cursor:hand; width: 100px;" onClick="clickok();">
+				<input type="button" class="inputG" value="บันทึก/ออก" name="OK" style="cursor:hand; width: 100px;" onClick="clickok();">
 			</td>
 		</tr>
 	</table>
@@ -232,11 +238,11 @@ function change (picurl,n) {
 Function GetGameDesc(g)
 	select case g
 		case "1" 
-			GetGameDesc="�Ѱ���"
+			GetGameDesc="รัฐบาล"
 		case "2"
-			GetGameDesc="����Թ/���"
+			GetGameDesc="ออมสิน/ธกส"
 		case "3"
-			GetGameDesc="����Ҥ����"
+			GetGameDesc="ตั้งราคาอื่น"
 		case else
 			GetGameDesc=""
 	end select
@@ -277,10 +283,10 @@ function clickrec_ticket(p){
 
 	if (t=="2"){
 		document.p_rec_ticket.src = "images/rec_play.bmp";
-		document.form1.rec_ticket.value="1" // �ͤ�ǡ�͹�Ѻ
+		document.form1.rec_ticket.value="1" // รอคิวก่อนรับ
 	}else{
 		document.p_rec_ticket.src = "images/rec_play_q.GIF"	;
-		document.form1.rec_ticket.value="2" // �Ѻ���
+		document.form1.rec_ticket.value="2" // รับเลย
 	}	
 }
 
@@ -289,7 +295,7 @@ function clickok(){
 	document.form1.submit();
 }
 function clickuse_same_this(t){
-	if (confirm('�س��ͧ��� ���Ҥҹ������� \n �ҤҢͧ�ء�� (੾��'+t+')��������Ҥ����ǡѹ ��� ���� ��� %')) {
+	if (confirm('คุณต้องการ ใช้ราคานี้ทั้งหมด \n ราคาของทุกคน (เฉพาะ'+t+')ให้แก้เป็นราคาเดียวกัน ทั้ง จ่าย และ %')) {
    document.form1.use_same_this.value="yes"
    document.form1.submit();
 	}	

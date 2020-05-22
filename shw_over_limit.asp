@@ -1,9 +1,10 @@
-<%@ Language=VBScript %>
+<%@ Language=VBScript CodePage = 65001  %>
 <%OPTION EXPLICIT%>
 <% Response.CacheControl = "no-cache" %>
 <% Response.AddHeader "Pragma", "no-cache" %> 
 <% Response.Expires = -1 %>
 <%check_session_valid()%>
+<% Response.CodePage = 65001%>
 <!--#include file="include/adovbs.inc"-->
 <!--#include file="include/config.inc"-->
 <!--#include file="mdlGeneral.asp"-->
@@ -41,9 +42,9 @@ Set objRS=objDB.Execute(SQL)
 If Not objRS.eof Then 
 	Response.Write "<table class=normal bgcolor='#C9C9C9' width='400'  cellpadding=1 cellspacing=1>"
 	Response.Write "<tr bgcolor='#DFBFBF'>"
-	Response.Write "<th>�ѹ����Ǩ�Ţ</th>"
-	Response.Write "<th>�ʹ</th>"
-	Response.Write "<th>���ԧ</th>"
+	Response.Write "<th>วันที่ตรวจเลข</th>"
+	Response.Write "<th>ยอด</th>"
+	Response.Write "<th>ใช้จริง</th>"
 	Response.Write "</tr>"
 	While Not objRS.eof
 		Response.Write "<tr bgcolor='#FFFFFF'>"

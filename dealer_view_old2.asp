@@ -1,4 +1,4 @@
-<%@ Language=VBScript %>
+<%@ Language=VBScript CodePage = 65001  %>
 <%OPTION EXPLICIT%>
 <% Response.CacheControl = "no-cache" %>
 <% Response.AddHeader "Pragma", "no-cache" %> 
@@ -41,7 +41,7 @@
 %>			
 <html>
 <head>
-<title>.:: Ю║Г╨╒Имаые ::. </title>
+<title>.:: О©╫Г╨╒О©╫О©╫О©╫О©╫О©╫ ::. </title>
 <meta http-equiv="Content-Type" content="text/html; charset=windows-874">
 <meta http-equiv="cache-control" content="no-cache"> 
 <meta http-equiv="pragma" content="no-cache"> 
@@ -129,7 +129,7 @@ function ShowTicket(ticket_id)
 					i=i+1
 					objRS.MoveNext
 				wend
-				'---- Ай╢╖Б╬б А╤геп 33 ╓Хр
+				'---- О©╫й╢О©╫О©╫О©╫ О©╫О©╫О©╫О©╫ 33 О©╫О©╫О©╫
 				%><table  border="0"  cellpadding="1" cellspacing="1" width="500" bgcolor="#D4D4D4"><%
 				for i=1 to 33
 					j=i+line_per_page

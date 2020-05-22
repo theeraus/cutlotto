@@ -5,6 +5,7 @@
 <% Response.CacheControl = "no-cache" %>
 <% Response.AddHeader "Pragma", "no-cache" %> 
 <% Response.Expires = -1 %>
+<% Response.CodePage = 65001%>
 <%'check_session_valid()%>
 <!--#include file="mdlGeneral.asp"-->
 <%
@@ -29,7 +30,7 @@
 %>
 <html>
 <head>
-<title>.:: ��ᷧ : ����¹ password ::. </title>
+<title>.:: คนแทง : เปลี่ยน password ::. </title>
 <meta http-equiv="Content-Type" content="text/html; charset=windows-874">
 <meta http-equiv="cache-control" content="no-cache"> 
 <meta http-equiv="pragma" content="no-cache"> 
@@ -53,12 +54,12 @@ function blinkIt() {
 <% If  Not objRS.eof  then%>
 	<table  border="0"  cellpadding="1" cellspacing="1"    bgcolor="#004080">		
 		<tr>
-			<td class="head_black" align="center"  bgcolor="#F5F5F5">ź��¡��</td>
-			<td class="head_black" align="center"  bgcolor="#F5F5F5">�����Ţ</td>
-			<td class="head_black" align="center" bgcolor="#F5F5F5">����</td>
+			<td class="head_black" align="center"  bgcolor="#F5F5F5">ลบรายการ</td>
+			<td class="head_black" align="center"  bgcolor="#F5F5F5">หมายเลข</td>
+			<td class="head_black" align="center" bgcolor="#F5F5F5">ชื่อ</td>
 			<td class="head_black" align="center" bgcolor="#F5F5F5">Password</td>
-			<td class="head_black" align="center" bgcolor="#F5F5F5">�����Ѻ</td>
-			<td class="head_black" align="center" bgcolor="#F5F5F5" >�ʹ�Ѻᷧ </td>	
+			<td class="head_black" align="center" bgcolor="#F5F5F5">รหัสลับ</td>
+			<td class="head_black" align="center" bgcolor="#F5F5F5" >ยอดรับแทง </td>	
 
 		</tr>
 	<%
@@ -73,7 +74,7 @@ function blinkIt() {
 			End If 
 	%>
 		<tr>
-			<td class="tdbody" align='center'><span style="cursor:hand;"   onClick="click_del_det('<%=create_by%>','<%=modeshow%>','<%=objRs("user_id")%>', '<%=objRs("user_name")%>');" class="head_blue">ź</span></td>
+			<td class="tdbody" align='center'><span style="cursor:hand;"   onClick="click_del_det('<%=create_by%>','<%=modeshow%>','<%=objRs("user_id")%>', '<%=objRs("user_name")%>');" class="head_blue">ลบ</span></td>
 			<td class="tdbody" style="width:90px;"><%=objRS("login_id") %></td>
 			<td class="tdbody" style="width:130px;"><%=st_blink %><%=objRS("user_name")%><%=ed_blink %></td>
 			<td class="tdbody" style="width:130px;"><%=objRS("user_password")%></td>

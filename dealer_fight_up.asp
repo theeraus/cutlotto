@@ -1,6 +1,13 @@
-<!--#include virtual="masterpage.asp"-->
-<% Sub ContentPlaceHolder() %>
-
+<%@ Language=VBScript CodePage = 65001  %>
+<%OPTION EXPLICIT%>
+<% Response.CacheControl = "no-cache" %>
+<% Response.AddHeader "Pragma", "no-cache" %> 
+<% Response.Expires = -1 %>
+<%check_session_valid()%>
+<!--#include file="include/adovbs.inc"-->
+<!--#include file="include/config.inc"-->
+<!--#include file="mdlGeneral.asp"-->
+<%Response.Buffer = True%>
 <%
 
 Dim objRec
@@ -39,8 +46,24 @@ dim strOrder, strNumType, status20
 	end if
 
 %>
-
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" Content="Microsoft Visual Studio 6.0">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta http-equiv="cache-control" content="no-cache"> 
+<meta http-equiv="pragma" content="no-cache"> 
+<meta http-equiv="expires" content="-1">
 <LINK href="include/code.css" type=text/css rel=stylesheet>
+<script language="JavaScript" src="include/normalfunc.js"></script>
+<link href="assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
+<link href="assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
+<link href="assets/css/skins/header/base/light.css" rel="stylesheet" type="text/css" />
+<link href="assets/css/skins/header/menu/light.css" rel="stylesheet" type="text/css" />
+<link href="assets/css/skins/brand/navy.css" rel="stylesheet" type="text/css" />
+<link href="assets/css/skins/aside/navy.css" rel="stylesheet" type="text/css" />
+<link href="assets/css/global.css" rel="stylesheet" type="text/css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
 <script Language="VBScript" >	
 	sub cmborder_onChange()
 		form1.submit()
@@ -537,7 +560,39 @@ dim chkEnd
 			</TD>
 		</TR>
 	</Table>
-
+</Body>
+</Html>
+<%
+sub GenEmptyCol(cntCol, cntRow)
+dim i
+	for i = 1 to (5 - cntCol)
+		response.write "<td width=100 class=box2>&nbsp;</td>"
+	next 
+end Sub
+' jum 2006-12-20
+Sub shwBlankBox(tmpType, playamt)
+	Dim i, j
+		For j=1 To 5
+		Response.write "<tr>"
+		For i=1 To 6
+			if tmpType = "1" then
+				response.write "<td width='16%' class='text_black'><INPUT TYPE='text' NAME='txt2up'  size=2 onKeyDown='chkEnter(this);' id=" & j&i & "n" & tmpType &">=<input type='text' NAME='txt2upmoney' value='" & playamt & "' size=7 onKeyDown='chkEnter(this);' id=" & j&i & "m" & tmpType &"></td>" & chr(13)
+				response.write "<input type=hidden name='2upcuttype' value='2'>" & chr(13)
+			elseif tmpType = "5" then
+				response.write "<td width='16%' class='text_black'><INPUT TYPE='text' NAME='txt1up'  size=2 onKeyDown='chkEnter(this);' id=" & j&i & "n" & tmpType &">=<input type='text' NAME='txt1upmoney' value='" & playamt & "' size=7 onKeyDown='chkEnter(this);' id=" & j&i & "m" & tmpType &"></td>" & chr(13)
+				response.write "<input type=hidden name='1upcuttype' value='2'>" & chr(13)
+			elseif tmpType = "3" then
+				response.write "<td width='16%' class='text_black'><INPUT TYPE='text' NAME='txt3tod' size=2 onKeyDown='chkEnter(this);' id=" & j&i & "n" & tmpType &">=<input type='text' NAME='txt3todmoney' value='" & playamt & "' size=7 onKeyDown='chkEnter(this);' id=" & j&i & "m" & tmpType &"></td>" & chr(13)
+				response.write "<input type=hidden name='3todcuttype' value='2'>"
+			elseif tmpType = "2" then
+				response.write "<td width='16%' class='text_black'><INPUT TYPE='text' NAME='txt3up' size=2 onKeyDown='chkEnter(this);' id=" & j&i & "n" & tmpType &">=<input type='text' NAME='txt3upmoney' value='" & playamt & "' size=7 onKeyDown='chkEnter(this);' id=" & j&i & "m" & tmpType &"></td>" & chr(13)
+				response.write "<input type=hidden name='3upcuttype' value='2'>" & chr(13)
+			end If
+		next
+		Response.write "</tr>"	
+	next
+End sub
+%>
 <script language="javascript">
 	function chkEnter(obj){
 		var k=event.keyCode
@@ -573,4 +628,3 @@ dim chkEnd
 	
 </script>
 <!-- jum 2006-12-20 -->
-<% end sub%>

@@ -1,11 +1,11 @@
-<%@ Language=VBScript %>
+<%@ Language=VBScript CodePage = 65001  %>
 <%OPTION EXPLICIT%>
 <%Response.Buffer = True%>
 <!--#include file="include/adovbs.inc"-->
 <!--#include file="mdlGeneral.asp"-->
 <HTML>
 <HEAD>
-<meta http-equiv="Content-Type" content="text/html; charset=windows-874">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <LINK href="include/code.css" type=text/css rel=stylesheet>
 <script language="JavaScript" src="include/normalfunc.js"></script>
 <Title></Title>
@@ -36,7 +36,7 @@
     Session("logintime") = now
 	Session("refreshtime")=""
 
-	strTitle = "µ√«® Õ∫ºŸÈ„™È√–∫∫"
+	strTitle = "‡∏ï‡∏£‡∏ß‡∏à‡∏™‡∏≠‡∏ö‡∏ú‡∏π‡πâ‡πÉ‡∏ä‡πâ‡∏£‡∏∞‡∏ö‡∏ö"
 	strGoto= "index.asp?pname=signin"	
 	Set objConn = Server.CreateObject ("ADODB.Connection")
 	objConn.Open Application("constr")	
@@ -44,23 +44,23 @@
 	chkOk = false
 	LenPw = len(Request("password1"))
 		Set rs = server.createobject("ADODB.Recordset")
-		'∂È“ User name ‡ªÁπ™ËÕß«Ë“ß· ¥ß«Ë“‡ªÁπ ‡®È“¡◊Õ √À— ‡®È“¡◊Õ °—∫ æ“ ‡«Õ√Ï¥‰¡Ë«Ë“ß
-		'∂È“ ‡®È“¡◊Õ «Ë“ß user ‰¡Ë«Ë“ß æ“ ‡«√Ï¥‰¡Ë«Ë“ß ‡ªÁπ admin
-		'∂È“‰¡Ë«Ë“ß∑—Èß  “¡ ‡ªÁπ§π·∑ß
+		'‡∏ñ‡πâ‡∏≤ User name ‡πÄ‡∏õ‡πá‡∏ô‡∏ä‡πà‡∏≠‡∏á‡∏ß‡πà‡∏≤‡∏á‡πÅ‡∏™‡∏î‡∏á‡∏ß‡πà‡∏≤‡πÄ‡∏õ‡πá‡∏ô ‡πÄ‡∏à‡πâ‡∏≤‡∏°‡∏∑‡∏≠ ‡∏£‡∏´‡∏±‡∏™‡πÄ‡∏à‡πâ‡∏≤‡∏°‡∏∑‡∏≠ ‡∏Å‡∏±‡∏ö ‡∏û‡∏≤‡∏™‡πÄ‡∏ß‡∏≠‡∏£‡πå‡∏î‡πÑ‡∏°‡πà‡∏ß‡πà‡∏≤‡∏á
+		'‡∏ñ‡πâ‡∏≤ ‡πÄ‡∏à‡πâ‡∏≤‡∏°‡∏∑‡∏≠ ‡∏ß‡πà‡∏≤‡∏á user ‡πÑ‡∏°‡πà‡∏ß‡πà‡∏≤‡∏á ‡∏û‡∏≤‡∏™‡πÄ‡∏ß‡∏£‡πå‡∏î‡πÑ‡∏°‡πà‡∏ß‡πà‡∏≤‡∏á ‡πÄ‡∏õ‡πá‡∏ô admin
+		'‡∏ñ‡πâ‡∏≤‡πÑ‡∏°‡πà‡∏ß‡πà‡∏≤‡∏á‡∏ó‡∏±‡πâ‡∏á ‡∏™‡∏≤‡∏° ‡πÄ‡∏õ‡πá‡∏ô‡∏Ñ‡∏ô‡πÅ‡∏ó‡∏á
 
-		if buser <> "" and bdealer <> "" and bpass <> "" then '§π·∑ß
+		if buser <> "" and bdealer <> "" and bpass <> "" then '‡∏Ñ‡∏ô‡πÅ‡∏ó‡∏á
 			strSql = "SELECT     sc_user.*, sc_user_1.user_name AS dealer_fname FROM         sc_user INNER JOIN sc_user sc_user_1 ON sc_user.create_by = sc_user_1.user_id " _
 				& "Where (sc_user.user_name='" & buser & "' or sc_user.login_id='" & buser & "') "
 				strSql = strSql & " And (sc_user_1.user_name ='" & bdealer & "' or sc_user_1.login_id='" & bdealer & "') and sc_user.user_type='P'"
-		elseif buser = "" and bdealer <> "" and bpass <> "" then ' ‡®È“¡◊Õ
+		elseif buser = "" and bdealer <> "" and bpass <> "" then ' ‡πÄ‡∏à‡πâ‡∏≤‡∏°‡∏∑‡∏≠
 			strSql = "Select * From sc_user Where "
 			strSql = strSql & " (login_id='" & bdealer & "' or user_name='" & bdealer & ") and sc_user.user_type='D'"
-		elseif buser <> "" and bdealer = "" and bpass <> "" then ' admin / ‡®È“¡◊Õ
+		elseif buser <> "" and bdealer = "" and bpass <> "" then ' admin / ‡πÄ‡∏à‡πâ‡∏≤‡∏°‡∏∑‡∏≠
 			strSql = "Select * From sc_user Where "
 			strSql = strSql & " (user_name='" & buser & "' or login_id='"& buser &"') and sc_user.user_type <> 'P'"
 		end If
 		'// jum 2006-07-05
-		If bdealer<>"" And lcase( Left(buser,1))="k" Then ' §π§’¬Ï
+		If bdealer<>"" And lcase( Left(buser,1))="k" Then ' ‡∏Ñ‡∏ô‡∏Ñ‡∏µ‡∏¢‡πå
 			strSql="select b.user_id,a.user_name, a.user_type,a.create_by , a.login_id, "
 			strSql=strSql & " a.user_password , a.user_disable ,a.refresh_time "
 			strSql=strSql & " from sc_user a inner join "
@@ -75,7 +75,7 @@
 			RndPw = Mid(rs("user_password"),1,1)
 			strPw = Request("password1")'EncryptPws(Request("password1"),RndPw)
 			if rs("user_disable") = true then
-				strMsg = "°√ÿ≥“µ‘¥µËÕºŸÈ¥Ÿ·≈√–∫∫ !"
+				strMsg = "‡∏Å‡∏£‡∏∏‡∏ì‡∏≤‡∏ï‡∏¥‡∏î‡∏ï‡πà‡∏≠‡∏ú‡∏π‡πâ‡∏î‡∏π‡πÅ‡∏•‡∏£‡∏∞‡∏ö‡∏ö !"
 			elseif strPw = rs("user_password") then
 				chkOk = true
 				Session("uid")=rs("user_id")
@@ -95,10 +95,10 @@
 
 
 			else
-				strMsg = "√À— ºË“π‰¡Ë∂Ÿ°µÈÕß !"
+				strMsg = "‡∏£‡∏´‡∏±‡∏™‡∏ú‡πà‡∏≤‡∏ô‡πÑ‡∏°‡πà‡∏ñ‡∏π‡∏Å‡∏ï‡πâ‡∏≠‡∏á !"
 			end if
 		else
-			strMsg = "‰¡Ëæ∫√À— ºŸÈ„™È !"
+			strMsg = "‡πÑ‡∏°‡πà‡∏û‡∏ö‡∏£‡∏´‡∏±‡∏™‡∏ú‡∏π‡πâ‡πÉ‡∏ä‡πâ !"
 		end if
 		set rs = nothing
 		set objConn = nothing
@@ -111,7 +111,7 @@
 		strRedi=oSecurity.strRedi(Session("utype"))
 		response.redirect strRedi		
 	else
-		call showmessage(strMsg&"&nbsp;&nbsp;[<a href='index.asp?page=signin.asp'>¬ÈÕπ°≈—∫</a>]")
+		call showmessage(strMsg&"&nbsp;&nbsp;[<a href='index.asp?page=signin.asp'>‡∏¢‡πâ‡∏≠‡∏ô‡∏Å‡∏•‡∏±‡∏ö</a>]")
 		Response.end		
 	end if	
 

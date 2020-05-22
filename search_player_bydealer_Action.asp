@@ -1,11 +1,13 @@
+<%@ Language=VBScript CodePage = 65001  %>
 <%OPTION EXPLICIT%>
+<% Response.CodePage = 65001%>
 <!--#include file="mdlGeneral.asp"-->
 <script language="javascript">
-	// ����ǹŴ������ 㹡�äԴ �ôԵ 
+	// เก็บส่วนลดเอาไว้ ในการคิด เครดิต 
 	var ar_discount =new Array()		
 	var idx=0;
 	var idx_limit_number=0;
-	// �纨ӹǹ�Թ�٧�ش 
+	// เก็บจำนวนเงินสูงสุด 
 	var ar_maxMoney =new Array()		
 	var ar_limit =new Array()
 </script>
@@ -26,9 +28,9 @@
 		'SQL="select login_id from sc_user where  create_by_player=0 and user_id=" & player_id 
 		'Set objRS=objDB.Execute(SQL)
 		'If Not objRS.eof Then
-				SQL="exec spJSelectPlayerDet " & player_id & ", " & Session("gameid")	 ' ��ᷧ
+				SQL="exec spJSelectPlayerDet " & player_id & ", " & Session("gameid")	 ' คนแทง
 		'Else
-		'		SQL="exec spJSelectPlayerDetLevel2 " & player_id & ", " & Session("gameid")	 ' ����
+		'		SQL="exec spJSelectPlayerDetLevel2 " & player_id & ", " & Session("gameid")	 ' ย่อย
 		'End If 
 		
 
@@ -64,7 +66,7 @@
 'response.write		SQL & " "  &		objRS("sum_play")						
 'response.end
 										
-			'=== �� ��ǹŴ ��� �ӹǹᷧ�٧�ش��� ��˹� 
+			'=== หา ส่วนลด และ จำนวนแทงสูงสุดที่ กำหนด 
 			SQL="exec spJGetPriceDisc " & player_id & ", " & Session("gameid")
 			set objRS=objDB.EXecute(SQL)
 			var_discount=""
@@ -96,7 +98,7 @@
 				<%
 				objRS.MoveNext
 			wend
-			'=== �� ��ǹŴ ��� �ӹǹᷧ�٧�ش��� ��˹� 
+			'=== หา ส่วนลด และ จำนวนแทงสูงสุดที่ กำหนด 
 
 			'== limit_number
 			var_limit_number=""
@@ -117,7 +119,7 @@
 					var_limit_number=var_limit_number & ", " & "3"  & "|" & objRS("number_tod3")
 				End if
 				%>
-					<!-- �红������ java �������礵͹ ���� ����ᷧ�Ţ��� limit ��� -->
+					<!-- เก็บข้อมูลใน java เอาไว้เช็คตอน คีย์ ห้ามแทงเลขที่ limit ไว้ -->
 					<script language='javascript'>
 					if('<%=objRS("number_up2")%>'!=''){
 					ar_limit[idx_limit_number]='<%="1"%>|<%=objRS("number_up2")%>';idx_limit_number=parseInt(idx_limit_number)+1; }
@@ -145,7 +147,7 @@ Sub PrintPrice(dealer_id, player_id, game_id)
 	objDB.Open Application("constr")
 	Set objRS =Server.CreateObject("ADODB.Recordset")
 	Dim game_type
-	'-- �ʴ���������� ��� ��˹�����ʴ� �Ҥ� ��ǹŴ
+	'-- แสดงก็ต่อเมื่อ เจ้า กำหนดให้แสดง ราคา ส่วนลด
 	'SQL="select * from sc_user where user_id=" & dealer_id  & " and show_price_player=1 " 
 	SQL="select a.* from sc_user a inner join sc_user b on a.user_id=b.create_by "
 	SQL=SQL & " where b.user_id=" & player_id  & " and a.show_price_player=1 " 
@@ -182,13 +184,13 @@ Sub PrintPrice(dealer_id, player_id, game_id)
 				str_price=str_price & "	</td>"
 				str_price=str_price & "</tr>"
 				str_price=str_price & "<tr>"
-				str_price=str_price & "<td class='tdbody1' bgcolor='#B3FFD9' align='left'>�����Ţ : " & login_id & "</td>"
-				str_price=str_price & "	<td class='tdbody1'  bgcolor='#B3FFD9' align='left' colspan='2'>���� : " & GetPlayerName(player_id) & "</td>"
+				str_price=str_price & "<td class='tdbody1' bgcolor='#B3FFD9' align='left'>หมายเลข : " & login_id & "</td>"
+				str_price=str_price & "	<td class='tdbody1'  bgcolor='#B3FFD9' align='left' colspan='2'>ชื่อ : " & GetPlayerName(player_id) & "</td>"
 				str_price=str_price & "</tr>"
 				str_price=str_price & "<tr>"
-				str_price=str_price & "	<td class='tdbody1' bgcolor='#FFFFA4' align='center'>��Դ</td>"
-				str_price=str_price & "	<td class='tdbody1' bgcolor='#FFFFA4' align='center'>����</td>"
-				str_price=str_price & "	<td class='tdbody1' bgcolor='#FFFFA4' align='center'>Ŵ (%)</td>"
+				str_price=str_price & "	<td class='tdbody1' bgcolor='#FFFFA4' align='center'>ชนิด</td>"
+				str_price=str_price & "	<td class='tdbody1' bgcolor='#FFFFA4' align='center'>จ่าย</td>"
+				str_price=str_price & "	<td class='tdbody1' bgcolor='#FFFFA4' align='center'>ลด (%)</td>"
 				str_price=str_price & "</tr>"
 				'	If Len(login_id)>6 then
 				'		SQL="exec spGetPlayPrice_Level2 " & 	dealer_id & "," & player_id & "," & game_type
@@ -226,7 +228,7 @@ Sub PrintPrice(dealer_id, player_id, game_id)
 			str_price=str_price & "</table>"		
 			str_price=str_price & "	<table>"
 				
-					'If Len(login_id)>6 Then ' �������
+					'If Len(login_id)>6 Then ' รายย่อย
 					'	SQL="exec spJSelectPlayerDetLevel2 " & player_id & ", " & Session("gameid")	
 					'else
 						SQL="exec spJSelectPlayerDet " & player_id & ", " & Session("gameid")	
@@ -254,12 +256,12 @@ Sub PrintPrice(dealer_id, player_id, game_id)
 
 					'str_price=str_price & "<tr class='head_black'>"
 					'str_price=str_price & "<td>" 
-					'str_price=str_price & "�ôԵ :</td><td align='right'>"  & FormatNumber(limit_play,0)
+					'str_price=str_price & "เครดิต :</td><td align='right'>"  & FormatNumber(limit_play,0)
 					'str_price=str_price & "</td>"
 					'str_price=str_price & "</tr>"
 					'str_price=str_price & "<tr class='head_black'>"
 					'str_price=str_price & "<td>"
-					'str_price=str_price & "������� : </td><td align='right'>" &  FormatNumber(can_play,0)
+					'str_price=str_price & "คงเหลือ : </td><td align='right'>" &  FormatNumber(can_play,0)
 					'str_price=str_price & "</td>"
 					'str_price=str_price & "</tr> "
 
@@ -270,11 +272,11 @@ End Sub
 Function GetGameDesc(g)
 	select case g
 		case 1 
-			GetGameDesc="�Ѱ���"
+			GetGameDesc="รัฐบาล"
 		case 2
-			GetGameDesc="����Թ/���"
+			GetGameDesc="ออมสิน/ธกส"
 		case 3
-			GetGameDesc="����Ҥ����"
+			GetGameDesc="ตั้งราคาอื่น"
 		case else
 			GetGameDesc=""
 	end select
@@ -317,7 +319,7 @@ End Function
 				parent.document.all.can_play.innerText='<%=can_play %>'
 			}
 
-			//2009-01-31 ��ͧ����¹��� 
+			//2009-01-31 ต้องเปลี่ยนค่า 
 			parent.document.all.obj_maxMoney.value=ar_maxMoney;
 			parent.document.all.obj_discount.value=ar_discount;
 			parent.document.all.obj_limit_number.value=ar_limit;

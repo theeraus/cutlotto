@@ -2,9 +2,10 @@
 <% Response.CacheControl = "no-cache" %>
 <% Response.AddHeader "Pragma", "no-cache" %> 
 <% Response.Expires = -1 %>
+<% Response.CodePage = 65001%>
 <!--#include file="include/config.inc"-->
 <%
-		' admin ����������� 3 ��ѡ 000-999 //2009-02-19
+		' admin ตั้งเจ้ามือได้ 3 หลัก 000-999 //2009-02-19
 		if trim(Session("uid"))="" then 	response.redirect "signin.asp"
 		Dim objRS , objDB , SQL	
 		Dim dealer_id, tmp_Color
@@ -30,10 +31,10 @@
 			" and game_active='A' "
 			set objRS=objDB.Execute(SQL)
 		end if
-		if mode="edit" then ' �óշ�� user click �����¡��
+		if mode="edit" then ' กรณีที่ user click แก้ไขรายการ
 			'response.write "edit" & edit_user_id
 		end if
-		if mode="edit_save" then ' �óշ�� user click �����¡�� ���Ǻѹ�֡������
+		if mode="edit_save" then ' กรณีที่ user click แก้ไขรายการ แล้วบันทึกข้อมูล
 			user_name=Request("user_name")
 			user_password=Request("user_password")
 			sum_password=Request("sum_password")
@@ -50,7 +51,7 @@
 'response.end
 			set objRS=objDB.Execute(SQL)
 		end if
-'		if mode="delete" then ' �óշ�� user click ź��¡��
+'		if mode="delete" then ' กรณีที่ user click ลบรายการ
 '			SQL="delete sc_user where [user_id]=" & edit_user_id
 '			set objRS=objDB.Execute(SQL)
 '		end if
@@ -73,17 +74,17 @@
 			cntDealer = Request("sum_active")
 			If cntDealer="" Then cntDealer=0
 			if not isnumeric(old_remain) then
-				Response.write "<center><span class='tdbody1'><font color='red'>�Դ��Ҵ : �������ö�ӡ�úѹ�֡�������� ���ͧ�ҡ �ʹ��ҧ��ҵ�ͧ�繵���Ţ !!!</font></span></center>"
+				Response.write "<center><span class='tdbody1'><font color='red'>ผิดพลาด : ไม่สามารถทำการบันทึกข้อมูลได้ เนื่องจาก ยอดค้างเก่าต้องเป็นตัวเลข !!!</font></span></center>"
 			else	
 				SQL="select * from sc_user where create_by=" & dealer_id & " and user_name='" & user_name & "'"
 				set objRS=objDB.Execute(SQL)
 				if not objRS.eof then
-						Response.write "<center><span class='tdbody1'><font color='red'>�Դ��Ҵ : �������ö�ӡ�úѹ�֡�������� ���ͧ�ҡ �ժ��͹������ !! " & user_name & "</font></span></center>"
+						Response.write "<center><span class='tdbody1'><font color='red'>ผิดพลาด : ไม่สามารถทำการบันทึกข้อมูลได้ เนื่องจาก มีชื่อนี้แล้ว !! " & user_name & "</font></span></center>"
 				else
 						SQL="select * from sc_user where create_by=" & dealer_id & " and login_id='" & login_id & "'"
 						set objRS=objDB.Execute(SQL)
 						if not objRS.eof then
-								Response.write "<center><span class='tdbody1'><font color='red'>�Դ��Ҵ : �������ö�ӡ�úѹ�֡�������� ���ͧ�ҡ �� �����Ţ ������� !! " & login_id & "</font></span></center>"
+								Response.write "<center><span class='tdbody1'><font color='red'>ผิดพลาด : ไม่สามารถทำการบันทึกข้อมูลได้ เนื่องจาก มี หมายเลข นี้แล้ว !! " & login_id & "</font></span></center>"
 						else
 							SQL="exec spAdd_sc_user_admin '" & login_id & "','" & user_name & "','" & user_password & "','" & sum_password & _
 							"'," & old_remain & ",'" & address_1 & "'," & dealer_id & ",0,"  & limit_play
@@ -97,11 +98,19 @@
 <html>
 <head>
 <title>.:: config Add Money ::. </title>
-<meta http-equiv="Content-Type" content="text/html; charset=windows-874">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta http-equiv="cache-control" content="no-cache"> 
 <meta http-equiv="pragma" content="no-cache"> 
 <meta http-equiv="expires" content="-1">
 <link href="include/code.css" rel="stylesheet" type="text/css">
+	<link href="assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/skins/header/base/light.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/skins/header/menu/light.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/skins/brand/navy.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/skins/aside/navy.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/global.css" rel="stylesheet" type="text/css" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script language="JavaScript" src="include/normalfunc.js"></script>
 <style type="text/css">
   <!--
@@ -162,13 +171,13 @@ function blinkIt() {
 	<form name="form1" action="mt_listdealer_AddMoney.asp" method="post">
 	<center><br>
 
-			<table  border="0"  cellpadding="1" cellspacing="1"  width="100%">
+			<table  border="0"  cellpadding="1" cellspacing="1"  width="100%" class="table">
 				<tr>
 					<td align="center">
 						<table  border="0"  cellpadding="1" cellspacing="1" width="80%">							
 							<tr>
                                 <td class="head_red">
-									����������Ţ���ͪ���������������������´�������Թ
+									กดที่หมายเลขหรือชื่อเจ้ามือเพื่อรายระเอียดการเติมเงิน
 								</td>
 								<td align="right">
 									<table  border="0"  cellpadding="2" cellspacing="2" bgcolor="#000000">
@@ -189,7 +198,7 @@ function blinkIt() {
 												p_cnt=objRSTMP("cnt")
 											End If 
 											%>
-												��й���͹�Ź� ...<%=d_cnt%> + <%=p_cnt%> .... ��
+												ขณะนี้ออนไลน์ ...<%=d_cnt%> + <%=p_cnt%> .... คน
 											</td>
 										</tr>
 									</table>
@@ -202,15 +211,15 @@ function blinkIt() {
 					<td align="center" colspan=2>
 						<table  border="0"  cellpadding="1" cellspacing="1" bgcolor="#000040">					
 							<tr>
-                                <td class="textbig_white" align="center" bgcolor="#282828">�Դ/�Դ</td>	
-								<td class="textbig_white" align="center" bgcolor="#282828">�����Ţ</td>
-								<td class="textbig_white" align="center" bgcolor="#282828">����</td>
+                                <td class="textbig_white" align="center" bgcolor="#282828">เปิด/ปิด</td>	
+								<td class="textbig_white" align="center" bgcolor="#282828">หมายเลข</td>
+								<td class="textbig_white" align="center" bgcolor="#282828">ชื่อ</td>
 								<td class="textbig_white" align="center" bgcolor="#282828">Password</td>
 								<td class="textbig_white" align="center" bgcolor="#282828">login</td>
 								<td class="textbig_white" align="center" bgcolor="#282828">IP Address</td>
-								<td class="textbig_white" align="center" bgcolor="#282828">���������</td>
-								<td class="textbig_white" align="center" bgcolor="#282828">����Ѵ�͡</td>	
-								<td class="textbig_white" align="center" bgcolor="#282828">�������</td>
+								<td class="textbig_white" align="center" bgcolor="#282828">รวมเติมเข้า</td>
+								<td class="textbig_white" align="center" bgcolor="#282828">รวมตัดออก</td>	
+								<td class="textbig_white" align="center" bgcolor="#282828">คงเหลือ</td>
                                 <td class="textbig_white" align="center" bgcolor="#282828"> </td>
 							</tr>
 							
@@ -220,7 +229,7 @@ function blinkIt() {
 							set objRS=objDB.Execute(SQL)
 							Dim c
 							c="#FFFFA4"
-							'--------- �óշ�� user click ���������� ---------------------------------------------
+							'--------- กรณีที่ user click เพิ่มข้อมูล ---------------------------------------------
 							if mode="add_new" then
 								tmp_Color="red"
 							%>
@@ -258,11 +267,11 @@ function blinkIt() {
 								</tr>
 							<%	
 							end if
-							'--------- �óշ�� user click ���������� ---------------------------------------------
+							'--------- กรณีที่ user click เพิ่มข้อมูล ---------------------------------------------
 							while not objRS.eof
 							
 								if mode="edit" and Cint(objRS("user_id"))=Cint(edit_user_id) then
-									'<!----------------------�ʴ������� 1 ��¡�� user ------------------------------------->
+									'<!----------------------แสดงข้อมูล 1 รายการ user ------------------------------------->
 									if not objRS("user_disable") then
 										tmp_Color="#33CC33"
 									else
@@ -273,7 +282,7 @@ function blinkIt() {
 										<td width="8" class="tdbody1" bgcolor="<%=tmp_Color%>" style="cursor:hand;" 
 										onClick="click_status('<%=objRs("user_id")%>');">&nbsp;</td>
 										<td bgcolor="#FFFFFF">
-											<input type="button" class="inputG" value="�ѹ�֡" style="cursor:hand; width: 75px;" onClick="click_edit_save('<%=objRs("user_id")%>');" >
+											<input type="button" class="btn btn-primary btn-sm" value="บันทึก" style="cursor:hand; width: 75px;" onClick="click_edit_save('<%=objRs("user_id")%>');" >
 										</td>											
 										<td class="tdbody" bgcolor="<%=c %>" align="left">
 											<input type="text" name="login_id" value="<%=Trim(objRS("login_id")) %>" 
@@ -311,7 +320,7 @@ function blinkIt() {
 									</tr>
 									<!-----------------------------------------------------------><%
 								else
-									'<!----------------------�ʴ������� 1 ��¡�� user ------------------------------------->
+									'<!----------------------แสดงข้อมูล 1 รายการ user ------------------------------------->
 									if not objRS("user_disable") then
 										tmp_Color="#33CC33"
 									else
@@ -339,7 +348,7 @@ function blinkIt() {
                                         <td class="tdbody" bgcolor="<%=c %>" align="right"><%=objRS("sum_add")%></td>
 										<td class="tdbody" bgcolor="<%=c %>" align="right"><%=objRS("sum_out")%></td>
                                         <td class="tdbody" bgcolor="<%=c %>" align="right"><%=st_blink %><%=objRS("sum_bal")%><%=ed_blink %></td>											
-										<td class="tdbody" bgcolor="<%=c %>" align="center"><INPUT TYPE="button" class=inputM value="����Թ" onClick="open_setvalue('<%=objRs("user_id")%>');" style="width:100"></td>
+										<td class="tdbody" bgcolor="<%=c %>" align="center"><INPUT TYPE="button" class="btn btn-primary btn-sm" value="เติมเงิน" onClick="open_setvalue('<%=objRs("user_id")%>');" style="width:100"></td>
 									</tr>
 									<tr>										
 										<td bgcolor="#FFFFFF" colspan="12" align="center">
@@ -377,17 +386,17 @@ function clickpic(p){
 	var t=p
 
 	//alert(t)
-	// �Ѱ���
+	// รัฐบาล
 	if (t==1){
 		document.mypic.src ="images/price_tos.jpg"
 		document.form1.game_type.value="2"
 	}
-	// ����Թ
+	// ออมสิน
 	if (t==2){
 		document.mypic.src = "images/price_oth.jpg";
 		document.form1.game_type.value="3"
 	}
-	// ����
+	// อื่นๆ
 	if (t==3){
 		document.mypic.src = "images/price_gov.jpg"
 		document.form1.game_type.value="1"
@@ -401,7 +410,7 @@ function click_edit(user_id){
 	document.form1.submit();
 }
 function click_del(user_id,user_name){
-	if (confirm('�س��ͧ���ź��¡�� ' + user_name+' ?' )){
+	if (confirm('คุณต้องการลบรายการ ' + user_name+' ?' )){
 		document.form1.mode.value="delete";
 		document.form1.edit_user_id.value=user_id;
 		document.form1.submit();
@@ -415,12 +424,12 @@ function click_cancel(){
 function click_edit_save(user_id){
 	if (document.form1.limit_play.value=="")
 	{
-		alert("��سҡ�͡ ǧ�Թ �繵���Ţ��ҹ��")
+		alert("กรุณากรอก วงเงิน เป็นตัวเลขเท่านั้น")
 		return false
 	}
 	if (isNaN(document.form1.limit_play.value))
 	{
-		alert("��سҡ�͡ ǧ�Թ �繵���Ţ��ҹ��")
+		alert("กรุณากรอก วงเงิน เป็นตัวเลขเท่านั้น")
 		return false
 	}
 	document.form1.mode.value="edit_save";
@@ -438,46 +447,46 @@ function click_add(){
 }
 function click_add_save(){
 	if (document.form1.login_id.value==""){
-		alert('�Դ��Ҵ : ��سҡ�͡ �����Ţ ������')
+		alert('ผิดพลาด : กรุณากรอก หมายเลข เจ้ามือ')
 		document.form1.login_id.focus();
 		return
 	}
 	if (isNaN(document.form1.login_id.value)){
-		alert('�Դ��Ҵ : ��سҡ�͡ �����Ţ ������ �繵���Ţ��ҹ��')
+		alert('ผิดพลาด : กรุณากรอก หมายเลข เจ้ามือ เป็นตัวเลขเท่านั้น')
 		document.form1.login_id.focus();
 		return
 	}
 	if (document.form1.login_id.value.length!=3){
-		alert('�Դ��Ҵ : ��سҡ�͡ �����Ţ ������ �繵���Ţ 3 ��ѡ ��ҹ��')
+		alert('ผิดพลาด : กรุณากรอก หมายเลข เจ้ามือ เป็นตัวเลข 3 หลัก เท่านั้น')
 		document.form1.login_id.focus();
 		return
 	}
 
 	if (document.form1.user_name.value==""){
-		alert('�Դ��Ҵ : ��سҡ�͡ ���� ������')
+		alert('ผิดพลาด : กรุณากรอก ชื่อ เจ้ามือ')
 		document.form1.user_name.focus();
 		return
 	}
 	if (document.form1.user_password.value==""){
-		alert('�Դ��Ҵ : ��سҡ�͡ ���ʼ�ҹ')
+		alert('ผิดพลาด : กรุณากรอก รหัสผ่าน')
 		document.form1.user_password.focus();
 		return
 	}
 	/*
 	if (document.form1.sum_password.value==""){
-		alert('�Դ��Ҵ : ��سҡ�͡ ���ʴ��ʹ�Թ')
+		alert('ผิดพลาด : กรุณากรอก รหัสดูยอดเงิน')
 		document.form1.sum_password.focus();
 		return
 	} */
 	if (document.form1.limit_play.value=="")
 	{
-		alert("��سҡ�͡ ǧ�Թ �繵���Ţ��ҹ��")
+		alert("กรุณากรอก วงเงิน เป็นตัวเลขเท่านั้น")
 		return false
 	}
 
 	if (isNaN(document.form1.limit_play.value))
 	{
-		alert("��سҡ�͡ ǧ�Թ �繵���Ţ��ҹ��")
+		alert("กรุณากรอก วงเงิน เป็นตัวเลขเท่านั้น")
 		return false
 	}
 
@@ -485,7 +494,7 @@ function click_add_save(){
 	document.form1.submit();
 }
 
-//�� �� enter
+//เช็ค กด enter
 function chkEnter(obj){
 		var k=event.keyCode
 		if (k == 13){	

@@ -1,4 +1,4 @@
-<%@ Language=VBScript %>
+ <%@ Language=VBScript CodePage = 65001  %>
 <%OPTION EXPLICIT%>
 <%check_session_valid()%>
 <!--#include file="include/adovbs.inc"-->
@@ -19,8 +19,8 @@ dim strOpen
 	Set recNumType = Server.CreateObject ("ADODB.Recordset")
 	Set recPlay = Server.CreateObject ("ADODB.Recordset")
 
-	strOpen="�Դ�Ѻᷧ"
-	if CheckGame(Session("uid"))="OPEN" then strOpen="�Դ�Ѻᷧ"
+	strOpen="เปิดรับแทง"
+	if CheckGame(Session("uid"))="OPEN" then strOpen="ปิดรับแทง"
 
 
 %>
@@ -46,26 +46,26 @@ function doPrint()   {
 	<br><br>
 	<TABLE align=center class=table_blue width=900>        
 		<tr bgColor=#66CCFF  class=head_black align=center>
-			<td>���ػ�ʹ�Թ</td>
-			<td colspan=3>�ʹ������</td>
-			<td colspan=3>ᷧ�͡</td>
-			<td colspan=3>�Ѻ���</td>
+			<td>ใบสรุปยอดเงิน</td>
+			<td colspan=3>ยอดทั้งหมด</td>
+			<td colspan=3>แทงออก</td>
+			<td colspan=3>รับไว้</td>
 		</tr>
 		<tr bgColor=#66CCFF  class=head_black align=center>
-			<td >��Դ</td>
-			<td >ᷧ�ѡ %</td>
-			<td >�١</td>
-			<td >�ط��</td>
-			<td >ᷧ�ѡ %</td>
-			<td >�١</td>
-			<td >�ط��</td>
-			<td >ᷧ�ѡ %</td>
-			<td >�١</td>
-			<td >�ط��</td>
+			<td >ชนิด</td>
+			<td >แทงหัก %</td>
+			<td >ถูก</td>
+			<td >สุทธิ</td>
+			<td >แทงหัก %</td>
+			<td >ถูก</td>
+			<td >สุทธิ</td>
+			<td >แทงหัก %</td>
+			<td >ถูก</td>
+			<td >สุทธิ</td>
 		</tr>
 
 <%
-'��Դ�Ţᷧ
+'ชนิดเลขแทง
 dim sumAllPlay
 dim sumAllPaid
 dim sumAllDisc
@@ -116,7 +116,7 @@ dim totalselfOutDisc
 			sumselfOutPlay=0.00: sumselfOutPaid=0.00: sumselfOutDisc=0.00
 			response.write "<tr class=text_blue>"
 			response.write "	<td bgColor=#FFFFCC>"&recNumType("ref_det_desc")&"</td>"
-'�Ţ�Ѻ������
+'เลขรับทั้งหมด
 			if not recPlay.eof then
 				if recPlay("play_type") = recNumType("ref_code")   then
 	
@@ -153,11 +153,11 @@ dim totalselfOutDisc
 				response.write "<td bgColor=#E2E2E2 align=right>"&formatnumber(((cdbl(sumAllPlay)-(cdbl(sumOutPlay)+cdbl(sumselfOutPlay)))+(cdbl(sumOutPlay)+cdbl(sumselfOutPlay))),2)&"</td>"
 				response.write "<td bgColor=#E2E2E2 align=right>"&formatnumber(((cdbl(sumAllPaid)-(cdbl(sumOutPaid)+cdbl(sumselfOutPaid)))+(cdbl(sumOutPaid)+cdbl(sumselfOutPaid))),2)&"</td>"
 				response.write "<td bgColor=#E2E2E2 align=right>"&formatnumber((((cdbl(sumAllPlay)-(cdbl(sumOutPlay)+cdbl(sumselfOutPlay)))+(cdbl(sumOutPlay)+cdbl(sumselfOutPlay))))-(((cdbl(sumAllPaid)-(cdbl(sumOutPaid)+cdbl(sumselfOutPaid)))+(cdbl(sumOutPaid)+cdbl(sumselfOutPaid)))),2)&"</td>"
-'�Ţᷧ�͡
+'เลขแทงออก
 				response.write "<td bgColor=#E2E2E2 align=right>"&formatnumber(-1*(cdbl(sumOutPlay)+cdbl(sumselfOutPlay)),2)&"</td>"
 				response.write "<td bgColor=#E2E2E2 align=right>"&formatnumber((cdbl(sumOutPaid)+cdbl(sumselfOutPaid)),2)&"</td>"
 				response.write "<td bgColor=#E2E2E2 align=right>"&formatnumber(((cdbl(sumOutPaid)+cdbl(sumselfOutPaid))-(cdbl(sumOutPlay)+cdbl(sumselfOutPlay))),2)&"</td>"
-'�Ţ�Ѻ�Ѻ���		
+'เลขรับรับไว้		
 				response.write "<td bgColor=#E2E2E2 align=right>"&formatnumber((cdbl(sumAllPlay)-(cdbl(sumOutPlay)+cdbl(sumselfOutPlay))),2)&"</td>"
 				response.write "<td bgColor=#E2E2E2 align=right>"&formatnumber((cdbl(sumAllPaid)-(cdbl(sumOutPaid)+cdbl(sumselfOutPaid))),2)&"</td>"
 				response.write "<td bgColor=#E2E2E2 align=right>"&formatnumber((((cdbl(sumAllPlay)-(cdbl(sumOutPlay)+cdbl(sumselfOutPlay))))-((cdbl(sumAllPaid)-(cdbl(sumOutPaid)+cdbl(sumselfOutPaid))))),2)&"</td>"
@@ -181,7 +181,7 @@ dim totalselfOutDisc
 		recPlay.close
 		'Total
 		response.write "<tr class=head_black>"
-		response.write "	<td bgColor=#66CCFF align=center>���</td>"
+		response.write "	<td bgColor=#66CCFF align=center>รวม</td>"
 		response.write "	<td bgColor=#66CCFF align=right>"&formatnumber(totalAllPlay,2)&"</td>"
 		response.write "	<td bgColor=#66CCFF align=right>"&formatnumber(totalAllPaid,2)&"</td>"				
 		response.write "	<td bgColor=#66CCFF align=right>"&formatnumber(totalAllDisc,2)&"</td>"
@@ -202,14 +202,14 @@ dim totalselfOutDisc
 
 	<TABLE width='650' align=center class=table_blue>        
 		<tr bgColor=#66CCFF  class=head_black align=center>
-			<td>���ػ�ʹ��</td>
+			<td>ใบสรุปยอดเก็บ</td>
 		</tr>
 	</TABLE>
 	<TABLE width='650' align=center class=table_blue>        
 		<tr bgColor=#66CCFF  class=head_black align=center>
-			<td>�ʹ��</td>
-			<td>�ʹ����</td>
-			<td>�����Ţ - ����</td>
+			<td>ยอดเก็บ</td>
+			<td>ยอดจ่าย</td>
+			<td>หมายเลข - ชื่อ</td>
 		</tr>
 <%
 'JUM 2008-03-03
@@ -282,7 +282,7 @@ strSql =strSql  & " login_id "
 		objRec.MoveNext
 	Loop
 	objRec.Close
-'�ʴ���ǹ�Ѵ�͡
+'แสดงส่วนตัดออก
 	strSql = "SELECT sc_user.user_name, sc_user.user_id, SUM(round(tb_ticket_number.dealer_rec,2)) AS summoney, SUM(round(tb_ticket_number.pay_amt,2)) AS sumpay, SUM(round(tb_ticket_number.discount_amt,2)) AS sumdisc, sc_user.login_id  " _
 		& "FROM tb_ticket_number INNER JOIN tb_ticket_key ON tb_ticket_number.ticket_key_id = tb_ticket_key.ticket_key_id INNER JOIN tb_ticket ON tb_ticket_key.ticket_id = tb_ticket.ticket_id INNER JOIN tb_open_game ON tb_ticket.game_id = tb_open_game.game_id INNER JOIN sc_user ON tb_open_game.dealer_id = sc_user.user_id " _
 		& "WHERE (tb_ticket.ticket_status <> 'D') And (tb_ticket.ref_game_id = "&Session("gameid")&") AND (tb_ticket_number.sum_flag = 'Y') " _
@@ -301,7 +301,7 @@ strSql =strSql  & " login_id "
 'showstr "disc " & sumAllDisc
 		Response.write "<tr class=text_black>"
 		Response.write "	<td bgColor=#FFFFCC align=right>"
-		'�ʴ���Ѻ�ѹ�����ҧ��ᷧ �Ѻᷧ�͡ �ʹ�Ѻ ��� �ʹ���� �ʹ���¤���ʹ�Ѻ
+		'แสดงสลับกันระหว่างคนแทง กับแทงออก ยอดรับ คือ ยอดจ่าย ยอดจ่ายคือยอดรับ
 		if sumAllPaid > sumAllPlay then
 			Response.write formatnumber((sumAllPaid - sumAllPlay ),2) 
 			totalAllPlay = totalAllPlay + (sumAllPaid - sumAllPlay )			
@@ -320,9 +320,9 @@ strSql =strSql  & " login_id "
 		end if
 		Response.write "	</td>"	
 		if objRec("user_id") = 999 then 
-			Response.write "	<td bgColor=#E2E2E2>�����ᷧ�͡</td>"	
+			Response.write "	<td bgColor=#E2E2E2>พิมพ์แทงออก</td>"	
 		else
-			Response.write "	<td bgColor=#E2E2E2>ᷧ�͡ "&objRec("user_name")&"</td>"	
+			Response.write "	<td bgColor=#E2E2E2>แทงออก "&objRec("user_name")&"</td>"	
 		end if
 		Response.write "</tr>"
 		objRec.MoveNext
@@ -336,7 +336,7 @@ strSql =strSql  & " login_id "
 
 %>
 	</TABLE>
-	<table align=center><tr><td align=center colspan=3><input type=button value='  �����  ' onClick="print_sumkeep();"></td></tr></table>
+	<table align=center><tr><td align=center colspan=3><input type=button value='  พิมพ์  ' onClick="print_sumkeep();"></td></tr></table>
 	<%
 	End if
 	%>

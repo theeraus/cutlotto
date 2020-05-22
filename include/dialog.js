@@ -12,7 +12,7 @@ function openDialog(_url, x, y, w, h) {
 
 
   if (!document.all["_DIALOGBOX"])
-  console.log(theDialog)
+
 	document.body.appendChild(theDialog);
 
   document.all["_DIALOGBOX"].style.visibility = "visible";

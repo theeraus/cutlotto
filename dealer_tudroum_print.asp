@@ -1,4 +1,4 @@
-<%@ Language=VBScript %>
+ <%@ Language=VBScript CodePage = 65001  %>
 <%OPTION EXPLICIT%>
 <% Response.CacheControl = "no-cache" %>
 <% Response.AddHeader "Pragma", "no-cache" %> 
@@ -26,7 +26,7 @@ dim arrCuttype
 	Set objRec = Server.CreateObject ("ADODB.Recordset")
 	Set objRec2 = Server.CreateObject ("ADODB.Recordset")
 
-	'********** �ʴ����;����
+	'********** แสดงเพื่อพิมพ์
 dim cntcol
 dim cntrow
 dim chktype
@@ -45,7 +45,7 @@ dim chktype
 		Else
 			strSql = strSql & "WHERE     (tb_ticket.ref_cutall_id = "&cutallid&") and tb_ticket_number.sum_flag = 'Y' order by play_type"
 		End if
-'			����¹�ҡ ref_cutall_id  �� ticket_id
+'			เปลี่ยนจาก ref_cutall_id  เป็น ticket_id
 '			& "WHERE     (tb_ticket.ref_cutall_id = "&ticketid&") and tb_ticket_number.sum_flag = 'Y' order by play_type"
 
 'showstr "cutid=" & cutallid & "ticket =" & ticketid &  "<br>		" &  strSql
@@ -60,7 +60,7 @@ dim chktype
 			strSql = strSql &  "WHERE     (tb_ticket_number.sum_flag = 'Y') AND (tb_ticket.ref_cutall_id = " & cutallid & ")"
 		End if
 
-'			����¹�ҡ ref_cutall_id  �� ticket_id
+'			เปลี่ยนจาก ref_cutall_id  เป็น ticket_id
 '				& "WHERE     (tb_ticket_number.sum_flag = 'Y') AND (tb_ticket.ref_cutall_id = " & ticketid & ")"
 			
 			objRec2.Open strSql, conn
@@ -96,7 +96,7 @@ dim chktype
 
 			<TABLE width='650' align=center cellSpacing=0 cellPadding=0  border=0 class=box1>        	
 			<tr>
-				<td colspan=7 align=center class=text_black style='FONT-SIZE: 12pt;' bgColor=#FFFFFF>�ҡ<u>&nbsp;&nbsp;&nbsp;<%=Session("uname")%>&nbsp;&nbsp;&nbsp;</u>�ʹ��<u>&nbsp;&nbsp;&nbsp;<%=sumall%>&nbsp;&nbsp;&nbsp;</u></td>
+				<td colspan=7 align=center class=text_black style='FONT-SIZE: 12pt;' bgColor=#FFFFFF>จาก<u>&nbsp;&nbsp;&nbsp;<%=Session("uname")%>&nbsp;&nbsp;&nbsp;</u>ยอดส่ง<u>&nbsp;&nbsp;&nbsp;<%=sumall%>&nbsp;&nbsp;&nbsp;</u></td>
 			</tr>
 <%		
 			cntcol=0
@@ -129,9 +129,9 @@ dim chktype
 				call GenEmptyCol(cntCol, cntRow)
 			end if
 			response.write "</table><br><br>"
-			response.write "<center><INPUT TYPE='button' class=button_blue value ='  �� � ��  ' onClick='print_me();'>"
+			response.write "<center><INPUT TYPE='button' class=button_blue value ='  พิ ม พ์  ' onClick='print_me();'>"
 			%>
-			&nbsp;<input type="button" value="��͹�˹���á" class=button_blue  onClick="close_me();" style="cursor:hand"></center>
+			&nbsp;<input type="button" value="ย้อนไปหน้าแรก" class=button_blue  onClick="close_me();" style="cursor:hand"></center>
 			<%
 		end if
 

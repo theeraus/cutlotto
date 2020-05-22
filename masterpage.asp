@@ -1,17 +1,21 @@
-<%@ Language=VBScript %>
+<%@ Language=VBScript CodePage = 65001  %>
+<% Response.CodePage = 65001%>
 <%OPTION EXPLICIT%>
 <!--#include file="include/adovbs.inc"-->
 <!--#include file="include/config.inc"-->
 <!--#include file="mdlGeneral.asp"-->
 
-  <%
+<%
         if Trim(Session("uid"))="" or Trim(Session("uid"))=0 then
             response.redirect "signin.asp"
         end if
 
-    %>
+%>
 	
-	
+<% 
+  Response.CharSet = "UTF-8"
+  Response.CodePage = 65001
+%>
 
 <html lang="en">
 
@@ -54,9 +58,9 @@
 		<!-- begin:: Header Mobile -->
 		<div id="kt_header_mobile" class="kt-header-mobile  kt-header-mobile--fixed ">
 			<div class="kt-header-mobile__logo">
-				<a href="index.html">
+
 					<img alt="Logo" src="assets/media/logos/logo-6.png" />
-				</a>
+			
 			
 			</div>
 			<div class="kt-header-mobile__toolbar">

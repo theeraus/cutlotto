@@ -1,9 +1,10 @@
-<%@ Language=VBScript %>
+<%@ Language=VBScript CodePage = 65001  %>
 <%OPTION EXPLICIT%>
 <% Response.CacheControl = "no-cache" %>
 <% Response.AddHeader "Pragma", "no-cache" %> 
 <% Response.Expires = -1 %>
 <%Response.Buffer = True%>
+<% Response.CodePage = 65001%>
 <!--#include file="include/adovbs.inc"-->
 <!--#include file="mdlGeneral.asp"-->
 <HTML>
@@ -42,7 +43,7 @@
     Session("logintime") = now
 	Session("refreshtime")=""
 
-	strTitle = "µÃÇ¨ÊÍº¼ÙéãªéÃĞºº"
+	strTitle = "ï¿½ï¿½Ç¨ï¿½Íºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ğºï¿½"
 	strGoto= "index.asp?pname=signin"	
 	Set objConn = Server.CreateObject ("ADODB.Connection")
 	objConn.Open Application("constr")	
@@ -50,30 +51,30 @@
 	chkOk = false
 	LenPw = len(Request("password1"))
 		Set rs = server.createobject("ADODB.Recordset")
-		'¶éÒ User name à»ç¹ªèÍ§ÇèÒ§áÊ´§ÇèÒà»ç¹ à¨éÒÁ×Í ÃËÑÊà¨éÒÁ×Í ¡Ñº ¾ÒÊàÇÍÃì´äÁèÇèÒ§
-		'¶éÒ à¨éÒÁ×Í ÇèÒ§ user äÁèÇèÒ§ ¾ÒÊàÇÃì´äÁèÇèÒ§ à»ç¹ admin
-		'¶éÒäÁèÇèÒ§·Ñé§ ÊÒÁ à»ç¹¤¹á·§
-		'Â¡àÅÔ¡ jum 2009-02-19
-		if buser <> "" and bdealer <> "" and bpass <> "" then '¤¹á·§
+		'ï¿½ï¿½ï¿½ User name ï¿½ç¹ªï¿½Í§ï¿½ï¿½Ò§ï¿½Ê´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ñº ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò§
+		'ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ò§ user ï¿½ï¿½ï¿½ï¿½ï¿½Ò§ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò§ ï¿½ï¿½ admin
+		'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò§ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ç¹¤ï¿½á·§
+		'Â¡ï¿½ï¿½Ô¡ jum 2009-02-19
+		if buser <> "" and bdealer <> "" and bpass <> "" then 'ï¿½ï¿½á·§
 			strSql = "SELECT     sc_user.*, sc_user_1.user_name AS dealer_fname FROM         sc_user INNER JOIN sc_user sc_user_1 ON sc_user.create_by = sc_user_1.user_id " _
 				& "Where (sc_user.user_name='" & buser & "' or sc_user.login_id='" & buser & "') "
 				strSql = strSql & " And (sc_user_1.user_name ='" & bdealer & "' or sc_user_1.login_id='" & bdealer & "') and sc_user.user_type='P'"
-		elseif buser = "" and bdealer <> "" and bpass <> "" then ' à¨éÒÁ×Í
+		elseif buser = "" and bdealer <> "" and bpass <> "" then ' ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			strSql = "Select * From sc_user Where "
 			strSql = strSql & " (login_id='" & bdealer & "' or user_name='" & bdealer & "') and sc_user.user_type='D'"
 			response.write strSql
 			response.end
-		elseif buser <> "" and bdealer = "" and bpass <> ""  And lcase( Left(buser,1)) <>"k"  then ' admin / à¨éÒÁ×Í
+		elseif buser <> "" and bdealer = "" and bpass <> ""  And lcase( Left(buser,1)) <>"k"  then ' admin / ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			strSql = "Select * From sc_user Where "
 			strSql = strSql & " (user_name='" & buser & "' or login_id='"& buser &"') and sc_user.user_type in ('D','A')"
 		end If
-		'Â¡àÅÔ¡ jum 2009-02-19
+		'Â¡ï¿½ï¿½Ô¡ jum 2009-02-19
 
 
 		strSql = "Select * From sc_user Where user_type<>'W' and login_id='" & buser & "' and user_password='" & Request("password1") & "' "
 
 		'// jum 2006-07-05
-		If lcase( Left(buser,1))="k" Then ' ¤¹¤ÕÂì
+		If lcase( Left(buser,1))="k" Then ' ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			strSql="select a.user_id as key_id, b.user_id,a.user_name, a.user_type,a.create_by , a.login_id, "
 			strSql=strSql & " a.user_password , a.user_disable ,a.refresh_time ,a.limit_play ,a.geb_ses "
 			strSql=strSql & " from sc_user a inner join "
@@ -88,7 +89,7 @@ showstr strSql & " xxx " & bdealer & " yy " & Request("txtdealer")
 			RndPw = Mid(rs("user_password"),1,1)
 			strPw = Request("password1")'EncryptPws(Request("password1"),RndPw)
 			if rs("user_disable") = true then
-				strMsg = "¡ÃØ³ÒµÔ´µèÍ¼Ùé´ÙáÅÃĞºº !"
+				strMsg = "ï¿½ï¿½Ø³ÒµÔ´ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ğºï¿½ !"
 'showstr "d " & rs("user_disable")
 			elseif strPw = rs("user_password") then
 				chkOk = true
@@ -120,11 +121,11 @@ showstr strSql & " xxx " & bdealer & " yy " & Request("txtdealer")
 				Session("SID") = Session.SessionID
 			else
 				Session("SID") =""
-				strMsg = "ÃËÑÊ¼èÒ¹äÁè¶Ù¡µéÍ§ !"
+				strMsg = "ï¿½ï¿½ï¿½Ê¼ï¿½Ò¹ï¿½ï¿½ï¿½Ù¡ï¿½ï¿½Í§ !"
 			end if
 		else
 			Session("SID") = ""
-			strMsg = "äÁè¾ºÃËÑÊ¼Ùéãªé !"
+			strMsg = "ï¿½ï¿½è¾ºï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ !"
 		end if
 		set rs = nothing
 		set objConn = nothing
@@ -137,7 +138,7 @@ showstr strSql & " xxx " & bdealer & " yy " & Request("txtdealer")
 		strRedi=oSecurity.strRedi(Session("utype"))
 		response.redirect strRedi		
 	else
-		call showmessage(strMsg&"&nbsp;&nbsp;[<a href='index.asp?page=signin.asp'>ÂéÍ¹¡ÅÑº</a>]")
+		call showmessage(strMsg&"&nbsp;&nbsp;[<a href='index.asp?page=signin.asp'>ï¿½ï¿½Í¹ï¿½ï¿½Ñº</a>]")
 		Response.end		
 	end if	
 

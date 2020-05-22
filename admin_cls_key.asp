@@ -1,8 +1,22 @@
-<!--#include virtual="masterpage.asp"-->
-
-
-<% Sub ContentPlaceHolder() %>
-
+<%@ Language=VBScript CodePage = 65001  %>
+<!--#include file="include/adovbs.inc"-->
+<!--#include file="mdlGeneral.asp"-->
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" Content="Microsoft Visual Studio 6.0">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script language="JavaScript" src="include/normalfunc.js"></script>
+ <script language='JavaScript' src='include/popcalendar.js' type='text/javascript'></script>
+<LINK href="include/code.css" type=text/css rel=stylesheet>
+	<link href="assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/skins/header/base/light.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/skins/header/menu/light.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/skins/brand/navy.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/skins/aside/navy.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/global.css" rel="stylesheet" type="text/css" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<TITLE>Admin Clear Key</TITLE>
 <%
 Dim objRec , objDB , SQL , strSql
 set objDB=Server.CreateObject("ADODB.Connection")       
@@ -40,7 +54,8 @@ If save="yes" Then
 	    Response.End	
     END IF
 %>
-
+</HEAD>
+<BODY>
 	<form name="form1" action="" method="post">
 		<input type="hidden" name="save" value="yes">
 	<center>
@@ -52,12 +67,10 @@ If save="yes" Then
 					<table>
 						<tr><td colspan="2">&nbsp;</td></tr>
 						<tr>			
-							<td class="text_black" align="center" colspan="2"><h4>ยืนยันการล้างเลข หรือไม่?</h4></td>
+							<td class="text_black" align="center" colspan="2">ยืนยันการล้างเลข หรือไม่?</td>
 						</tr>
 						<tr><td align="center" colspan="2">&nbsp;</td></tr>
-						<tr>
-							<td align="center"><a type="button" class="btn btn-primary"  href="dealer_save_data.asp"> เก็บโพยก่อน</a></td>
-							<td align="center"><input type="button" class="btn btn-danger "  value="ล้างเลข" onclick="click_ok();"></td></tr>
+						<tr><td align="center"><input type="button" class="btn btn-primary btn-sm" style="width:90;cursor:hand;" value="เก็บโพยก่อน" onclick="opensave();"></td><td align="center"><input type="button" class="btn btn-danger btn-sm" style="width:80;cursor:hand;" value="ล้างเลข" onclick="click_ok();"></td></tr>
 					</table>
 				</fieldset>
 			</td>
@@ -66,7 +79,8 @@ If save="yes" Then
 	</table>
 	</center>
 	</form>
-
+</BODY>
+</HTML>
 <script language="javascript">
 	function click_ok(){
 		document.form1.submit();
@@ -75,6 +89,4 @@ If save="yes" Then
 	    window.open("dealer_save_data.asp", "_blank", "top=150,left=150,height=350,width=450,directories=0,resizable=1,scrollbars=1,fullscreen=0,location=0,menubar=0,status=0,toolbar=0");
 	}
 </script>
-
-<% End Sub %>
 

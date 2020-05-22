@@ -1,18 +1,18 @@
-<%@ Language=VBScript %>
+ <%@ Language=VBScript CodePage = 65001  %>
 <%OPTION EXPLICIT%>
 <%'check_session_valid()%>
 <!--#include file="include/adovbs.inc"-->
 <!--#include file="include/config.inc"-->
 <!--#include file="mdlGeneral.asp"-->
 <%
-' 1. °√≥’‡≈◊Õ° Ëß¢È“¡ web 
-' 2. ®– submit ‰ª§ÈπÀ“¢ÈÕ¡Ÿ≈ user password ∑’Ë°”Àπ¥‰«È∑’Ë web1 «Ë“ ¢ÈÕ¡Ÿ≈¢Õß web 2 ∑’Ë®– Ëß‰ª¡’Õ–‰√
-' 3. ‡Õ“¢ÈÕ¡Ÿ≈¡“∑’Ë®– Ëß‰ª web 2 · ¥ß„π text box 
-' 4. °¥ submit ®–‡¢È“ function clicksubmit ®– Ëß§Ë“ sendback = yes ·≈È« Ëß‰ª action ∑’Ë web 2 ‡≈¬
-' 5. ‡¡◊ËÕ¡“∂÷ß∑’Ë web 2  ®–‡¢È“ ‡ß◊ËÕπ‰¢ sendback = yes 
-' 6. ‡Õ“¢ÈÕ¡Ÿ≈∑’Ë Ëß¡“ check user „π web 2 «Ë“∂Ÿ°µÈÕßÀ√◊Õ‰¡Ë
-' 7.  Ëß‡¢È“ function  senddealer 
-' 8. ∂È“ user ºË“π®– —Ëß„ÀÈ ÀπÈ“ dealer_tudroum ∑’Ë form2 submit      **** µ√ßπ’È¬—ß‰¡Ë·πË„®«Ë“∑”∑’Ë web ‰Àπ
+' 1. ‡∏Å‡∏£‡∏ì‡∏µ‡πÄ‡∏•‡∏∑‡∏≠‡∏Å‡∏™‡πà‡∏á‡∏Ç‡πâ‡∏≤‡∏° web 
+' 2. ‡∏à‡∏∞ submit ‡πÑ‡∏õ‡∏Ñ‡πâ‡∏ô‡∏´‡∏≤‡∏Ç‡πâ‡∏≠‡∏°‡∏π‡∏• user password ‡∏ó‡∏µ‡πà‡∏Å‡∏≥‡∏´‡∏ô‡∏î‡πÑ‡∏ß‡πâ‡∏ó‡∏µ‡πà web1 ‡∏ß‡πà‡∏≤ ‡∏Ç‡πâ‡∏≠‡∏°‡∏π‡∏•‡∏Ç‡∏≠‡∏á web 2 ‡∏ó‡∏µ‡πà‡∏à‡∏∞‡∏™‡πà‡∏á‡πÑ‡∏õ‡∏°‡∏µ‡∏≠‡∏∞‡πÑ‡∏£
+' 3. ‡πÄ‡∏≠‡∏≤‡∏Ç‡πâ‡∏≠‡∏°‡∏π‡∏•‡∏°‡∏≤‡∏ó‡∏µ‡πà‡∏à‡∏∞‡∏™‡πà‡∏á‡πÑ‡∏õ web 2 ‡πÅ‡∏™‡∏î‡∏á‡πÉ‡∏ô text box 
+' 4. ‡∏Å‡∏î submit ‡∏à‡∏∞‡πÄ‡∏Ç‡πâ‡∏≤ function clicksubmit ‡∏à‡∏∞‡∏™‡πà‡∏á‡∏Ñ‡πà‡∏≤ sendback = yes ‡πÅ‡∏•‡πâ‡∏ß‡∏™‡πà‡∏á‡πÑ‡∏õ action ‡∏ó‡∏µ‡πà web 2 ‡πÄ‡∏•‡∏¢
+' 5. ‡πÄ‡∏°‡∏∑‡πà‡∏≠‡∏°‡∏≤‡∏ñ‡∏∂‡∏á‡∏ó‡∏µ‡πà web 2  ‡∏à‡∏∞‡πÄ‡∏Ç‡πâ‡∏≤ ‡πÄ‡∏á‡∏∑‡πà‡∏≠‡∏ô‡πÑ‡∏Ç sendback = yes 
+' 6. ‡πÄ‡∏≠‡∏≤‡∏Ç‡πâ‡∏≠‡∏°‡∏π‡∏•‡∏ó‡∏µ‡πà‡∏™‡πà‡∏á‡∏°‡∏≤ check user ‡πÉ‡∏ô web 2 ‡∏ß‡πà‡∏≤‡∏ñ‡∏π‡∏Å‡∏ï‡πâ‡∏≠‡∏á‡∏´‡∏£‡∏∑‡∏≠‡πÑ‡∏°‡πà
+' 7. ‡∏™‡πà‡∏á‡πÄ‡∏Ç‡πâ‡∏≤ function  senddealer 
+' 8. ‡∏ñ‡πâ‡∏≤ user ‡∏ú‡πà‡∏≤‡∏ô‡∏à‡∏∞‡∏™‡∏±‡πà‡∏á‡πÉ‡∏´‡πâ ‡∏´‡∏ô‡πâ‡∏≤ dealer_tudroum ‡∏ó‡∏µ‡πà form2 submit      **** ‡∏ï‡∏£‡∏á‡∏ô‡∏µ‡πâ‡∏¢‡∏±‡∏á‡πÑ‡∏°‡πà‡πÅ‡∏ô‡πà‡πÉ‡∏à‡∏ß‡πà‡∏≤‡∏ó‡∏≥‡∏ó‡∏µ‡πà web ‡πÑ‡∏´‡∏ô
 '
 
 %>
@@ -28,13 +28,13 @@
 			document.FORM1.action = document.FORM1.toweb.value+"dealer_tudroum_send.asp";
 		} else {
 			if (document.FORM1.txtUserName.value==''){
-				alert('°√ÿ≥“ªÈÕπ √À—  À√◊Õ™◊ËÕ ºŸÈ„™Èß“π')
+				alert('‡∏Å‡∏£‡∏∏‡∏ì‡∏≤‡∏õ‡πâ‡∏≠‡∏ô ‡∏£‡∏´‡∏±‡∏™ ‡∏´‡∏£‡∏∑‡∏≠‡∏ä‡∏∑‡πà‡∏≠ ‡∏ú‡∏π‡πâ‡πÉ‡∏ä‡πâ‡∏á‡∏≤‡∏ô')
 				document.FORM1.button1.disabled=false;
 				document.FORM1.txtUserName.focus();
 				return false
 			}
 			if (document.FORM1.password1.value==''){
-				alert('°√ÿ≥“ªÈÕπ √À— ºË“π')
+				alert('‡∏Å‡∏£‡∏∏‡∏ì‡∏≤‡∏õ‡πâ‡∏≠‡∏ô ‡∏£‡∏´‡∏±‡∏™‡∏ú‡πà‡∏≤‡∏ô')
 				document.FORM1.button1.disabled=false;
 				document.FORM1.password1.focus();
 				return false
@@ -56,8 +56,8 @@
 			//alert(chk+"|"+ todealer+"|"+ toplayer+"|"+toweb);
 			document.FORM2.submit();
 			window.opener.open(document.FORM2.fromweb.value + "dealer_play_out.asp","_self");
-		} else if (chk=="LIMIT"){  //  ‡™Á§‡≈¢‡µÁ¡ 11/2/53
-			if (confirm("µ√«® Õ∫æ∫‡≈¢‡µÁ¡ ¬÷π¬—π∑’Ë®– Ëß‡≈¢À√◊Õ‰¡Ë À“°¬◊π¬—π‡≈¢‡µÁ¡®–‰¡Ë∂Ÿ° Ëß‰ª¥È«¬ ?"))			{
+		} else if (chk=="LIMIT"){  //  ‡πÄ‡∏ä‡πá‡∏Ñ‡πÄ‡∏•‡∏Ç‡πÄ‡∏ï‡πá‡∏° 11/2/53
+			if (confirm("‡∏ï‡∏£‡∏ß‡∏à‡∏™‡∏≠‡∏ö‡∏û‡∏ö‡πÄ‡∏•‡∏Ç‡πÄ‡∏ï‡πá‡∏° ‡∏¢‡∏∂‡∏ô‡∏¢‡∏±‡∏ô‡∏ó‡∏µ‡πà‡∏à‡∏∞‡∏™‡πà‡∏á‡πÄ‡∏•‡∏Ç‡∏´‡∏£‡∏∑‡∏≠‡πÑ‡∏°‡πà ‡∏´‡∏≤‡∏Å‡∏¢‡∏∑‡∏ô‡∏¢‡∏±‡∏ô‡πÄ‡∏•‡∏Ç‡πÄ‡∏ï‡πá‡∏°‡∏à‡∏∞‡πÑ‡∏°‡πà‡∏ñ‡∏π‡∏Å‡∏™‡πà‡∏á‡πÑ‡∏õ‡∏î‡πâ‡∏ß‡∏¢ ?"))			{
 				document.FORM2.sendto.value=todealer;
 				document.FORM2.sendfrom.value=toplayer;
 				document.FORM2.sendweb.value=toweb;
@@ -73,11 +73,11 @@
 
 			}
 		} else if (chk=="CLOSE")	{
-			alert("‰¡Ë “¡“√∂ Ëß‡®È“¡◊Õπ’È‰¥È ‡π◊ËÕß®“°‡®È“¡◊Õª‘¥√—∫·∑ß·≈È«...");
+			alert("‡πÑ‡∏°‡πà‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡∏™‡πà‡∏á‡πÄ‡∏à‡πâ‡∏≤‡∏°‡∏∑‡∏≠‡∏ô‡∏µ‡πâ‡πÑ‡∏î‡πâ ‡πÄ‡∏ô‡∏∑‡πà‡∏≠‡∏á‡∏à‡∏≤‡∏Å‡πÄ‡∏à‡πâ‡∏≤‡∏°‡∏∑‡∏≠‡∏õ‡∏¥‡∏î‡∏£‡∏±‡∏ö‡πÅ‡∏ó‡∏á‡πÅ‡∏•‡πâ‡∏ß...");
 			window.close();
 
 		} else if (chk=="FULL")	{
-			alert("‰¡Ë “¡“√∂ Ëß‡®È“¡◊Õπ’È‰¥È ‡π◊ËÕß®“°‡§√¥‘µ‡µÁ¡...");
+			alert("‡πÑ‡∏°‡πà‡∏™‡∏≤‡∏°‡∏≤‡∏£‡∏ñ‡∏™‡πà‡∏á‡πÄ‡∏à‡πâ‡∏≤‡∏°‡∏∑‡∏≠‡∏ô‡∏µ‡πâ‡πÑ‡∏î‡πâ ‡πÄ‡∏ô‡∏∑‡πà‡∏≠‡∏á‡∏à‡∏≤‡∏Å‡πÄ‡∏Ñ‡∏£‡∏î‡∏¥‡∏ï‡πÄ‡∏ï‡πá‡∏°...");
 			window.close();
 		} else {
 			//document.FORM2.txtdealer.value="";
@@ -87,7 +87,7 @@
 			document.FORM2.sendfrom.value="";
 			document.FORM2.sendweb.value="";
 			document.FORM2.sendweb2.value="";
-			alert("°“√ Log In ‰¡Ë∂Ÿ°µÈÕß ! °√ÿ≥“≈Õß„À¡Ë...");
+			alert("‡∏Å‡∏≤‡∏£ Log In ‡πÑ‡∏°‡πà‡∏ñ‡∏π‡∏Å‡∏ï‡πâ‡∏≠‡∏á ! ‡∏Å‡∏£‡∏∏‡∏ì‡∏≤‡∏•‡∏≠‡∏á‡πÉ‡∏´‡∏°‡πà...");
 			window.close();
 
 		}
@@ -158,9 +158,9 @@ var chkkey
 
 	Dim i
 	if Request("sendback")="yes" then 
-		' ∑’Ëπ’Ë∑”∑’Ë web 2 ·≈È«
-		' ‡™Á§ user ∑’Ë web 2 · ¥ß«Ë“∂Ÿ° Ëß¡“®“° web  1
-		' ¬°‡≈‘° ‡™Á§ txtdealer
+		' ‡∏ó‡∏µ‡πà‡∏ô‡∏µ‡πà‡∏ó‡∏≥‡∏ó‡∏µ‡πà web 2 ‡πÅ‡∏•‡πâ‡∏ß
+		' ‡πÄ‡∏ä‡πá‡∏Ñ user ‡∏ó‡∏µ‡πà web 2 ‡πÅ‡∏™‡∏î‡∏á‡∏ß‡πà‡∏≤‡∏ñ‡∏π‡∏Å‡∏™‡πà‡∏á‡∏°‡∏≤‡∏à‡∏≤‡∏Å web  1
+		' ‡∏¢‡∏Å‡πÄ‡∏•‡∏¥‡∏Å ‡πÄ‡∏ä‡πá‡∏Ñ txtdealer
 		chkOk = "no"
 		strSql = "SELECT     sc_user.*, sc_user_1.user_name AS dealer_fname FROM         sc_user INNER JOIN sc_user sc_user_1 ON sc_user.create_by = sc_user_1.user_id " _
 			& "Where (sc_user.login_id='"& Request("txtUserName") &"') and sc_user.user_password = '" & Request("password1") & "' And sc_user.user_disable=0 "
@@ -172,12 +172,12 @@ var chkkey
 			chkOK = "yes"
 			bdealer=rs("create_by")
 			bplayer=rs("user_id")
-			'comment ‡æ√“–¬—ß‰¡Ë√ÿÈ‡Àµÿº≈
+			'comment ‡πÄ‡∏û‡∏£‡∏≤‡∏∞‡∏¢‡∏±‡∏á‡πÑ‡∏°‡πà‡∏£‡∏∏‡πâ‡πÄ‡∏´‡∏ï‡∏∏‡∏ú‡∏•
 			Session("uid") = rs("create_by")
 			if CheckGame(bdealer)<>"OPEN" then
 				chkOk = "CLOSE"
 			end if
-			'µ√«® Õ∫ ®”π«π‡ß‘π limite credit
+			'‡∏ï‡∏£‡∏ß‡∏à‡∏™‡∏≠‡∏ö ‡∏à‡∏≥‡∏ô‡∏ß‡∏ô‡πÄ‡∏á‡∏¥‡∏ô limite credit
 			strSql = "exec spJSelectPlayerDet " & bplayer & ", " & Session("gameid")
 			Dim objRS3
 			can_play=0
@@ -269,17 +269,17 @@ var chkkey
 				next						
 				If CDbl(can_play) < CDbl(sumChkCr) Then chkOk = "FULL"
 			End If 
-			' Check Credit °ËÕπ ∂È“‡µÁ¡·≈È«°Á‰¡Ë‡™Á§ ‡≈¢‡µÁ¡  11/2/53
+			' Check Credit ‡∏Å‡πà‡∏≠‡∏ô ‡∏ñ‡πâ‡∏≤‡πÄ‡∏ï‡πá‡∏°‡πÅ‡∏•‡πâ‡∏ß‡∏Å‡πá‡πÑ‡∏°‡πà‡πÄ‡∏ä‡πá‡∏Ñ ‡πÄ‡∏•‡∏Ç‡πÄ‡∏ï‡πá‡∏°  11/2/53
 			txt2upNew = "": txt2upmoneyNew = ""
 			txt3upNew = "": txt3upmoneyNew = ""
 			txt3todNew = "": txt3todmoneyNew = ""
 			txt2downNew = "": txt2downmoneyNew = ""
 			If chkOK <> "FULL" And chkOK <> "CLOSE" Then 
 				strSql="exec spJ_GetNumberLimitMoney "  & bplayer & ", " & Session("gameid")
-				'get §Ë“ ‡≈¢‡µÁ¡¡“ 11/2/53
+				'get ‡∏Ñ‡πà‡∏≤ ‡πÄ‡∏•‡∏Ç‡πÄ‡∏ï‡πá‡∏°‡∏°‡∏≤ 11/2/53
 				Set objRS4=conn.execute(strSql)
 				If Not objRS4.eof Then
-					'‡Õ“‡≈¢∑’Ë®–µ—¥¡“ ‡™Á§°—∫ ‡≈¢‡µÁ¡ ∂È“æ∫°Á®–µ—¥ÕÕ°®“°µ—«·ª≈ 11/2/53
+					'‡πÄ‡∏≠‡∏≤‡πÄ‡∏•‡∏Ç‡∏ó‡∏µ‡πà‡∏à‡∏∞‡∏ï‡∏±‡∏î‡∏°‡∏≤ ‡πÄ‡∏ä‡πá‡∏Ñ‡∏Å‡∏±‡∏ö ‡πÄ‡∏•‡∏Ç‡πÄ‡∏ï‡πá‡∏° ‡∏ñ‡πâ‡∏≤‡∏û‡∏ö‡∏Å‡πá‡∏à‡∏∞‡∏ï‡∏±‡∏î‡∏≠‡∏≠‡∏Å‡∏à‡∏≤‡∏Å‡∏ï‡∏±‡∏ß‡πÅ‡∏õ‡∏• 11/2/53
 					arrNumber2up=split(Request("txt2up"),",")
 					arrMoney2up=split(Request("txt2upmoney"),",")						
 					arrNumber3up=split(Request("txt3up"),",")
@@ -289,7 +289,7 @@ var chkkey
 					arrNumber2down=split(Request("txt2down"),",")
 					arrMoney2down=split(Request("txt2downmoney"),",")						
 					While Not objRS4.eof
-					'check ‡≈¢‡µÁ¡ 2 ∫π
+					'check ‡πÄ‡∏•‡∏Ç‡πÄ‡∏ï‡πá‡∏° 2 ‡∏ö‡∏ô
 						for i = 0 to Ubound(arrNumber2up)
 							if trim(arrNumber2up(i)) = Trim(objRs4("number_up2")) then
 								arrNumber2up(i) = ""
@@ -298,7 +298,7 @@ var chkkey
 								Exit For 
 							End If 
 						Next
-					'check ‡≈¢‡µÁ¡ 3 ∫π
+					'check ‡πÄ‡∏•‡∏Ç‡πÄ‡∏ï‡πá‡∏° 3 ‡∏ö‡∏ô
 						for i = 0 to Ubound(arrNumber3up)
 							if trim(arrNumber3up(i)) = Trim(objRs4("number_up3")) then
 								arrNumber3up(i) = ""
@@ -307,7 +307,7 @@ var chkkey
 								Exit For 
 							End If 
 						Next
-					'check ‡≈¢‡µÁ¡ 3 ‚µÍ¥
+					'check ‡πÄ‡∏•‡∏Ç‡πÄ‡∏ï‡πá‡∏° 3 ‡πÇ‡∏ï‡πä‡∏î
 						for i = 0 to Ubound(arrNumber3tod)
 							if trim(arrNumber3tod(i)) = Trim(objRs4("number_tod3")) then
 								arrNumber3tod(i) = ""
@@ -316,7 +316,7 @@ var chkkey
 								Exit For 
 							End If 
 						Next
-					'check ‡≈¢‡µÁ¡ 2 ≈Ë“ß
+					'check ‡πÄ‡∏•‡∏Ç‡πÄ‡∏ï‡πá‡∏° 2 ‡∏•‡πà‡∏≤‡∏á
 						for i = 0 to Ubound(arrNumber2down)
 							if trim(arrNumber2down(i)) = Trim(objRs4("number_down2")) then
 								arrNumber2down(i) = ""
@@ -328,7 +328,7 @@ var chkkey
 						
 						objRS4.MoveNext
 					Wend
-					'µ—¥‡≈¢‡µÁ¡ 2 ∫π ÕÕ°
+					'‡∏ï‡∏±‡∏î‡πÄ‡∏•‡∏Ç‡πÄ‡∏ï‡πá‡∏° 2 ‡∏ö‡∏ô ‡∏≠‡∏≠‡∏Å
 					for i = 0 to Ubound(arrNumber2up)
 						If arrNumber2up(i) <> "" Then 
 							If txt2upNew <> "" Then txt2upNew = txt2upNew & ","
@@ -338,7 +338,7 @@ var chkkey
 							txt2upmoneyNew = txt2upmoneyNew & arrMoney2up(i)
 						End if
 					Next								
-					'µ—¥‡≈¢‡µÁ¡ 3 ∫π ÕÕ°
+					'‡∏ï‡∏±‡∏î‡πÄ‡∏•‡∏Ç‡πÄ‡∏ï‡πá‡∏° 3 ‡∏ö‡∏ô ‡∏≠‡∏≠‡∏Å
 					for i = 0 to Ubound(arrNumber3up)
 						If arrNumber3up(i) <> "" Then 
 							If txt3upNew <> "" Then txt3upNew = txt3upNew & ","
@@ -348,7 +348,7 @@ var chkkey
 							txt3upmoneyNew = txt3upmoneyNew & arrMoney3up(i)
 						End if
 					next
-					'µ—¥‡≈¢‡µÁ¡ 3 ‚µÍ¥ ÕÕ°
+					'‡∏ï‡∏±‡∏î‡πÄ‡∏•‡∏Ç‡πÄ‡∏ï‡πá‡∏° 3 ‡πÇ‡∏ï‡πä‡∏î ‡∏≠‡∏≠‡∏Å
 					for i = 0 to Ubound(arrNumber3tod)
 						If arrNumber3tod(i) <> "" Then 
 							If txt3todNew <> "" Then txt3todNew = txt3todNew & ","
@@ -358,7 +358,7 @@ var chkkey
 							txt3todmoneyNew = txt3todmoneyNew & arrMoney3tod(i)
 						End if
 					next
-					'µ—¥‡≈¢‡µÁ¡ 2 ≈Ë“ß ÕÕ°
+					'‡∏ï‡∏±‡∏î‡πÄ‡∏•‡∏Ç‡πÄ‡∏ï‡πá‡∏° 2 ‡∏•‡πà‡∏≤‡∏á ‡∏≠‡∏≠‡∏Å
 					for i = 0 to Ubound(arrNumber2down)
 						If arrNumber2down(i) <> "" Then 
 							If txt2downNew <> "" Then txt2downNew = txt2downNew & ","
@@ -370,9 +370,9 @@ var chkkey
 					next														
 				End if
 			End If 
-			response.write "<script language='JavaScript'>alert('¢È“¡‡«Á∫ '" & can_play & ")</script>"
+			response.write "<script language='JavaScript'>alert('‡∏Ç‡πâ‡∏≤‡∏°‡πÄ‡∏ß‡πá‡∏ö '" & can_play & ")</script>"
 
-			'check ‡æ◊ËÕ¥÷ß game id ¢Õß user ª—®®ÿ∫—π¡“„™È
+			'check ‡πÄ‡∏û‡∏∑‡πà‡∏≠‡∏î‡∏∂‡∏á game id ‡∏Ç‡∏≠‡∏á user ‡∏õ‡∏±‡∏à‡∏à‡∏∏‡∏ö‡∏±‡∏ô‡∏°‡∏≤‡πÉ‡∏ä‡πâ
 			call CheckGame(Session("uid"))
 
 		end if
@@ -478,7 +478,7 @@ var chkkey
 				sendweb = objRS("user_id")
 				Session("user_send_toweb") = sendweb
 			end if
-		else  ' ‰¡Ë‰¥È‡≈◊Õ° ¢È“¡‡«Á∫
+		else  ' ‡πÑ‡∏°‡πà‡πÑ‡∏î‡πâ‡πÄ‡∏•‡∏∑‡∏≠‡∏Å ‡∏Ç‡πâ‡∏≤‡∏°‡πÄ‡∏ß‡πá‡∏ö
 			buser=trim(Request("txtUserName"))
 			bpass=trim(Request("password1"))
 			'bdealer=trim(Request("txtdealer"))		
@@ -487,16 +487,16 @@ var chkkey
 
 			chkOk = "no"
 			Set rs = server.createobject("ADODB.Recordset")
-			'∂È“ User name ‡ªÁπ™ËÕß«Ë“ß· ¥ß«Ë“‡ªÁπ ‡®È“¡◊Õ √À— ‡®È“¡◊Õ °—∫ æ“ ‡«Õ√Ï¥‰¡Ë«Ë“ß
-			'∂È“ ‡®È“¡◊Õ «Ë“ß user ‰¡Ë«Ë“ß æ“ ‡«√Ï¥‰¡Ë«Ë“ß ‡ªÁπ admin
-			'∂È“‰¡Ë«Ë“ß∑—Èß  “¡ ‡ªÁπ§π·∑ß
-			'¬°‡≈‘°
+			'‡∏ñ‡πâ‡∏≤ User name ‡πÄ‡∏õ‡πá‡∏ô‡∏ä‡πà‡∏≠‡∏á‡∏ß‡πà‡∏≤‡∏á‡πÅ‡∏™‡∏î‡∏á‡∏ß‡πà‡∏≤‡πÄ‡∏õ‡πá‡∏ô ‡πÄ‡∏à‡πâ‡∏≤‡∏°‡∏∑‡∏≠ ‡∏£‡∏´‡∏±‡∏™‡πÄ‡∏à‡πâ‡∏≤‡∏°‡∏∑‡∏≠ ‡∏Å‡∏±‡∏ö ‡∏û‡∏≤‡∏™‡πÄ‡∏ß‡∏≠‡∏£‡πå‡∏î‡πÑ‡∏°‡πà‡∏ß‡πà‡∏≤‡∏á
+			'‡∏ñ‡πâ‡∏≤ ‡πÄ‡∏à‡πâ‡∏≤‡∏°‡∏∑‡∏≠ ‡∏ß‡πà‡∏≤‡∏á user ‡πÑ‡∏°‡πà‡∏ß‡πà‡∏≤‡∏á ‡∏û‡∏≤‡∏™‡πÄ‡∏ß‡∏£‡πå‡∏î‡πÑ‡∏°‡πà‡∏ß‡πà‡∏≤‡∏á ‡πÄ‡∏õ‡πá‡∏ô admin
+			'‡∏ñ‡πâ‡∏≤‡πÑ‡∏°‡πà‡∏ß‡πà‡∏≤‡∏á‡∏ó‡∏±‡πâ‡∏á ‡∏™‡∏≤‡∏° ‡πÄ‡∏õ‡πá‡∏ô‡∏Ñ‡∏ô‡πÅ‡∏ó‡∏á
+			'‡∏¢‡∏Å‡πÄ‡∏•‡∏¥‡∏Å
 			if 1=0 then
-			if buser = "" and bdealer <> "" and bpass <> "" then ' ‡®È“¡◊Õ
-				response.write "<script language='JavaScript'>alert('°√ÿ≥“µ√«® Õ∫°“√ Log In °√ÿ≥“ Log In ‡ªÁπ§π·∑ß¢Õß‡®È“¡◊Õ∑’ËµÈÕß°“√ Ëß...');document.FORM1.button1.disabled=false;</script>"
+			if buser = "" and bdealer <> "" and bpass <> "" then ' ‡πÄ‡∏à‡πâ‡∏≤‡∏°‡∏∑‡∏≠
+				response.write "<script language='JavaScript'>alert('‡∏Å‡∏£‡∏∏‡∏ì‡∏≤‡∏ï‡∏£‡∏ß‡∏à‡∏™‡∏≠‡∏ö‡∏Å‡∏≤‡∏£ Log In ‡∏Å‡∏£‡∏∏‡∏ì‡∏≤ Log In ‡πÄ‡∏õ‡πá‡∏ô‡∏Ñ‡∏ô‡πÅ‡∏ó‡∏á‡∏Ç‡∏≠‡∏á‡πÄ‡∏à‡πâ‡∏≤‡∏°‡∏∑‡∏≠‡∏ó‡∏µ‡πà‡∏ï‡πâ‡∏≠‡∏á‡∏Å‡∏≤‡∏£‡∏™‡πà‡∏á...');document.FORM1.button1.disabled=false;</script>"
 			elseif buser <> "" and bdealer = "" and bpass <> "" then ' admin
-				response.write "<script language='JavaScript'>alert('°√ÿ≥“µ√«® Õ∫°“√ Log In °√ÿ≥“ Log In ‡ªÁπ§π·∑ß¢Õß‡®È“¡◊Õ∑’ËµÈÕß°“√ Ëß...');document.FORM1.button1.disabled=false;</script>"
-			elseif buser <> "" and bdealer <> "" and bpass <> "" then '§π·∑ß
+				response.write "<script language='JavaScript'>alert('‡∏Å‡∏£‡∏∏‡∏ì‡∏≤‡∏ï‡∏£‡∏ß‡∏à‡∏™‡∏≠‡∏ö‡∏Å‡∏≤‡∏£ Log In ‡∏Å‡∏£‡∏∏‡∏ì‡∏≤ Log In ‡πÄ‡∏õ‡πá‡∏ô‡∏Ñ‡∏ô‡πÅ‡∏ó‡∏á‡∏Ç‡∏≠‡∏á‡πÄ‡∏à‡πâ‡∏≤‡∏°‡∏∑‡∏≠‡∏ó‡∏µ‡πà‡∏ï‡πâ‡∏≠‡∏á‡∏Å‡∏≤‡∏£‡∏™‡πà‡∏á...');document.FORM1.button1.disabled=false;</script>"
+			elseif buser <> "" and bdealer <> "" and bpass <> "" then '‡∏Ñ‡∏ô‡πÅ‡∏ó‡∏á
 				strSql = "SELECT     sc_user.*, sc_user_1.user_name AS dealer_fname FROM         sc_user INNER JOIN sc_user sc_user_1 ON sc_user.create_by = sc_user_1.user_id " _
 					& "Where (sc_user.user_name='" & buser & "' or sc_user.login_id='"& buser &"')  And sc_user.user_disable=0 "
 				strSql = strSql & " And (sc_user_1.user_name ='" & bdealer & "' or sc_user_1.login_id='" & bdealer & "') and sc_user.user_type='P'"
@@ -516,13 +516,13 @@ var chkkey
 						bdealer=rs("create_by")
 						bplayer=rs("user_id")
 						if bweb <> "" then
-							'comment ‡æ√“–¬—ß‰¡Ë√ÿÈ‡Àµÿº≈  ‰¡Ë‰¥È‡≈◊Õ°¢È“¡ web
+							'comment ‡πÄ‡∏û‡∏£‡∏≤‡∏∞‡∏¢‡∏±‡∏á‡πÑ‡∏°‡πà‡∏£‡∏∏‡πâ‡πÄ‡∏´‡∏ï‡∏∏‡∏ú‡∏•  ‡πÑ‡∏°‡πà‡πÑ‡∏î‡πâ‡πÄ‡∏•‡∏∑‡∏≠‡∏Å‡∏Ç‡πâ‡∏≤‡∏° web
 							Session("uid") = rs("create_by")
 						end if
 						if CheckGame(bdealer)<>"OPEN" then
 							chkOk = "CLOSE"
 						end If
-						'µ√«® Õ∫ ®”π«π‡ß‘π limite credit
+						'‡∏ï‡∏£‡∏ß‡∏à‡∏™‡∏≠‡∏ö ‡∏à‡∏≥‡∏ô‡∏ß‡∏ô‡πÄ‡∏á‡∏¥‡∏ô limite credit
 						strSql = "exec spJSelectPlayerDet " & bplayer & ", " & Session("gameid")
 						Dim objRS2 
 						can_play=0
@@ -614,17 +614,17 @@ var chkkey
 							next						
 							If can_play < sumChkCr Then chkOk = "FULL"
 						End If 				
-						' Check Credit °ËÕπ ∂È“‡µÁ¡·≈È«°Á‰¡Ë‡™Á§ ‡≈¢‡µÁ¡  11/2/53
+						' Check Credit ‡∏Å‡πà‡∏≠‡∏ô ‡∏ñ‡πâ‡∏≤‡πÄ‡∏ï‡πá‡∏°‡πÅ‡∏•‡πâ‡∏ß‡∏Å‡πá‡πÑ‡∏°‡πà‡πÄ‡∏ä‡πá‡∏Ñ ‡πÄ‡∏•‡∏Ç‡πÄ‡∏ï‡πá‡∏°  11/2/53
 						txt2upNew = "": txt2upmoneyNew = ""
 						txt3upNew = "": txt3upmoneyNew = ""
 						txt3todNew = "": txt3todmoneyNew = ""
 						txt2downNew = "": txt2downmoneyNew = ""
 						If chkOK <> "FULL" And chkOK <> "CLOSE" Then 
 							strSql="exec spJ_GetNumberLimitMoney "  & bplayer & ", " & Session("gameid")
-							'get §Ë“ ‡≈¢‡µÁ¡¡“ 11/2/53
+							'get ‡∏Ñ‡πà‡∏≤ ‡πÄ‡∏•‡∏Ç‡πÄ‡∏ï‡πá‡∏°‡∏°‡∏≤ 11/2/53
 							Set objRS4=conn.execute(strSql)
 							If Not objRS4.eof Then
- 								'‡Õ“‡≈¢∑’Ë®–µ—¥¡“ ‡™Á§°—∫ ‡≈¢‡µÁ¡ ∂È“æ∫°Á®–µ—¥ÕÕ°®“°µ—«·ª≈ 11/2/53
+ 								'‡πÄ‡∏≠‡∏≤‡πÄ‡∏•‡∏Ç‡∏ó‡∏µ‡πà‡∏à‡∏∞‡∏ï‡∏±‡∏î‡∏°‡∏≤ ‡πÄ‡∏ä‡πá‡∏Ñ‡∏Å‡∏±‡∏ö ‡πÄ‡∏•‡∏Ç‡πÄ‡∏ï‡πá‡∏° ‡∏ñ‡πâ‡∏≤‡∏û‡∏ö‡∏Å‡πá‡∏à‡∏∞‡∏ï‡∏±‡∏î‡∏≠‡∏≠‡∏Å‡∏à‡∏≤‡∏Å‡∏ï‡∏±‡∏ß‡πÅ‡∏õ‡∏• 11/2/53
 								arrNumber2up=split(Request("txt2up"),",")
 								arrMoney2up=split(Request("txt2upmoney"),",")						
 								arrNumber3up=split(Request("txt3up"),",")
@@ -634,7 +634,7 @@ var chkkey
 								arrNumber2down=split(Request("txt2down"),",")
 								arrMoney2down=split(Request("txt2downmoney"),",")						
 								While Not objRS4.eof
- 								'check ‡≈¢‡µÁ¡ 2 ∫π
+ 								'check ‡πÄ‡∏•‡∏Ç‡πÄ‡∏ï‡πá‡∏° 2 ‡∏ö‡∏ô
 									for i = 0 to Ubound(arrNumber2up)
 										if trim(arrNumber2up(i)) = Trim(objRs4("number_up2")) then
 											arrNumber2up(i) = ""
@@ -643,7 +643,7 @@ var chkkey
 											Exit For 
 										End If 
 									Next
- 								'check ‡≈¢‡µÁ¡ 3 ∫π
+ 								'check ‡πÄ‡∏•‡∏Ç‡πÄ‡∏ï‡πá‡∏° 3 ‡∏ö‡∏ô
 									for i = 0 to Ubound(arrNumber3up)
 										if trim(arrNumber3up(i)) = Trim(objRs4("number_up3")) then
 											arrNumber3up(i) = ""
@@ -652,7 +652,7 @@ var chkkey
 											Exit For 
 										End If 
 									Next
- 								'check ‡≈¢‡µÁ¡ 3 ‚µÍ¥
+ 								'check ‡πÄ‡∏•‡∏Ç‡πÄ‡∏ï‡πá‡∏° 3 ‡πÇ‡∏ï‡πä‡∏î
 									for i = 0 to Ubound(arrNumber3tod)
 										if trim(arrNumber3tod(i)) = Trim(objRs4("number_tod3")) then
 											arrNumber3tod(i) = ""
@@ -661,7 +661,7 @@ var chkkey
 											Exit For 
 										End If 
 									Next
- 								'check ‡≈¢‡µÁ¡ 2 ≈Ë“ß
+ 								'check ‡πÄ‡∏•‡∏Ç‡πÄ‡∏ï‡πá‡∏° 2 ‡∏•‡πà‡∏≤‡∏á
 									for i = 0 to Ubound(arrNumber2down)
 										if trim(arrNumber2down(i)) = Trim(objRs4("number_down2")) then
 											arrNumber2down(i) = ""
@@ -673,7 +673,7 @@ var chkkey
 									
 									objRS4.MoveNext
 								Wend
- 								'µ—¥‡≈¢‡µÁ¡ 2 ∫π ÕÕ°
+ 								'‡∏ï‡∏±‡∏î‡πÄ‡∏•‡∏Ç‡πÄ‡∏ï‡πá‡∏° 2 ‡∏ö‡∏ô ‡∏≠‡∏≠‡∏Å
 								for i = 0 to Ubound(arrNumber2up)
 									If arrNumber2up(i) <> "" Then 
 										If txt2upNew <> "" Then txt2upNew = txt2upNew & ","
@@ -683,7 +683,7 @@ var chkkey
 										txt2upmoneyNew = txt2upmoneyNew & arrMoney2up(i)
 									End if
 								Next								
- 								'µ—¥‡≈¢‡µÁ¡ 3 ∫π ÕÕ°
+ 								'‡∏ï‡∏±‡∏î‡πÄ‡∏•‡∏Ç‡πÄ‡∏ï‡πá‡∏° 3 ‡∏ö‡∏ô ‡∏≠‡∏≠‡∏Å
 								for i = 0 to Ubound(arrNumber3up)
 									If arrNumber3up(i) <> "" Then 
 										If txt3upNew <> "" Then txt3upNew = txt3upNew & ","
@@ -693,7 +693,7 @@ var chkkey
 										txt3upmoneyNew = txt3upmoneyNew & arrMoney3up(i)
 									End if
 								next
- 								'µ—¥‡≈¢‡µÁ¡ 3 ‚µÍ¥ ÕÕ°
+ 								'‡∏ï‡∏±‡∏î‡πÄ‡∏•‡∏Ç‡πÄ‡∏ï‡πá‡∏° 3 ‡πÇ‡∏ï‡πä‡∏î ‡∏≠‡∏≠‡∏Å
 								for i = 0 to Ubound(arrNumber3tod)
 									If arrNumber3tod(i) <> "" Then 
 										If txt3todNew <> "" Then txt3todNew = txt3todNew & ","
@@ -703,7 +703,7 @@ var chkkey
 										txt3todmoneyNew = txt3todmoneyNew & arrMoney3tod(i)
 									End if
 								next
- 								'µ—¥‡≈¢‡µÁ¡ 2 ≈Ë“ß ÕÕ°
+ 								'‡∏ï‡∏±‡∏î‡πÄ‡∏•‡∏Ç‡πÄ‡∏ï‡πá‡∏° 2 ‡∏•‡πà‡∏≤‡∏á ‡∏≠‡∏≠‡∏Å
 								for i = 0 to Ubound(arrNumber2down)
 									If arrNumber2down(i) <> "" Then 
 										If txt2downNew <> "" Then txt2downNew = txt2downNew & ","
@@ -715,7 +715,7 @@ var chkkey
 								next														
 							End if
 						End If 
-						'¬È“¬ ¡“Õ¬ŸË¢È“ß≈Ë“ß‡æ◊ËÕ„ÀÈª√—∫ ‡ß‘π·∑ß∑’Ë‡°‘π limit ‰¥È  11/2/53
+						'‡∏¢‡πâ‡∏≤‡∏¢ ‡∏°‡∏≤‡∏≠‡∏¢‡∏π‡πà‡∏Ç‡πâ‡∏≤‡∏á‡∏•‡πà‡∏≤‡∏á‡πÄ‡∏û‡∏∑‡πà‡∏≠‡πÉ‡∏´‡πâ‡∏õ‡∏£‡∏±‡∏ö ‡πÄ‡∏á‡∏¥‡∏ô‡πÅ‡∏ó‡∏á‡∏ó‡∏µ‡πà‡πÄ‡∏Å‡∏¥‡∏ô limit ‡πÑ‡∏î‡πâ  11/2/53
 %>
 <FORM id=FORM2 name=FORM2 action="dealer_tudroum_act.asp" method=post>
 <INPUT TYPE=hidden name='tud1' value="<%=Request("tud1")%>">
@@ -801,11 +801,11 @@ var chkkey
 </FORM>
 
 <%
-						' ############ end  ¬È“¬ ¡“Õ¬ŸË¢È“ß≈Ë“ß‡æ◊ËÕ„ÀÈª√—∫ ‡ß‘π·∑ß∑’Ë‡°‘π limit ‰¥È 11/2/53
+						' ############ end  ‡∏¢‡πâ‡∏≤‡∏¢ ‡∏°‡∏≤‡∏≠‡∏¢‡∏π‡πà‡∏Ç‡πâ‡∏≤‡∏á‡∏•‡πà‡∏≤‡∏á‡πÄ‡∏û‡∏∑‡πà‡∏≠‡πÉ‡∏´‡πâ‡∏õ‡∏£‡∏±‡∏ö ‡πÄ‡∏á‡∏¥‡∏ô‡πÅ‡∏ó‡∏á‡∏ó‡∏µ‡πà‡πÄ‡∏Å‡∏¥‡∏ô limit ‡πÑ‡∏î‡πâ 11/2/53
 
-						'response.write "‰¡Ë¢È“¡‡«Á∫ " & can_play & " limit  " & limit_play & " sum " & sum_play & " cut " & Request("cutallid")
+						'response.write "‡πÑ‡∏°‡πà‡∏Ç‡πâ‡∏≤‡∏°‡πÄ‡∏ß‡πá‡∏ö " & can_play & " limit  " & limit_play & " sum " & sum_play & " cut " & Request("cutallid")
 						'response.end
-						'check ‡æ◊ËÕ¥÷ß game id ¢Õß user ª—®®ÿ∫—π¡“„™È
+						'check ‡πÄ‡∏û‡∏∑‡πà‡∏≠‡∏î‡∏∂‡∏á game id ‡∏Ç‡∏≠‡∏á user ‡∏õ‡∏±‡∏à‡∏à‡∏∏‡∏ö‡∏±‡∏ô‡∏°‡∏≤‡πÉ‡∏ä‡πâ
 						call CheckGame(Session("uid"))
 					end if
 				end if
@@ -813,7 +813,7 @@ var chkkey
 'showstr "here   "  & chkOk
 				response.write "<script language='JavaScript'>senddealer('"&chkOk&"',"&bdealer&","&bplayer&",'"&bweb&"');</script>"
 			end if  '  strsql <> ''
-		end if   ' ‰¡Ë‰¥È‡≈◊Õ° ¢È“¡‡«Á∫
+		end if   ' ‡πÑ‡∏°‡πà‡πÑ‡∏î‡πâ‡πÄ‡∏•‡∏∑‡∏≠‡∏Å ‡∏Ç‡πâ‡∏≤‡∏°‡πÄ‡∏ß‡πá‡∏ö
 
 
 '				else
@@ -891,10 +891,10 @@ var chkkey
 
 <TABLE WIDTH="100%" BORDER=0 CELLSPACING=0 CELLPADDING=0 bgColor=white>
 	<TR class=head_white bgColor=red>
-		<TD align=middle colspan=4>°√ÿ≥“ Log in ¥È«¬ User <br>¢Õß‡®È“¡◊Õ∑’Ë§ÿ≥µÈÕß°“√ ËßµËÕ</TD>
+		<TD align=middle colspan=4>‡∏Å‡∏£‡∏∏‡∏ì‡∏≤ Log in ‡∏î‡πâ‡∏ß‡∏¢ User <br>‡∏Ç‡∏≠‡∏á‡πÄ‡∏à‡πâ‡∏≤‡∏°‡∏∑‡∏≠‡∏ó‡∏µ‡πà‡∏Ñ‡∏∏‡∏ì‡∏ï‡πâ‡∏≠‡∏á‡∏Å‡∏≤‡∏£‡∏™‡πà‡∏á‡∏ï‡πà‡∏≠</TD>
 	</TR>
 	<TR class=text_blue>
-		<TD colspan=1 align=middle> Ëß¢È“¡ WEB  Ëß</TD>		
+		<TD colspan=1 align=middle>‡∏™‡πà‡∏á‡∏Ç‡πâ‡∏≤‡∏° WEB ‡∏™‡πà‡∏á</TD>		
 		<TD colspan=3 align=middle>   &nbsp;</TD>		
 	</TR>
 	<TR class=text_blue>
@@ -904,20 +904,20 @@ var chkkey
 	call ShowListView("sc_user", "user_name", "user_id", "sendweb", sendweb, "create_by=" & Session("uid") & " and user_type='W'" ,true, 150, "onChange='document.FORM1.submit();'")
 %>					
 		</TD>
-<!-- 	ª√—∫·°È„ÀÈ login ¡’  2  box  ‡À¡◊Õπ°“√ login „À¡Ë 6/6/09	
-		<TD>&nbsp;&nbsp;°≈ÿË¡</TD>
+<!-- 	‡∏õ‡∏£‡∏±‡∏ö‡πÅ‡∏Å‡πâ‡πÉ‡∏´‡πâ login ‡∏°‡∏µ  2  box  ‡πÄ‡∏´‡∏°‡∏∑‡∏≠‡∏ô‡∏Å‡∏≤‡∏£ login ‡πÉ‡∏´‡∏°‡πà 6/6/09	
+		<TD>&nbsp;&nbsp;‡∏Å‡∏•‡∏∏‡πà‡∏°</TD>
 		<TD><INPUT id=text1 name=txtdealer style="WIDTH: 130px" 
             width=200 onKeyDown="txtdealer_checkkey();" value="<%=bdealer %>"></TD>
 		<TD></TD>
 	</TR>
 	<TR class=text_blue> -->
-		<TD>&nbsp;&nbsp;™◊ËÕºŸÈ„™È</TD>
+		<TD>&nbsp;&nbsp;‡∏ä‡∏∑‡πà‡∏≠‡∏ú‡∏π‡πâ‡πÉ‡∏ä‡πâ</TD>
 		<TD><INPUT id=text1 name=txtUserName style="WIDTH: 130px" 
             width=200 onKeyDown="txtUserName_checkkey();" value="<%=buser%>" readonly></TD>
 		<TD></TD>
 	</TR>
 	<TR class=text_blue>
-		<TD>&nbsp;&nbsp;√À— ºË“π</TD>
+		<TD>&nbsp;&nbsp;‡∏£‡∏´‡∏±‡∏™‡∏ú‡πà‡∏≤‡∏ô</TD>
 		<TD><INPUT id=password1 type=password 
             name=password1 style="WIDTH: 130px; HEIGHT: 22px" width=200 size=21 
             onKeyDown="password1_checkkey();" value="<%=bpass%>" readonly></TD>
@@ -925,7 +925,7 @@ var chkkey
 	</TR>
         <TR>
           
-          <TD colspan=3 align=middle><INPUT id=button1 type=button align=left value=" Ëß‡®È“¡◊Õ" class="inputE" name=button1 style="cursor:hand; width: 100px;"  onClick="document.FORM1.button1.disabled=true;return clicksubmit();"><input type=button value=" ª‘¥ " class="inputR" style="cursor:hand; width: 90px;" onClick="window.close();" ></TD></TR>
+          <TD colspan=3 align=middle><INPUT id=button1 type=button align=left value="‡∏™‡πà‡∏á‡πÄ‡∏à‡πâ‡∏≤‡∏°‡∏∑‡∏≠" class="inputE" name=button1 style="cursor:hand; width: 100px;"  onClick="document.FORM1.button1.disabled=true;return clicksubmit();"><input type=button value=" ‡∏õ‡∏¥‡∏î " class="inputR" style="cursor:hand; width: 90px;" onClick="window.close();" ></TD></TR>
 </TABLE>
 
 </TD>

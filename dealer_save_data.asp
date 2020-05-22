@@ -1,6 +1,15 @@
-<!--#include virtual="masterpage.asp"-->
-
+<%@ Language=VBScript CodePage = 65001  %>
+<%OPTION EXPLICIT%>
+<%check_session_valid()%>
+<!--#include file="include/adovbs.inc"-->
+<!--#include file="include/config.inc"-->
+<!--#include file="mdlGeneral.asp"-->
+<%Response.Buffer = True%>
 <%
+Response.ContentType = "text/html"
+Response.AddHeader "Content-Type", "text/html;charset=UTF-8"
+Response.CodePage = 65001
+Response.CharSet = "UTF-8"
 
 Dim objRec
 dim recPlayer
@@ -15,13 +24,22 @@ dim sumcut
 dim numtype
 	'Server.ScriptTimeout=1200
 	'*** Open the database.	
-	
-	
+	call CheckGame(Session("uid"))
+	gameid=Session("gameid")
+	Set objRec = Server.CreateObject ("ADODB.Recordset")
 %>
-
-<% Sub ContentPlaceHolder() %>
-
-
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" Content="Microsoft Visual Studio 6.0">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<link href="assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/skins/header/base/light.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/skins/header/menu/light.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/skins/brand/navy.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/skins/aside/navy.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/global.css" rel="stylesheet" type="text/css" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script language=javascript>
 
 	function clicksave() {
@@ -128,8 +146,11 @@ dim numtype
 
 </script>
 
+<LINK href="include/code.css" type=text/css rel=stylesheet>
+<script language="JavaScript" src="include/normalfunc.js"></script>
+</HEAD>
 <form name="form1" method="post" action="dealer_save_ticket.asp">
-
+<BODY topmargin=0 leftmargin=0>
 	<table align="center" cellpadding="0" cellspacing="1" width="100%" border="0" bgcolor=#ffffff>
 	<tr class=head_black height=20>
 		<td colspan=5 align=center><font size=3>เก็บข้อมูล</font></td>
@@ -165,10 +186,7 @@ dim numtype
 		<td bgColor=#ff7777 align=center>จำนวนใบ</td>
 	</tr>
 <%
-	call CheckGame(Session("uid"))
-	gameid=Session("gameid")
-	Set objRec = Server.CreateObject ("ADODB.Recordset")
-	 strSql = "SELECT     tb_open_game.game_id, sc_user.user_id, sc_user.login_id, sc_user.user_name, COUNT(tb_ticket.ticket_id) AS cnt_ticket " _
+	strSql = "SELECT     tb_open_game.game_id, sc_user.user_id, sc_user.login_id, sc_user.user_name, COUNT(tb_ticket.ticket_id) AS cnt_ticket " _
 		& "FROM         tb_open_game INNER JOIN tb_ticket ON tb_open_game.game_id = tb_ticket.game_id INNER JOIN sc_user ON tb_ticket.player_id = sc_user.user_id " _
 		& "WHERE     (tb_open_game.game_active = 'A') " _
 		& "GROUP BY tb_open_game.game_id, sc_user.user_id, sc_user.login_id, sc_user.user_name " _
@@ -190,5 +208,5 @@ dim numtype
 %>
 	</table>
 </form>
-
-<% End Sub %>
+</body>
+</html>

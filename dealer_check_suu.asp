@@ -1,4 +1,4 @@
-<%@ Language=VBScript %>
+<%@ Language=VBScript CodePage = 65001  %>
 <%OPTION EXPLICIT%>
 <% Response.CacheControl = "no-cache" %>
 <% Response.AddHeader "Pragma", "no-cache" %> 
@@ -11,7 +11,7 @@
 
 	function clicksubmit(){
 		if (document.FORM1.password1.value==''){
-			alert('กรุณาป้อน รหัสผ่าน')
+			alert('��سһ�͹ ���ʼ�ҹ')
 			document.FORM1.password1.focus();
 			return false
 		}
@@ -29,7 +29,7 @@
 			}
 			window.close();
 		} else if (chk=="no") {
-			alert("การ Log In ไม่ถูกต้อง ! กรุณาลองใหม่...");
+			alert("��� Log In ���١��ͧ ! ��س��ͧ����...");
 		}
 	}
 
@@ -139,13 +139,13 @@ var chkkey
 
 <TABLE WIDTH="100%" BORDER=0 CELLSPACING=0 CELLPADDING=0 bgColor=white>
 	<TR class=head_white bgColor=#6495ed>
-		<TD align=middle colspan=3>กรุณาระบุรหัสลัพธ์ ของคุณ</TD>
+		<TD align=middle colspan=3>��س��к������Ѿ�� �ͧ�س</TD>
 	</TR>
 	<TR class=text_blue>
 		<TD colspan=3 align=middle>   &nbsp;</TD>		
 	</TR>
 	<TR class=text_blue>
-		<TD>&nbsp;&nbsp;รหัสผ่าน</TD>
+		<TD>&nbsp;&nbsp;���ʼ�ҹ</TD>
 		<TD><INPUT id=password1 type=password 
             name=password1 style="WIDTH: 130px; HEIGHT: 22px" width=200 size=21 
             onKeyDown="password1_checkkey();"></TD>
@@ -153,7 +153,7 @@ var chkkey
 	</TR>
         <TR>
           
-          <TD colspan=3 align=middle><INPUT id=button1 type=button align=left value="  ตกลง  " name=button1  onClick="return clicksubmit();"><input type=button value=" ปิด " onClick="window.close();" ></TD></TR>
+          <TD colspan=3 align=middle><INPUT id=button1 type=button align=left value="  ��ŧ  " name=button1  onClick="return clicksubmit();"><input type=button value=" �Դ " onClick="window.close();" ></TD></TR>
 </TABLE>
 
 </TD>

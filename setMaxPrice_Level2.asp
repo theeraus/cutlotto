@@ -2,9 +2,10 @@
 <% Response.CacheControl = "no-cache" %>
 <% Response.AddHeader "Pragma", "no-cache" %> 
 <% Response.Expires = -1 %>
+<% Response.CodePage = 65001%>
 <!--#include file="mdlGeneral.asp"-->
 <%
-	' ��˹�ҷ�� ��˹��Ҥ� % ��ǹŴ �ͧ�١�������
+	' เป็นหน้าที่ กำหนดราคา % ส่วนลด ของลูกค้าย่อย
 	if trim(Session("uid"))="" then 	response.redirect "signin.asp"
 	Dim objRS , objDB , SQL	
 	Dim dealer_id, game_id, game_type
@@ -38,7 +39,7 @@
 		Set objRS=objDB.execute(SQL)
 		Dim player_id,play_type,pay_amt,discount_amt,last_update,maxMoney
 		While Not objRS.eof 
-			'-- 1=2 ��
+			'-- 1=2 บน
 			play_type=1
 			player_id=objRS("user_id")
 			pay_amt=Request("pay_amt_2up_" & objRS("user_id"))
@@ -55,7 +56,7 @@
 			SQL=SQL & " and play_type=" & play_type
 			objDB.Execute(SQL)
 
-			'-- 2=3 ��
+			'-- 2=3 บน
 			play_type=2
 			player_id=objRS("user_id")
 			pay_amt=Request("pay_amt_3up_" & objRS("user_id"))
@@ -72,7 +73,7 @@
 			SQL=SQL & " and play_type=" & play_type
 			objDB.Execute(SQL)
 
-			'-- 3=3 ��
+			'-- 3=3 โต๊ด
 			play_type=3
 			player_id=objRS("user_id")
 			pay_amt=Request("pay_amt_3tod_" & objRS("user_id"))
@@ -89,7 +90,7 @@
 			SQL=SQL & " and play_type=" & play_type
 			objDB.Execute(SQL)
 
-			'-- 4=2 ��
+			'-- 4=2 โต๊ด
 			play_type=4
 			player_id=objRS("user_id")
 			pay_amt=Request("pay_amt_2tod_" & objRS("user_id"))
@@ -106,7 +107,7 @@
 			SQL=SQL & " and play_type=" & play_type
 			objDB.Execute(SQL)
 
-			'-- 5=��觺�
+			'-- 5=วิ่งบน
 			play_type=5
 			player_id=objRS("user_id")
 			pay_amt=Request("pay_amt_1up_" & objRS("user_id"))
@@ -123,7 +124,7 @@
 			SQL=SQL & " and play_type=" & play_type
 			objDB.Execute(SQL)
 
-			'-- 6= �����ҧ
+			'-- 6= วิ่งล่าง
 			play_type=6
 			player_id=objRS("user_id")
 			pay_amt=Request("pay_amt_1down_" & objRS("user_id"))
@@ -140,7 +141,7 @@
 			SQL=SQL & " and play_type=" & play_type
 			objDB.Execute(SQL)
 
-			'--7= 2 ��ҧ
+			'--7= 2 ล่าง
 			play_type=7
 			player_id=objRS("user_id")
 			pay_amt=Request("pay_amt_2down_" & objRS("user_id"))
@@ -157,7 +158,7 @@
 			SQL=SQL & " and play_type=" & play_type
 			objDB.Execute(SQL)
 
-			'--8=3 ��ҧ
+			'--8=3 ล่าง
 			play_type=8
 			player_id=objRS("user_id")
 			pay_amt=Request("pay_amt_3down_" & objRS("user_id"))
@@ -200,17 +201,17 @@
 		<TD>
 			<TABLE>
 			<TR>
-				<TD><input type="button" value="����Ҥ���е��ᷧ�٧�ش" class="button_blue"></TD>
-				<TD><input type="button" id="b1" value="COPY �ҤҨҡ �����Ţ..价�����" class="button_green"
+				<TD><input type="button" value="ตั้งราคาและตั้งแทงสูงสุด" class="button_blue"></TD>
+				<TD><input type="button" id="b1" value="COPY ราคาจาก หมายเลข..ไปทั้งหมด" class="button_green"
 				onMouseOver="changeStyle(this,'button_green_over')"
 				onMouseOut="changeStyle(this,'button_green')" 
 				onClick="document.all.tb1.style.display='' ;document.all.tb2.style.display='none' "></TD>
-				<TD><input type="button" value="COPY �ҤҨҡ �����Ţ..��ѧ�����Ţ..." class="button_green"
+				<TD><input type="button" value="COPY ราคาจาก หมายเลข..ไปยังหมายเลข..." class="button_green"
 				onMouseOver="changeStyle(this,'button_green_over')"
 				onMouseOut="changeStyle(this,'button_green')" 
 				onClick="document.all.tb2.style.display='' ;document.all.tb1.style.display='none' "
 				></TD>
-				<TD><input type="button" value="�ѹ�֡/�͡" class="button_green"
+				<TD><input type="button" value="บันทึก/ออก" class="button_green"
 				onMouseOver="changeStyle(this,'button_green_over')"
 				onMouseOut="changeStyle(this,'button_green')" 
 				onClick="click_submit();"
@@ -224,9 +225,9 @@
 		<td>
 			<TABLE id="tb1" style="display:none;">
 			<TR class="head_blue" height="30">
-				<TD>COPY �ҤҨҡ �����Ţ</TD>
-				<TD><input type="text" name="original_login_id" style="border-width:1;width:100;"  > 价�����</TD>
-				<TD><input type="button" value="��ŧ" style="cursor:hand;width:90;" onClick="click_all();"></TD>
+				<TD>COPY ราคาจาก หมายเลข</TD>
+				<TD><input type="text" name="original_login_id" style="border-width:1;width:100;"  > ไปทั้งหมด</TD>
+				<TD><input type="button" value="ตกลง" style="cursor:hand;width:90;" onClick="click_all();"></TD>
 			</TR>
 			</TABLE>
 		</td>
@@ -235,11 +236,11 @@
 		<td>
 			<TABLE id="tb2" style="display:none;">
 			<TR class="head_blue" height="30">
-				<TD>COPY �ҤҨҡ �����Ţ</TD>
+				<TD>COPY ราคาจาก หมายเลข</TD>
 				<TD><input type="text" name="from_login_id" style="border-width:1;width:100;"  ></TD>
-				<TD> ��ѧ �����Ţ</TD>
+				<TD> ไปยัง หมายเลข</TD>
 				<TD><input type="text" name="to_login_id" style="border-width:1;width:100;"  ></TD>
-				<TD><input type="button" value="��ŧ" style="cursor:hand;width:90;" onClick="click_one();"></TD>
+				<TD><input type="button" value="ตกลง" style="cursor:hand;width:90;" onClick="click_one();"></TD>
 			</TR>
 			</TABLE>
 		</td>
@@ -248,11 +249,11 @@
 		<TD>
 			<TABLE class="text_black">
 			<TR>
-				<TD>����=�ѵ�Ҩ���</TD>
+				<TD>จ่าย=อัตราจ่าย</TD>
 			
-				<TD>&nbsp;&nbsp;&nbsp;Ŵ%=��ǹŴ�����繵�</TD>
+				<TD>&nbsp;&nbsp;&nbsp;ลด%=ส่วนลดเปอร์เซ็นต์</TD>
 			
-				<TD>&nbsp;&nbsp;&nbsp;ᷧ�٧�ش=�Թᷧ�٧�ش ����Ţ ��ͤ�</TD>
+				<TD>&nbsp;&nbsp;&nbsp;แทงสูงสุด=เงินแทงสูงสุด ต่อเลข ต่อคน</TD>
 			</TR>
 			</TABLE>
 		</TD>
@@ -261,50 +262,50 @@
 		<TD>
 			<TABLE  border="0"  cellpadding="2" cellspacing="2"  width="100%" bgcolor="#000000">
 			<TR class="head_white">
-				<TD rowspan="2" align="center" bgcolor="#000000">�����Ţ</TD>
-				<TD rowspan="2" align="center" bgcolor="#000000">����</TD>
-				<TD colspan="3" align="center" bgcolor="#FF0000">2 ��</TD>
-				<TD colspan="3" align="center" bgcolor="#000000">3 ��</TD>
-				<TD colspan="3" align="center" bgcolor="#FF0000">3 ��</TD>
-				<TD colspan="3" align="center" bgcolor="#000000">2 ��</TD>
-				<TD colspan="3" align="center"  bgcolor="#FF0000">��觺�</TD>
-				<TD colspan="3" align="center" bgcolor="#000000">�����ҧ</TD>
-				<TD colspan="3" align="center" bgcolor="#FF0000">2 ��ҧ</TD>
-				<TD colspan="3" align="center" bgcolor="#000000">3 ��ҧ</TD>
+				<TD rowspan="2" align="center" bgcolor="#000000">หมายเลข</TD>
+				<TD rowspan="2" align="center" bgcolor="#000000">ชื่อ</TD>
+				<TD colspan="3" align="center" bgcolor="#FF0000">2 บน</TD>
+				<TD colspan="3" align="center" bgcolor="#000000">3 บน</TD>
+				<TD colspan="3" align="center" bgcolor="#FF0000">3 โต๊ด</TD>
+				<TD colspan="3" align="center" bgcolor="#000000">2 โต๊ด</TD>
+				<TD colspan="3" align="center"  bgcolor="#FF0000">วิ่งบน</TD>
+				<TD colspan="3" align="center" bgcolor="#000000">วิ่งล่าง</TD>
+				<TD colspan="3" align="center" bgcolor="#FF0000">2 ล่าง</TD>
+				<TD colspan="3" align="center" bgcolor="#000000">3 ล่าง</TD>
 			</TR>
 			<TR class="text_white">		
-				<TD bgcolor="#FF0000"><b>����</b></TD>
-				<TD bgcolor="#FF0000"><b>Ŵ%</b></TD>
-				<TD bgcolor="#FF0000"><b>ᷧ�٧�ش</b></TD>				
+				<TD bgcolor="#FF0000"><b>จ่าย</b></TD>
+				<TD bgcolor="#FF0000"><b>ลด%</b></TD>
+				<TD bgcolor="#FF0000"><b>แทงสูงสุด</b></TD>				
 
-				<TD bgcolor="#000000"><b>����</b></TD>
-				<TD bgcolor="#000000"><b>Ŵ%</b></TD>
-				<TD bgcolor="#000000"><b>ᷧ�٧�ش</b></TD>
+				<TD bgcolor="#000000"><b>จ่าย</b></TD>
+				<TD bgcolor="#000000"><b>ลด%</b></TD>
+				<TD bgcolor="#000000"><b>แทงสูงสุด</b></TD>
 
-				<TD bgcolor="#FF0000"><b>����</b></TD>
-				<TD bgcolor="#FF0000"><b>Ŵ%</b></TD>
-				<TD bgcolor="#FF0000"><b>ᷧ�٧�ش</b></TD>
+				<TD bgcolor="#FF0000"><b>จ่าย</b></TD>
+				<TD bgcolor="#FF0000"><b>ลด%</b></TD>
+				<TD bgcolor="#FF0000"><b>แทงสูงสุด</b></TD>
 
-				<TD bgcolor="#000000"><b>����</b></TD>
-				<TD bgcolor="#000000"><b>Ŵ%</b></TD>
-				<TD bgcolor="#000000"><b>ᷧ�٧�ش</b></TD>
+				<TD bgcolor="#000000"><b>จ่าย</b></TD>
+				<TD bgcolor="#000000"><b>ลด%</b></TD>
+				<TD bgcolor="#000000"><b>แทงสูงสุด</b></TD>
 
-				<TD bgcolor="#FF0000"><b>����</b></TD>
-				<TD bgcolor="#FF0000"><b>Ŵ%</b></TD>
-				<TD bgcolor="#FF0000"><b>ᷧ�٧�ش</b></TD>
+				<TD bgcolor="#FF0000"><b>จ่าย</b></TD>
+				<TD bgcolor="#FF0000"><b>ลด%</b></TD>
+				<TD bgcolor="#FF0000"><b>แทงสูงสุด</b></TD>
 				
 
-				<TD bgcolor="#000000"><b>����</b></TD>
-				<TD bgcolor="#000000"><b>Ŵ%</b></TD>
-				<TD bgcolor="#000000"><b>ᷧ�٧�ش</b></TD>
+				<TD bgcolor="#000000"><b>จ่าย</b></TD>
+				<TD bgcolor="#000000"><b>ลด%</b></TD>
+				<TD bgcolor="#000000"><b>แทงสูงสุด</b></TD>
 
-				<TD bgcolor="#FF0000"><b>����</b></TD>
-				<TD bgcolor="#FF0000"><b>Ŵ%</b></TD>
-				<TD bgcolor="#FF0000"><b>ᷧ�٧�ش</b></TD>
+				<TD bgcolor="#FF0000"><b>จ่าย</b></TD>
+				<TD bgcolor="#FF0000"><b>ลด%</b></TD>
+				<TD bgcolor="#FF0000"><b>แทงสูงสุด</b></TD>
 
-				<TD bgcolor="#000000"><b>����</b></TD>
-				<TD bgcolor="#000000"><b>Ŵ%</b></TD>
-				<TD bgcolor="#000000"><b>ᷧ�٧�ش</b></TD>
+				<TD bgcolor="#000000"><b>จ่าย</b></TD>
+				<TD bgcolor="#000000"><b>ลด%</b></TD>
+				<TD bgcolor="#000000"><b>แทงสูงสุด</b></TD>
 
 			</TR>
 			<%
@@ -549,7 +550,7 @@
 
 				if(typeof(next_obj) == "object"){
 					if(isNaN(next_obj.value)){
-						alert('�Դ��Ҵ : ��سҡ�͡ �繵���Ţ��ҹ�� !!!')
+						alert('ผิดพลาด : กรุณากรอก เป็นตัวเลขเท่านั้น !!!')
 						next_obj.focus();
 						return false;
 					}
@@ -557,15 +558,15 @@
 			}	
 		}
 		document.form1.save.value="yes";
-		//alert('�ѹ�֡������')
+		//alert('บันทึกข้อมูล')
 		document.form1.submit();
 	}
-	//�� �� enter
+	//เช็ค กด enter
 	function chkEnter(obj){
 		var k=event.keyCode
 		if (k == 13){	
 			if(isNaN(obj.value)){
-				alert('�Դ��Ҵ : ��سҡ�͡ �繵���Ţ��ҹ�� !!!')
+				alert('ผิดพลาด : กรุณากรอก เป็นตัวเลขเท่านั้น !!!')
 				obj.focus();
 				return false;
 			}
@@ -594,12 +595,12 @@
 	}
 	function click_all(){
 		if(document.form1.original_login_id.value==''){
-			alert('�Դ��Ҵ : ��سҡ�͡ �繵���Ţ��ҹ�� !!!')
+			alert('ผิดพลาด : กรุณากรอก เป็นตัวเลขเท่านั้น !!!')
 			document.form1.original_login_id.focus();
 			return false;
 		}
 		if(isNaN(document.form1.original_login_id.value)){
-			alert('�Դ��Ҵ : ��سҡ�͡ �繵���Ţ��ҹ�� !!!')
+			alert('ผิดพลาด : กรุณากรอก เป็นตัวเลขเท่านั้น !!!')
 			document.form1.original_login_id.focus();
 			return false;
 		}
@@ -608,22 +609,22 @@
 	}
 	function click_one(){	
 		if(document.form1.from_login_id.value==''){
-			alert('�Դ��Ҵ : ��سҡ�͡ �繵���Ţ��ҹ�� !!!')
+			alert('ผิดพลาด : กรุณากรอก เป็นตัวเลขเท่านั้น !!!')
 			document.form1.from_login_id.focus();
 			return false;
 		}
 		if(isNaN(document.form1.from_login_id.value)){
-			alert('�Դ��Ҵ : ��سҡ�͡ �繵���Ţ��ҹ�� !!!')
+			alert('ผิดพลาด : กรุณากรอก เป็นตัวเลขเท่านั้น !!!')
 			document.form1.from_login_id.focus();
 			return false;
 		}
 		if(document.form1.to_login_id.value==''){
-			alert('�Դ��Ҵ : ��سҡ�͡ �繵���Ţ��ҹ�� !!!')
+			alert('ผิดพลาด : กรุณากรอก เป็นตัวเลขเท่านั้น !!!')
 			document.form1.to_login_id.focus();
 			return false;
 		}
 		if(isNaN(document.form1.to_login_id.value)){
-			alert('�Դ��Ҵ : ��سҡ�͡ �繵���Ţ��ҹ�� !!!')
+			alert('ผิดพลาด : กรุณากรอก เป็นตัวเลขเท่านั้น !!!')
 			document.form1.to_login_id.focus();
 			return false;
 		}

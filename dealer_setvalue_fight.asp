@@ -1,4 +1,4 @@
-<%@ Language=VBScript %>
+<%@ Language=VBScript CodePage = 65001  %>
 <%OPTION EXPLICIT%>
 <% Response.CacheControl = "no-cache" %>
 <% Response.AddHeader "Pragma", "no-cache" %> 
@@ -9,6 +9,11 @@
 <!--#include file="mdlGeneral.asp"-->
 <%Response.Buffer = True%>
 <%
+
+Response.ContentType = "text/html"
+Response.AddHeader "Content-Type", "text/html;charset=UTF-8"
+Response.CodePage = 65001
+Response.CharSet = "UTF-8"
 
 Dim objRec
 Dim strSql
@@ -33,9 +38,10 @@ dim cntrow, cntcol
 %>
 <HTML>
 <HEAD>
-<Title>��駤����麹</Title>
+<Title>ตั้งค่าสู้บน</Title>
 <META NAME="GENERATOR" Content="Microsoft Visual Studio 6.0">
-<meta http-equiv="Content-Type" content="text/html; charset=windows-874">
+<meta http-equiv="Content-Type" content="text/html;charset=iso-8859-1" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="cache-control" content="no-cache"> 
 <meta http-equiv="pragma" content="no-cache"> 
 <meta http-equiv="expires" content="-1">
@@ -44,43 +50,43 @@ dim cntrow, cntcol
 <script language="javascript">
 	function cmdsave_click() {
 		if (isNaN(document.form1.txtseq1.value)) {
-			alert("��س��кص���Ţ !!!")
+			alert("กรุณาระบุตัวเลข !!!")
 			document.form1.txtseq1.focus();
 			return false;
 		} 
 		if (isNaN(document.form1.txtseq2.value)) {
-			alert("��س��кص���Ţ !!!")
+			alert("กรุณาระบุตัวเลข !!!")
 			document.form1.txtseq2.focus();
 			return false;
 		} 
 		if (isNaN(document.form1.txtseq3.value)) {
-			alert("��س��кص���Ţ !!!")
+			alert("กรุณาระบุตัวเลข !!!")
 			document.form1.txtseq3.focus();
 			return false;
 		} 
 		if (isNaN(document.form1.txtseq4.value)) {
-			alert("��س��кص���Ţ !!!")
+			alert("กรุณาระบุตัวเลข !!!")
 			document.form1.txtseq4.focus();
 			return false;
 		} 
 		if (isNaN(document.form1.txtnum1.value)) {
-			alert("��س��кص���Ţ !!!")
+			alert("กรุณาระบุตัวเลข !!!")
 			document.form1.txtnum1.focus();
 			return false;
 		} 
 
 		if (isNaN(document.form1.txtnum2.value)) {
-			alert("��س��кص���Ţ !!!")
+			alert("กรุณาระบุตัวเลข !!!")
 			document.form1.txtnum2.focus();
 			return false;
 		} 
 		if (isNaN(document.form1.txtnum3.value)) {
-			alert("��س��кص���Ţ !!!")
+			alert("กรุณาระบุตัวเลข !!!")
 			document.form1.txtnum3.focus();
 			return false;
 		} 
 		if (isNaN(document.form1.txtnum4.value)) {
-			alert("��س��кص���Ţ !!!")
+			alert("กรุณาระบุตัวเลข !!!")
 			document.form1.txtnum4.focus();
 			return false;
 		} 
@@ -96,16 +102,16 @@ dim cntrow, cntcol
 <INPUT TYPE="hidden" name="act" value="">
 	<TABLE width='100%' align=center class=table_red bgColor="#FFFFFF">
 		<TR>
-			<Td  bgColor=#ff7777 align=center><strong>��駤����麹</strong></Td>
+			<Td  bgColor=#ff7777 align=center><strong>ตั้งค่าสู้บน</strong></Td>
 		</Tr>
 		<TR>
 			<Td>
 				<TABLE width='100%' align=center class=table_red bgColor="#FFFFFF">
 					<TR bgColor=#ff7777>
-						<TD align=center><strong>��Դ</strong></TD>						
-						<TD align=center><strong>�ӴѺ</strong></TD>						
-						<TD align=center><strong>��Ƿ��</strong></TD>						
-						<TD align=center><strong>���</strong></TD>						
+						<TD align=center><strong>ชนิด</strong></TD>						
+						<TD align=center><strong>ลำดับ</strong></TD>						
+						<TD align=center><strong>ตัวที่</strong></TD>						
+						<TD align=center><strong>เต็ม</strong></TD>						
 					</Tr>
 
 <%
@@ -127,7 +133,7 @@ dim cntrow, cntcol
 %>
 
 					<TR>
-						<TD colspan=4 align=center><INPUT TYPE="button" class="inputG" value="�ѹ�֡" name="cmdsave" style="cursor:hand; width: 100px;" onClick="cmdsave_click();">&nbsp;<INPUT TYPE="button" class="inputR" value="�Դ" name="cmdcancel" style="cursor:hand; width: 75px;" onClick="window.close();"></Td>
+						<TD colspan=4 align=center><INPUT TYPE="button" class="inputG" value="บันทึก" name="cmdsave" style="cursor:hand; width: 100px;" onClick="cmdsave_click();">&nbsp;<INPUT TYPE="button" class="inputR" value="ปิด" name="cmdcancel" style="cursor:hand; width: 75px;" onClick="window.close();"></Td>
 					</Tr>
 <%
 	end if

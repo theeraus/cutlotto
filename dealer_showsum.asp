@@ -1,4 +1,4 @@
-<%@ Language=VBScript %>
+<%@ Language=VBScript CodePage = 65001  %>
 <%OPTION EXPLICIT%>
 <% Response.CacheControl = "no-cache" %>
 <% Response.AddHeader "Pragma", "no-cache" %> 
@@ -45,7 +45,7 @@ dim pretid
 <BODY topmargin=0 leftmargin=0>
 <%
 
-'************** äÁèãªé 
+'************** ï¿½ï¿½ï¿½ï¿½ï¿½ 
 dim sumall
 dim typenum1, typenum2, typenum3, typenum4, typenum5, typenum6, typenum7, typenum8
 dim strOpen
@@ -148,69 +148,69 @@ dim strOrder
 %>
 	<TABLE width='95%' align=center class=table_blue bgcolor=white>        	
 		<tr align=center class=head_black>
-			<td bgColor=#CCFFCC>»ÃÐàÀ·</td>
-			<td bgColor=#CCFFCC>ÂÍ´à§Ô¹</td>
-			<td bgColor=#CCFFCC>ÂÍ´ËÑ¡%  </td>
-			<td bgColor=#CCFFCC>ÂÍ´à§Ô¹¶Ù¡</td>
+			<td bgColor=#CCFFCC>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</td>
+			<td bgColor=#CCFFCC>ï¿½Í´ï¿½Ô¹</td>
+			<td bgColor=#CCFFCC>ï¿½Í´ï¿½Ñ¡%  </td>
+			<td bgColor=#CCFFCC>ï¿½Í´ï¿½Ô¹ï¿½Ù¡</td>
 			
 		</tr>
 		<tr class=text_black>
-			<td bgcolor=#FFFFCC>2 º¹</td>
+			<td bgcolor=#FFFFCC>2 ï¿½ï¿½</td>
 			<td bgcolor=#CCFFFF><%=typenum1%></td>
 			<td bgcolor=#CCFFFF><%=dis1%></td>
 			<td bgcolor=#CCFFFF><%=sum_pay1%></td>			
 		</tr>
 		<tr class=text_black>
-			<td bgcolor=#FFFFCC>3 º¹</td>
+			<td bgcolor=#FFFFCC>3 ï¿½ï¿½</td>
 			<td bgcolor=#CCFFFF><%=typenum2%></td>
 			<td bgcolor=#CCFFFF><%=dis2%></td>
 			<td bgcolor=#CCFFFF><%=sum_pay2%></td>
 		</tr>
 		<tr class=text_black>
-			<td bgcolor=#FFFFCC>3 âµê´</td>
+			<td bgcolor=#FFFFCC>3 ï¿½ï¿½</td>
 			<td bgcolor=#CCFFFF><%=typenum3%></td>
 			<td bgcolor=#CCFFFF><%=dis3%></td>
 			<td bgcolor=#CCFFFF><%=sum_pay3%></td>
 		</tr>
 		<tr class=text_black>
-			<td bgcolor=#FFFFCC>2 âµê´</td>
+			<td bgcolor=#FFFFCC>2 ï¿½ï¿½</td>
 			<td bgcolor=#CCFFFF><%=typenum4%></td>
 			<td bgcolor=#CCFFFF><%=dis4%></td>
 			<td bgcolor=#CCFFFF><%=sum_pay4%></td>
 		</tr>
 		<tr class=text_black>
-			<td bgcolor=#FFFFCC>ÇÔè§º¹</td>
+			<td bgcolor=#FFFFCC>ï¿½ï¿½è§ºï¿½</td>
 			<td bgcolor=#CCFFFF><%=typenum5%></td>
 			<td bgcolor=#CCFFFF><%=dis5%></td>
 			<td bgcolor=#CCFFFF><%=sum_pay5%></td>
 		</tr>
 		<tr><td colspan=4 height=15 bgcolor=#FFFFCC>&nbsp;</td></tr>
 		<tr class=text_black>
-			<td bgcolor=#FFFFCC>ÇÔè§ÅèÒ§</td>
+			<td bgcolor=#FFFFCC>ï¿½ï¿½ï¿½ï¿½ï¿½Ò§</td>
 			<td bgcolor=#CCFFFF><%=typenum6%></td>
 			<td bgcolor=#CCFFFF><%=dis6%></td>
 			<td bgcolor=#CCFFFF><%=sum_pay6%></td>
 		</tr>
 		<tr class=text_black>
-			<td bgcolor=#FFFFCC>2 ÅèÒ§</td>
+			<td bgcolor=#FFFFCC>2 ï¿½ï¿½Ò§</td>
 			<td bgcolor=#CCFFFF><%=typenum7%></td>
 			<td bgcolor=#CCFFFF><%=dis7%></td>
 			<td bgcolor=#CCFFFF><%=sum_pay7%></td>
 		</tr>
 		<tr class=text_black>
-			<td bgcolor=#FFFFCC>3 ÅèÒ§</td>
+			<td bgcolor=#FFFFCC>3 ï¿½ï¿½Ò§</td>
 			<td bgcolor=#CCFFFF><%=typenum8%></td>
 			<td bgcolor=#CCFFFF><%=dis8%></td>
 			<td bgcolor=#CCFFFF><%=sum_pay8%></td>
 		</tr>
 		<tr class=head_black>
-			<td bgcolor=#CCFFCC>ÃÇÁ</td>
+			<td bgcolor=#CCFFCC>ï¿½ï¿½ï¿½</td>
 			<td bgcolor=#CCFFCC><%=s_total%></td>
 			<td bgcolor=#CCFFCC><%=s_dis%></td>
 			<td bgcolor=#CCFFCC><%=s_pay%></td>
 		</tr>
 		<tr align=center class=head_black>
-			<td bgColor=#CCFFCC colspan=4><input type=button name=cmdclose value="  »Ô´  " onClick="window.close();" class=button_blue></td>
+			<td bgColor=#CCFFCC colspan=4><input type=button name=cmdclose value="  ï¿½Ô´  " onClick="window.close();" class=button_blue></td>
 		</tr>
 	</TABLE>
 </BODY>

@@ -13,13 +13,14 @@ body, .btn {
     font-weight: 600;
 }
 
-table.table{
-    font-size: 1rem !important;
+table{
+    font-size: 13px !important;
 }
 
-table tr td{
+.table tr td{
     padding:5px;
-    font-size: 0.9rem !important;
+    font-size: 13px !important;
+    font-weight: 400 !important;
 }
 
 .head_white , .textbig_white{
@@ -29,4 +30,12 @@ table tr td{
 
 .tdbody_red{
     BACKGROUND-COLOR: #ffd8cc;
+}
+
+.dialogBox {
+    position : absolute;
+    border : 0 solid black;
+    top : 100px;
+    left : 100px;
+    visibility : hidden;
 }

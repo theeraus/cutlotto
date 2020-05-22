@@ -1,4 +1,4 @@
-<%@ Language=VBScript %>
+<%@ Language=VBScript CodePage = 65001  %>
 <%OPTION EXPLICIT%>
 <% Response.CacheControl = "no-cache" %>
 <% Response.AddHeader "Pragma", "no-cache" %> 
@@ -9,6 +9,11 @@
 <!--#include file="mdlGeneral.asp"-->
 <%Response.Buffer = True%>
 <%
+Response.ContentType = "text/html"
+Response.AddHeader "Content-Type", "text/html;charset=UTF-8"
+Response.CodePage = 65001
+Response.CharSet = "UTF-8"
+
 Dim objRec
 dim recCut
 dim recNum
@@ -73,6 +78,16 @@ dim i
 <meta http-equiv="pragma" content="no-cache"> 
 <meta http-equiv="expires" content="-1">
 <LINK href="include/code.css" type=text/css rel=stylesheet>
+
+<link href="assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
+<link href="assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
+<link href="assets/css/skins/header/base/light.css" rel="stylesheet" type="text/css" />
+<link href="assets/css/skins/header/menu/light.css" rel="stylesheet" type="text/css" />
+<link href="assets/css/skins/brand/navy.css" rel="stylesheet" type="text/css" />
+<link href="assets/css/skins/aside/navy.css" rel="stylesheet" type="text/css" />
+<link href="assets/css/global.css" rel="stylesheet" type="text/css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
 <script language="JavaScript" src="include/normalfunc.js"></script>
 <script Language="VBScript" >	
 	sub cutid_onChange()

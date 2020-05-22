@@ -1,4 +1,4 @@
-<%@ Language=VBScript %>
+<%@ Language=VBScript CodePage = 65001  %>
 <%OPTION EXPLICIT%>
 <%check_session_valid()%>
 <!--#include file="include/adovbs.inc"-->
@@ -26,7 +26,7 @@
 
 <TABLE WIDTH="100%" BORDER=0 CELLSPACING=0 CELLPADDING=0 bgColor=white>
 	<TR class=head_white bgColor=#6495ed>
-		<TD align=middle colspan=3>กรุณา Log in ด้วย User <br>ของเจ้ามือที่คุณต้องการส่งต่อ</TD>
+		<TD align=middle colspan=3>๏ฟฝ๏ฟฝุณ๏ฟฝ Log in ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ User <br>๏ฟฝอง๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝอท๏ฟฝ๏ฟฝุณ๏ฟฝ๏ฟฝอง๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ่งต๏ฟฝ๏ฟฝ</TD>
 	</TR>
 	<TR class=text_blue>
 		<TD colspan=3 align=middle>   &nbsp;</TD>

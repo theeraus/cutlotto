@@ -1,4 +1,4 @@
-<%@ Language=VBScript %>
+<%@ Language=VBScript CodePage = 65001  %>
 <%OPTION EXPLICIT%>
 <% Response.CacheControl = "no-cache" %>
 <% Response.AddHeader "Pragma", "no-cache" %> 
@@ -6,9 +6,15 @@
 <%Response.Buffer = True%>
 <!--#include file="include/adovbs.inc"-->
 <!--#include file="mdlGeneral.asp"-->
+<% 
+Response.ContentType = "text/html"
+Response.AddHeader "Content-Type", "text/html;charset=UTF-8"
+Response.CodePage = 65001
+Response.CharSet = "UTF-8"
+%>
 <HTML>
 <HEAD>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
 <meta http-equiv="cache-control" content="no-cache"> 
 <meta http-equiv="pragma" content="no-cache"> 
 <meta http-equiv="expires" content="-1">
@@ -16,7 +22,7 @@
 <script language="JavaScript" src="include/normalfunc.js"></script>
 <Title></Title>
 </HEAD>
-<BODY>
+<body>
 
 
 <SCRIPT LANGUAGE=vbscript RUNAT=Server>
@@ -26,6 +32,7 @@
 	dim strSql
 	dim strTitle
 	dim strMsg 
+	dim strMsgCheck 
 	dim strGoto
 	dim RndPw
 	dim LenPw
@@ -130,7 +137,7 @@
 		end if
 		set rs = nothing
 		set objConn = nothing
-
+	
 	if chkOk =true then
 		Session("chkid")= Session.SessionID
 		'// jum 2006-11-29 
@@ -138,29 +145,29 @@
 		'set oSecurity = server.createobject("DLLGetMacAddr.clsGetMacAddress")
 		'strRedi=oSecurity.strRedi(Session("utype"))
         if Session("utype") = "F" or Session("utype") = "D" then
-            strRedi = "firstpage_dealer.asp"
+            strRedi = "index.asp?page=firstpage_dealer.asp"
         elseif Session("utype") = "P" then
-            strRedi = "firstpage_announce.asp"
+            strRedi = "index.asp?page=firstpage_announce.asp"
         elseif Session("utype") = "K" then
-            strRedi = "firstpage_announce.asp"
+            strRedi = "index.asp?page=firstpage_announce.asp"
         elseif Session("utype") = "A" then
-            strRedi = "mt_listdealer.asp"
+            strRedi = "index.asp?page=mt_listdealer.asp"
         else
-            strRedi = "signin.asp"
+            strRedi = "index.asp?page=signin.asp"
         end if
 		response.redirect strRedi		
 	else
 		call showmessage(strMsg&"&nbsp;&nbsp;[<a href='index.asp?page=signin.asp'>ย้อนกลับ</a>]")
-		Response.end		
+		'Response.end		
 	end if	
 
 	
 Function EncryptPws(ByVal inPws, byval RndPw)
-Dim LenPws
-Dim enPws
-Dim I
-dim tmp
-Dim chkRnd
+		Dim LenPws
+		Dim enPws
+		Dim I
+		dim tmp
+		Dim chkRnd
         If RTrim(inPws) = "" Then
                 EncryptPws = ""
                 Exit Function
@@ -188,6 +195,7 @@ Dim chkRnd
         End If
         EncryptPws = enPws
         
+		
 End Function
 
 '	End sub

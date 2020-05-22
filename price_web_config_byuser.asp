@@ -1,7 +1,9 @@
+ <%@ Language=VBScript CodePage = 65001  %>
 <%OPTION EXPLICIT%>
 <% Response.CacheControl = "no-cache" %>
 <% Response.AddHeader "Pragma", "no-cache" %> 
 <% Response.Expires = -1 %>
+<% Response.CodePage = 65001%>
 <!--#include file="mdlGeneral.asp"-->
 
 <%
@@ -9,14 +11,26 @@
 %>
 <html>
 <head>
-<title>.:: ����Ҥҡ�ҧ : ���ᷧ�͡ ::. </title>
-<meta http-equiv="Content-Type" content="text/html; charset=windows-874">
+<title>.:: ตั้งราคากลาง : เว็บแทงออก ::. </title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta http-equiv="cache-control" content="no-cache"> 
 <meta http-equiv="pragma" content="no-cache"> 
 <meta http-equiv="expires" content="-1">
 <link href="include/code.css" rel="stylesheet" type="text/css">
 <script language="JavaScript" src="include/normalfunc.js"></script>
 <script language="JavaScript" src="include/dialog.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700">
+
+<link href="assets/plugins/custom/fullcalendar/fullcalendar.bundle.css" rel="stylesheet" type="text/css" />
+
+<link href="assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
+<link href="assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
+
+<link href="assets/css/skins/header/base/light.css" rel="stylesheet" type="text/css" />
+<link href="assets/css/skins/header/menu/light.css" rel="stylesheet" type="text/css" />
+<link href="assets/css/skins/brand/navy.css" rel="stylesheet" type="text/css" />
+<link href="assets/css/skins/aside/navy.css" rel="stylesheet" type="text/css" />
+<link href="assets/css/global.css" rel="stylesheet" type="text/css" />
 <script language="Javascript">
 function change (picurl,n) {
 	if (n==1){	
@@ -52,7 +66,7 @@ function change (picurl,n) {
 		login_id=objRS("login_id")
 	end if
 	if from_save="yes" then
-	'// ����Ҩҡ��� click �ѹ�֡
+	'// ถ้ามาจากการ click บันทึก
 		use_same_this=Request("use_same_this")
 		rec_ticket=Request("rec_ticket")		
 '		SQL="update sc_user set rec_ticket=" & rec_ticket & " where [user_id]=" & player_id
@@ -82,7 +96,7 @@ function change (picurl,n) {
 			set objRS=objDB.Execute(SQL)
 		next 
 		if use_same_this="yes" then
-			'-- update �����Ţͧ player �ء������繢ͧ�����͹��������Ҥ� / % ��ҡѺ player ��� 
+			'-- update ข้อมูลของ player ทุกคนที่เป็นของเจ้ามือนี้ให้มีราคา / % เท่ากับ player นี้ 
 			SQL="exec spA_Update_tb_price_web_Lot " & dealer_id & ", " & player_id & "," & game_type
 			set objRS=objDB.Execute(SQL)
 		end if
@@ -91,7 +105,7 @@ function change (picurl,n) {
 %>
 	<form name="form1" action="price_web_config_byuser.asp?me=1" method="post">
 	<center><br>
-	<table width="500"  border="0" cellspacing="1" cellpadding="1">
+	<table width="500"  border="0" cellspacing="1" cellpadding="1" style="display:none">
 		<tr height="35">
 			<td><img src="images/price_gov.jpg" border="0" style="cursor:hand;"  name="pictureGov" 
 			onMouseOver="change('images/price_gov_over.jpg',1);" 
@@ -127,13 +141,13 @@ function change (picurl,n) {
 			</td>
 		</tr>
 		<tr>
-			<td class="tdbody1" bgcolor="#B3FFD9" align="left">�����Ţ : <%=login_id%></td>
-			<td class="tdbody1" bgcolor="#B3FFD9" align="left" colspan="2">���� : <%=GetPlayerName(player_id)%></td>
+			<td class="tdbody1" bgcolor="#B3FFD9" align="left">หมายเลข : <%=login_id%></td>
+			<td class="tdbody1" bgcolor="#B3FFD9" align="left" colspan="2">ชื่อ : <%=GetPlayerName(player_id)%></td>
 		</tr>
 		<tr>
-			<td class="tdbody1" bgcolor="#FFFFA4" align="center">��Դ</td>
-			<td class="tdbody1" bgcolor="#FFFFA4" align="center">����</td>
-			<td class="tdbody1" bgcolor="#FFFFA4" align="center">Ŵ (%)</td>
+			<td class="tdbody1" bgcolor="#FFFFA4" align="center">ชนิด</td>
+			<td class="tdbody1" bgcolor="#FFFFA4" align="center">จ่าย</td>
+			<td class="tdbody1" bgcolor="#FFFFA4" align="center">ลด (%)</td>
 		</tr>
 		<%
 			SQL="exec spGet_tb_price_player_by_dealer_id_player_id_game_type " & 	dealer_id & "," & player_id & "," & game_type
@@ -174,7 +188,7 @@ function change (picurl,n) {
 			</td>
 		</tr>
 		<tr height="35">
-			<!---- ���Ҥҹ�� ---->
+			<!---- ใช้ราคานี้ ---->
 			<td class="tdbody" align="left" colspan="4">&nbsp;&nbsp;&nbsp; 
 				<input type="hidden" name="use_same_this" value="">
 				<img src="images/user_this.GIF" style="cursor:hand;" onClick="clickuse_same_this('<%=GetGameDesc(game_type)%>')">
@@ -186,7 +200,7 @@ function change (picurl,n) {
 			<input type="hidden" name="player_id" value="<%=player_id%>">
 			<input type="hidden" name="game_type" value="<%=game_type%>">
 			<td class="tdbody" align="left" colspan="4">&nbsp;&nbsp;&nbsp;
-				<input type="button" value=" �ѹ�֡/�͡" name="OK" style="cursor:hand;" onClick="clickok();">
+				<input type="button" value=" บันทึก/ออก" name="OK" style="cursor:hand;" onClick="clickok();">
 			</td>
 		</tr>
 	</table>
@@ -198,11 +212,11 @@ function change (picurl,n) {
 Function GetGameDesc(g)
 	select case g
 		case 1 
-			GetGameDesc="�Ѱ���"
+			GetGameDesc="รัฐบาล"
 		case 2
-			GetGameDesc="����Թ/���"
+			GetGameDesc="ออมสิน/ธกส"
 		case 3
-			GetGameDesc="����Ҥ����"
+			GetGameDesc="ตั้งราคาอื่น"
 		case else
 			GetGameDesc=""
 	end select
@@ -243,10 +257,10 @@ function clickrec_ticket(p){
 
 	if (t=="2"){
 		document.p_rec_ticket.src = "images/rec_play.bmp";
-		document.form1.rec_ticket.value="1" // �ͤ�ǡ�͹�Ѻ
+		document.form1.rec_ticket.value="1" // รอคิวก่อนรับ
 	}else{
 		document.p_rec_ticket.src = "images/rec_play_q.GIF"	;
-		document.form1.rec_ticket.value="2" // �Ѻ���
+		document.form1.rec_ticket.value="2" // รับเลย
 	}	
 }
 
@@ -254,7 +268,7 @@ function clickok(){
 	document.form1.submit();
 }
 function clickuse_same_this(t){
-	if (confirm('�س��ͧ��� ���Ҥҹ������� \n �ҤҢͧ�ء�� (੾��'+t+')��������Ҥ����ǡѹ ��� ���� ��� %')) {
+	if (confirm('คุณต้องการ ใช้ราคานี้ทั้งหมด \n ราคาของทุกคน (เฉพาะ'+t+')ให้แก้เป็นราคาเดียวกัน ทั้ง จ่าย และ %')) {
    document.form1.use_same_this.value="yes"
    document.form1.submit();
 	}	

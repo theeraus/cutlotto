@@ -2,7 +2,7 @@
  	<FRAME SRC="" NAME="">
  	<FRAME SRC="" NAME="">
  </FRAMESET> -->
-<%@ Language=VBScript %>
+<%@ Language=VBScript CodePage = 65001  %>
 <% Response.CacheControl = "no-cache" %>
 <% Response.AddHeader "Pragma", "no-cache" %> 
 <% Response.Expires = -1 %>
@@ -46,33 +46,33 @@ dim gamesendto
 			userchkgame = Session("uid")
 			call CheckGame(userchkgame)
 			gamesendto = Session("gameid")
-			call CheckGame(sendfrom)  ' คืนค่า game id ของเจ้ามือปัจจุบัน
+			call CheckGame(sendfrom)  ' ๏ฟฝืน๏ฟฝ๏ฟฝ๏ฟฝ game id ๏ฟฝอง๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝอปัจ๏ฟฝุบัน
 			cutSeq=GenMaxID("tb_cut_all", "cut_seq", "game_id="&gamesendto&" and dealer_id="&userchkgame)
 		elseif Request("sendweb2") <> "" and Request("sendweb")="" then
-		'กรณีย้อนกลับมาจาก web 2 แล้วเอาค่ากลับมาบันทึกที่ web 1
-			sendto = Session("user_send_toweb")   'userWebID   'ตัวบอกว่า ส่งไปที่ใครจำไว้
+		'๏ฟฝรณ๏ฟฝ๏ฟฝ๏ฟฝอน๏ฟฝ๏ฟฝับ๏ฟฝาจาก web 2 ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝาค๏ฟฝาก๏ฟฝับ๏ฟฝาบัน๏ฟฝึก๏ฟฝ๏ฟฝ๏ฟฝ web 1
+			sendto = Session("user_send_toweb")   'userWebID   '๏ฟฝ๏ฟฝวบอก๏ฟฝ๏ฟฝ๏ฟฝ ๏ฟฝ๏ฟฝไปท๏ฟฝ๏ฟฝ๏ฟฝรจ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ
 			sendfrom  = Session("uid")
-			call CheckGame(sendfrom)  ' คืนค่า game id ของเจ้ามือปัจจุบัน
+			call CheckGame(sendfrom)  ' ๏ฟฝืน๏ฟฝ๏ฟฝ๏ฟฝ game id ๏ฟฝอง๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝอปัจ๏ฟฝุบัน
 			gamesendto = Session("gameid")
 			cutSeq=GenMaxID("tb_cut_all", "cut_seq", "game_id="&gamesendto&" and dealer_id="&sendfrom)
 		elseif Request("sendweb")<>"" then
-			'กรณีส่ง ข้าม web ทำที่ web 2
+			'๏ฟฝรณ๏ฟฝ๏ฟฝ๏ฟฝ ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ web ๏ฟฝำท๏ฟฝ๏ฟฝ web 2
 			sendto = Request("sendto")
 			userchkgame = sendto
-			call CheckGame(sendto)  ' get ค่า game id ของ เจ้ามือที่จะส่งไปถึง
+			call CheckGame(sendto)  ' get ๏ฟฝ๏ฟฝ๏ฟฝ game id ๏ฟฝอง ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝอท๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝไปถึง
 			gamesendto = Session("gameid")
-			call CheckGame(Session("uid"))  ' คืนค่า game id ของเจ้ามือปัจจุบัน
+			call CheckGame(Session("uid"))  ' ๏ฟฝืน๏ฟฝ๏ฟฝ๏ฟฝ game id ๏ฟฝอง๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝอปัจ๏ฟฝุบัน
 			cutSeq=GenMaxID("tb_cut_all", "cut_seq", "game_id="&gamesendto&" and dealer_id="&userchkgame)
 		else
 			sendto = Request("sendto")
-			call CheckGame(Session("uid"))  ' คืนค่า game id ของเจ้ามือปัจจุบัน
+			call CheckGame(Session("uid"))  ' ๏ฟฝืน๏ฟฝ๏ฟฝ๏ฟฝ game id ๏ฟฝอง๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝอปัจ๏ฟฝุบัน
 			gamesendto = Session("gameid")
 			userchkgame = Session("uid")
 			cutSeq=GenMaxID("tb_cut_all", "cut_seq", "game_id="&gamesendto&" and dealer_id="&userchkgame)
 		end if	
 		sendweb = Request("sendweb")
 		chkTud=false
-		If Request("resend")="Y" Then 'กรณีเป็นการส่งใหม
+		If Request("resend")="Y" Then '๏ฟฝรณ๏ฟฝ๏ฟฝ็นก๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ
 			sendfrom=Request("sendfrom")  'send to dealer
 			sendto = Request("sendto")			' send to player
 			cutallid = Request("cutallid")
@@ -86,11 +86,11 @@ dim gamesendto
 
 		Else
 
-			'============  ปรับเลขกรณีที่เป็นสู้บน ===============  26/10/52
-			'ให้ปรับเลขโดยการ จำนวนเงินที่สู้แต่ละเลข * จำนวนจ่าย  / ด้วยจำนวนแทงออก
-			'get ค่า จำนวนจ่าย และ จำนวนแทงออก
+			'============  ๏ฟฝ๏ฟฝับ๏ฟฝลข๏ฟฝรณีท๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ้บน ===============  26/10/52
+			'๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝับ๏ฟฝลข๏ฟฝยก๏ฟฝ๏ฟฝ ๏ฟฝำนวน๏ฟฝิน๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝลข * ๏ฟฝำนวน๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ  / ๏ฟฝ๏ฟฝ๏ฟฝยจำนวนแทง๏ฟฝอก
+			'get ๏ฟฝ๏ฟฝ๏ฟฝ ๏ฟฝำนวน๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ ๏ฟฝ๏ฟฝ๏ฟฝ ๏ฟฝำนวนแทง๏ฟฝอก
 
-			' *** ไม่ต้องคำนวน จำนวนจ่าย และ แทงออกแล้ว เนื่องจาก คำนวณไม่ได้ตามที่ต้องการหากทำ ต้อง รื้อโปรแกรมใหม่ 8/2/53 anon
+			' *** ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝอง๏ฟฝำนวน ๏ฟฝำนวน๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ ๏ฟฝ๏ฟฝ๏ฟฝ แทง๏ฟฝอก๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ ๏ฟฝ๏ฟฝ๏ฟฝอง๏ฟฝาก ๏ฟฝำนวณ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝอง๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝาก๏ฟฝ๏ฟฝ ๏ฟฝ๏ฟฝอง ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ 8/2/53 anon
 
 
 '			If Request("fromFgUp")="yes" Then		
@@ -113,7 +113,7 @@ dim gamesendto
 '					out1up=trim(rsPricePO("out1up"))
 '				End If 
 '			End If
-			'============  ปรับเลขกรณีที่เป็นสู้บน ===============  26/10/52
+			'============  ๏ฟฝ๏ฟฝับ๏ฟฝลข๏ฟฝรณีท๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ้บน ===============  26/10/52
 
 				strSql = "Insert Into tb_cut_all (game_id, cut_date, dealer_id, cut_seq, curr_send_to) values "	_
 					& "("&gamesendto&", GetDate(), "&Session("uid")&", "&cutSeq&", "& sendto &")"
@@ -134,7 +134,7 @@ dim gamesendto
 				End if
 				for i = 0 to Ubound(arrNum)
 					if len(trim(arrNum(i)))<>0 Then
-			' *** ไม่ต้องคำนวน จำนวนจ่าย และ แทงออกแล้ว เนื่องจาก คำนวณไม่ได้ตามที่ต้องการหากทำ ต้อง รื้อโปรแกรมใหม่ 8/2/53 anon
+			' *** ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝอง๏ฟฝำนวน ๏ฟฝำนวน๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ ๏ฟฝ๏ฟฝ๏ฟฝ แทง๏ฟฝอก๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ ๏ฟฝ๏ฟฝ๏ฟฝอง๏ฟฝาก ๏ฟฝำนวณ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝอง๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝาก๏ฟฝ๏ฟฝ ๏ฟฝ๏ฟฝอง ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ 8/2/53 anon
 '						If Request("fromFgUp")="yes" Then		
 '							If pay2up > 0 And out2up > 0 Then 
 '								arrMoney(i)=Round(((arrMoney(i) * pay2up) / out2up),0)
@@ -164,7 +164,7 @@ dim gamesendto
 
 				for i = 0 to Ubound(arrNum)
 					if len(trim(arrNum(i)))<>0 Then
-			' *** ไม่ต้องคำนวน จำนวนจ่าย และ แทงออกแล้ว เนื่องจาก คำนวณไม่ได้ตามที่ต้องการหากทำ ต้อง รื้อโปรแกรมใหม่ 8/2/53 anon
+			' *** ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝอง๏ฟฝำนวน ๏ฟฝำนวน๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ ๏ฟฝ๏ฟฝ๏ฟฝ แทง๏ฟฝอก๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ ๏ฟฝ๏ฟฝ๏ฟฝอง๏ฟฝาก ๏ฟฝำนวณ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝอง๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝาก๏ฟฝ๏ฟฝ ๏ฟฝ๏ฟฝอง ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ 8/2/53 anon
 '						If Request("fromFgUp")="yes" Then		
 '							If pay3up > 0 And out3up > 0 Then 
 '								arrMoney(i)=Round(((arrMoney(i) * pay3up) / out3up),0)
@@ -192,7 +192,7 @@ dim gamesendto
 
 				for i = 0 to Ubound(arrNum)
 					if len(trim(arrNum(i)))<>0 Then
-			' *** ไม่ต้องคำนวน จำนวนจ่าย และ แทงออกแล้ว เนื่องจาก คำนวณไม่ได้ตามที่ต้องการหากทำ ต้อง รื้อโปรแกรมใหม่ 8/2/53 anon
+			' *** ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝอง๏ฟฝำนวน ๏ฟฝำนวน๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ ๏ฟฝ๏ฟฝ๏ฟฝ แทง๏ฟฝอก๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ ๏ฟฝ๏ฟฝ๏ฟฝอง๏ฟฝาก ๏ฟฝำนวณ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝอง๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝาก๏ฟฝ๏ฟฝ ๏ฟฝ๏ฟฝอง ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ 8/2/53 anon
 '						If Request("fromFgUp")="yes" Then		
 '							If pay3tod > 0 And out3tod > 0 Then 
 '								arrMoney(i)=Round(((arrMoney(i) * pay3tod) / out3tod),0)
@@ -242,7 +242,7 @@ dim gamesendto
 
 				for i = 0 to Ubound(arrNum)
 					if len(trim(arrNum(i)))<>0 Then
-			' *** ไม่ต้องคำนวน จำนวนจ่าย และ แทงออกแล้ว เนื่องจาก คำนวณไม่ได้ตามที่ต้องการหากทำ ต้อง รื้อโปรแกรมใหม่ 8/2/53 anon
+			' *** ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝอง๏ฟฝำนวน ๏ฟฝำนวน๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ ๏ฟฝ๏ฟฝ๏ฟฝ แทง๏ฟฝอก๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ ๏ฟฝ๏ฟฝ๏ฟฝอง๏ฟฝาก ๏ฟฝำนวณ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝอง๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝาก๏ฟฝ๏ฟฝ ๏ฟฝ๏ฟฝอง ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ 8/2/53 anon
 '						If Request("fromFgUp")="yes" Then		
 '							If pay1up > 0 And out1up > 0 Then 
 '								arrMoney(i)=Round(((arrMoney(i) * pay1up) / out1up),0)
@@ -351,10 +351,10 @@ dim gamesendto
 		comm.CommandType = adCmdStoredProc
 		comm.Execute
 	
-	End If   ' กรณีไม่ใช่การส่งใหม
+	End If   ' ๏ฟฝรณ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ
 
 	'ticketid = GetValueFromTable("tb_ticket", "ticket_id", "ref_cutall_id=" & cutallid)
-	'เปลี่ยนมาใช้ cut all id 
+	'๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝยน๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ cut all id 
 	'ticketid = cutallid
 'showstr "spCutAllToTicket(" & cutallid & ", '"& sendtype &"', "& Session("uid") &")"
 	if Request("sendtype")="2" then
@@ -367,7 +367,7 @@ dim gamesendto
 			Response.write "<script language=JavaScript>window.close();</script>"	
 			Response.write "<script language=JavaScript>NewOpen('dealer_play_out.asp');</script>"	
 		else
-'กรณีส่งข้ามเว็บ ให้ส่งข้อมูลทั้งหมดกลับไปเพิ่มใน tb_ticket ที่เว็บ  1 
+'๏ฟฝรณ๏ฟฝ๏ฟฝ่งข๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ่งข๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝลท๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝับ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ tb_ticket ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ  1 
 %>
 		<FORM id=FORM2 name=FORM2 action="<%=Request("fromweb")%>dealer_tudroum_act.asp" method=post>
 		<INPUT TYPE=hidden name='tud1' value="<%=Request("tud1")%>">
@@ -406,7 +406,7 @@ dim gamesendto
 		<INPUT TYPE=hidden name='sendfrom' value="<%=Request("sendfrom")%>">
 		<INPUT TYPE=hidden name='sendto' value="<%=Request("sendto")%>">
 		<INPUT TYPE=hidden name='sendtype' value="<%=Request("sendtype")%>">			
-<%'กำหนดค่า  sendweb = ""  เพื่อไม่ให้เกิดการวนไปวนมา%>
+<%'๏ฟฝ๏ฟฝหน๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ  sendweb = ""  ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝิด๏ฟฝ๏ฟฝ๏ฟฝวน๏ฟฝวน๏ฟฝ๏ฟฝ%>
 		<INPUT TYPE=hidden name='sendweb' value="">
 		<INPUT TYPE=hidden name="sendweb2" value="<%=Request("sendweb2")%>">			
 		<INPUT TYPE=hidden name="fromweb" value="<%=Request("fromweb")%>">			

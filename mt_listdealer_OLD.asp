@@ -1,4 +1,5 @@
-<%@ Language=VBScript %>
+<%@ Language=VBScript CodePage = 65001  %>
+<% Response.CodePage = 65001%>
 <%OPTION EXPLICIT%>
 <!--#include file="include/adovbs.inc"-->
 <!--#include file="mdlGeneral.asp"-->
@@ -35,7 +36,7 @@ dim strdel
 
 	<TABLE cellSpacing=0 cellPadding=0 width='95%' border=0 align=center>        	
 		<tr>
-		  <td class="head_black" align=center>ตั้งคนแทง</td>
+		  <td class="head_black" align=center>๏ฟฝ๏ฟฝ้งค๏ฟฝแทง</td>
 		  <td class="head_blue" align=right>&nbsp;
 			<%
 			response.write session("msgResult")
@@ -59,20 +60,20 @@ dim strdel
           <TD class="Head_white">
       <P align=center>&nbsp;</P></TD>
           <TD class="Head_white">
-      <P align=center>รหัส</P></TD>
+      <P align=center>๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ</P></TD>
           <TD class="Head_white">
-      <P align=center>ชื่อ</P></TD>
+      <P align=center>๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ</P></TD>
           <TD class="Head_white">
       <P align=center>Password</P></TD>
           <TD class="Head_white">
-      <P align=center>รหัสดูยอดเงิน</P></TD>
+      <P align=center>๏ฟฝ๏ฟฝ๏ฟฝสด๏ฟฝ๏ฟฝอด๏ฟฝิน</P></TD>
           <TD class="Head_white">
-      <P align=center>ยอดค้างเก่า</P> </TD>
+      <P align=center>๏ฟฝอด๏ฟฝ๏ฟฝาง๏ฟฝ๏ฟฝ๏ฟฝ</P> </TD>
           <TD class="Head_white">
       <P align=center>&nbsp;</P> </TD>
 		  <TD class="Head_white">
-      <P align=center>บันทึก โทร ที่อยู่ หมายเหตุ ฯลฯ</P> </TD>
-          <TD class="Head_white" align=center><input type=button value="เพิ่ม" class=inputB onClick="gotoPage('mt_adddealer.asp')"></TD> 
+      <P align=center>๏ฟฝัน๏ฟฝึก ๏ฟฝ๏ฟฝ ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝหต๏ฟฝ ๏ฟฝ๏ฟฝ๏ฟฝ</P> </TD>
+          <TD class="Head_white" align=center><input type=button value="๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ" class=inputB onClick="gotoPage('mt_adddealer.asp')"></TD> 
         </TR>  
 <%	
 dim reccolor
@@ -100,9 +101,9 @@ dim reccolor
           <TD class="text_blue"><%="" & objRec("user_password")%></TD>
           <TD class="text_blue"><%="" & objRec("sum_password")%></TD>          
           <TD class="text_blue" align=right><%="" & objRec("old_remain")%>&nbsp;</TD>  
-          <TD class="text_blue" align=center><%="ตั้งราคากลาง" %></TD>  
-          <TD class="text_blue"><%="" & objRec("address_1")&" "&objRec("address_2")&" มือถือ "&objRec("mobile_no")&" T. " & objRec("home_tel")&" F. "&objRec("fax_no")&"<a href='mailto:"&objRec("email")&"'>"&objRec("email") %></a></TD>  
-          <TD class="text_blue" align=center><input type=button value="แก้ไข" class=inputB onClick="gotoPage('mt_adddealer.asp?uid=<%=objRec("user_id")%>')"> <input type=button value="ลบ" class=inputB onClick="gotoPage('mt_adddealer.asp')"></TD>
+          <TD class="text_blue" align=center><%="๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝาคาก๏ฟฝาง" %></TD>  
+          <TD class="text_blue"><%="" & objRec("address_1")&" "&objRec("address_2")&" ๏ฟฝ๏ฟฝอถ๏ฟฝ๏ฟฝ "&objRec("mobile_no")&" T. " & objRec("home_tel")&" F. "&objRec("fax_no")&"<a href='mailto:"&objRec("email")&"'>"&objRec("email") %></a></TD>  
+          <TD class="text_blue" align=center><input type=button value="๏ฟฝ๏ฟฝ๏ฟฝ" class=inputB onClick="gotoPage('mt_adddealer.asp?uid=<%=objRec("user_id")%>')"> <input type=button value="ลบ" class=inputB onClick="gotoPage('mt_adddealer.asp')"></TD>
         </TR>  
 
 <%		
@@ -112,10 +113,10 @@ dim reccolor
 %>
 	
         <TR align=middle bgcolor=Blue>
-          <TD colspan=6 class=head_white>ไม่พบข้อมูล [<a href="mt_adddealer.asp" class=head_red>เพิ่ม</a>]</TD>
+          <TD colspan=6 class=head_white>๏ฟฝ๏ฟฝ่พบ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ [<a href="mt_adddealer.asp" class=head_red>๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ</a>]</TD>
         </TR>  
         <TR align=middle>
-          <TD colspan=6 class=head_blue><A href="JavaScript:history.back(1)">ย้อนกลับ</a></TD>
+          <TD colspan=6 class=head_blue><A href="JavaScript:history.back(1)">๏ฟฝ๏ฟฝอน๏ฟฝ๏ฟฝับ</a></TD>
         </TR>  
 	
 <%	

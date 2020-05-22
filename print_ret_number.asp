@@ -2,6 +2,7 @@
 <% Response.CacheControl = "no-cache" %>
 <% Response.AddHeader "Pragma", "no-cache" %> 
 <% Response.Expires = -1 %>
+<% Response.CodePage = 65001%>
 <%
 		Dim objRS , objDB , SQL	
 		Dim ticket_id, line_per_page,i,j,k,game_id,player_id
@@ -19,7 +20,7 @@
 %>
 <html>
 <head>
-<title>.:: พิมพ์ส่ง : ต่อเจ้ามืออื่น (นอกระบบ) ::. </title>
+<title>.:: เธเธดเธกเธเนเธชเนเธ : เธ•เนเธญเน€เธเนเธฒเธกเธทเธญเธญเธทเนเธ (เธเธญเธเธฃเธฐเธเธ) ::. </title>
 <meta http-equiv="Content-Type" content="text/html; charset=windows-874">
 <meta http-equiv="cache-control" content="no-cache"> 
 <meta http-equiv="pragma" content="no-cache"> 
@@ -31,8 +32,8 @@
 	<center><br>
 			<table  border="0"  cellpadding="1" cellspacing="0" width="500">
 				<tr>
-					<td class="tdbody_navy" width="60">เลขที่ &nbsp;<%=objRS("login_id")%></td>
-					<td class="tdbody_navy" width="160">ชื่อ &nbsp;<%=objRS("player_name")%></td>
+					<td class="tdbody_navy" width="60">เน€เธฅเธเธ—เธตเน &nbsp;<%=objRS("login_id")%></td>
+					<td class="tdbody_navy" width="160">เธเธทเนเธญ &nbsp;<%=objRS("player_name")%></td>
 					<td>&nbsp;</td>
 				</tr>
 			</table>
@@ -51,7 +52,7 @@
 					i=i+1
 					objRS.MoveNext
 				wend
-				'---- แสดงโพย แถวละ 33 ค่า
+				'---- เนเธชเธ”เธเนเธเธข เนเธ–เธงเธฅเธฐ 33 เธเนเธฒ
 				%><table  border="0"  cellpadding="1" cellspacing="1" width="500" bgcolor="#D4D4D4"><%
 				for i=1 to 33
 					j=i+line_per_page

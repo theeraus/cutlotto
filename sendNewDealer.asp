@@ -2,6 +2,7 @@
 <% Response.CacheControl = "no-cache" %>
 <% Response.AddHeader "Pragma", "no-cache" %> 
 <% Response.Expires = -1 %>
+<% Response.CodePage = 65001%>
 <%
 		if trim(Session("uid"))="" then 	response.redirect "signin.asp"
 		Dim ticket_id , user , pass, dealer_id, mess, RndPw, strPw, new_ticket_id, i
@@ -22,7 +23,7 @@
 		user=Request("user_x")
 		pass=Request("pass_x")
 		if  from_click_submit="yes" then
-			'// กรณีที่ ต้องนำเลขคืนไป แทง กับเจ้ามืออื่น 			
+			'// เธเธฃเธ“เธตเธ—เธตเน เธ•เนเธญเธเธเธณเน€เธฅเธเธเธทเธเนเธ เนเธ—เธ เธเธฑเธเน€เธเนเธฒเธกเธทเธญเธญเธทเนเธ 			
 			SQL="select a.user_id,a.create_by, a.user_password from sc_user a "
 			SQL=SQL & " inner join sc_user b on a.create_by=b.user_id "
 			SQL=SQL & " where ( a.login_id='" &  user &  "' or a.user_name='" & user & "' ) and a.user_password='" & pass & "' and "
@@ -55,20 +56,20 @@
 				'response.end
 				Set objRS=objDB.Execute(SQL)
 				if not objRS.eof then
-					'-- หา gameID
+					'-- เธซเธฒ gameID
 					dealer_id=objRS("user_id")
 					SQL = "select * from tb_open_game where dealer_id=" & dealer_id & " And game_active='A'"
 					Set objRS=objDB.Execute(SQL)
 					if not objRS.eof then
 						game_id=objRS("game_id")
 					else
-						mess="ผิดพลาด : เจ้ามือปิดรับแล้ว !!"
+						mess="เธเธดเธ”เธเธฅเธฒเธ” : เน€เธเนเธฒเธกเธทเธญเธเธดเธ”เธฃเธฑเธเนเธฅเนเธง !!"
 					end if
 				else
-					mess="ผิดพลาด : เลือกเจ้ามือ กับ ชื่อ/รหัสผ่าน ไม่ถูกต้อง "			
+					mess="เธเธดเธ”เธเธฅเธฒเธ” : เน€เธฅเธทเธญเธเน€เธเนเธฒเธกเธทเธญ เธเธฑเธ เธเธทเนเธญ/เธฃเธซเธฑเธชเธเนเธฒเธ เนเธกเนเธ–เธนเธเธ•เนเธญเธ "			
 				end if
 			else
-				mess="ผิดพลาด : ชื่อ รหัสผ่านไม่ถูกต้อง !!"
+				mess="เธเธดเธ”เธเธฅเธฒเธ” : เธเธทเนเธญ เธฃเธซเธฑเธชเธเนเธฒเธเนเธกเนเธ–เธนเธเธ•เนเธญเธ !!"
 			end if
 			if mess<>"" then
 				%><script language="javascript">
@@ -76,12 +77,12 @@
 					</script>
 				<%
 			else	
-				'// ถ้า user/pass และรหัสเจ้ามือถูกต้อง 
+				'// เธ–เนเธฒ user/pass เนเธฅเธฐเธฃเธซเธฑเธชเน€เธเนเธฒเธกเธทเธญเธ–เธนเธเธ•เนเธญเธ 
 				'--- insert into tb_ticket		
 				ticket_number=Getticket_number(player_id , game_id )
-				rec_status=1 ' ส่ง
-				send_status=1     ' 2 = ส่งต่อเจ้ามืออื่น // 1  ' ส่งเจ้ามือเจ้าของ
-				key_from=1       ' แทงจาก com 
+				rec_status=1 ' เธชเนเธ
+				send_status=1     ' 2 = เธชเนเธเธ•เนเธญเน€เธเนเธฒเธกเธทเธญเธญเธทเนเธ // 1  ' เธชเนเธเน€เธเนเธฒเธกเธทเธญเน€เธเนเธฒเธเธญเธ
+				key_from=1       ' เนเธ—เธเธเธฒเธ com 
 				key_id=Session("uid")
 				SQL="exec spInsert_tb_ticket " & game_id & ", "  & _
 																	ticket_number & ", " & _
@@ -93,7 +94,7 @@
 				set objRS=objDB.Execute(SQL)																
 				if not objRS.EOF then
 					new_ticket_id=objRS("ticket_id")
-					'// update รหัสโพยอ้างอิงกับโพยใบเดิมที่ถูกเจ้ามือเก่าคืนเลขมา
+					'// update เธฃเธซเธฑเธชเนเธเธขเธญเนเธฒเธเธญเธดเธเธเธฑเธเนเธเธขเนเธเน€เธ”เธดเธกเธ—เธตเนเธ–เธนเธเน€เธเนเธฒเธกเธทเธญเน€เธเนเธฒเธเธทเธเน€เธฅเธเธกเธฒ
 					SQL="update tb_ticket set old_ref_id=" & ticket_id & " where ticket_id=" & ticket_id
 					set objRS1=objDB.Execute(SQL)
 
@@ -106,7 +107,7 @@
 						key_number=objRS1("key_number")
 						key_money=objRS1("Ret_money")
 						key_seq=i
-						number_status=1    '  ส่ง
+						number_status=1    '  เธชเนเธ
 						if updown_type <>""  and  key_number<>"" and  key_money <>"" then
 							'--- insert into tb_ticket_key
 							SQL="exec spInsert_tb_ticket_key " & _
@@ -120,7 +121,7 @@
 						end if
 						objRS1.MoveNext
 					wend
-					'---  update tb_ticket .send_status = 2 ส่งต่อเจ้ามืออื่น ที่ ticket ใบเดิม
+					'---  update tb_ticket .send_status = 2 เธชเนเธเธ•เนเธญเน€เธเนเธฒเธกเธทเธญเธญเธทเนเธ เธ—เธตเน ticket เนเธเน€เธ”เธดเธก
 					SQL="update tb_ticket set send_status=2 where ticket_id=" & ticket_id
 					set objRS=objDB.Execute(SQL)
 
@@ -129,25 +130,25 @@
 					if not objRS.eof then
 						delaer_name=objRS("delaer_name")
 					end if
-					'// เก็บ ประวัติการส่งเจ้ามืออื่นเอาไว้ เพื่อใช้ในการแสดงชื่อเจ้ามือ ตอนส่งเจ้าอื่น ครั้งต่อไป
+					'// เน€เธเนเธ เธเธฃเธฐเธงเธฑเธ•เธดเธเธฒเธฃเธชเนเธเน€เธเนเธฒเธกเธทเธญเธญเธทเนเธเน€เธญเธฒเนเธงเน เน€เธเธทเนเธญเนเธเนเนเธเธเธฒเธฃเนเธชเธ”เธเธเธทเนเธญเน€เธเนเธฒเธกเธทเธญ เธ•เธญเธเธชเนเธเน€เธเนเธฒเธญเธทเนเธ เธเธฃเธฑเนเธเธ•เนเธญเนเธ
 					SQL="insert into send_new_dealer ([user_id],dealer_id) values (" & Session("uid") & ", " & dealer_id & ")"
 					set objRS=objDB.Execute(SQL)
 				end if
 				%>
 				<script language="javascript">
-					alert('ได้ทำการส่งเจ้ามือ <%=delaer_name%> \n เรียบร้อยแล้ว')		
+					alert('เนเธ”เนเธ—เธณเธเธฒเธฃเธชเนเธเน€เธเนเธฒเธกเธทเธญ <%=delaer_name%> \n เน€เธฃเธตเธขเธเธฃเนเธญเธขเนเธฅเนเธง')		
 					//parent.closeDialog();
 					window.open('index.asp?page=ret_number.asp','_top')
 					//refreshParent() 
-					// ต้องเลื่อนเลขคืนเป็นใบแรก หลังจากที่ส่งเจ้ามืออื่นแล้วจะไม่แสดงที่เลขคืน
+					// เธ•เนเธญเธเน€เธฅเธทเนเธญเธเน€เธฅเธเธเธทเธเน€เธเนเธเนเธเนเธฃเธ เธซเธฅเธฑเธเธเธฒเธเธ—เธตเนเธชเนเธเน€เธเนเธฒเธกเธทเธญเธญเธทเนเธเนเธฅเนเธงเธเธฐเนเธกเนเนเธชเธ”เธเธ—เธตเนเน€เธฅเธเธเธทเธ
 				</script>
 				<%	
 			end if
-		end if '// end กด click OK 
+		end if '// end เธเธ” click OK 
 %>
 <html>
 <head>
-<title>.:: ส่งเจ้าอื่น : คนแทง ::. </title>
+<title>.:: เธชเนเธเน€เธเนเธฒเธญเธทเนเธ : เธเธเนเธ—เธ ::. </title>
 <meta http-equiv="Content-Type" content="text/html; charset=windows-874">
 <meta http-equiv="cache-control" content="no-cache"> 
 <meta http-equiv="pragma" content="no-cache"> 
@@ -174,26 +175,26 @@
 			<td align="center" >			
 				<table  border="0"  cellpadding="1" cellspacing="0" width="90%">
 					<tr>
-						<td class="tdbody_navy" width="60" colspan="2">ส่งเจ้าอื่น</td>
+						<td class="tdbody_navy" width="60" colspan="2">เธชเนเธเน€เธเนเธฒเธญเธทเนเธ</td>
 					</tr>
 					<tr height="35">
-						<td class="text_blue">ชื่อ/รหัส เจ้ามือ</td>
+						<td class="text_blue">เธเธทเนเธญ/เธฃเธซเธฑเธช เน€เธเนเธฒเธกเธทเธญ</td>
 						<td><input type="text" name="dealer_id"  size="20" maxlength="20" 
 							value="<%=SendNew_Dealer(Session("uid"))%>" onKeyDown="chkEnter(this);" >						
 					</tr>
 					<tr>
-						<td class="text_blue">ชื่อ</td>
+						<td class="text_blue">เธเธทเนเธญ</td>
 						<td><input type="text" name="user_x" size="20" onKeyDown="chkEnter(this);"></td>
 					</tr>
 					<tr>
-						<td class="text_blue">รหัสผ่าน</td>
+						<td class="text_blue">เธฃเธซเธฑเธชเธเนเธฒเธ</td>
 						<td><input type="password"  name="pass_x" size="20" onKeyDown="chkEnter(this);"></td>
 					</tr>
 					<tr height="35">
 						<input type="hidden" name="from_click_submit" value="yes">
 						<input type="hidden" name="ticket_id" value="<%=ticket_id%>">						
-						<td colspan="2" align="center"><input type="button" value=" ตกลง " onClick="clickOK()" style="cursor:hand;" id="bok">
-						&nbsp;&nbsp;<input type="button" value=" ยกเลิก " onClick="clickCancel()" style="cursor:hand;" id="bcancel">
+						<td colspan="2" align="center"><input type="button" value=" เธ•เธเธฅเธ " onClick="clickOK()" style="cursor:hand;" id="bok">
+						&nbsp;&nbsp;<input type="button" value=" เธขเธเน€เธฅเธดเธ " onClick="clickCancel()" style="cursor:hand;" id="bcancel">
 						</td>
 					</tr>
 					<tr>
@@ -224,17 +225,17 @@
 	}
 	function clickOK(){
 		if (document.form1.dealer_id.value==''){
-			alert('กรุณาป้อน ชื่อ หรือ รหัส เจ้ามือ');
+			alert('เธเธฃเธธเธ“เธฒเธเนเธญเธ เธเธทเนเธญ เธซเธฃเธทเธญ เธฃเธซเธฑเธช เน€เธเนเธฒเธกเธทเธญ');
 			document.form1.dealer_id.focus();
 			return false;
 		}
 		if (document.form1.user_x.value==''){
-			alert('กรุณาป้อน ชื่อ หรือ หมายเลข ของคุณ !!');
+			alert('เธเธฃเธธเธ“เธฒเธเนเธญเธ เธเธทเนเธญ เธซเธฃเธทเธญ เธซเธกเธฒเธขเน€เธฅเธ เธเธญเธเธเธธเธ“ !!');
 			document.form1.user_x.focus();
 			return false;
 		}
 		if (document.form1.pass_x.value==''){
-			alert('กรุณาป้อน รหัสผ่าน');
+			alert('เธเธฃเธธเธ“เธฒเธเนเธญเธ เธฃเธซเธฑเธชเธเนเธฒเธ');
 			document.form1.pass_x.focus();
 			return false;
 		}

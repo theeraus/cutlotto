@@ -1,6 +1,14 @@
-<!--#include virtual="masterpage.asp"-->
-<% Sub ContentPlaceHolder() %>
+<%OPTION EXPLICIT%>
+<% Response.CacheControl = "no-cache" %>
+<% Response.AddHeader "Pragma", "no-cache" %> 
+<% Response.Expires = -1 %>
+<!--#include file="include/config.inc"-->
 <%
+Response.ContentType = "text/html"
+Response.AddHeader "Content-Type", "text/html;charset=UTF-8"
+Response.CodePage = 65001
+Response.CharSet = "UTF-8"
+
 		if trim(Session("uid"))="" then 	response.redirect "signin.asp"
 		Dim objRS , objDB , SQL	, tmp_Color
 		Dim mode, edit_user_id
@@ -51,24 +59,48 @@
 		end if
 
 %>
+<html>
+<head>
+<title>.:: Link Web ::. </title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="cache-control" content="no-cache"> 
+<meta http-equiv="pragma" content="no-cache"> 
+<meta http-equiv="expires" content="-1">
+<link href="include/code.css" rel="stylesheet" type="text/css">
+<script language="JavaScript" src="include/normalfunc.js"></script>
+	<link href="assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/skins/header/base/light.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/skins/header/menu/light.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/skins/brand/navy.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/skins/aside/navy.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/global.css" rel="stylesheet" type="text/css" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<style type="text/css">
+  <!--
+  div#blinking {text-decoration: blink;}
+  -->
+</style>
 
+</head>
+<body topmargin="0"  leftmargin="0">
 	<form name="form1" action="link_web.asp?is_dealer=<%=is_dealer %>" method="post">
 	<input type="hidden" name="edit_lk_id">
 	<center><br>
 <strong class="tdbody">	&bull; Link 
-<%
-If is_dealer=1 Then
-	response.write "เจ้ามือ"
-Else
-	response.write "คนแทง"
-End if
-%>
+<% If is_dealer=1 Then %>
+	เจ้ามือ
+<% Else %>
+	คนแทง
+<% End if %>
 &bull;</strong>
 			<table  border="0"  cellpadding="1" cellspacing="1"  width="100%">
 				<tr>
 					<td width="50%">
-						<input type="button" class="inputG" value="เพิ่ม" style="cursor:hand; width: 75px;" onClick="click_add();">&nbsp;&nbsp;				
-						<input type="button" class="inputE" value="ออก" style="cursor:hand; width: 75px;" onClick="window.open('index.asp','_top')">
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<input type="button" class="btn btn-primary btn-sm" value="เพิ่ม" style="cursor:hand; width: 75px;" onClick="click_add();">&nbsp;&nbsp;				
+						<input type="button" class="btn btn-danger btn-sm" value="ออก" style="cursor:hand; width: 75px;" onClick="window.open('index.asp','_top')">
 					</td>
 
 				</tr>
@@ -160,9 +192,18 @@ End if
 	<input type="hidden" name="mode">
 	<input type="hidden" name="edit_user_id">
 	</form>
+</body>
+</html>
 
-
-
+<%
+function FormatN(n,dot)
+	if n="0" or n="" then
+		FormatN=0
+	else
+		FormatN=formatnumber(n,dot)
+	end if
+end function
+%>
 <script language="javascript">
 function clickpic(p){
 	var t=p
@@ -289,6 +330,3 @@ function chkEnter(obj){
 		formatnum = num
 	end function
 </script>
-
-
-<% End Sub  %>

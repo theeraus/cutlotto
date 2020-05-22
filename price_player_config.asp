@@ -1,6 +1,26 @@
-<!--#include virtual="masterpage.asp"-->
-
-<% Sub ContentPlaceHolder() %>
+<%OPTION EXPLICIT%>
+<% Response.CacheControl = "no-cache" %>
+<% Response.AddHeader "Pragma", "no-cache" %> 
+<% Response.Expires = -1 %>
+<% Response.CodePage = 65001%>
+<html>
+<head>
+<title>.:: config price ::. </title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="cache-control" content="no-cache"> 
+<meta http-equiv="pragma" content="no-cache"> 
+<meta http-equiv="expires" content="-1">
+<!-- <meta http-equiv="refresh" content="10"> -->
+<link href="include/code.css" rel="stylesheet" type="text/css">
+<script language="JavaScript" src="include/normalfunc.js"></script>
+<link href="assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/skins/header/base/light.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/skins/header/menu/light.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/skins/brand/navy.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/skins/aside/navy.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/global.css" rel="stylesheet" type="text/css" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
 <script type="text/javascript">
 function click_creditreport(){
@@ -46,6 +66,8 @@ function blinkIt() {
 
 </script>
 
+</head>
+<!--#include file="mdlGeneral.asp"-->
 <%
 		if trim(Session("uid"))="" then 	response.redirect "signin.asp"
 		Dim parent_login_id, digit_len
@@ -268,19 +290,18 @@ response.redirect "price_player_config.asp"
 		End if		
 %>
 
-
+<body topmargin="0"  leftmargin="0" onload="setInterval('blinkIt()',500)">
 <IFRAME name="f_hidden" WIDTH=0  height=0 frameborder=0></IFRAME>
-
 	<form name="form1" action="price_player_config.asp" method="post">
-
 	<center><br>
-	<div class="table-responsive">
-			<table class="table table-striped m-table" border="0"  cellpadding="1" cellspacing="1"  width="100%">
+			<table  border="0"  cellpadding="1" cellspacing="1"  width="80%" class="table">
 				<tr>
 					<td>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<input type="button" class="btn btn-primary btn-sm" value="เพิ่ม" style="cursor:hand; width: 75px;" onClick="click_add();">					
-						<input type="button" class="btn btn-focus btn-sm" value="พิมพ์" style="cursor:hand; width: 75px;" onClick="print_user();">
-						<input type="button" class="btn btn-metal btn-sm" value="ออก" style="cursor:hand; width: 75px;" onClick="gotoPage('firstpage_dealer.asp')">
+						<input type="button" class="btn btn-success btn-sm" value="พิมพ์" style="cursor:hand; width: 75px;" onClick="print_user();">
+						<input type="button" class="btn btn-danger btn-sm" value="ออก" style="cursor:hand; width: 75px;" onClick="gotoPage('firstpage_dealer.asp')">
 					</td>
 					<%
 					SQL="select  rec_ticket_type,show_price_player, game_id_adjust from sc_user where  user_id=" & dealer_id 
@@ -349,11 +370,10 @@ response.redirect "price_player_config.asp"
 					</td>
 				</tr>
 			</table>
-			
-			<table class="table table-striped m-table"  border="0"  cellpadding="1" cellspacing="1"  width="100%">
+			<table  border="0"  cellpadding="1" cellspacing="1"  width="100%">
 				<tr>
 					<td align="center" colspan="2">
-						<table class="table table-sm " border="0"  cellpadding="1" cellspacing="1"  width="100%">
+						<table  border="0"  cellpadding="1" cellspacing="1" bgcolor="#000040">
 							<%
 							if rec_ticket_dealer=1 then
 								tmp_Color="#33CC33"
@@ -361,7 +381,7 @@ response.redirect "price_player_config.asp"
 								tmp_Color="red"
 							end If									
 							%>
-							<tr >
+							<tr bgcolor="#FFFFFF">
 								<td width="8" class="tdbody1" bgcolor="<%=tmp_Color%>" style="cursor:hand;" 
 								onClick="click_rec_dealer()">&nbsp;
 								</td>
@@ -387,26 +407,26 @@ response.redirect "price_player_config.asp"
 									End If 
 									'response. write " test gid =" & Session("gameid")
 									%>
-									<input type="button" class="btn btn-primary btn-sm" value="ปรับเครดิตอัตโนมัติ" style="cursor:hand;width:150;" onClick="click_balance();" <%=can_adjust %>>
+									<input type="button" class="btn btn-primary btn-sm" value="ปรับเครดิตอัตโนมัติ" style="cursor:hand;width:120;" onClick="click_balance();" <%=can_adjust %>>
 									&nbsp;&nbsp;&nbsp;
 										<!--
 									<input type="button" value="รายงานเครดิต" style="cursor:hand;width:120;" onClick="click_creditreport();" > 
 									-->
 								</td>
 							</tr>
-							<tr class="btn-dark" >
-								<td ></td>
-								<td ></td>
-								<td ></td>
-								<td ></td>
-								<td  align="right" colspan="1" >
+							<tr>
+								<td bgcolor="#282828"></td>
+								<td bgcolor="#282828"></td>
+								<td bgcolor="#282828"></td>
+								<td bgcolor="#282828"></td>
+								<td class="textbig_white" align="right" colspan="1" bgcolor="#282828">
 								หมายเลข</td>
-								<td  align="center" >ชื่อ</td>
-								<td  align="center" >Password</td>
-		
-								<td  align="center" >เครดิตสูงสุด</td>
-								<td  align="center" ></td>
-								<td  align="center" >บันทึก โทร ที่อยู่ หมายเหตุ ฯลฯ</td>
+								<td class="textbig_white" align="center" bgcolor="#282828">ชื่อ</td>
+								<td class="textbig_white" align="center" bgcolor="#282828">Password</td>
+								<!--<td class="textbig_white" align="center" bgcolor="#282828"></td> -->
+								<td class="textbig_white" align="center" bgcolor="#282828">เครดิตสูงสุด</td>
+<td class="textbig_white" align="center" bgcolor="#282828"></td>
+								<td class="textbig_white" align="center" bgcolor="#282828">บันทึก โทร ที่อยู่ หมายเหตุ ฯลฯ</td>
 							</tr>
 						
 							<%
@@ -444,14 +464,14 @@ response.redirect "price_player_config.asp"
 										<span style="cursor:hand;" onClick="click_cancel();" class="head_blue">ยกเลิก</span>
 									</td>											
 									<td bgcolor="#FFFFFF">
-										<table cellspacing="0" cellpadding="0" class="table table-striped m-table">
+										<table cellspacing="0" cellpadding="0">
 											<tr>												
 												<td class="tdbody" bgcolor="<%=c %>" align="right">
 													<%=parent_login_id %>
 													<input type="hidden" name="parent_login_id" value="<%=parent_login_id%>">
 												</td>
 												<td class="tdbody" bgcolor="<%=c %>" align="left">
-													<input type="text" name="login_id" class="input1" size="8" maxlength="<%=maxlength_login%>" onKeyDown="chkEnter(this);">
+													<input type="text" name="login_id" class="form-control" size="8" maxlength="<%=maxlength_login%>" onKeyDown="chkEnter(this);">
 												</td>
 											</tr>
 										</table>
@@ -459,11 +479,11 @@ response.redirect "price_player_config.asp"
 
 									<td class="tdbody" bgcolor="<%=c %>" align="left">
 										<input type="text" name="user_name" 	
-										class="input1"  size="15" maxlength="80" onKeyDown="chkEnter(this);">	
+										class="form-control"  size="15" maxlength="80" onKeyDown="chkEnter(this);">	
 									</td>										
 									<td class="tdbody" bgcolor="<%=c %>" align="left">
 										<input type="text" name="user_password" 
-										class="input1"  size="5" maxlength="20" onKeyDown="chkEnter(this);">	
+										class="form-control"  size="5" maxlength="20" onKeyDown="chkEnter(this);">	
 									</td>
 									<!--
 									<td class="tdbody" bgcolor="<%=c %>" align="left">
@@ -472,9 +492,9 @@ response.redirect "price_player_config.asp"
 									</td> -->
 									<td class="tdbody" bgcolor="<%=c %>" align="left">
 										<input type="text" name="limit_play" 
-										class="input1"  size="10" maxlength="20" onKeyDown="chkEnter(this);">
+										class="form-control"  size="10" maxlength="20" onKeyDown="chkEnter(this);">
 									</td>
-									<td class="tdbody" bgcolor="<%=c %>" ></td>
+<td class="tdbody" bgcolor="<%=c %>" ></td>
 									<td class="tdbody" bgcolor="<%=c %>" align="left">
 										<textarea rows="3" cols="20" name="address_1" class="input1" ></textarea>
 									</td>
@@ -508,7 +528,7 @@ response.redirect "price_player_config.asp"
 											<%
 											login_id= right(Trim(objRS("login_id")),maxlength_login) 
 											%>
-											<table cellspacing="0" cellpadding="0" class="table table-striped m-table">
+											<table cellspacing="0" cellpadding="0">
 												<tr>												
 													<td class="tdbody" bgcolor="<%=c %>" align="right">
 														<%=parent_login_id %>
@@ -516,7 +536,7 @@ response.redirect "price_player_config.asp"
 													</td>
 													<td class="tdbody" bgcolor="<%=c %>" align="left">
 														<input type="text" name="login_id" value="<%=login_id%>" 
-														class="input1" size="8" maxlength="<%=maxlength_login%>" onKeyDown="chkEnter(this);">
+														class="form-control" size="8" maxlength="<%=maxlength_login%>" onKeyDown="chkEnter(this);">
 													</td>
 												</tr>
 											</table>
@@ -525,11 +545,11 @@ response.redirect "price_player_config.asp"
 										</td>
 										<td class="tdbody" bgcolor="<%=c %>" align="left">
 											<input type="text" name="user_name" 	value="<%=objRS("user_name")%>" 
-											class="input1"  size="15" maxlength="80" onKeyDown="chkEnter(this);">	   
+											class="form-control"  size="15" maxlength="80" onKeyDown="chkEnter(this);">	   
 										</td>										
 										<td class="tdbody" bgcolor="<%=c %>" align="left">
 											<input type="text" name="user_password" value="<%=objRS("user_password")%>"	
-											class="input1"  size="5" maxlength="20" onKeyDown="chkEnter(this);">	
+											class="form-control"  size="5" maxlength="20" onKeyDown="chkEnter(this);">	
 										</td>
 										<!--
 										<td class="tdbody" bgcolor="<%=c %>" align="left">										
@@ -537,13 +557,13 @@ response.redirect "price_player_config.asp"
 											class="input1"  size="5" maxlength="20" onKeyDown="chkEnter(this);"> 
 										</td>-->
 										<td class="tdbody" bgcolor="<%=c %>" align="left">
-											<input type="text" name="limit_play" value="<%=objRS("limit_play")%>"	
+											<input type="text" class="form-control" name="limit_play" value="<%=objRS("limit_play")%>"	
 											readonly size="10" maxlength="20" onKeyDown="chkEnter(this);">
 
 										</td>
 <td class="tdbody" bgcolor="<%=c %>" align="center" ></td>
 										<td class="tdbody" bgcolor="<%=c %>" align="left">
-											<textarea rows="3" cols="20" name="address_1" class="input1" ><%=objRS("address_1")%></textarea>
+											<textarea rows="3" cols="20" name="address_1" class="form-control" ><%=objRS("address_1")%></textarea>
 										</td>
 									</tr>
 									<!-----------------------------------------------------------><%
@@ -583,7 +603,7 @@ response.redirect "price_player_config.asp"
 										<td nowrap class="tdbody" bgcolor="<%=c %>" align="right" width="80"><%=st_blink%><%=FormatN(objRS("limit_play"),0)%><%=ed_blink%>	
 										</td>
 										<td class="tdbody" bgcolor="<%=c %>" align="center" >
-										<input type="button" class="inputM" value="เพิ่มเครดิต" style="cursor:hand;width:90;" onClick="click_credit('<%=objRs("user_id")%>','<%=objRs("user_name")%>');">
+										<input type="button" class="btn btn-primary btn-sm" value="เพิ่มเครดิต" style="cursor:hand;width:90;" onClick="click_credit('<%=objRs("user_id")%>','<%=objRs("user_name")%>');">
 										</td>
 
 										<td class="tdbody" bgcolor="<%=c %>" align="left"><%=st_blink%><%=objRS("address_1")%><%=ed_blink%></td>
@@ -607,15 +627,22 @@ response.redirect "price_player_config.asp"
 					</td>
 				</tr>
 			</table>
-			</div>
 	</center>
 	<input type="hidden" name="mode">
 	<input type="hidden" name="edit_user_id">
-
 	</form>
+</body>
+</html>
 
-
-
+<%
+function FormatN(n,dot)
+	if n=0 or n="" Or n=" " Or IsNull(n) then
+		FormatN=0
+	else
+		FormatN=formatnumber(n,dot)
+	end if
+end function
+%>
 <script language="javascript">
 function clickpic(p){
 	var t=p
@@ -873,5 +900,3 @@ function click_del_det(user_id,modeshow,deluser_id,user_name){
 	}
 }
 </script>
-
-<% End Sub  %>

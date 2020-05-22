@@ -1,7 +1,31 @@
-<!--#include virtual="masterpage.asp"-->
+<!DOCTYPE html>
+<html>
 
-<% Sub ContentPlaceHolder() %>
+    <td>
+        -----------</br>
+        
+        <img src="images/chgsumpass.JPG" />
+        </br>
+    </td>
+ <body>
+<%
+ response.write("My first ASP script!")
+ %>
+<%  
+  Dim dtmHour 
 
-	<h1>My page content goes here</h1>
+  dtmHour = Hour(Now()) 
 
-<% End Sub %>
+  If dtmHour < 12 Then 
+    strGreeting = "Good Morning!" 
+  Else   
+    strGreeting = "Hello!" 
+  End If    
+%>  
+/n
+This page was last refreshed on <%= Now() %>. 
+
+<%= strGreeting %> 
+
+ </body>
+ </html> 

@@ -1,3 +1,4 @@
+<% Response.CodePage = 65001%>
 <%
 '*** This file defines all the constants used throughout the message board and there are quite a few of them.
 
@@ -72,58 +73,58 @@ Const MBImgTopicIcon = "<img src=""images/topicicon.gif"" width=""16"" height=""
 Const PrintCredit = "<font face=""MS Sans Serif, Arial"" size=""1"" color=""#000000"">Message Board Developed by <a href=""http://www.ymonda.com"" target=""_top"">yMonda Limited</a></font>"
 
 '**** Constant of Millionare ****
-Const mlnUserTypeAdmin	= "A" '	A	����������	user_type	Admin
-Const mlnUserTypeDealer	= "D" '	D	����������	user_type	������
-Const mlnUserTypeKey	= "K" '	K	����������	user_type	������
-Const mlnUserTypePlayer	= "P" '	P	����������	user_type	��ᷧ
+Const mlnUserTypeAdmin	= "A" '	A	ปรเภทผู้ใช้	user_type	Admin
+Const mlnUserTypeDealer	= "D" '	D	ปรเภทผู้ใช้	user_type	เจ้ามือ
+Const mlnUserTypeKey	= "K" '	K	ปรเภทผู้ใช้	user_type	คนคีย์
+Const mlnUserTypePlayer	= "P" '	P	ปรเภทผู้ใช้	user_type	คนแทง
 
-Const mlnRecAuto	= "1" '	1	����������Ѻ��	rec_ticket	�Ѻ�ѵ��ѵ�
-Const mlnRecApplove	= "2" '	2	����������Ѻ��	rec_ticket	�ͤ�ǡ�͹�Ѻ
+Const mlnRecAuto	= "1" '	1	ประเภทการรับโพย	rec_ticket	รับอัตโนมัติ
+Const mlnRecApplove	= "2" '	2	ประเภทการรับโพย	rec_ticket	รอคิวก่อนรับ
 
-Const mlnStatusKey	= "0" ' 0	ʶҹС���Ѻ��	rec_status	���ѧ����
-Const mlnStatusSend	= "1" '	1	ʶҹС���Ѻ��	rec_status	�� / �ͤ���
-Const mlnStatusRecAll	= "2" '	2	ʶҹС���Ѻ��	rec_status	�Ѻ���
-Const mlnStatusRecPart	= "3" '	3	ʶҹС���Ѻ��	rec_status	�Ѻ�ҧ��ǹ
-Const mlnStatusRecNoRec	= "4" '	4	ʶҹС���Ѻ��	rec_status	����Ѻ
+Const mlnStatusKey	= "0" ' 0	สถานะการรับโพย	rec_status	กำลังคีย์
+Const mlnStatusSend	= "1" '	1	สถานะการรับโพย	rec_status	ส่ง / รอคีย์
+Const mlnStatusRecAll	= "2" '	2	สถานะการรับโพย	rec_status	รับหมด
+Const mlnStatusRecPart	= "3" '	3	สถานะการรับโพย	rec_status	รับบางส่วน
+Const mlnStatusRecNoRec	= "4" '	4	สถานะการรับโพย	rec_status	ไม่รับ
 
-Const mlnKeyCom		= "1" '	1	ᷧ�ҡ	key_from	����������
-Const mlnKeyPDA		= "2" '	2	ᷧ�ҡ	key_from	PDA
+Const mlnKeyCom		= "1" '	1	แทงจาก	key_from	คอมพิวเตอร์
+Const mlnKeyPDA		= "2" '	2	แทงจาก	key_from	PDA
 
-Const mlnDown		= "1" '	1	�Ţ�� ��ҧ	�updown_type	��ҧ
-Const mlnUp		= "2" '	2	�Ţ�� ��ҧ	�updown_type	��
-Const mlnUpDonw		= "3" '	3	�Ţ�� ��ҧ	�updown_type	��+��ҧ
+Const mlnDown		= "1" '	1	เลขบน ล่าง	ีupdown_type	ล่าง
+Const mlnUp		= "2" '	2	เลขบน ล่าง	ีupdown_type	บน
+Const mlnUpDonw		= "3" '	3	เลขบน ล่าง	ีupdown_type	บน+ล่าง
 
-Const mlnNumStatusKey	= "0" ' 0	ʶҹС���Ѻ�Ţ	number_status	���ѧ����
-Const mlnNumStatusSend	= "1" '	1	ʶҹС���Ѻ�Ţ	number_status	�� / �ͤ���
-Const mlnNumStatusRecAll= "2" '	2	ʶҹС���Ѻ�Ţ	number_status	�Ѻ���
-Const mlnNumStatusRecPart= "3" '3	ʶҹС���Ѻ�Ţ	number_status	�Ѻ�ҧ��ǹ
-Const mlnNumStatusNoRec	= "4" '	4	ʶҹС���Ѻ�Ţ	number_status	����Ѻ
+Const mlnNumStatusKey	= "0" ' 0	สถานะการรับเลข	number_status	กำลังคีย์
+Const mlnNumStatusSend	= "1" '	1	สถานะการรับเลข	number_status	ส่ง / รอคีย์
+Const mlnNumStatusRecAll= "2" '	2	สถานะการรับเลข	number_status	รับหมด
+Const mlnNumStatusRecPart= "3" '3	สถานะการรับเลข	number_status	รับบางส่วน
+Const mlnNumStatusNoRec	= "4" '	4	สถานะการรับเลข	number_status	ไม่รับ
 
-Const mlnPlayType2Up	= "1" '	1	�������Ţᷧ	play_type	�ͧ��Ǻ�
-Const mlnPlayType3Up	= "2" '	2	�������Ţᷧ	play_type	�����Ǻ�
-Const mlnPlayType3Tod	= "3" '	3	�������Ţᷧ	play_type	��������
-Const mlnPlayType2Tod	= "4" '	4	�������Ţᷧ	play_type	�ͧ�����
-Const mlnPlayTypeRunUp	= "5" '	5	�������Ţᷧ	play_type	��觺�
-Const mlnPlayTypeRunDown= "6" '	6	�������Ţᷧ	play_type	�����ҧ
-Const mlnPlayType2Down	= "7" '	7	�������Ţᷧ	play_type	�ͧ�����ҧ
-Const mlnPlayType3Down	= "8" '	8	�������Ţᷧ	play_type	��������ҧ
+Const mlnPlayType2Up	= "1" '	1	ประเภทเลขแทง	play_type	สองตัวบน
+Const mlnPlayType3Up	= "2" '	2	ประเภทเลขแทง	play_type	สามตัวบน
+Const mlnPlayType3Tod	= "3" '	3	ประเภทเลขแทง	play_type	สามตัวโต๊ด
+Const mlnPlayType2Tod	= "4" '	4	ประเภทเลขแทง	play_type	สองตัวโต๊ด
+Const mlnPlayTypeRunUp	= "5" '	5	ประเภทเลขแทง	play_type	วิ่งบน
+Const mlnPlayTypeRunDown= "6" '	6	ประเภทเลขแทง	play_type	วิ่งล่าง
+Const mlnPlayType2Down	= "7" '	7	ประเภทเลขแทง	play_type	สองตัวล่าง
+Const mlnPlayType3Down	= "8" '	8	ประเภทเลขแทง	play_type	สามตัวล่าง
 
-Const mlnNumWrong	= "0" ' 0	ʶҹС�õ�Ǩ�Ţ	check_status	���١
-Const mlnNumRight	= "1" '	1	ʶҹС�õ�Ǩ�Ţ	check_status	�١
+Const mlnNumWrong	= "0" ' 0	สถานะการตรวจเลข	check_status	ไม่ถูก
+Const mlnNumRight	= "1" '	1	สถานะการตรวจเลข	check_status	ถูก
 
-Const mlnGovernment	= "1" '	1	����������	game_type	����Ѱ���
-Const mlnSaving		= "2" ' 2	����������	game_type	�������Թ
-Const mlnOther		= "3" '	3	����������	game_type	������ �
+Const mlnGovernment	= "1" '	1	ประเภทหัวย	game_type	หวยรัฐบาล
+Const mlnSaving		= "2" ' 2	ประเภทหัวย	game_type	หวยออมสิน
+Const mlnOther		= "3" '	3	ประเภทหัวย	game_type	หวยอื่น ๆ
 
-Const mlnGameClose	= "0" '	0	����������Դ�Ѻ	game_status	�Դ�Ѻ
-Const mlnGameOpen	= "1" ' 1	����������Դ�Ѻ	game_status	�Դ�Ѻ
+Const mlnGameClose	= "0" '	0	ประเภทการเปิดรับ	game_status	ปิดรับ
+Const mlnGameOpen	= "1" ' 1	ประเภทการเปิดรับ	game_status	เปิดรับ
 
-Const mlnDealerCut	= "1" '	1	��������õѴ	cut_type	�ҡ�Ţ�Ѵ�͡
-Const mlnSelfCut	= "2" '	2	��������õѴ	cut_type	�ҡ�Ѵ�͡�ͧ
+Const mlnDealerCut	= "1" '	1	ประเภทการตัด	cut_type	จากเลขตัดออก
+Const mlnSelfCut	= "2" '	2	ประเภทการตัด	cut_type	จากตัดออกเอง
 
-Const mlnSendDealer	= "1" '	1	ʶҹС����	send_status	���������Ңͧ
-Const mlnSendOtherDealer= "2" '	2	ʶҹС����	send_status	�觵�����������
-Const mlnSendOut	= "3" '	3	ʶҹС����	send_status	������ᷧ�͡
+Const mlnSendDealer	= "1" '	1	สถานะการส่ง	send_status	ส่งเจ้ามอเจ้าของ
+Const mlnSendOtherDealer= "2" '	2	สถานะการส่ง	send_status	ส่งต่อเจ้ามืออื่น
+Const mlnSendOut	= "3" '	3	สถานะการส่ง	send_status	เจ้ามือแทงออก
 
 Const mlnAdminID	= "1000"
 

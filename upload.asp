@@ -1,7 +1,8 @@
+<% Response.CodePage = 65001%>
 <%
 ' Author Philippe Collignon
 ' Email PhCollignon@email.com
-' Credit ����Ҵ��¹Ф�Ѻ��س���������͡ 
+' Credit ให้เขาด้วยนะครับกรุณาอย่าเอาออก 
 
 Response.Expires=0
 Response.Buffer = TRUE
@@ -21,7 +22,7 @@ value = UploadRequest.Item("file").Item("Value")
 
 Set ScriptObject = Server.CreateObject("Scripting.FileSystemObject")
 'FilePath = Server.MapPath(".") & "\" & "help.xls" ' filename 
-FilePath = Server.MapPath(".") & "\" & "�Ըա�ᷧ��.rtf" ' filename 
+FilePath = Server.MapPath(".") & "\" & "วิธีกดแทงโพย.rtf" ' filename 
 
 Set MyFile = ScriptObject.CreateTextFile(FilePath)
 
@@ -33,8 +34,8 @@ MyFile.Close
 %>
 
 <font color='red'><strong>
-Upload ��ѧ path :<%=filePath%><br>
-���� file : </b><%="�Ըա�ᷧ��.rtf"%><br>
-���º�������� <strong></font>
+Upload ไปยัง path :<%=filePath%><br>
+ชื่อ file : </b><%="วิธีกดแทงโพย.rtf"%><br>
+เรียบร้อยแล้ว <strong></font>
 
 <!--#include file="inc_upload.asp"-->

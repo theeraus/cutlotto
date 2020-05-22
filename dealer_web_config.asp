@@ -1,6 +1,8 @@
-<!--#include virtual="masterpage.asp"-->
-
-<% Sub ContentPlaceHolder() %>
+<%OPTION EXPLICIT%>
+<% Response.CacheControl = "no-cache" %>
+<% Response.AddHeader "Pragma", "no-cache" %> 
+<% Response.Expires = -1 %>
+<!--#include file="mdlGeneral.asp"-->
 <%
 		if trim(Session("uid"))="" then 	response.redirect "signin.asp"
 		Dim objRS , objRS2, objDB , SQL	
@@ -68,26 +70,42 @@
 			objRS.Close
 		end if
 %>
-
-
-
-<form name="form1" action="dealer_web_config.asp" method="post">
-	
+<html>
+<head>
+<title>Web Config</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="cache-control" content="no-cache"> 
+<meta http-equiv="pragma" content="no-cache"> 
+<meta http-equiv="expires" content="-1">
+<link href="include/code.css" rel="stylesheet" type="text/css">
+<script language="JavaScript" src="include/normalfunc.js"></script>
+	<link href="assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/skins/header/base/light.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/skins/header/menu/light.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/skins/brand/navy.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/skins/aside/navy.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/global.css" rel="stylesheet" type="text/css" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+</head>
+<body topmargin="0"  leftmargin="0">
+	<form name="form1" action="dealer_web_config.asp" method="post">
 	<center><br>
 			<table  border="0"  cellpadding="1" cellspacing="1"  width="100%">
 				<tr>
-						<input type="button" class="btn btn-primary" value="เพิ่ม" style="width: 100px;"  onClick="click_add();">&nbsp;&nbsp;&nbsp;					
-						<input type="button" class="btn btn-secondary " value="ออก" style="width: 100px;" onClick="gotoPage('firstpage_dealer.asp')">
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<input type="button" class="btn btn-primary btn-sm" value="เพิ่ม" style="cursor:hand; width: 75px;" onClick="click_add();">&nbsp;&nbsp;&nbsp;					
+						<input type="button" class="btn btn-danger btn-sm" value="ออก" style="cursor:hand; width: 75px;" onClick="gotoPage('firstpage_dealer.asp')">
 					</td>
 				</tr>
 			</table>
-			<div class="table-responsive">
-			<table  border="0"  cellpadding="1" cellspacing="1"  width="100%" class="table table-striped">
+			<table  border="0"  cellpadding="1" cellspacing="1"  width="100%">
 				<tr>
 					<td align="center" colspan=2>
-						<table  border="0"  cellpadding="1" cellspacing="1" class="btn-info">
-							<tr>
-								<td colspan="9" class="tdbody kt-shape-bg-color-3" >
+						<table  border="0"  cellpadding="1" cellspacing="1" bgcolor="#000040">
+							<tr bgcolor="#FFFFFF">
+								<td colspan="9" class="tdbody">
 									&nbsp;หน้าตั้ง Web สำหรับเจ้ามือ
 								</td>
 							</tr>
@@ -126,10 +144,10 @@
 							%>
 								<tr>
 									<td bgcolor="#FFFFFF">
-										<input type="button" class="inputG" value="บันทึก" style="cursor:hand; width: 75px;" onClick="click_add_save();" >
+										<input type="button" class="btn btn-primary btn-sm" value="บันทึก" style="cursor:hand; width: 75px;" onClick="click_add_save();" >
 									</td>
 									<td bgcolor="#FFFFFF">
-										<input type="button" class="inputR" value="ยกเลิก" style="cursor:hand; width: 75px;" onClick="click_cancel();" >
+										<input type="button" class="btn btn-danger btn-sm" value="ยกเลิก" style="cursor:hand; width: 75px;" onClick="click_cancel();" >
 									</td>											
 									<td class="tdbody" bgcolor="<%=c %>" align="left">
 										<input type="text" name="dealer_name" 
@@ -165,10 +183,10 @@
 									%>
 									<tr>
 										<td bgcolor="#FFFFFF">
-											<input type="button" class="inputG" value="บันทึก" style="cursor:hand; width: 75px;" onClick="click_edit_save('<%=objRs("user_id")%>');" >
+											<input type="button" class="btn btn-primary btn-sm" value="บันทึก" style="cursor:hand; width: 75px;" onClick="click_edit_save('<%=objRs("user_id")%>');" >
 										</td>
 										<td bgcolor="#FFFFFF">
-											<input type="button" class="inputR" value="ยกเลิก" style="cursor:hand; width: 75px;" onClick="click_cancel();" >
+											<input type="button" class="btn btn-danger btn-sm" value="ยกเลิก" style="cursor:hand; width: 75px;" onClick="click_cancel();" >
 										</td>							
 										<td class="tdbody" bgcolor="<%=c %>" align="left">
 											<input type="text" name="dealer_name" value="<%=objRs("user_name")%>"
@@ -199,10 +217,10 @@
 									%>
 									<tr>
 										<td bgcolor="#FFFFFF">
-											<input type="button" class="inputE" value="แก้ไข" style="cursor:hand; width: 75px;" onClick="click_edit('<%=objRs("user_id")%>');" >
+											<input type="button" class="btn btn-primary btn-sm" value="แก้ไข" style="cursor:hand; width: 75px;" onClick="click_edit('<%=objRs("user_id")%>');" >
 										</td>
 										<td bgcolor="#FFFFFF">
-											<input type="button" class="inputR" value="ลบ" style="cursor:hand; width: 75px;" onClick="click_del('<%=objRs("user_id")%>','<%=objRs("user_name")%>');" >
+											<input type="button" class="btn btn-danger btn-sm" value="ลบ" style="cursor:hand; width: 75px;" onClick="click_del('<%=objRs("user_id")%>','<%=objRs("user_name")%>');" >
 										</td>											
 										<td class="tdbody" bgcolor="<%=c %>" align="left" width="200"><%=objRS("user_name")%>	</td>
 										<td class="tdbody" bgcolor="<%=c %>" align="left" width="300"><%=objRS("address_1")%>	</td>
@@ -210,10 +228,10 @@
 										<td class="tdbody" bgcolor="<%=c %>" align="left" width="100"><%=objRS("login_id")%>	</td>
 										<td class="tdbody" bgcolor="<%=c %>" align="left" width="100"><%=objRS("user_password")%></td>
 										<td class="tdbody" bgcolor="<%=c %>" align="center"><input type=button 
-                                                class="inputM" name=bttsetprice value="ตั้งราคา" 
+                                                class="btn btn-primary btn-sm" name=bttsetprice value="ตั้งราคา" 
                                                 onClick="gotoPage('price_web_config_byuser.asp?player_id=<%=objRS("user_id")%>&game_type=<%=game_type%>');" 
                                                 style="width: 90px"></td>
-										<td class="tdbody" bgcolor="<%=c %>" align="center"><input type=button class="inputM" name=bttlogin value="Log in" onClick="goLogin('<%=objRS("address_1")%>', '<%=objRS("login_id")%>','<%=objRS("user_password")%>','<%=objRS("nick_name")%>');" style="width: 90px"></td>
+										<td class="tdbody" bgcolor="<%=c %>" align="center"><input type=button class="btn btn-primary btn-sm" name=bttlogin value="Log in" onClick="goLogin('<%=objRS("address_1")%>', '<%=objRS("login_id")%>','<%=objRS("user_password")%>','<%=objRS("nick_name")%>');" style="width: 90px"></td>
 									</tr>
 									<!----------------------------------------------------------->
 									<%
@@ -231,15 +249,22 @@
 					<td colspan=2 class=head_red>*** กรณีตั้งเจ้ามือใน web เดียวกันในช่อง URL ให้ใส่เป็นช่องว่าง </td>
 				</tr>
 			</table>
-			</div>
 	</center>
 	<input type="hidden" name="mode">
 	<input type="hidden" name="edit_web_id">
-	
 	</form>
+</body>
+</html>
 
-
-
+<%
+function FormatN(n,dot)
+	if n=0 or n="" Or n=" " Or IsNull(n) then
+		FormatN=0
+	else
+		FormatN=formatnumber(n,dot)
+	end if
+end function
+%>
 <script language="javascript">
 function click_edit(web_id){
 	document.form1.mode.value="edit";
@@ -267,7 +292,11 @@ function click_edit_save(web_id){
 	if (document.form1.web_addr.value=="http://"){
 		document.form1.web_addr.value="";
 	}
-
+//	if (document.form1.grp_login.value==""){
+//		alert('ผิดพลาด : กรุณากรอก กลุ่ม')
+//		document.form1.grp_login.focus();
+//		return false
+//	}
 	if (document.form1.user_login.value==""){
 		alert('ผิดพลาด : กรุณากรอก user ของกลุ่ม')
 		document.form1.user_login.focus();
@@ -303,7 +332,11 @@ function click_add_save(){
 		//document.form1.web_addr.focus();
 		//return false
 	}
-
+//	if (document.form1.grp_login.value==""){
+//		alert('ผิดพลาด : กรุณากรอก กลุ่ม')
+//		document.form1.grp_login.focus();
+//		return false
+//	}
 	if (document.form1.user_login.value==""){
 		alert('ผิดพลาด : กรุณากรอก user ของกลุ่ม')
 		document.form1.user_login.focus();
@@ -328,7 +361,9 @@ function chkEnter(obj){
 				document.form1.user_login.focus();
 				//document.form1.grp_login.focus();
 			}
-
+//			if(obj.name=="grp_login"){
+//				document.form1.user_login.focus();
+//			}
 			if(obj.name=="user_login"){
 				document.form1.password.focus();
 			}
@@ -357,6 +392,14 @@ function chkEnter(obj){
 	
 		function goLogin(locate, uname, passw, dealer){
 		
+//		if (locate==''){
+//			alert('กรุณาป้อน URL')
+//			return false
+//		}
+//		if (dealer==''){
+//			alert('กรุณาป้อน กลุ่ม')
+//			return false
+//		}
 		
 		if (uname==''){
 			alert('กรุณาป้อน ชื่อ ผู้ใช้งาน')
@@ -387,5 +430,3 @@ function chkEnter(obj){
 	<%
 	End if
 %>
-
-<% End Sub %>

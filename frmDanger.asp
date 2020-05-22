@@ -1,5 +1,8 @@
-<!--#include virtual="masterpage.asp"-->
-<% Sub ContentPlaceHolder() %>
+<%OPTION EXPLICIT%>
+<% Response.CacheControl = "no-cache" %>
+<% Response.AddHeader "Pragma", "no-cache" %> 
+<% Response.Expires = -1 %>
+<!--#include file="include/config.inc"-->
 <%
 		if trim(Session("uid"))="" then 	response.redirect "signin.asp"
 		Dim mode
@@ -87,18 +90,37 @@
 		wend
 		
 %>
+<html>
+<head>
+<title>.:: เลขอันตราย ::. </title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="cache-control" content="no-cache"> 
+<meta http-equiv="pragma" content="no-cache"> 
+<meta http-equiv="expires" content="-1">
+<link href="include/code.css" rel="stylesheet" type="text/css">
+<script language="JavaScript" src="include/dialog.js"></script>
+<script language="JavaScript" src="include/normalfunc.js"></script>
+<link href="assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/skins/header/base/light.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/skins/header/menu/light.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/skins/brand/navy.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/skins/aside/navy.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/global.css" rel="stylesheet" type="text/css" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
+</head>
+<body topmargin="0"  leftmargin="0">
 	<form name="form1" action="frmDanger.asp?dealer_id=<%=dealer_id%>" method="post">
 	<input type="hidden" name="mode" value="save">
 	<center><br><font color=red size=+1><b>เลขอันตราย</b></font><br>
 	<hr style="height:1;" color=red><br>
-	<table width="90%"  border="0" cellspacing="1" cellpadding="1" bgcolor="#FFFFFF">
+	<table width="100%"  border="0" cellspacing="1" cellpadding="1" bgcolor="#FFFFFF" class="table">
 		<tr>
 			<td colspan="8" align="right">
-				<input type="button" class="inputR" name="clear_data" value="ล้างเลขอันตราย" style="cursor:hand;width:100;" onClick="click_clear();">
-				<input type="button" class="inputG" name="save_data" value="บันทึก" style="cursor:hand;width:100;" onClick="click_save();">
-				<input type="button" class="inputE" name="exit_menu" value="ออก" style="cursor:hand;width:100;"
-				onClick="gotoPage('firstpage_dealer.asp'); ">
+				<input type="button" class="btn btn-danger btn-sm" name="clear_data" value="ล้างเลขอันตราย" style="cursor:hand;width:100;" onClick="click_clear();">
+				<input type="button" class="btn btn-primary btn-sm" name="save_data" value="บันทึก" style="cursor:hand;width:100;" onClick="click_save();">
+
 			</td>
 		</tr>
 		<tr class=head_white align=center>
@@ -157,17 +179,17 @@
 		%>
 		<tr height="45">
 			<td colspan="8" align="right">
-				<input type="button" class="inputR" name="clear_data" value="ล้างเลขอันตราย" style="cursor:hand;width:100;" onClick="click_clear();">
-				<input type="button" class="inputG" name="save_data" value="บันทึก" style="cursor:hand;width:100;"
+				<input type="button" class="btn btn-danger btn-sm" name="clear_data" value="ล้างเลขอันตราย" style="cursor:hand;width:100;" onClick="click_clear();">
+				<input type="button" class="btn btn-primary btn-sm" name="save_data" value="บันทึก" style="cursor:hand;width:100;"
 				onClick="click_save();">
-				<input type="button" class="inputE" name="exit_menu" value="ออก" style="cursor:hand;width:100;"
-				onClick="gotoPage('firstpage_dealer.asp'); ">
+
 			</td>
 		</tr>
 	</table><br>
 	</center>
 	</form>
-
+</body>
+</html>
 			
 <script language="javascript">
 	function click_clear(){
@@ -288,5 +310,3 @@
 		document.form1.submit();
 	}
 </script>
-
-<% End Sub  %>

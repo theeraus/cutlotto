@@ -4,7 +4,7 @@
 <% Response.Expires = -1 %>
 <!--#include file="mdlGeneral.asp"-->
 <%
-	'// 2009-08-20 ���� 㺢���Ҫԡ������仴���
+	'// 2009-08-20 เพิ่ม ใบขอสมาชิกรวมเข้าไปด้วย
 	if trim(Session("uid"))="" then 	response.redirect "signin.asp"
 
 	Dim objRS , objDB , SQL
@@ -24,8 +24,8 @@
 %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <HTML>
-<TITLE> :: �ʹ��ػ��� : ��ᷧ :: </TITLE>
-<meta http-equiv="Content-Type" content="text/html; charset=windows-874">
+<TITLE> :: ยอดสรุปเป็นใบ : คนแทง :: </TITLE>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta http-equiv="cache-control" content="no-cache"> 
 <meta http-equiv="pragma" content="no-cache"> 
 <meta http-equiv="expires" content="-1">
@@ -46,10 +46,10 @@
 		<td width="50%">
 			<TABLE width="100%" cellpadding="0" cellspacing="0">
 			<TR class="text_black">
-				<TH>㺷��</TH>
-				<TH align="right">�ʹᷧ</TH>
-				<TH align="right">�ʹ�ѡ%</TH>
-				<TH align="right">�ʹ�١</TH>
+				<TH>ใบที่</TH>
+				<TH align="right">ยอดแทง</TH>
+				<TH align="right">ยอดหัก%</TH>
+				<TH align="right">ยอดถูก</TH>
 			</TR>
 			<%
 				if len(trim(Session("logid"))) <8 then
@@ -81,8 +81,8 @@
 			<%
 					objRS.MoveNext
 				Wend
-				'//��ǹ�ͧ ��Ҫԡ
-				if len(trim(Session("logid"))) <8 Then '// �ʴ�੾�����¹�� �����ҤҢͧ���¹��
+				'//ส่วนของ สมาชิก
+				if len(trim(Session("logid"))) <8 Then '// แสดงเฉพาะเอเยนต์ โดยใช้ราคาของเอเยนต์
 					SQL="exec spJGetSumTicketByPlayerMember " & player_id & ", " & game_id
 					Set objRS=objDB.Execute(SQL)
 					While Not objRS.eof
@@ -107,36 +107,36 @@
 		<td align="center">
 			<table cellpadding="0" cellspacing="0" class="head_black" width="250">
 				<tr>
-					<td>���</td>
+					<td>รวม</td>
 					<td  align="right"><%=cntTicket%>&nbsp;&nbsp;</td>
-					<td>�</td>
+					<td>ใบ</td>
 				</tr>
 				<tr>
-					<td>�ʹᷧ</td>
+					<td>ยอดแทง</td>
 					<td align="right"><%=FormatNumber(dealer_rec,2)%>&nbsp;&nbsp;</td>
-					<td>�ҷ</td>
+					<td>บาท</td>
 				</tr>
 				<tr>
-					<td>�ʹ�ѡ%</td>
+					<td>ยอดหัก%</td>
 					<td align="right"><%=FormatNumber(dis,2)%>&nbsp;&nbsp;</td>
-					<td>�ҷ</td>
+					<td>บาท</td>
 				</tr>
 				<tr>
-					<td>�ʹ�١</td>
+					<td>ยอดถูก</td>
 					<td align="right"><%=FormatNumber(pay_amt,2)%>&nbsp;&nbsp;</td>
-					<td>�ҷ</td>
+					<td>บาท</td>
 				</tr>
 				<tr style="height:29;">
-					<td><strong>��ػ</strong></td>
+					<td><strong>สรุป</strong></td>
 					<td align="right"><%=FormatNumber(dis-pay_amt,2)%>&nbsp;&nbsp;</td>
-					<td>�ҷ</td>
+					<td>บาท</td>
 				</tr>
 			</table>
 		</td>
 	</tr>
 	<tr>
 		<td colspan="2" align="center">
-			<input type="button" style="cursor:hand;width:70" value="�����" class="btt"
+			<input type="button" style="cursor:hand;width:70" value="พิมพ์" class="btt"
 			onClick="self.print();"
 			>
 		</td>

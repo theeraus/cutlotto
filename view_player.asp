@@ -2,6 +2,7 @@
 <% Response.CacheControl = "no-cache" %>
 <% Response.AddHeader "Pragma", "no-cache" %> 
 <% Response.Expires = -1 %>
+<% Response.CodePage = 65001%>
 <!--#include file="mdlGeneral.asp"-->
 <%
 		dim refreshtime
@@ -27,7 +28,7 @@
 			if not objRS.eof then
 				ticket_id=objRS("ticket_id")
 			else
-				Response.write "‰¡Ëæ∫‚æ¬ x" & ticket_number
+				Response.write "‡πÑ‡∏°‡πà‡∏û‡∏ö‡πÇ‡∏û‡∏¢ x" & ticket_number
 				Response.end
 			end if
 		Else
@@ -45,7 +46,7 @@
 			line_per_page=33
 		end if
 
-		'--- ∂È“ ticket_id ∑’Ë‡¢È“¡“‡ªÁπ ticket_id ∑’Ë‰¡Ë‰¥ÈÕ¬ŸË„π status ‡≈¢§◊π·≈È«  Ëß‡®È“¡◊ÕÕ◊Ëπ‰ª·≈È« ‰¡ËµÈÕß· ¥ß„ÀÈ°≈—∫‰ªÀ“∑’Ë„∫„À¡Ë
+		'--- ‡∏ñ‡πâ‡∏≤ ticket_id ‡∏ó‡∏µ‡πà‡πÄ‡∏Ç‡πâ‡∏≤‡∏°‡∏≤‡πÄ‡∏õ‡πá‡∏ô ticket_id ‡∏ó‡∏µ‡πà‡πÑ‡∏°‡πà‡πÑ‡∏î‡πâ‡∏≠‡∏¢‡∏π‡πà‡πÉ‡∏ô status ‡πÄ‡∏•‡∏Ç‡∏Ñ‡∏∑‡∏ô‡πÅ‡∏•‡πâ‡∏ß ‡∏™‡πà‡∏á‡πÄ‡∏à‡πâ‡∏≤‡∏°‡∏∑‡∏≠‡∏≠‡∏∑‡πà‡∏ô‡πÑ‡∏õ‡πÅ‡∏•‡πâ‡∏ß ‡πÑ‡∏°‡πà‡∏ï‡πâ‡∏≠‡∏á‡πÅ‡∏™‡∏î‡∏á‡πÉ‡∏´‡πâ‡∏Å‡∏•‡∏±‡∏ö‡πÑ‡∏õ‡∏´‡∏≤‡∏ó‡∏µ‡πà‡πÉ‡∏ö‡πÉ‡∏´‡∏°‡πà
 		
 		prevTicket=GetPreTicket_Number( ticket_number,player_id, game_id)
 		nextTicket=GetNextTicket_Number( ticket_number,player_id, game_id)
@@ -191,7 +192,7 @@ End Function
 %>
 <html>
 <head>
-<title>.:: ¥Ÿ‚æ¬ : §π·∑ß ::. </title>
+<title>.:: ‡∏î‡∏π‡πÇ‡∏û‡∏¢ : ‡∏Ñ‡∏ô‡πÅ‡∏ó‡∏á ::. </title>
 <meta http-equiv="refresh" content="<%=refreshtime%>" />
 <meta http-equiv="Content-Type" content="text/html; charset=windows-874">
 <meta http-equiv="cache-control" content="no-cache"> 
@@ -204,7 +205,7 @@ End Function
 	function print_ticket(player) {
 	var tkf, tkt
 		if ((document.all.form1.tkfrom.value)=="" ) {
-			alert("°√ÿ≥“√–‡≈¢∑’Ë„∫∑’ËµÈÕß°“√æ‘¡æÏ !!!");
+			alert("‡∏Å‡∏£‡∏∏‡∏ì‡∏≤‡∏£‡∏∞‡πÄ‡∏•‡∏Ç‡∏ó‡∏µ‡πà‡πÉ‡∏ö‡∏ó‡∏µ‡πà‡∏ï‡πâ‡∏≠‡∏á‡∏Å‡∏≤‡∏£‡∏û‡∏¥‡∏°‡∏û‡πå !!!");
 			document.all.form1.tkfrom.focus();
 			exit();
 		}
@@ -227,7 +228,7 @@ End Function
 	<input type="hidden" name="ticket_id" value="<%=ticket_id%>">
 	<%
 	if ticket_id="" then
-		Response.write  "<span class='tdbody'>‰¡Ë¡’‚æ¬</span>"
+		Response.write  "<span class='tdbody'>‡πÑ‡∏°‡πà‡∏°‡∏µ‡πÇ‡∏û‡∏¢</span>"
 		Response.end
 	end if
 	SQL="exec spGettb_ticket_by_ticket_id " & ticket_id
@@ -240,24 +241,24 @@ End Function
 				<table>					
 					<tr>
 						<td align="right" colspan="4">
-						<input type=button class="inputE" style="cursor:hand; width:100" value="ÕÕ°" onClick="click_exit();">						
+						<input type=button class="inputE" style="cursor:hand; width:100" value="‡∏≠‡∏≠‡∏Å" onClick="click_exit();">						
 						</td>
 					</tr>
 
 					<tr>
-						<td class="tdbody" align="right"> Ëß</td>
+						<td class="tdbody" align="right">‡∏™‡πà‡∏á</td>
 						<td class="tdbody" align="right">=</td>
 						<td class="tdbody" align="right"><%=GetSend(player_id,game_id)%></td>
-						<td class="tdbody" align="right">„∫</td>
+						<td class="tdbody" align="right">‡πÉ‡∏ö</td>
 					</tr>
 					<tr>
-						<td class="tdbody" align="right">√—∫·≈È«</td>
+						<td class="tdbody" align="right">‡∏£‡∏±‡∏ö‡πÅ‡∏•‡πâ‡∏ß</td>
 						<td class="tdbody" align="right">=</td>
 						<td class="tdbody" align="right"><%=GetReceive(player_id,game_id)%></td>
-						<td class="tdbody" align="right">„∫</td>
+						<td class="tdbody" align="right">‡πÉ‡∏ö</td>
 					</tr>
 					<tr>
-						<td class="tdbody" align="right">√Õ√—∫</td>
+						<td class="tdbody" align="right">‡∏£‡∏≠‡∏£‡∏±‡∏ö</td>
 						<td class="tdbody" align="right">=</td>
 						<td class="tdbody" align="right"><%
 						If GetSend(player_id,game_id) - GetReceive(player_id,game_id) - GetReturn(player_id,game_id) < 0 Then 
@@ -266,20 +267,20 @@ End Function
 							response.write GetSend(player_id,game_id) - GetReceive(player_id,game_id) - GetReturn(player_id,game_id)
 						End if
 						%></td>
-						<td class="tdbody" align="right">„∫</td>
+						<td class="tdbody" align="right">‡πÉ‡∏ö</td>
 					</tr>
 					<tr>
-						<td class="tdbody" align="right">‡≈¢§◊π</td>
+						<td class="tdbody" align="right">‡πÄ‡∏•‡∏Ç‡∏Ñ‡∏∑‡∏ô</td>
 						<td class="tdbody" align="right">=</td>
 						<td class="tdbody" align="right"><%=GetReturn(player_id,game_id)%></td>
-						<td class="tdbody" align="right">„∫</td>
+						<td class="tdbody" align="right">‡πÉ‡∏ö</td>
 					</tr>							
 					<tr >
 						<td bgcolor="#66CCFF"  
 						align="center" colspan="4"
 						class="textbig_red" style="cursor:hand;" onClick="showsum('player',0)"
 						onMouseOver="changeStyle(this,'textbig_red_over')"
-						onMouseOut="changeStyle(this,'textbig_red')"><b>¬Õ¥·∑ß√«¡</b></td>
+						onMouseOut="changeStyle(this,'textbig_red')"><b>‡∏¢‡∏≠‡∏î‡πÅ‡∏ó‡∏á‡∏£‡∏ß‡∏°</b></td>
 					</tr>
 					<tr>
 						<td class="tdbody1" align="center" colspan="4"><b><%=FormatN(GetTotalDealer_Rec(player_id,game_id),0)%></b></td>
@@ -290,7 +291,7 @@ End Function
 							onClick="showsum('player','<%=objRS("ticket_number")%>')"
 							onMouseOver="changeStyle(this,'textbig_red_over')"
 							onMouseOut="changeStyle(this,'textbig_red')"
-						><b>¬Õ¥„∫π’È</b></td>
+						><b>‡∏¢‡∏≠‡∏î‡πÉ‡∏ö‡∏ô‡∏µ‡πâ</b></td>
 					</tr>
 					<tr>
 						<td class="tdbody" align="center" colspan="4"><b><%=FormatN(GetTotalPlayAmt(ticket_id),0)%></b></td>
@@ -301,7 +302,7 @@ End Function
 					<tr height="25"><td colspan="4">&nbsp;</tr>
 					<tr>
 						<td align="center" colspan="4" bgcolor="Red" >
-						    <span class="auto-style1">„∫∑’Ë</span> <input type="text" name="ticket_number" size="5" class="input1" maxlength="5"
+						    <span class="auto-style1">‡πÉ‡∏ö‡∏ó‡∏µ‡πà</span> <input type="text" name="ticket_number" size="5" class="input1" maxlength="5"
 						value="<%=objRS("ticket_number")%>" onKeyDown="chkEnter(this)">
 						</td>
 					</tr>
@@ -330,10 +331,10 @@ End Function
 						<td height=30 colspan=4>
 						<table class=table_blue width=100%>
 							<tr class=text_blue>
-								<td align=center>æ‘¡æÏ„∫∑’Ë&nbsp;&nbsp;&nbsp;<input type=textbox name=tkfrom size=3>&nbsp;&nbsp; ∂÷ß &nbsp;&nbsp;<input type=textbox name=tkto size=3></td>
+								<td align=center>‡∏û‡∏¥‡∏°‡∏û‡πå‡πÉ‡∏ö‡∏ó‡∏µ‡πà&nbsp;&nbsp;&nbsp;<input type=textbox name=tkfrom size=3>&nbsp;&nbsp; ‡∏ñ‡∏∂‡∏á &nbsp;&nbsp;<input type=textbox name=tkto size=3></td>
 							</tr>
 							<tr>
-								<td align=center><input type=button class="inputP" style="width:150" value="æ‘¡æÏ‚æ¬" onClick="print_ticket('<%=player_id%>');"></td>
+								<td align=center><input type=button class="inputP" style="width:150" value="‡∏û‡∏¥‡∏°‡∏û‡πå‡πÇ‡∏û‡∏¢" onClick="print_ticket('<%=player_id%>');"></td>
 							</tr>
 						</table>
 						</td>
@@ -344,22 +345,22 @@ End Function
 
 			<table  border="0"  cellpadding="1" cellspacing="0">
 				<tr>
-					<td bgcolor="Red" class="auto-style1" >‡≈¢∑’Ë &nbsp;<%=objRS("login_id")%></td>
-					<td bgcolor="Red" class="auto-style1" >™◊ËÕ &nbsp;<%=objRS("player_name")%></td>
-					<!---- ‡Õ“ªÿË¡ refresh ÕÕ° 2006-07-04 Jum µ“¡ ·°È‰¢49_015.xls -------->
+					<td bgcolor="Red" class="auto-style1" >‡πÄ‡∏•‡∏Ç‡∏ó‡∏µ‡πà &nbsp;<%=objRS("login_id")%></td>
+					<td bgcolor="Red" class="auto-style1" >‡∏ä‡∏∑‡πà‡∏≠ &nbsp;<%=objRS("player_name")%></td>
+					<!---- ‡πÄ‡∏≠‡∏≤‡∏õ‡∏∏‡πà‡∏° refresh ‡∏≠‡∏≠‡∏Å 2006-07-04 Jum ‡∏ï‡∏≤‡∏° ‡πÅ‡∏Å‡πâ‡πÑ‡∏Ç49_015.xls -------->
 					<%	'if Request("stoprefresh")="1" then	%>
-								<!---td align="left"><input type=button name=cmdrefresh value="Refresh Õ—µ‚π¡—µ‘" class=button_red onClick="click_stop_refresh('0')"></td --->
+								<!---td align="left"><input type=button name=cmdrefresh value="Refresh ‡∏≠‡∏±‡∏ï‡πÇ‡∏ô‡∏°‡∏±‡∏ï‡∏¥" class=button_red onClick="click_stop_refresh('0')"></td --->
 					<%	'else	%>
-								<!---td align="left"><input type=button name=cmdrefresh value="À¬ÿ¥ Refresh Õ—µ‚π¡—µ‘" class=button_red onClick="click_stop_refresh('1')"></td --->
+								<!---td align="left"><input type=button name=cmdrefresh value="‡∏´‡∏¢‡∏∏‡∏î Refresh ‡∏≠‡∏±‡∏ï‡πÇ‡∏ô‡∏°‡∏±‡∏ï‡∏¥" class=button_red onClick="click_stop_refresh('1')"></td --->
 					<%	'end if	%>
-					<!---- ‡Õ“ªÿË¡ refresh ÕÕ° 2006-07-04 Jum µ“¡ ·°È‰¢49_015.xls -------->
+					<!---- ‡πÄ‡∏≠‡∏≤‡∏õ‡∏∏‡πà‡∏° refresh ‡∏≠‡∏≠‡∏Å 2006-07-04 Jum ‡∏ï‡∏≤‡∏° ‡πÅ‡∏Å‡πâ‡πÑ‡∏Ç49_015.xls -------->
 					<td  align="right" class="tdbody1" nowrap>
-					«—π∑’Ë <%=objRS("ticket_date")%>
-					 Ëß <%=objRS("ticket_time")%>
+					‡∏ß‡∏±‡∏ô‡∏ó‡∏µ‡πà <%=objRS("ticket_date")%>
+					‡∏™‡πà‡∏á <%=objRS("ticket_time")%>
 					&nbsp;
-					‡«≈“√—∫‚æ¬ <%=objRS("rec_time")%>
+					‡πÄ‡∏ß‡∏•‡∏≤‡∏£‡∏±‡∏ö‡πÇ‡∏û‡∏¢ <%=objRS("rec_time")%>
 					&nbsp; 
-					§’¬Ï <%= GetKey(ticket_id) %>
+					‡∏Ñ‡∏µ‡∏¢‡πå <%= GetKey(ticket_id) %>
 					<%=" ip: " & GetValueFromTable("tb_ticket","ip_address","ticket_id=" & ticket_id) %>
 					</td>
 
@@ -389,7 +390,7 @@ End Function
 					i=i+1
 					objRS.MoveNext
 				wend
-				'---- · ¥ß‚æ¬ ·∂«≈– 33 §Ë“
+				'---- ‡πÅ‡∏™‡∏î‡∏á‡πÇ‡∏û‡∏¢ ‡πÅ‡∏ñ‡∏ß‡∏•‡∏∞ 33 ‡∏Ñ‡πà‡∏≤
 				%><table  border="0"  cellpadding="1" cellspacing="1"  bgcolor="#D4D4D4"><%
 				Dim tmpColor1, tmpColor2, tmpColor3, tmpColor4, tmpColor5, tmpColor6, tmpColor7
 
@@ -398,7 +399,7 @@ End Function
 				SQL="select rec_status from tb_ticket where ticket_id=" & ticket_id
 				set objRS=objDB.Execute(SQL)
 				if not objRS.eof then
-					if objRS("rec_status")=1 then ' √Õ√—∫ 				
+					if objRS("rec_status")=1 then ' ‡∏£‡∏≠‡∏£‡∏±‡∏ö 				
 						l=6
 					end if
 				end if
@@ -462,11 +463,11 @@ End Function
 				%>
 				<tr>
 					<%
-					if ar_disp(i,1)=1 then ' ≈Ë“ß
-						show_type="<font color='red'>≈</font>"
+					if ar_disp(i,1)=1 then ' ‡∏•‡πà‡∏≤‡∏á
+						show_type="<font color='red'>‡∏•</font>"
 					else
-						if ar_disp(i,1)=3 then ' ∫π + ≈Ë“ß
-							show_type="∫+<font color='red'>≈</font>"
+						if ar_disp(i,1)=3 then ' ‡∏ö‡∏ô + ‡∏•‡πà‡∏≤‡∏á
+							show_type="‡∏ö+<font color='red'>‡∏•</font>"
 						else
 							show_type= ar_disp(i,2)
 						end if
@@ -486,11 +487,11 @@ End Function
 				%>
 				<tr>			
 					<%
-					if ar_disp(i,1)=1 then ' ≈Ë“ß
-						show_type="<font color='red'>≈</font>"
+					if ar_disp(i,1)=1 then ' ‡∏•‡πà‡∏≤‡∏á
+						show_type="<font color='red'>‡∏•</font>"
 					else
-						if ar_disp(i,1)=3 then ' ∫π + ≈Ë“ß
-							show_type="∫+<font color='red'>≈</font>"
+						if ar_disp(i,1)=3 then ' ‡∏ö‡∏ô + ‡∏•‡πà‡∏≤‡∏á
+							show_type="‡∏ö+<font color='red'>‡∏•</font>"
 						else
 							show_type= ar_disp(i,2)
 						end if
@@ -504,11 +505,11 @@ End Function
 					<font color=<%=tmpColor4%>><%=ar_disp(i,l)%></font>
 					</td>			
 					<%
-					if ar_disp(j,1)=1 then ' ≈Ë“ß
-						show_type="<font color='red'>≈</font>"
+					if ar_disp(j,1)=1 then ' ‡∏•‡πà‡∏≤‡∏á
+						show_type="<font color='red'>‡∏•</font>"
 					else
-						if ar_disp(j,1)=3 then ' ∫π + ≈Ë“ß
-							show_type="∫+<font color='red'>≈</font>"
+						if ar_disp(j,1)=3 then ' ‡∏ö‡∏ô + ‡∏•‡πà‡∏≤‡∏á
+							show_type="‡∏ö+<font color='red'>‡∏•</font>"
 						else
 							show_type= ar_disp(j,2)
 						end if
@@ -523,11 +524,11 @@ End Function
 					</td>
 
 					<%
-					if ar_disp(k,1)=1 then ' ≈Ë“ß
-						show_type="<font color='red'>≈</font>"
+					if ar_disp(k,1)=1 then ' ‡∏•‡πà‡∏≤‡∏á
+						show_type="<font color='red'>‡∏•</font>"
 					else
-						if ar_disp(k,1)=3 then ' ∫π + ≈Ë“ß
-							show_type="∫+<font color='red'>≈</font>"
+						if ar_disp(k,1)=3 then ' ‡∏ö‡∏ô + ‡∏•‡πà‡∏≤‡∏á
+							show_type="‡∏ö+<font color='red'>‡∏•</font>"
 						else
 							show_type= ar_disp(k,2)
 						end if
@@ -604,7 +605,7 @@ Function GetTicket_ID( player_id, game_id)
 		objDB.Open Application("constr")
 		Set objRS =Server.CreateObject("ADODB.Recordset")
 		SQL="select  ticket_id from tb_ticket a "
-'//JUM 2008-04-01		SQL=SQL & " where ticket_status='A'  and " ¡’ª—≠À“‡√◊ËÕß ticket_status=D
+'//JUM 2008-04-01		SQL=SQL & " where ticket_status='A'  and " ‡∏°‡∏µ‡∏õ‡∏±‡∏ç‡∏´‡∏≤‡πÄ‡∏£‡∏∑‡πà‡∏≠‡∏á ticket_status=D
 		SQL=SQL & " where "
 		SQL=SQL & " player_id=" & player_id & "  And "
 		SQL=SQL & " game_id = " & game_id 
@@ -649,7 +650,7 @@ Function GetPreTicket_Number( ticket_number,player_id, game_id)
 		objDB.Open Application("constr")
 		Set objRS =Server.CreateObject("ADODB.Recordset")
 		SQL="select  ticket_id from tb_ticket a "
-'//JUM 2008-04-01		SQL=SQL & " where ticket_status='A'  and " ¡’ª—≠À“‡√◊ËÕß ticket_status='D'
+'//JUM 2008-04-01		SQL=SQL & " where ticket_status='A'  and " ‡∏°‡∏µ‡∏õ‡∏±‡∏ç‡∏´‡∏≤‡πÄ‡∏£‡∏∑‡πà‡∏≠‡∏á ticket_status='D'
 		SQL=SQL & " where "
 		SQL=SQL & " player_id=" & player_id & "  And "
 		SQL=SQL & " game_id = " & game_id
@@ -675,7 +676,7 @@ Function GetNextTicket_Number( ticket_number,player_id, game_id)
 		objDB.Open Application("constr")
 		Set objRS =Server.CreateObject("ADODB.Recordset")
 		SQL="select  ticket_id from tb_ticket a "
-'//JUM 2008-04-01		SQL=SQL & " where ticket_status='A'  and " ¡’ª—≠À“‡√◊ËÕß ticket_status='D'
+'//JUM 2008-04-01		SQL=SQL & " where ticket_status='A'  and " ‡∏°‡∏µ‡∏õ‡∏±‡∏ç‡∏´‡∏≤‡πÄ‡∏£‡∏∑‡πà‡∏≠‡∏á ticket_status='D'
 		SQL=SQL & " where "
 		SQL=SQL & " player_id=" & player_id & "  And "
 		SQL=SQL & " game_id = " & game_id 

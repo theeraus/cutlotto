@@ -1,7 +1,9 @@
+<%@ Language=VBScript CodePage = 65001  %>
 <%OPTION EXPLICIT%>
 <% Response.CacheControl = "no-cache" %>
 <% Response.AddHeader "Pragma", "no-cache" %> 
 <% Response.Expires = -1 %>
+<% Response.CodePage = 65001%>
 <%
 		Dim limit_play, sum_play, can_play
 		Dim objRS , objRS1, objDB , SQL, dealer_id, game_type	, from_click_submit, chr_search
@@ -29,23 +31,12 @@
 <meta http-equiv="cache-control" content="no-cache"> 
 <meta http-equiv="pragma" content="no-cache"> 
 <meta http-equiv="expires" content="-1">
-<link href="assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
-<link href="assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
-
-<link href="assets/css/skins/header/base/light.css" rel="stylesheet" type="text/css" />
-<link href="assets/css/skins/header/menu/light.css" rel="stylesheet" type="text/css" />
-<link href="assets/css/skins/brand/navy.css" rel="stylesheet" type="text/css" />
-<link href="assets/css/skins/aside/navy.css" rel="stylesheet" type="text/css" />
-<link href="assets/css/global.css" rel="stylesheet" type="text/css" />
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<link href="include/code.css" rel="stylesheet" type="text/css">
 <script>
 function select_player(player_id,call_from){	
-	//parent.$('body').trigger('eventName');
-	console.log("test");
-	window.parent.eventName();
 	document.form1.action="search_player_bydealer_Action.asp?player_id="+player_id+'&call_from='+call_from
 	document.form1.submit();	
-}
+	}
 </script>
 
 <link rel="stylesheet" href="jquery/jquery.treeview.css" />
@@ -55,6 +46,16 @@ function select_player(player_id,call_from){
 	<script type="text/javascript" src="jquery/jquery.min.js"></script>
 	<script src="lib/jquery.cookie.js" type="text/javascript"></script>
 	<script src="jquery/jquery.treeview.js" type="text/javascript"></script>
+
+	<link href="assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/skins/header/base/light.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/skins/header/menu/light.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/skins/brand/navy.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/skins/aside/navy.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/global.css" rel="stylesheet" type="text/css" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
 	
 	<script type="text/javascript">
 		$(function() {
@@ -78,25 +79,44 @@ function select_player(player_id,call_from){
     </style>
 
 </head>
-<body topmargin="0" leftmargin="0" scroll = no   onLoad="set_focus();"> 
+<body topmargin="0" leftmargin="0" scroll = no  style="border : solid #606060; border-width : 1px;" onLoad="set_focus();"> 
 	<form name="form1" action="search_player_bydealer.asp" method="post">
-	
-				<table width="100%"  border="0" cellspacing="1" cellpadding="1" bgcolor="#606060">
+	<table align="center" cellpadding="0" cellspacing="0" width="100%" border="0" class="table">
+	<tr bgcolor="#fd397a">
+			<td height="25" >
+				<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+					<tr>
+						<td class="auto-style1"><h5>ค้นจาก ชื่อ หรือ นามสกุล</h5></td>
+						<td  align="right"><img src="images/close.gif" align="absmiddle" style="cursor:hand; " onClick="parent.closeDialog()">&nbsp;</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		<tr height="10">
+			<td></td>
+		</tr>
+		<tr>
+			<td align="center" >			
+
+				<table width="95%"  border="0" cellspacing="1" cellpadding="1" bgcolor="#606060">
 					<input type="hidden" name="from_click_submit" value="yes">
 					<input type="hidden" name="game_type" value="<%=game_type%>">
 					<input type="hidden" name="dealer_id" value="<%=dealer_id%>">
 					<input type="hidden" name="call_from" value="<%=call_from%>">
 					
 					<tr>
-						<td bgcolor="#ffd8cc">
-							<input type="text" size="10" name="chr_search" class="input1">&nbsp;
-							<input type="button" class="inputE" value="ค้นหา" onClick="clickOK()" style="cursor:hand;width: 75px;">
-							&nbsp;&nbsp;<input type="button" class="inputR" value="ยกเลิก" onClick="clickCancel()" style="cursor:hand;width: 75px;">
+						<td bgcolor="#ffd8cc" style=" text-align: center;">
+							<input type="text" size="10" name="chr_search" class="form-control">
+							<p style="margin: 10px;">
+								<input type="button" class="btn btn-primary btn-sm" value="ค้นหา" onClick="clickOK()" style="cursor:hand;width: 75px;">
+							&nbsp;&nbsp;<input type="button" class="btn btn-primary btn-sm" value="ยกเลิก" onClick="clickCancel()" style="cursor:hand;width: 75px;">
+							</p>
+							
 						</td>
 					</tr>
 					<tr>
 						<td bgcolor="#ffd8cc" align="center">
-						<div style="width:100%;height:auto ;overflow:auto;" >
+						<div style="width:100%;height:560 ;overflow:auto;" >
 						<table width="99%"  border="0" cellspacing="0" cellpadding="0" > 
 							<tr bgcolor="#FFFFFF"><td>
 					<%
@@ -172,6 +192,9 @@ function select_player(player_id,call_from){
 						</td>
 					</tr>
 				</table>
+			</td>		
+		</tr>
+	</table>
 	</center>
 	</form>
 </body>

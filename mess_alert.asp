@@ -1,9 +1,19 @@
-<%@ Language=VBScript %>
+<%@ Language=VBScript CodePage = 65001  %>
+<% Response.CodePage = 65001%>
 <%OPTION EXPLICIT%>
 <meta http-equiv="Content-Type" content="text/html; charset=windows-874">
 <!--#include file="include/adovbs.inc"-->
 <!--#include file="mdlGeneral.asp"-->
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+ <HEAD>
+  <TITLE> New Document </TITLE>
+  <META NAME="Generator" CONTENT="EditPlus">
+	<META HTTP-EQUIV='Refresh' CONTENT='300;'> 
+	<LINK href="include/code.css" type=text/css rel=stylesheet>
+</HEAD>
 
+ <BODY scroll=no topmargin=0 leftmargin=0 >
   <%
 dim objRec
 dim strSql
@@ -30,8 +40,10 @@ dim bMsg
 	set conn = nothing
 	if bMsg <> "" then
 %>
-<link href="assets/css/global.css" rel="stylesheet" type="text/css" />
-	<marquee direction=left width="100%" height=20 scrollamount="2" scrolldelay="30" onMouseOver=stop(); onMouseOut=start();  id=MARQUEE1 class=textbig_red><%=bMsg%></marquee>	
+
+				<marquee direction=left width="100%" height=20 scrollamount="2" scrolldelay="30" onMouseOver=stop(); onMouseOut=start();  id=MARQUEE1 class=textbig_red><%=bMsg%>
+				</marquee>	
 
 <%	end If %>
-
+ </BODY>
+</HTML>

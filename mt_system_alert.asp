@@ -1,11 +1,11 @@
-<%@ Language=VBScript %>
+<%@ Language=VBScript CodePage = 65001  %>
 <!--#include file="include/adovbs.inc"-->
 <!--#include file="mdlGeneral.asp"-->
 
 <HTML>
 <HEAD>
 <META NAME="GENERATOR" Content="Microsoft Visual Studio 6.0">
-<meta http-equiv="Content-Type" content="text/html; charset=windows-874">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <script language="JavaScript" src="include/normalfunc.js"></script>
 <LINK href="include/code.css" type=text/css rel=stylesheet>
 
@@ -36,6 +36,10 @@
     </style>
 </HEAD>
 <%
+Response.ContentType = "text/html"
+Response.AddHeader "Content-Type", "text/html;charset=UTF-8"
+Response.CodePage = 65001
+Response.CharSet = "UTF-8"
 	dim objRec
 	Dim strSQL
 	dim bMsg
@@ -70,7 +74,7 @@
 		%><script language=JavaScript>
 		      window.open("index.asp?page=mt_system_alert.asp")
 		      //window.location.href="mt_system_alert.asp"; 
-			//alert('∫—π∑÷°¢ÈÕ¡Ÿ≈‡√’¬∫√ÈÕ¬·≈È«');
+			//alert('‡∏ö‡∏±‡∏ô‡∏ó‡∏∂‡∏Å‡∏Ç‡πâ‡∏≠‡∏°‡∏π‡∏•‡πÄ‡∏£‡∏µ‡∏¢‡∏ö‡∏£‡πâ‡∏≠‡∏¢‡πÅ‡∏•‡πâ‡∏ß');
 		</script><%		
 	end if
 	iAct="UP"
@@ -98,22 +102,22 @@
 		  <td  align=center>&nbsp;</td>
 		</tr>
 		<tr bgcolor=teal >
-		  <td class="style1" align=center>&nbsp;&nbsp;&nbsp; ¢ÈÕ§«“¡√–∫∫</td>
+		  <td class="style1" align=center>&nbsp;&nbsp;&nbsp; ‡∏Ç‡πâ‡∏≠‡∏Ñ‡∏ß‡∏≤‡∏°‡∏£‡∏∞‡∏ö‡∏ö</td>
 		  <td class="style3" align=right>
 			</td>
 		</tr>
 
         <TR vAlign=center bgColor=#e6e6fa>
-          <TD  class=text_red colspan=2><span class="style2">¢ÈÕ§«“¡ª√–°“»</span><br>
+          <TD  class=text_red colspan=2><span class="style2">‡∏Ç‡πâ‡∏≠‡∏Ñ‡∏ß‡∏≤‡∏°‡∏õ‡∏£‡∏∞‡∏Å‡∏≤‡∏®</span><br>
 		  <textarea rows=5 id="txtmsg" name="txtmsg" cols="100" ><%=bMsg%></TEXTAREA></TD></TR>
         <TR bgColor=#e6e6fa>
-          <TD class=text_blue colspan=2><span class="style2">«—π∑’Ëª√—∫ª√ÿß≈Ë“ ÿ¥</span><br>
+          <TD class=text_blue colspan=2><span class="style2">‡∏ß‡∏±‡∏ô‡∏ó‡∏µ‡πà‡∏õ‡∏£‡∏±‡∏ö‡∏õ‡∏£‡∏∏‡∏á‡∏•‡πà‡∏≤‡∏™‡∏∏‡∏î</span><br>
 		  <INPUT id="txtup" name="txtup" size=20 value="<%=bLastUp%>" disabled></TD></TR>
 
 		<TR align=middle  bgcolor=teal >
 		  <td colspan="2" height="50">
 			  <INPUT type="hidden" name="act" value="<%=iAct%>">
-			  <INPUT type="submit" class="inputG" value="∫—π∑÷°" style="cursor:hand;width:100;" name="button1">
+			  <INPUT type="submit" class="inputG" value="‡∏ö‡∏±‡∏ô‡∏ó‡∏∂‡∏Å" style="cursor:hand;width:100;" name="button1">
 
 			</td></TR>	            
        </TABLE>

@@ -1,5 +1,8 @@
-<!--#include virtual="masterpage.asp"-->
-<% Sub ContentPlaceHolder() %>
+<%OPTION EXPLICIT%>
+<% Response.CacheControl = "no-cache" %>
+<% Response.AddHeader "Pragma", "no-cache" %> 
+<% Response.Expires = -1 %>
+<% Response.CodePage = 65001%>
 <%
 		if trim(Session("uid"))="" then 	response.redirect "signin.asp"
 		Dim objRS , objDB , SQL	
@@ -107,17 +110,28 @@
 			end if
 		end if
 %>
-
+<html>
+<head>
+<title>.:: config price ::. </title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="cache-control" content="no-cache"> 
+<meta http-equiv="pragma" content="no-cache"> 
+<meta http-equiv="expires" content="-1">
+<link href="include/code.css" rel="stylesheet" type="text/css">
+<script language="JavaScript" src="include/normalfunc.js"></script>
+	<link href="assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/skins/header/base/light.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/skins/header/menu/light.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/skins/brand/navy.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/skins/aside/navy.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/global.css" rel="stylesheet" type="text/css" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+</head>
+<body topmargin="0"  leftmargin="0">
 	<form name="form1" action="user_key.asp" method="post">
-	<center><br>
-			<table  border="0"  cellpadding="1" cellspacing="1"  width="100%" >
-				<tr>
-					<td style="text-align: center;">
-						<input type="button" class="inputG" value="เพิ่ม" style="cursor:hand; width: 75px;" onClick="click_add();">					
-						<input type="button" class="inputP" value="พิมพ์" style="cursor:hand; width: 75px;" onClick="print_user();">
-						<input type="button" class="inputE" value="ออก" style="cursor:hand; width: 75px;" onClick="gotoPage('firstpage_dealer.asp')">
-					</td>
-				</tr>
+	<center>
+			<table  border="0"  cellpadding="1" cellspacing="1"  width="100%" class="table">
 				<tr>
 					<td align="center"> 
 					<strong>
@@ -125,11 +139,16 @@
 					</strong>
 					</td>
 				</td>
-			</table>
-			<table  border="0"  cellpadding="1" cellspacing="1"  width="100%"  >
+				<tr>
+					<td style="text-align: center;">
+						<input type="button" class="btn btn-primary btn-sm" value="เพิ่ม" style="cursor:hand; width: 75px;" onClick="click_add();">					
+						<input type="button" class="btn btn-success btn-sm" value="พิมพ์" style="cursor:hand; width: 75px;" onClick="print_user();">
+						<input type="button" class="btn btn-danger btn-sm" value="ออก" style="cursor:hand; width: 75px;" onClick="gotoPage('firstpage_dealer.asp')">
+					</td>
+				</tr>
 				<tr>
 					<td align="center" colspan=2>
-						<table  border="0"  cellpadding="1" cellspacing="1" bgcolor="#282828"   >
+						<table  border="0"  cellpadding="1" cellspacing="1" bgcolor="#282828"  >
 							<%
 							if rec_ticket_dealer=1 then
 								tmp_Color="#33CC33"
@@ -139,11 +158,11 @@
 							%>
 							
 							<tr>
-								<td class="textbig_white" align="right" colspan="2" bgcolor="#282828" >
+								<td class="textbig_white" align="right" colspan="2" bgcolor="#282828">
 								&nbsp;</td>
 								<td class="textbig_white" align="center" colspan="1" bgcolor="#282828">
 								หมายเลข</td>
-								<td class="textbig_white" align="left" bgcolor="#282828">ชื่อ</td>
+								<td class="textbig_white" align="center" bgcolor="#282828">ชื่อ</td>
 								<td class="textbig_white" align="center" bgcolor="#282828">Password</td>
 							</tr>
 							<%
@@ -157,10 +176,10 @@
 							%>
 								<tr>				
 									<td bgcolor="#FFFFFF">
-										<input type="button" class="inputG" value="บันทึก" style="cursor:hand; width: 75px;" onClick="click_add_save();" >
+										<input type="button" class="btn btn-primary btn-sm" value="บันทึก" style="cursor:hand; width: 75px;" onClick="click_add_save();" >
 									</td>
 									<td bgcolor="#FFFFFF">
-										<input type="button" class="inputR" value="ยกเลิก" style="cursor:hand; width: 75px;" onClick="click_cancel();" >
+										<input type="button" class="btn btn-danger btn-sm" value="ยกเลิก" style="cursor:hand; width: 75px;" onClick="click_cancel();" >
 									</td>			
 									<td class="tdbody" bgcolor="<%=c %>" align="left" width="150">
 									<span class="input1"><%=dealer_login%>K</span><input type="text" name="login_id"  
@@ -190,10 +209,10 @@
 									%>
 									<tr>				
 										<td bgcolor="#FFFFFF">
-											<input type="button" class="inputG" value="บันทึก" style="cursor:hand; width: 75px;" onClick="click_edit_save('<%=objRs("user_id")%>');" >
+											<input type="btn btn-primary btn-sm" class="inputG" value="บันทึก" style="cursor:hand; width: 75px;" onClick="click_edit_save('<%=objRs("user_id")%>');" >
 										</td>
 										<td bgcolor="#FFFFFF">
-											<input type="button" class="inputR" value="ยกเลิก" style="cursor:hand; width: 75px;" onClick="click_cancel();" >
+											<input type="btn btn-danger btn-sm" class="inputR" value="ยกเลิก" style="cursor:hand; width: 75px;" onClick="click_cancel();" >
 										</td>	
 										<td class="tdbody" bgcolor="<%=c %>" align="left">
 											<input type="text" name="login_id" value="<%=objRS("login_id")%>" 
@@ -219,10 +238,10 @@
 									%>
 									<tr>							
 										<td bgcolor="#FFFFFF">
-											<input type="button" class="inputE" value="แก้ไข" style="cursor:hand; width: 75px;" onClick="click_edit('<%=objRs("user_id")%>');" >
+											<input type="button" class="btn btn-primary btn-sm" value="แก้ไข" style="cursor:hand; width: 75px;" onClick="click_edit('<%=objRs("user_id")%>');" >
 										</td>
 										<td bgcolor="#FFFFFF">
-											<input type="button" class="inputR" value="ลบ" style="cursor:hand; width: 75px;" onClick="click_del('<%=objRs("user_id")%>', '<%=objRs("user_name")%>');" >
+											<input type="button" class="btn btn-danger btn-sm" value="ลบ" style="cursor:hand; width: 75px;" onClick="click_del('<%=objRs("user_id")%>', '<%=objRs("user_name")%>');" >
 										</td>	
 										<td class="tdbody" bgcolor="<%=c %>" align="left" width="60"><%=objRS("login_id")%>	</td>
 										<td class="tdbody" bgcolor="<%=c %>" align="left" width="145"><%=objRS("user_name")%>	</td>
@@ -242,9 +261,18 @@
 	<input type="hidden" name="mode">
 	<input type="hidden" name="edit_user_id">
 	</form>
+</body>
+</html>
 
-
-
+<%
+function FormatN(n,dot)
+	if n=0 or n="" then
+		FormatN=0
+	else
+		FormatN=formatnumber(n,dot)
+	end if
+end function
+%>
 <script language="javascript">
 function clickpic(p){
 	var t=p
@@ -368,5 +396,3 @@ function chkEnter(obj){
 	<%
 	End if
 %>
-
-<% End Sub %>

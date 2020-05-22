@@ -10,14 +10,12 @@ A:visited
 {
     FONT-SIZE: 12px;
     COLOR: #666666;
-    FONT-FAMILY: 'MS Sans Serif';
     TEXT-DECORATION: none
 }
 .text_green
 {
     FONT-SIZE: 12px;
     COLOR: limegreen;
-    FONT-FAMILY: 'MS Sans Serif';
     TEXT-DECORATION: none
 }
 .text_white
@@ -25,25 +23,23 @@ A:visited
 
     FONT-SIZE: 12px;
     COLOR: #ffffff;
-    FONT-FAMILY: 'MS Sans Serif';
     TEXT-DECORATION: none
 }
 .text_light
 {
     FONT-SIZE: 12px;
     COLOR: #cccccc;
-    FONT-FAMILY: 'MS Sans Serif';
     TEXT-DECORATION: none
 }
 .text_blue
 {
     FONT-SIZE: 14px;
     COLOR: blue;
-    FONT-FAMILY: 'MS Sans Serif';
     TEXT-DECORATION: none
 }
 .text_red
 {  
+	FONT-SIZE: 10pt; 
     COLOR: red;
 }
 .text_red_over
@@ -60,6 +56,7 @@ A:visited
 }
 .text_black
 {
+	FONT-SIZE: 10pt; 
     COLOR: black;
 }
 .text_black_over
@@ -82,6 +79,7 @@ A:visited
 }
 .text_red_bg
 {  
+	FONT-SIZE: 10pt; 
     COLOR: red;
 	background-color: #CCFFFF;
 	BORDER-RIGHT: #CCFFFF 1px solid;
@@ -91,6 +89,7 @@ A:visited
 }
 .text_black_bg
 {
+	FONT-SIZE: 10pt; 
     COLOR: black;
 	background-color: #CCFFFF;
 	BORDER-RIGHT: #CCFFFF 0px solid;
@@ -100,6 +99,7 @@ A:visited
 }
 .text_reddw
 {  
+    FONT-SIZE: 10pt; 
     COLOR: #ff0000;
 	background-color: #CCFFFF;	
 	BORDER-RIGHT: #CCFFFF 1px solid;
@@ -111,17 +111,20 @@ A:visited
 }
 .text_blackup
 {
+	FONT-SIZE: 10pt; 
     COLOR: black;
 	background-color: #CCFFFF;
 	BORDER-RIGHT: #CCFFFF 1px solid;
 	BORDER-TOP: #CCFFFF 1px solid;
 	BORDER-LEFT: #CCFFFF 1px solid;
 	BORDER-BOTTOM: #CCFFFF 1px solid;
+
 }
 
 .head_green
 {
     FONT-WEIGHT: bold;
+    FONT-SIZE: 14px;
     COLOR: chartreuse;
     LINE-HEIGHT: 14px;
     TEXT-DECORATION: none
@@ -129,29 +132,34 @@ A:visited
 .head_white
 {
     FONT-WEIGHT: bold;
+    FONT-SIZE: 14px;
     COLOR: #ffffff;
     TEXT-DECORATION: none
 }
 .head_grey
 {
     FONT-WEIGHT: bold;
+    FONT-SIZE: 14px;
     COLOR: #666666;
 }
 .head_red
 {
     FONT-WEIGHT: bold;
+    FONT-SIZE: 14px;
     COLOR: red;
     TEXT-DECORATION: none
 }
 .head_blue
 {
     FONT-WEIGHT: bold;
+    FONT-SIZE: 14px;
     COLOR: #3a84b4;
     TEXT-DECORATION: none
 }
 .head_black
 {
     FONT-WEIGHT: bold;
+    FONT-SIZE: 14px;
     COLOR: black;
     TEXT-DECORATION: none
 }
@@ -160,7 +168,6 @@ A:visited
     FONT-WEIGHT: normal;
     FONT-SIZE: 10px;
     COLOR: #cccccc;
-    FONT-FAMILY: 'MS Sans Serif';
     TEXT-DECORATION: none
 }
 .text_small_bold
@@ -168,7 +175,6 @@ A:visited
     FONT-WEIGHT: bold;
     FONT-SIZE: 10px;
     COLOR: #cccccc;
-    FONT-FAMILY: 'MS Sans Serif';
     TEXT-DECORATION: none
 }
 .box1
@@ -179,7 +185,6 @@ A:visited
     BORDER-LEFT: #669900 1px solid;
     COLOR: #000000;
     BORDER-BOTTOM: #669900 1px solid;
-    FONT-FAMILY: Tahoma;
     BACKGROUND-COLOR: #ffffff;
     TEXT-DECORATION: none
 }
@@ -191,7 +196,6 @@ A:visited
     BORDER-LEFT: #001699 1px solid;
     COLOR: #000000;
     BORDER-BOTTOM: #001699 1px solid;
-    FONT-FAMILY: Tahoma;
     BACKGROUND-COLOR: #ffffff;
     TEXT-DECORATION: none
 }
@@ -203,7 +207,6 @@ A:visited
     BORDER-LEFT: #669900 1px solid;
     COLOR: #000000;
     BORDER-BOTTOM: #669900 1px solid;
-    FONT-FAMILY: Tahoma;
     BACKGROUND-COLOR: #ffffff;
     TEXT-DECORATION: none
 }
@@ -215,7 +218,6 @@ A:visited
     BORDER-LEFT: #669900 1px solid;
     COLOR: #000000;
     BORDER-BOTTOM: #669900 1px solid;
-    FONT-FAMILY: 'MS Sans Serif';
     BACKGROUND-COLOR: #ffffff;
     TEXT-DECORATION: none
 }
@@ -224,7 +226,6 @@ A:visited
 {
     FONT-SIZE: 12px;
     COLOR: #333333;
-    FONT-FAMILY: 'MS Sans Serif';
     TEXT-DECORATION: none
 }
 .textbig_green
@@ -232,14 +233,12 @@ A:visited
     FONT-WEIGHT: bold;
     FONT-SIZE: 16px;
     COLOR: #996600;
-    FONT-FAMILY: 'MS Sans Serif';
     TEXT-DECORATION: none
 }
 .text_small_u
 {
     FONT-SIZE: 12px;
     COLOR: #333333;
-    FONT-FAMILY: 'MS Sans Serif';
       BORDER-BOTTOM: #F0F0F0 1px solid;
 }
 .textbig_white
@@ -247,7 +246,6 @@ A:visited
     FONT-WEIGHT: bold;
     FONT-SIZE: 16px;
     COLOR: #ffffff;
-	FONT-FAMILY: "Arial, MS Sans Serif,Thonburi";
     TEXT-DECORATION: none
 }
 
@@ -257,7 +255,6 @@ A:visited
     FONT-WEIGHT: bold;
     FONT-SIZE: 16px;
     COLOR:blue;
-    FONT-FAMILY: 'MS Sans Serif';
     TEXT-DECORATION: none
 }
 
@@ -266,7 +263,6 @@ A:visited
     FONT-WEIGHT: bold;
     FONT-SIZE: 16px;
     COLOR:Yellow;
-    FONT-FAMILY: 'MS Sans Serif';
     TEXT-DECORATION: none
 }
 
@@ -276,7 +272,6 @@ A:visited
     FONT-WEIGHT: bold;
     FONT-SIZE: 16px;
     COLOR: red;
-    FONT-FAMILY: 'MS Sans Serif';
     TEXT-DECORATION: none
 }
 .textbig_red_over
@@ -284,7 +279,6 @@ A:visited
     FONT-WEIGHT: bold;
     FONT-SIZE: 18px;
     COLOR: red;
-    FONT-FAMILY: 'MS Sans Serif';
     TEXT-DECORATION: none;
     BACKGROUND-COLOR: #CCCCFF;
 }
@@ -297,7 +291,6 @@ A:visited
     BORDER-LEFT: white;
     COLOR: #6600CC;
     BORDER-BOTTOM: white;
-    FONT-FAMILY: Verdana, 'MS Sans Serif';
     BACKGROUND-COLOR: #CCCCFF;
     TEXT-DECORATION: none
 }
@@ -305,7 +298,6 @@ A:visited
 {
     FONT-SIZE: 11px;
     COLOR: #0000cd;
-    FONT-FAMILY: Verdana, 'MS Sans Serif';
     BACKGROUND-COLOR: #ffffff;
     TEXT-DECORATION: none
 }
@@ -313,7 +305,6 @@ A:visited
 {
     FONT-SIZE: 11px;
     COLOR: #0000cd;
-    FONT-FAMILY: Verdana, 'MS Sans Serif';
     BACKGROUND-COLOR: #b0e0e6;
     TEXT-DECORATION: none
 }
@@ -322,7 +313,6 @@ A:visited
     FONT-WEIGHT: bold;
     FONT-SIZE: 14px;
     COLOR: #0000FF;
-    FONT-FAMILY: Verdana, 'MS Sans Serif';
     BACKGROUND-COLOR: powderblue;
     TEXT-DECORATION: none
 }
@@ -333,13 +323,7 @@ A:visited
     BORDER-LEFT: royalblue 1px solid;
     BORDER-BOTTOM: royalblue 1px solid;
 }
-.table_red
-{
-    BORDER-RIGHT: red 1px solid;
-    BORDER-TOP: red 1px solid;
-    BORDER-LEFT: red 1px solid;
-    BORDER-BOTTOM: red 1px solid;
-}
+
 .dialogBox {
   	position : absolute;
   	border : 0 solid black;
@@ -349,14 +333,12 @@ A:visited
 }
 
 body{
-	FONT-FAMILY: MS Sans Serif,Thonburi;
 	COLOR: #000000;
 	FONT-SIZE: 11pt; 
 }
 
 .tdHead{
 	background-color: #E5E5E5;
-	FONT-FAMILY: MS Sans Serif,Thonburi;
 	font-weight: bold;
 	COLOR:  #009966;
 	FONT-SIZE: 11pt; 
@@ -364,27 +346,23 @@ body{
 
 .tdsubHead{
 	background-color: #E5E5E5;
-	FONT-FAMILY: MS Sans Serif,Thonburi;
 	font-weight: bold;
 	COLOR: #009966;
 	FONT-SIZE: 11pt; 
 }
 
 .tdbody{
-	FONT-FAMILY: "Arial, MS Sans Serif,Thonburi";
 	COLOR: #333333;
 	FONT-SIZE: 11pt; 
 	BACKGROUND-COLOR: #FFFFFF;
 }
 
 .tdbodys{
-	FONT-FAMILY: MS Sans Serif,Thonburi;
 	COLOR:  #0072A8;
 	FONT-SIZE: 9pt; 
 }
 
 .tdbodysb{
-	FONT-FAMILY: MS Sans Serif,Thonburi;
 	font-weight: bold;
 	COLOR: #0072A8;
 	FONT-SIZE: 9pt; 
@@ -397,7 +375,6 @@ body{
 .input1{
 	FONT-SIZE: 10pt; 
 	COLOR: #000000; 
-	FONT-FAMILY: MS Sans Serif,Thonburi;
 	BORDER-RIGHT: #2C89BC 0px solid;
     BORDER-TOP: #2C89BC 0px solid;
     BORDER-LEFT: #2C89BC 0px solid;
@@ -406,7 +383,6 @@ body{
 .input1_red{
 	FONT-SIZE: 10pt; 
 	COLOR: red; 
-	FONT-FAMILY: MS Sans Serif,Thonburi;
 	BORDER-RIGHT: #2C89BC 0px solid;
     BORDER-TOP: #2C89BC 0px solid;
     BORDER-LEFT: #2C89BC 0px solid;
@@ -415,7 +391,6 @@ body{
 .input_disable{
 	FONT-SIZE: 10pt; 
 	COLOR: #000000; 
-	FONT-FAMILY: MS Sans Serif,Thonburi;
 	BORDER: 1 SOLID #99A3A6;
 	background-color:   #E1E1E1;
 }
@@ -424,7 +399,6 @@ body{
 	background-color: white; 
     	color: black; 
     	border: 1px solid #000000;
-	FONT-FAMILY: MS Sans Serif,Thonburi;
 	text-align: center;
     	text-decoration: none;
     	display: inline-block;
@@ -892,25 +866,21 @@ body{
 .input3{
 	FONT-SIZE: 10pt; 
 	COLOR: #FFFFFF; 
-	FONT-FAMILY: "Arial, MS Sans Serif,Thonburi";
 	BORDER: 1 SOLID #3333FF;
 	background-color: #3333FF;
 }
 .input4{
 	FONT-SIZE: 10pt; 
 	COLOR: red; 
-	FONT-FAMILY: "Arial, MS Sans Serif,Thonburi";
 	BORDER: 1 SOLID #FFFFFF;
 	background-color: #FFFFFF;
 	font-weight: bold;
 }
 .tdbody1{
-	FONT-FAMILY: "Arial, MS Sans Serif,Thonburi";
 	COLOR: #000000;
 	FONT-SIZE: 11pt; 
 }
 .tdbody2{
-	FONT-FAMILY: MS Sans Serif,Thonburi;
 	COLOR: #FFFFFF;
 	FONT-SIZE: 11pt; 
 }

@@ -1,4 +1,4 @@
-<%@ Language=VBScript %>
+<%@ Language=VBScript CodePage = 65001  %>
 <%OPTION EXPLICIT%>
 <% Response.CacheControl = "no-cache" %>
 <% Response.AddHeader "Pragma", "no-cache" %> 
@@ -37,9 +37,9 @@ Dim player_id, ticket_number, game_id , rec_status, ticket_id, send_status, key_
 		player_id=Session("otheruid")
 		game_id=CheckOtherGame(Session("otherdid"))
 		ticket_number=Getticket_number(player_id , game_id )
-		rec_status=mlnStatusSend ' Êè§
+		rec_status=mlnStatusSend ' ï¿½ï¿½
 		send_status=mlnSendOtherDealer  ' 
-		key_from=mlnKeyCom       ' á·§¨Ò¡ com 
+		key_from=mlnKeyCom       ' á·§ï¿½Ò¡ com 
 		key_id=Session("otheruid")
 		strSql=""
 		strSql="spInsert_tb_ticket (" & game_id & ", "  & _
@@ -70,7 +70,7 @@ Dim player_id, ticket_number, game_id , rec_status, ticket_id, send_status, key_
 			key_number=objRec("play_number")
 			key_money=objRec("play_amt")
 			key_seq=i
-			number_status=mlnNumStatusSend    '  Êè§
+			number_status=mlnNumStatusSend    '  ï¿½ï¿½
 			if updown_type <>""  and  key_number<>"" and  key_money <>"" then
 				'--- insert into tb_ticket_key
 				strSql="spInsert_tb_ticket_key (" & _
@@ -149,13 +149,13 @@ Function GetTotalPlay(p,g)
 	set objDB=nothing
 End Function
 Function convUpDownType(t)
-	if t="Å" then
+	if t="ï¿½" then
 		convUpDownType=1
 	end if
-	if t="º" then
+	if t="ï¿½" then
 		convUpDownType=2
 	end if
-	if t="º+Å" then
+	if t="ï¿½+ï¿½" then
 		convUpDownType=3
 	end if
 End Function
@@ -219,10 +219,10 @@ End Function
 				Session("otheruid")=rs("user_id")
 				Session("otherdid")	=rs("create_by")
 			else
-				strMsg = "ÃËÑÊ¼èÒ¹äÁè¶Ù¡µéÍ§ !"
+				strMsg = "ï¿½ï¿½ï¿½Ê¼ï¿½Ò¹ï¿½ï¿½ï¿½Ù¡ï¿½ï¿½Í§ !"
 			end if
 		else
-			strMsg = "äÁè¾ºÃËÑÊ¼Ùéãªé !"
+			strMsg = "ï¿½ï¿½è¾ºï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ !"
 		end if
 		set rs = nothing
 		set objConn = nothing
@@ -230,7 +230,7 @@ End Function
 	if chkOk =true then
 		response.redirect "dealer_tudroum_send_act.asp?act=save"	
 	else
-		call showmessage(strMsg&"&nbsp;&nbsp;[<a href='index.asp?page=dealer_tudroum_send.asp'>ÂéÍ¹¡ÅÑº</a>]")
+		call showmessage(strMsg&"&nbsp;&nbsp;[<a href='index.asp?page=dealer_tudroum_send.asp'>ï¿½ï¿½Í¹ï¿½ï¿½Ñº</a>]")
 		Response.end		
 	end if	
 

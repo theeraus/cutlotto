@@ -1,5 +1,12 @@
-<!--#include virtual="masterpage.asp"-->
-<% 
+<%@ Language=VBScript CodePage = 65001  %>
+<%OPTION EXPLICIT%>
+<%check_session_valid()%>
+<!--#include file="include/adovbs.inc"-->
+<!--#include file="include/config.inc"-->
+<!--#include file="mdlGeneral.asp"-->
+<%Response.Buffer = True%>
+<%
+
 Dim objRec
 dim recNum
 Dim strSql
@@ -23,12 +30,6 @@ Dim cutperc
 dim i
 dim tmpColColor
 tmpColColor="#99FFFF" 
-%>
-<% Sub ContentPlaceHolder() %>
-
-<%
-
-
 
 	'*** Open the database.	
 
@@ -97,8 +98,23 @@ tmpColColor="#99FFFF"
 	
 
 %>
-
-
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" Content="Microsoft Visual Studio 6.0">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta http-equiv="cache-control" content="no-cache"> 
+<meta http-equiv="pragma" content="no-cache"> 
+<meta http-equiv="expires" content="-1">
+<LINK href="include/code.css" type=text/css rel=stylesheet>
+<script language="JavaScript" src="include/normalfunc.js"></script>
+<link href="assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
+<link href="assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
+<link href="assets/css/skins/header/base/light.css" rel="stylesheet" type="text/css" />
+<link href="assets/css/skins/header/menu/light.css" rel="stylesheet" type="text/css" />
+<link href="assets/css/skins/brand/navy.css" rel="stylesheet" type="text/css" />
+<link href="assets/css/skins/aside/navy.css" rel="stylesheet" type="text/css" />
+<link href="assets/css/global.css" rel="stylesheet" type="text/css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
 <script Language="VBScript" >	
 	sub cmborder_onChange()
@@ -330,8 +346,8 @@ function gosendtype(st,uid) {
             height: 20px;
         }
     </style>
-
-
+</HEAD>
+<BODY topmargin=0 leftmargin=0>
 <%
 dim sumall
 dim typenum1, typenum2, typenum3, typenum4, typenum5, typenum6, typenum7, typenum8
@@ -655,7 +671,7 @@ Dim strCmbSelect
 			<td colspan=8 class="auto-style2"><hr width="95%"></td>
 		</tr>
 		<tr class=textbig_red>
-			<td colspan=8 height=20 align=center><h4> จาก<u>&nbsp;&nbsp;&nbsp;<%=Session("uname")%>&nbsp;&nbsp;&nbsp;</u>ยอดส่ง&nbsp;&nbsp;&nbsp;<span id="sumsend"></span> </h4></td>
+			<td colspan=8 height=20 align=center>จาก<u>&nbsp;&nbsp;&nbsp;<%=Session("uname")%>&nbsp;&nbsp;&nbsp;</u>ยอดส่ง&nbsp;&nbsp;&nbsp;<span id="sumsend"></span> </td>
 		</tr>
 		<tr class=textbig_red>
 			<td colspan=8 height=20 align=center>&nbsp;</td>
@@ -1099,7 +1115,7 @@ Dim strCmbSelect
 			<input type=hidden name="sendtype">
 			<input type=hidden name="sendweb">			
 			<input type=hidden name="sendweb2">			
-			<td colspan=8 class=textbig_blue align=center><INPUT TYPE="button" name="bttSend" value="ส่งเจ้ามืออื่น" class="inputE" style="cursor:hand; width: 90px;" onClick=showsendto()>&nbsp;&nbsp;<INPUT TYPE="button" name="bttPrint" value="พิมพ์ออก" class="inputR" style="cursor:hand; width: 100px;" onClick=gosendtype("2",<%=Session("uid")%>)></td>
+			<td colspan=8 class=textbig_blue align=center><INPUT TYPE="button" name="bttSend" value="ส่งเจ้ามืออื่น" class="btn btn-primary btn-sm" style="cursor:hand; width: 90px;" onClick=showsendto()>&nbsp;&nbsp;<INPUT TYPE="button" name="bttPrint" value="พิมพ์ออก" class="btn btn-warning btn-sm" style="cursor:hand; width: 100px;" onClick=gosendtype("2",<%=Session("uid")%>)></td>
 		</tr>
 		</FORM>
 <%
@@ -1116,9 +1132,9 @@ if Request("act")="tud" then
 <%
 end if
 %>
-
+</BODY>
+</HTML>
 <%
 	set objRec = nothing
 	set conn   = nothing	
 %>	
-<% End sub %>

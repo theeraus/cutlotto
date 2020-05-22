@@ -2,6 +2,7 @@
 <% Response.CacheControl = "no-cache" %>
 <% Response.AddHeader "Pragma", "no-cache" %> 
 <% Response.Expires = -1 %>
+<% Response.CodePage = 65001%>
 <%
 
 		Dim objRS , objDB , SQL, dealer_id, game_type	, from_click_submit, chr_search,create_by_player
@@ -17,7 +18,7 @@
 %>
 <html>
 <head>
-<title>.:: §ÈπÀ“ : §π·∑ß ::. </title>
+<title>.:: ‡∏Ñ‡πâ‡∏ô‡∏´‡∏≤ : ‡∏Ñ‡∏ô‡πÅ‡∏ó‡∏á ::. </title>
 <meta http-equiv="Content-Type" content="text/html; charset=windows-874">
 <meta http-equiv="cache-control" content="no-cache"> 
 <meta http-equiv="pragma" content="no-cache"> 
@@ -31,7 +32,7 @@
 			<td height="25" >
 				<table width="100%"  border="0" cellspacing="0" cellpadding="0">
 					<tr>
-						<td class="tdbody1"> §Èπ®“° ™◊ËÕ À√◊Õ À¡“¬‡≈¢ <span id=search_text></span></td>
+						<td class="tdbody1"> ‡∏Ñ‡πâ‡∏ô‡∏à‡∏≤‡∏Å ‡∏ä‡∏∑‡πà‡∏≠ ‡∏´‡∏£‡∏∑‡∏≠ ‡∏´‡∏°‡∏≤‡∏¢‡πÄ‡∏•‡∏Ç <span id=search_text></span></td>
 						<td  align="right"><img src="images/close.gif" align="absmiddle" style="cursor:hand; " onClick="parent.closeDialog()">&nbsp;</td>
 					</tr>
 				</table>
@@ -52,8 +53,8 @@
 					<tr>
 						<td bgcolor="#B3FFD9">
 							<input type="text" size="10" name="chr_search" class="input1">&nbsp;
-							<input type="button" value=" §ÈπÀ“ " onClick="clickOK()" style="cursor:hand;">
-							&nbsp;&nbsp;<input type="button" value=" ¬°‡≈‘° " onClick="clickCancel()" style="cursor:hand;">
+							<input type="button" value=" ‡∏Ñ‡πâ‡∏ô‡∏´‡∏≤ " onClick="clickOK()" style="cursor:hand;">
+							&nbsp;&nbsp;<input type="button" value=" ‡∏¢‡∏Å‡πÄ‡∏•‡∏¥‡∏Å " onClick="clickCancel()" style="cursor:hand;">
 						</td>
 					</tr>
 					<tr>
@@ -61,7 +62,7 @@
 						<div style="width:100%;height:320 ;overflow:auto;" > 
 						<table width="99%"  border="0" cellspacing="1" cellpadding="1" bgcolor="#606060">
 					<%
-						if from_click_submit<>"yes" then ' ∂È“‡¢È“¡“§√—Èß·√°„ÀÈ· ¥ß ∑ÿ° player 
+						if from_click_submit<>"yes" then ' ‡∏ñ‡πâ‡∏≤‡πÄ‡∏Ç‡πâ‡∏≤‡∏°‡∏≤‡∏Ñ‡∏£‡∏±‡πâ‡∏á‡πÅ‡∏£‡∏Å‡πÉ‡∏´‡πâ‡πÅ‡∏™‡∏î‡∏á ‡∏ó‡∏∏‡∏Å player 
 							'SQL="exec spGetPlayerPrice_by_Dealer_ID_GameType  " & dealer_id  & "," & game_type
 SQL="exec  spGetPlayerPrice2  " & dealer_id  & "," & game_type & "," & create_by_player
 

@@ -1,14 +1,55 @@
-<!--#include virtual="masterpage.asp"-->
-<% Sub ContentPlaceHolder() %>
+<%@ Language=VBScript CodePage = 65001  %>
+<% Response.CodePage = 65001%>
+<!--#include file="include/adovbs.inc"-->
+<!--#include file="mdlGeneral.asp"-->
 
-
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" Content="Microsoft Visual Studio 6.0">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script language="JavaScript" src="include/normalfunc.js"></script>
+<LINK href="include/code.css" type=text/css rel=stylesheet>
+	<link href="assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/skins/header/base/light.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/skins/header/menu/light.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/skins/brand/navy.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/skins/aside/navy.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/global.css" rel="stylesheet" type="text/css" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<TITLE>User</TITLE>
+    <style type="text/css">
+        .style1
+        {
+            FONT-WEIGHT: bold;
+            FONT-SIZE: large;
+            COLOR: #ffffff;
+            FONT-FAMILY: Verdana, 'MS Sans Serif';
+            TEXT-DECORATION: none;
+            height: 70px;
+        }
+        .style2
+        {
+            font-size: medium;
+        }
+        .style3
+        {
+            FONT-WEIGHT: bold;
+            FONT-SIZE: 14px;
+            COLOR: #3a84b4;
+            FONT-FAMILY: Verdana, 'MS Sans Serif';
+            TEXT-DECORATION: none;
+            height: 52px;
+        }
+    </style>
+</HEAD>
 <%
 	dim objRec
 	Dim strSQL
 	dim bMsg
 	dim bLastUp
 	dim chkExist
-	dim iAct
+	
 	bMsg=""	
 	bLastUp=""
 	if  Ucase(Request("Act"))= "UP" then	
@@ -52,16 +93,20 @@
 
 	
 %>
-
-
+<BODY TOPMARGIN=20 aLink=white vLink=white bottomMargin=0 link=darkviolet>
 <P>
 <FORM id=FORM1 name=form action="mt_alert.asp" method=post>
       <TABLE id=TABLE2  cellSpacing=0 cellPadding=1 TOPMARGIN=50px
-      width="708" background="" border=0 align=center class="table">
-
+      width="708" background="" border=0 align=center>
+		<tr>
+		  <td  align=center>&nbsp;</td>
+		</tr>
+        <tr>
+		  <td  align=center>&nbsp;</td>
+		</tr>
 		<tr bgcolor=gray >
-		  <td  align=left style="color:#fff"><h4>ข้อความประกาศ</h4></td>
-		  <td  align=right>
+		  <td class="style1" align=center>&nbsp;&nbsp;&nbsp; ข้อความประกาศ</td>
+		  <td class="style3" align=right>
 			<%
 			response.write session("msgResult")
 			session("msgResult") = ""
@@ -70,16 +115,16 @@
 		</tr>
 
         <TR vAlign=center bgColor=#e6e6fa>
-          <TD  class=text_red colspan=2><span class="style2" style="color:#444">ข้อความประกาศ</span><br>
+          <TD  class=text_red colspan=2><span class="style2">ข้อความประกาศ</span><br>
 		  <textarea rows=5 id="txtmsg" name="txtmsg" cols="100" ><%=bMsg%></TEXTAREA></TD></TR>
         <TR bgColor=#e6e6fa>
           <TD class=text_blue colspan=2><span class="style2">วันที่ปรับปรุงล่าสุด</span><br>
 		  <INPUT id="txtup" name="txtup" size=20 value="<%=bLastUp%>" disabled></TD></TR>
 
 		<TR align=middle  bgcolor=gray >
-		  <td align=left  colspan="2" height="50">
+		  <td colspan="2" height="50">
 			  <INPUT type="hidden" name="act" value="<%=iAct%>">
-			  <INPUT type="submit" class="btn btn-primary" value="บันทึก" style="cursor:hand;width:100;" name="button1">
+			  <INPUT type="submit" class="btn btn-primary btn-sm" value="บันทึก" style="cursor:hand;width:100;" name="button1">
 			  <!--
 			  <INPUT type="reset" value="ยกเลิก" id=reset1 name=reset1>
 			  -->
@@ -87,10 +132,9 @@
        </TABLE>
 
 <P></FORM>&nbsp;</P>
-
+</BODY>
+</HTML>
 <%
 	set objRec = nothing
 	set conn = nothing
 %>
-
-<% End Sub %>

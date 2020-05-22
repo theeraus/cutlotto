@@ -1,6 +1,15 @@
-<!--#include virtual="masterpage.asp"-->
-
+<%@ Language=VBScript CodePage = 65001  %>
+<%OPTION EXPLICIT%>
+<% Response.CacheControl = "no-cache" %>
+<% Response.AddHeader "Pragma", "no-cache" %> 
+<% Response.Expires = -1 %>
+<%check_session_valid()%>
+<!--#include file="include/adovbs.inc"-->
+<!--#include file="include/config.inc"-->
+<!--#include file="mdlGeneral.asp"-->
+<%Response.Buffer = True%>
 <%
+
 
 dim objRec
 dim recNum
@@ -8,7 +17,8 @@ dim strSql
 dim stsend
 dim ststatus
 dim sumout
-
+	Set objRec = Server.CreateObject ("ADODB.Recordset")
+	Set recNum = Server.CreateObject ("ADODB.Recordset")
 	
 dim strOpen
 dim strOrder
@@ -18,14 +28,6 @@ dim tmpClass
 dim tmpColColor
 Dim CntTicket
 tmpColColor="#99FFFF" 
-
-%>
-<% Sub ContentPlaceHolder() %>
-
-<%
-
-	Set objRec = Server.CreateObject ("ADODB.Recordset")
-	Set recNum = Server.CreateObject ("ADODB.Recordset")
 
 	strOpen="เปิดรับแทง"
 	strOrder="เรียงเลข"
@@ -39,6 +41,24 @@ tmpColColor="#99FFFF"
 '	end if
 
 %>
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" Content="Microsoft Visual Studio 6.0">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta http-equiv="cache-control" content="no-cache"> 
+<meta http-equiv="pragma" content="no-cache"> 
+<meta http-equiv="expires" content="-1">
+<LINK href="include/code.css" type=text/css rel=stylesheet>
+<script language="JavaScript" src="include/normalfunc.js"></script>
+
+<link href="assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
+<link href="assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
+<link href="assets/css/skins/header/base/light.css" rel="stylesheet" type="text/css" />
+<link href="assets/css/skins/header/menu/light.css" rel="stylesheet" type="text/css" />
+<link href="assets/css/skins/brand/navy.css" rel="stylesheet" type="text/css" />
+<link href="assets/css/skins/aside/navy.css" rel="stylesheet" type="text/css" />
+<link href="assets/css/global.css" rel="stylesheet" type="text/css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
 <script Language="VBScript" >	
 	sub cmborder_onChange()
@@ -101,7 +121,8 @@ function showsendto(cutall_id, tkid){
 
 </Script>
 		
-
+</HEAD>
+<BODY topmargin=0 leftmargin=0>
 
 	<TABLE width='95%' align=center class=table_red>        	
 <%
@@ -376,8 +397,8 @@ function showsendto(cutall_id, tkid){
 			<input type=hidden name="resend">			
 			<input type=hidden name="cutallid">			
 	</Form>
-
-<% End Sub%>
+</Body>
+</Html>
 
 
 

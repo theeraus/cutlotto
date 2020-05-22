@@ -1,5 +1,15 @@
-<!--#include virtual="masterpage.asp"-->
+<%@ Language=VBScript CodePage = 65001  %>
+<%OPTION EXPLICIT%>
+<%check_session_valid()%>
+<!--#include file="include/adovbs.inc"-->
+<!--#include file="include/config.inc"-->
+<!--#include file="mdlGeneral.asp"-->
+<%Response.Buffer = True%>
 <%
+Response.ContentType = "text/html"
+Response.AddHeader "Content-Type", "text/html;charset=UTF-8"
+Response.CodePage = 65001
+Response.CharSet = "UTF-8"
 dim objRec
 dim recNumType
 dim recPlay
@@ -15,11 +25,6 @@ dim num3down2
 dim num3down3
 dim num3down4
 Dim mode
-%>
-<% Sub ContentPlaceHolder() %>
-
-<%
-
 mode=Request("mode")
 	
 	Set objRec = Server.CreateObject ("ADODB.Recordset")
@@ -96,6 +101,20 @@ mode=Request("mode")
 	end if
 	objRec.close
 %>
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" Content="Microsoft Visual Studio 6.0">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<LINK href="include/code.css" type=text/css rel=stylesheet>
+<script language="JavaScript" src="include/normalfunc.js"></script>
+<link href="assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
+<link href="assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
+<link href="assets/css/skins/header/base/light.css" rel="stylesheet" type="text/css" />
+<link href="assets/css/skins/header/menu/light.css" rel="stylesheet" type="text/css" />
+<link href="assets/css/skins/brand/navy.css" rel="stylesheet" type="text/css" />
+<link href="assets/css/skins/aside/navy.css" rel="stylesheet" type="text/css" />
+<link href="assets/css/global.css" rel="stylesheet" type="text/css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
 <script language=Javascript>
 	function print_summoney() {
@@ -180,10 +199,11 @@ var chkkey
         }
     </style>
 
+<BODY topmargin=0 leftmargin=0 onLoad="document.form1.txt3up.focus();">
 	<FORM METHOD=POST ACTION="dealer_check_number.asp" name="form1">
 	<input type="hidden" name="mode" value="click_submit">	
 	<INPUT TYPE="hidden" name="chk1" value="">
-	<TABLE  align=center class=table_red width="55%">        	
+	<TABLE  align=center class="table" width="55%">        	
 		<tr align=center bgColor=red  class=head_white>
 			<td colspan=7 >วันที่&nbsp;&nbsp;&nbsp;<%=formatdatetime(now(),2)%></td>
 		</tr>
@@ -194,7 +214,7 @@ var chkkey
 			<td><INPUT TYPE="text" NAME="txt2down" size=2 style="width:22;" maxlength=2 value="<%=num2down%>" onKeyUp="txt2down_checkkey();"></td>
 			<td class="auto-style2"><strong>3 ล่าง ออก</strong></td>
 			<td><INPUT TYPE="text" NAME="txt3down1" size=3 style="width:32;" maxlength=3 value="<%=num3down1%>" onKeyUp="txt3down1_checkkey();">&nbsp;<INPUT TYPE="text" NAME="txt3down2" size=5 maxlength=3 style="width:32;" value="<%=num3down2%>" onKeyUp="txt3down2_checkkey();">&nbsp;<INPUT TYPE="text" NAME="txt3down3" size=5 maxlength=3 style="width:32;" value="<%=num3down3%>" onKeyUp="txt3down3_checkkey();">&nbsp;<INPUT TYPE="text" NAME="txt3down4" size=5 style="width:32;" maxlength=3 value="<%=num3down4%>" onKeyUp="txt3down4_checkkey();"></td>
-			<td><input type=button class="inputG" onClick="document.all.form1.chk1.value='ตรวจเลข'; document.all.form1.submit();" style="cursor:hand; width: 75px;" name="chk" value="ตรวจเลข"></td>
+			<td><input type=button class="btn btn-primary btn-sm" onClick="document.all.form1.chk1.value='ตรวจเลข'; document.all.form1.submit();" style="cursor:hand; width: 75px;" name="chk" value="ตรวจเลข"></td>
 		</tr>
 	</table>
 	</FORM>
@@ -239,7 +259,7 @@ dim totalselfOutDisc
 		recNumType.open strSql,conn
 		if not recNumType.Eof then
 	%>
-	<TABLE align=center class=table_red width ="65%">        
+	<TABLE align=center class="table" width ="65%">        
 		<tr bgColor=#ff7777  class=head_black align=center>
 			<td>ใบสรุปยอดเงิน</td>
 			<td colspan=3>ยอดทั้งหมด</td>
@@ -351,7 +371,7 @@ dim totalselfOutDisc
 		recPlay.close
 		'Total
 		response.write "<tr class=head_black>"
-		response.write "	<td bgColor=#ff7777 align=center>รวม</td>"
+		response.write "	<td bgColor=#ff7777 align=center>Total</td>"
 		response.write "	<td bgColor=#ff7777 align=right>"&formatnumber(totalAllPlay,2)&"</td>"
 		response.write "	<td bgColor=#ff7777 align=right>"&formatnumber(totalAllPaid,2)&"</td>"				
 		response.write "	<td bgColor=#ff7777 align=right>"&formatnumber(totalAllDisc,2)&"</td>"
@@ -365,7 +385,7 @@ dim totalselfOutDisc
 %>	
 
 	</Table>
-		<table align=center><tr><td align=center colspan=3><input type=button class="inputP" value='พิมพ์' style="cursor:hand; width: 75px;" onClick="print_summoney();">&nbsp;&nbsp;<input type=button class="inputE" value='ใบสรุปยอดเก็บ' style="cursor:hand; width: 120px;" onClick="print_sumkeep();"></td></tr></table>
+		<table align=center><tr><td align=center colspan=3><input type=button class="btn btn-warning btn-sm" value='พิมพ์' style="cursor:hand; width: 75px;" onClick="print_summoney();">&nbsp;&nbsp;<input type=button class="btn btn-danger btn-sm" value='ใบสรุปยอดเก็บ' style="cursor:hand; width: 120px;" onClick="print_sumkeep();"></td></tr></table>
 	<br><br>
 
 <%	if 1 = 0 then %>
@@ -475,9 +495,9 @@ dim totalselfOutDisc
 
 %>
 	</TABLE>
-	<table align=center><tr><td align=center colspan=3><input type=button class="inputP" value='พิมพ์' style="cursor:hand; width: 75px;" onClick="print_sumkeep();"></td></tr></table>
+	<table align=center><tr><td align=center colspan=3><input type=button class="btn btn-warning btn-sm" value='พิมพ์' style="cursor:hand; width: 75px;" onClick="print_sumkeep();"></td></tr></table>
 	<%
 	End if   ' 1 = 0
 	%>
-
-<%  End Sub %>
+</body>
+</html>

@@ -1,6 +1,9 @@
-<!--#include virtual="masterpage.asp"-->
-<% Sub ContentPlaceHolder() %>
-
+<%OPTION EXPLICIT%>
+<% Response.CacheControl = "no-cache" %>
+<% Response.AddHeader "Pragma", "no-cache" %> 
+<% Response.Expires = -1 %>
+<% Response.CodePage = 65001%>
+<!--#include file="include/config.inc"-->
 <%
 		if trim(Session("uid"))="" then 	response.redirect "signin.asp"
 		Dim objRS , objDB , SQL	, tmp_Color
@@ -13,7 +16,17 @@
 		Set objRS =Server.CreateObject("ADODB.Recordset")		
 		
 %>
-
+<html>
+<head>
+<title>.:: ดูยอดเงิน : คนแทง ::. </title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="cache-control" content="no-cache"> 
+<meta http-equiv="pragma" content="no-cache"> 
+<meta http-equiv="expires" content="-1">
+<link href="include/code.css" rel="stylesheet" type="text/css">
+<script language="JavaScript" src="include/dialog.js"></script>
+</head>
+<body topmargin="0"  leftmargin="0">
 	<center><br><br>
 	<table width="90%"  border="0" cellspacing="1" cellpadding="1" bgcolor="#FFFFFF">
 	<%
@@ -32,6 +45,6 @@
 	%>
 	</table>
 	</center>
-
-<% End Sub  %>
+</body>
+</html>
 			

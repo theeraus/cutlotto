@@ -25,7 +25,7 @@
 
 <table  border="1"  cellpadding="1" cellspacing="1" bgcolor="#000040" width="98%">
 							<tr>
-                                <td class="textbig_white" align="center" bgcolor="#000066">�������</td>
+                                <td class="textbig_white" align="center" bgcolor="#000066">ข่าวสาร</td>
 							</tr>
 							
 							<tr>
@@ -35,13 +35,13 @@
 
 						   	
                             <tr>								
-							<td>	<div>&bull; <b style='color:green'>��Ǣ���駪����Թ ��� �١��ҷ������������ö�駪��Ф����� �������������Ŵ�ʹ�Ѻ�� 㹪�ͧ�ҧ�������¤�Ѻ <b style='color:blue'>(���Ф����ҷء�ѹ��� 5-10 �ͧ��͹ # �Ţ���ѭ�շ���͹������  )
+							<td>	<div>&bull; <b style='color:green'>หัวข้อแจ้งชำระเงิน คือ ลูกค้าที่เช่าเว็บสามารถแจ้งชำระค่าเช่า และแจ้งเพิ่มหรือลดยอดรับโพย ในช่องทางนี้ได้เลยครับ <b style='color:blue'>(ชำระค่าเช่าทุกวันที่ 5-10 ของเดือน # เลขที่บัญชีที่โอนค่าเช่า  )
 <b style='color:blue'>	</div></td>
                               </tr>  
 								
                             <tr>								
-							<td>	<div>&bull; <b style='color:red'>��� web ᷧ�͡  ��� ����� web ��� web ���͢��� web �������ԧ�� web �е�ͧ login ���仴��·ء���� ��������͹����͡�е�ͧ login ��Ҵ� ��Ǣ����ػ�ʹ� ���Ǵ����������� �ըӹǹ�Թ����ӡѹ�������� ��������仴���Ǣ�� ����  ���Ǵ��·���ʹ��ҡѹ ��ҵ���Ţ����͹�ѹ��������  �������͹�ѹ�駤׹�����·ҧ���س��  ���Ҥس��������ʹ�������ҫ�ӡѹ �������駻��·ҧ �������ʹ���·ҧ�١��ͧ�Ф�Ѻ
-( ��纤س�ФԴ�Թ 1 � ����·ҧ�ФԴ�Թ�س 2 � �����һ��·ҧ�١��ͧ�Ф�Ѻ)
+							<td>	<div>&bull; <b style='color:red'>ตั้ง web แทงออก  คือ การส่ง web ต่อ web หรือข้าม web เวลาส่งลิงค์ web จะต้อง login เข้าไปดูโพยทุกครั้ง หรือไม่ก่อนหวยออกจะต้อง login เข้าดู หัวข้อสรุปยอดใบ แล้วดูโพยแต่ละใบว่า มีจำนวนเงินที่ซ้ำกันหรือเปล่า ถ้ามีให้ไปดูหัวข้อ ดูโพย  แล้วดูโพยที่ยอดเท่ากัน ว่าตัวเลขเหมือนกันหรือเปล่า  ถ้าเหมือนกันแจ้งคืนที่ปลายทางที่คุณส่ง  แต่ถ้าคุณลืมดูหรือดูแล้วว่าซ้ำกัน และไม่แจ้งปลายทาง ถือว่ายอดปลายทางถูกต้องนะครับ
+( เว็บคุณจะคิดเงิน 1 ใบ แต่ปลายทางจะคิดเงินคุณ 2 ใบ ถือว่าปลายทางถูกต้องนะครับ)
 	</div></td>
                               </tr>  
 							
@@ -57,7 +57,7 @@
 
 <div style="margin-top:30; margin-bottom:20px;">
           
-          <strong class="tdbody">	&bull; ����������������͹  &bull;</strong>
+          <strong class="tdbody">	&bull; ค่าเช่าโปรแกรมรายเดือน  &bull;</strong>
           <table width="100%" border="1" cellspacing="5" cellpadding="0">
   <tr>
     <td valign="top">       
@@ -66,8 +66,8 @@
     
     <table  border="0"  cellpadding="5" cellspacing="1" bgcolor="#000040" width="100%" >
 							<tr>
-                                <td class="textbig_white" align="center" bgcolor="#000066">�ʹ�Ѻ������Թ</td>
-								<td class="textbig_white" align="center" bgcolor="#000066">�ҤҤ����������͹</td>			
+                                <td class="textbig_white" align="center" bgcolor="#000066">ยอดรับโพยไม่เกิน</td>
+								<td class="textbig_white" align="center" bgcolor="#000066">ราคาค่าเช่ารายเดือน</td>			
 							</tr>
 							
 
@@ -132,8 +132,8 @@
     
         <table  border="0"  cellpadding="5" cellspacing="1" bgcolor="#000040" width="100%">
 							<tr>
-                                <td class="textbig_white" align="center" bgcolor="#000066">�ʹ�Ѻ������Թ</td>
-								<td class="textbig_white" align="center" bgcolor="#000066">�ҤҤ����������͹</td>			
+                                <td class="textbig_white" align="center" bgcolor="#000066">ยอดรับโพยไม่เกิน</td>
+								<td class="textbig_white" align="center" bgcolor="#000066">ราคาค่าเช่ารายเดือน</td>			
 							</tr>
 							
 
@@ -200,8 +200,8 @@
     
         <table  border="0"  cellpadding="5" cellspacing="1" bgcolor="#000040" width="100%">
 							<tr>
-                                <td class="textbig_white" align="center" bgcolor="#000066">�ʹ�Ѻ������Թ</td>
-								<td class="textbig_white" align="center" bgcolor="#000066">�ҤҤ����������͹</td>			
+                                <td class="textbig_white" align="center" bgcolor="#000066">ยอดรับโพยไม่เกิน</td>
+								<td class="textbig_white" align="center" bgcolor="#000066">ราคาค่าเช่ารายเดือน</td>			
 							</tr>
 							
 	
@@ -263,8 +263,8 @@
     
         <table  border="0"  cellpadding="5" cellspacing="1" bgcolor="#000040"  width="100%" >
 							<tr>
-                                <td class="textbig_white" align="center" bgcolor="#000066">�ʹ�Ѻ������Թ</td>
-								<td class="textbig_white" align="center" bgcolor="#000066">�ҤҤ����������͹</td>			
+                                <td class="textbig_white" align="center" bgcolor="#000066">ยอดรับโพยไม่เกิน</td>
+								<td class="textbig_white" align="center" bgcolor="#000066">ราคาค่าเช่ารายเดือน</td>			
 							</tr>
 							
 		
@@ -338,7 +338,7 @@
 
 <div style="margin-top:30; margin-bottom:20px;">
           
-          <strong class="tdbody" style="font-size:16px;">	&bull; ��ǹ��ҧ���Թ�ôԵ��ͧǴ &bull;</strong>
+          <strong class="tdbody" style="font-size:16px;">	&bull; ส่วนต่างใช้เกินเครดิตต่องวด &bull;</strong>
           <table width="100%" border="1" cellspacing="5" cellpadding="0">
   <tr>
     <td valign="top">       
@@ -347,8 +347,8 @@
     
     <table  border="0"  cellpadding="5" cellspacing="1" bgcolor="#000040" width="100%" >
 							<tr>
-                                <td class="textbig_white" align="center" bgcolor="#000066" width="75%;">�ʹ���Թ</td>
-								<td class="textbig_white" align="center" bgcolor="#000066">�Ҥ�</td>			
+                                <td class="textbig_white" align="center" bgcolor="#000066" width="75%;">ยอดใช้เกิน</td>
+								<td class="textbig_white" align="center" bgcolor="#000066">ราคา</td>			
 							</tr>
 							
 
@@ -413,8 +413,8 @@
     
         <table  border="0"  cellpadding="5" cellspacing="1" bgcolor="#000040" width="100%">
 							<tr>
-                                <td class="textbig_white" align="center" bgcolor="#000066" width="75%;">�ʹ���Թ</td>
-								<td class="textbig_white" align="center" bgcolor="#000066">�Ҥ�</td>			
+                                <td class="textbig_white" align="center" bgcolor="#000066" width="75%;">ยอดใช้เกิน</td>
+								<td class="textbig_white" align="center" bgcolor="#000066">ราคา</td>			
 							</tr>
 							
 
@@ -481,8 +481,8 @@
     
         <table  border="0"  cellpadding="5" cellspacing="1" bgcolor="#000040" width="100%">
 							<tr>
-                                <td class="textbig_white" align="center" bgcolor="#000066" width="75%;">�ʹ���Թ</td>
-								<td class="textbig_white" align="center" bgcolor="#000066">�Ҥ�</td>			
+                                <td class="textbig_white" align="center" bgcolor="#000066" width="75%;">ยอดใช้เกิน</td>
+								<td class="textbig_white" align="center" bgcolor="#000066">ราคา</td>			
 							</tr>
 							
 	
@@ -544,8 +544,8 @@
     
         <table  border="0"  cellpadding="5" cellspacing="1" bgcolor="#000040"  width="100%" >
 							<tr>
-                                <td class="textbig_white" align="center" bgcolor="#000066" width="75%;">�ʹ���Թ</td>
-								<td class="textbig_white" align="center" bgcolor="#000066">�Ҥ�</td>			
+                                <td class="textbig_white" align="center" bgcolor="#000066" width="75%;">ยอดใช้เกิน</td>
+								<td class="textbig_white" align="center" bgcolor="#000066">ราคา</td>			
 							</tr>
 							
 		
@@ -640,13 +640,13 @@
 						<table  border="0"  cellpadding="1" cellspacing="1" bgcolor="#000040" width="98%">
 							<tr>
 								<td class="textbig_white" align="right"  bgcolor="#000066" colspan="2"></td>
-                                <td class="textbig_white" align="center" bgcolor="#000066">���ŧ������</td>
-								<td class="textbig_white" align="center" bgcolor="#000066">�������䫵�</td>			
-                                <td  class="textbig_white" align="center" bgcolor="#000066">��Ҥ��</td>
-                                <td class="textbig_white" align="center" bgcolor="#000066">�ѹ����͹</td>
-                                <td class="textbig_white" align="center" bgcolor="#000066">�����͹�Թ</td>
-                                <td class="textbig_white" align="center" bgcolor="#000066">�ӹǹ�Թ</td>
-								<td class="textbig_white" align="center" bgcolor="#000066">�����˵�</td>
+                                <td class="textbig_white" align="center" bgcolor="#000066">ผู้ลงข้อมูล</td>
+								<td class="textbig_white" align="center" bgcolor="#000066">ชื่อเว็บไซต์</td>			
+                                <td  class="textbig_white" align="center" bgcolor="#000066">ธนาคาร</td>
+                                <td class="textbig_white" align="center" bgcolor="#000066">วันที่โอน</td>
+                                <td class="textbig_white" align="center" bgcolor="#000066">เวลาโอนเงิน</td>
+                                <td class="textbig_white" align="center" bgcolor="#000066">จำนวนเงิน</td>
+								<td class="textbig_white" align="center" bgcolor="#000066">หมายเหตุ</td>
 							</tr>
 							
 							
@@ -669,17 +669,17 @@ function clickpic(p){
 	var t=p
 
 	//alert(t)
-	// �Ѱ���
+	// รัฐบาล
 	if (t==1){
 		document.mypic.src ="images/price_tos.jpg"
 		document.form1.game_type.value="2"
 	}
-	// ����Թ
+	// ออมสิน
 	if (t==2){
 		document.mypic.src = "images/price_oth.jpg";
 		document.form1.game_type.value="3"
 	}
-	// ����
+	// อื่นๆ
 	if (t==3){
 		document.mypic.src = "images/price_gov.jpg"
 		document.form1.game_type.value="1"
@@ -693,7 +693,7 @@ function click_edit(tran_id){
 	document.form1.submit();
 }
 function click_del(tran_id,tran_detail){
-	if (confirm('�س��ͧ���ź��¡�� ' + tran_detail+' ?' )){
+	if (confirm('คุณต้องการลบรายการ ' + tran_detail+' ?' )){
 		document.form1.mode.value="delete";
 		document.form1.edit_tran_id.value=tran_id;
 		document.form1.submit();
@@ -707,13 +707,13 @@ function click_cancel(){
 function click_edit_save(tran_id){
 	if (document.form1.tran_detail.value=="")
 	{
-		alert("��سҡ�͡ URL")
+		alert("กรุณากรอก URL")
 		document.form1.tran_detail.focus();
 		return false
 	}
 	if (document.form1.tran_remark.value=="")
 	{
-		alert("��سҡ�͡ ��������´")
+		alert("กรุณากรอก รายละเอียด")
 		document.form1.tran_remark.focus();
 		return false
 	}
@@ -732,25 +732,25 @@ function click_add(){
 }
 function click_add_save(){
 	if (document.form1.tran_detail.value==""){
-		alert('�Դ��Ҵ : ��سҡ�͡ URL')
+		alert('ผิดพลาด : กรุณากรอก URL')
 		document.form1.tran_detail.focus();
 		return
 	}
 	//alert(document.form1.elements["bank"].value)
 	if (document.form1.elements["bank"].value==""){
-		alert('�Դ��Ҵ : ��س����͡��Ҥ���͹')
+		alert('ผิดพลาด : กรุณาเลือกธนาคารโอน')
 		document.form1.elements["bank"][0].focus();
 		return
 	}
 	
 		if (document.form1.tran_date.value==""){
-		alert('�Դ��Ҵ : ��سҡ�͡�ѹ����͹�Թ')
+		alert('ผิดพลาด : กรุณากรอกวันที่โอนเงิน')
 		document.form1.tran_date.focus();
 		return
 	}
 	
 	if (document.form1.tran_time.value==""){
-		alert('�Դ��Ҵ : ��سҡ�͡�����͹�Թ')
+		alert('ผิดพลาด : กรุณากรอกเวลาโอนเงิน')
 		document.form1.tran_time.focus();
 		return
 	}
@@ -758,7 +758,7 @@ function click_add_save(){
 	
 	
 	if (document.form1.tran_money.value==""){
-		alert('�Դ��Ҵ : ��سҡ�͡ �ӹǹ�Թ�͹')
+		alert('ผิดพลาด : กรุณากรอก จำนวนเงินโอน')
 		document.form1.tran_money.focus();
 		return
 	}
@@ -766,7 +766,7 @@ function click_add_save(){
 	document.form1.submit();
 }
 
-//�� �� enter
+//เช็ค กด enter
 function chkEnter(obj){
 		var k=event.keyCode
 		if (k == 13){	

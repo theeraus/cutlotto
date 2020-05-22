@@ -1,4 +1,4 @@
-<%@ Language=VBScript %>
+<%@ Language=VBScript CodePage = 65001  %>
 <%OPTION EXPLICIT%>
 <%Response.Buffer = True%>
 <!--#include file="adovbs.inc"-->
@@ -17,7 +17,7 @@
 		comm.CommandType = adCmdText
 		comm.Execute
 		If Err.number = 0 Then	
-			Response.Write "บันทึกเรียบร้อยแล้ว"
+			Response.Write "๏ฟฝัน๏ฟฝึก๏ฟฝ๏ฟฝ๏ฟฝยบ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ"
 		end if		
 		set comm = nothing
 		'Response.Write " goto " & Request("myGoto")

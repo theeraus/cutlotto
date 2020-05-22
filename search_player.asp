@@ -2,6 +2,7 @@
 <% Response.CacheControl = "no-cache" %>
 <% Response.AddHeader "Pragma", "no-cache" %> 
 <% Response.Expires = -1 %>
+<% Response.CodePage = 65001%>
 <%
 
 		Dim objRS , objDB , SQL, dealer_id, game_type	, from_click_submit, chr_search
@@ -23,9 +24,26 @@
 <meta http-equiv="expires" content="-1">
 <link href="include/code.css" rel="stylesheet" type="text/css">
 </head>
-<body topmargin="0" leftmargin="0" scroll = no  >
+<body topmargin="0" leftmargin="0" scroll = no  style="border : solid #606060; border-width : 1px;">
 	<form name="form1" action="search_player.asp" method="post">
-		<table width="100%"  border="0" cellspacing="1" cellpadding="1" bgcolor="#606060">
+	<table align="center" cellpadding="0" cellspacing="0" width="100%" border="0">
+	<tr bgcolor="#CD9BFF">
+			<td height="25" >
+				<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+					<tr>
+						<td class="tdbody1"> ค้นจาก ชื่อ หรือ หมายเลข <span id=search_text></span></td>
+						<td  align="right"><img src="images/close.gif" align="absmiddle" style="cursor:hand; " onClick="parent.closeDialog()">&nbsp;</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		<tr height="10">
+			<td></td>
+		</tr>
+		<tr>
+			<td align="center" >			
+
+				<table width="95%"  border="0" cellspacing="1" cellpadding="1" bgcolor="#606060">
 					<input type="hidden" name="from_click_submit" value="yes">
 					<input type="hidden" name="game_type" value="<%=game_type%>">
 					<input type="hidden" name="dealer_id" value="<%=dealer_id%>">
@@ -78,6 +96,9 @@
 						</td>
 					</tr>
 				</table>
+			</td>		
+		</tr>
+	</table>
 	</center>
 	</form>
 </body>

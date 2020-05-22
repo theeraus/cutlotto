@@ -1,4 +1,4 @@
-<%@ Language=VBScript %>
+<%@ Language=VBScript CodePage = 65001  %>
 <%OPTION EXPLICIT%>
 <%check_session_valid()%>
 <!--#include file="include/adovbs.inc"-->
@@ -27,7 +27,7 @@ dim strOrder, strNumType
 	Set objRec = Server.CreateObject ("ADODB.Recordset")
 	Set objRs = Server.CreateObject ("ADODB.Recordset")
 	if Request("act")="cal" then
-		'�ӹǹ �� �ӹǹ�Թ�Ѻ���
+		'คำนวน หา จำนวนเงินรับไว้
 		strSql = "exec spA_FightUp " & Session("gameid") & "," &  Session("uid") & ", '" & strNumType & "'"
 'showstr strSql
 		set objRec = conn.Execute(strSql)
@@ -90,7 +90,7 @@ dim strOrder, strNumType
 		}	
 
 	function gosendtype(st,uid) {
-		if (confirm("�س�׹�ѹ���зӡ�þ�����͡ ������� ?")) {	
+		if (confirm("คุณยืนยันที่จะทำการพิมพ์ออก หรือไม่ ?")) {	
 			document.form2.sendtype.value=st;
 			document.form2.sendto.value=999;
 			document.form2.sendfrom.value=uid;
@@ -131,21 +131,21 @@ dim strOrder, strNumType
 			<Td colspan=2 bgColor="#E0E0E0">
 				<TABLE width='100%' align=center >
 					<TR>
-						<td width="25%" align=right class="head_black">����Թᷧ��&nbsp;
+						<td width="25%" align=right class="head_black">รวมเงินแทงบน&nbsp;
 						</td>
 						<td width="25%"><INPUT TYPE="text" NAME="" readonly value= "<%=formatnumber(sumbefor,0)%>" style="width:120;text-align:right">
 						</td>
-						<td width="25%" align=right class="head_black">������&nbsp;
+						<td width="25%" align=right class="head_black">ตั้งสู้&nbsp;
 						</td>
-						<td width="25%" class="head_black"><INPUT TYPE="text" NAME="txtsuu" value="<%=Request("txtsuu")%>" style="width:120;text-align:right" onKeyPress="txtsuu_keypress();">&nbsp;�ҷ
+						<td width="25%" class="head_black"><INPUT TYPE="text" NAME="txtsuu" value="<%=Request("txtsuu")%>" style="width:120;text-align:right" onKeyPress="txtsuu_keypress();">&nbsp;บาท
 						</td>
 					</TR>
 					<TR>
-						<td width="25%" align=right class="head_black">����Թ�ѡ��ǹŴ&nbsp;
+						<td width="25%" align=right class="head_black">รวมเงินหักส่วนลด&nbsp;
 						</td>
 						<td width="25%"><INPUT TYPE="text" NAME="" readonly style="width:120;text-align:right" value="<%=formatnumber(sumamt,0)%>">
 						</td>
-						<td width="25%" align=right class="head_black"><!-- �ӹǹ�ع -->&nbsp;
+						<td width="25%" align=right class="head_black"><!-- จำนวนทุน -->&nbsp;
 						</td>
 						<td width="25%">&nbsp;<!-- <INPUT TYPE="text" NAME="" readonly style="width:120;text-align:right" value="0"> -->
 						</td>
@@ -157,7 +157,7 @@ dim strOrder, strNumType
 			<TD width="150" bgColor="#E0E0E0" valign=top>
 					<TABLE width='100%' align=center >
 						<TR>
-							<Td class="head_black">�Ѵ���
+							<Td class="head_black">ตัดเศษ
 							</Td>
 						</TR>
 						<TR>	
@@ -175,27 +175,27 @@ dim strOrder, strNumType
 						<TR>
 							<TD>
 								<select style="width:100" name="cmborder" onChange="cmborder_onChange();">
-									<option value="money" <%=selected(Request("cmborder"),"money")%>>���§����Թ</option>
-									<option value="num" <%=selected(Request("cmborder"),"num")%>>���§����Ţ</option>
+									<option value="money" <%=selected(Request("cmborder"),"money")%>>เรียงตามเงิน</option>
+									<option value="num" <%=selected(Request("cmborder"),"num")%>>เรียงตามเลข</option>
 								</select>								
 							</TD>
 						</TR>
 						<TR>
 							<TD>
 								<select style="width:100" name="cmbnumtype" onChange="cmbnumtype_change();">
-									<option value="rec" <%=selected(Request("cmbnumtype"),"rec")%>>�Ţ�Ѻ���</option>
-									<option value="all" <%=selected(Request("cmbnumtype"),"all")%>>�Ţ�Ѻ������</option>
-									<option value="out" <%=selected(Request("cmbnumtype"),"out")%>>�Ţᷧ�͡</option>
+									<option value="rec" <%=selected(Request("cmbnumtype"),"rec")%>>เลขรับไว้</option>
+									<option value="all" <%=selected(Request("cmbnumtype"),"all")%>>เลขรับทั้งหมด</option>
+									<option value="out" <%=selected(Request("cmbnumtype"),"out")%>>เลขแทงออก</option>
 								</select>								
 							</TD>
 						</TR>
 
 						<TR>
-							<TD><INPUT TYPE="button" class=button_blue value="��駤��" onClick="open_setvalue();" style="width:100"> 
+							<TD><INPUT TYPE="button" class=button_blue value="ตั้งค่า" onClick="open_setvalue();" style="width:100"> 
 							</TD>
 						</TR>
 						<TR>
-							<TD><INPUT TYPE="button" class=button_blue value="�������캹" onClick="open_analysis();" style="width:100"> 
+							<TD><INPUT TYPE="button" class=button_blue value="วิเคราะห์บน" onClick="open_analysis();" style="width:100"> 
 							</TD>
 						</TR>
 					</TABLE>
@@ -241,7 +241,7 @@ dim strOrder, strNumType
 							</td>
 						</Tr>
 					</Table>
-<!-- **************************************   ������ **************************************** -->
+<!-- **************************************   ตั้งสู้ **************************************** -->
 <%
 					if Request("act") = "suu" and Request("txtsuu") <> "" then
 dim tmpType
@@ -264,13 +264,13 @@ dim chkEnd
 
 					<TABLE width='100%' align=center class=box1 >  	
 						<tr class=text_black >
-							<td colspan=8 height=20 align=center><FONT SIZE="3" COLOR="">�ҡ<u>&nbsp;&nbsp;&nbsp;<%=Session("uname")%>&nbsp;&nbsp;&nbsp;</u>�ʹ��&nbsp;&nbsp;&nbsp;<span id="sumsend2"></span></font></td>
+							<td colspan=8 height=20 align=center><FONT SIZE="3" COLOR="">จาก<u>&nbsp;&nbsp;&nbsp;<%=Session("uname")%>&nbsp;&nbsp;&nbsp;</u>ยอดส่ง&nbsp;&nbsp;&nbsp;<span id="sumsend2"></span></font></td>
 						</tr>
 
 <%
 						Dim otmpType
 						otmpType=""
-						frmNo = 1 ' ����¹�ҡ����������� ������ 1 ���
+						frmNo = 1 ' เปลี่ยนจากส่งได้หลายเจ้า เป็นส่งแค่ 1 เจ้า
 						sumamt = 0
 						do while not objRec.eof
 							if tmpType <> objRec("play_type") then
@@ -289,7 +289,7 @@ dim chkEnd
 <%
 							end if
 							playamt =  clng(objRec("play_suu"))
-							if playamt > 0 then ' �óյѴ��������� 0 ��ͧ����ʴ�							
+							if playamt > 0 then ' กรณีตัดเศษแล้วเป็น 0 ต้องไม่แสดง							
 									sumamt = sumamt + clng(objRec("play_suu"))
 									if cntcol=0 then 
 										response.write "		<tr bgcolor=#FFFFFF>" & chr(13)
@@ -328,7 +328,7 @@ dim chkEnd
 											<input type=hidden name="sendtype">
 											<input type=hidden name="sendweb">			
 											<input type=hidden name="sendweb2">			
-											<td class=textbig_blue align=center colspan=6 ><INPUT TYPE="button" name="action" value="�����������" class=button_blue onClick=showsendto()>&nbsp;&nbsp;<INPUT TYPE="button" name="action" value="������͡" class=button_red onClick=gosendtype("2",<%=Session("uid")%>)></td>
+											<td class=textbig_blue align=center colspan=6 ><INPUT TYPE="button" name="action" value="ส่งเจ้ามืออื่น" class=button_blue onClick=showsendto()>&nbsp;&nbsp;<INPUT TYPE="button" name="action" value="พิมพ์ออก" class=button_red onClick=gosendtype("2",<%=Session("uid")%>)></td>
 										</tr> 
 									</Table>
 									<script language=javascript>document.all.sumsend2.innerText=convert_number('<%=sumamt%>');</script>
@@ -337,7 +337,7 @@ dim chkEnd
 
 					end if
 %>
-<!-- **************************************  end  ������ **************************************** -->
+<!-- **************************************  end  ตั้งสู้ **************************************** -->
 			</TD>
 		</TR>
 	</Table>

@@ -1,4 +1,4 @@
-<%@ Language=VBScript %>
+<%@ Language=VBScript CodePage = 65001  %>
 <%OPTION EXPLICIT%>
 <%check_session_valid()%>
 <!--#include file="include/adovbs.inc"-->
@@ -28,10 +28,10 @@ mode=Request("mode")
 	Set recNumType = Server.CreateObject ("ADODB.Recordset")
 	Set recPlay = Server.CreateObject ("ADODB.Recordset")
 
-	strOpen="à»Ô´ÃÑºá·§"
-	if CheckGame(Session("uid"))="OPEN" then strOpen="»Ô´ÃÑºá·§"
+	strOpen="ï¿½Ô´ï¿½Ñºá·§"
+	if CheckGame(Session("uid"))="OPEN" then strOpen="ï¿½Ô´ï¿½Ñºá·§"
 
-	if Request("chk1")="µÃÇ¨àÅ¢" then
+	if Request("chk1")="ï¿½ï¿½Ç¨ï¿½Å¢" then
 		Server.ScriptTimeout = 2400		
 		
 		strSql="Update tb_open_game set " _
@@ -54,7 +54,7 @@ mode=Request("mode")
 		comm.CommandType = adCmdStoredProc
 		comm.Execute
 
-' update Êè§ ¾ÔÁ¾ì
+' update ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
 		strSql="Update tb_open_game set " _
 		& "up2='"&Right(Request("txt3up"),2)&"', " _
 		& "up3='"&Request("txt3up")&"', " _
@@ -67,15 +67,15 @@ mode=Request("mode")
 		comm.CommandText = StrSql
 		comm.CommandType = adCmdText
 		comm.Execute
-' 157 = gameid ¢Í§Êè§¾ÔÁ¾ì
+' 157 = gameid ï¿½Í§ï¿½è§¾ï¿½ï¿½ï¿½ï¿½
 
-' äÁè¤Ô´áÅéÇ¤Ô´ÃÇÁ¡Ñº¢éÒ§º¹àÅÂ
+' ï¿½ï¿½ï¿½Ô´ï¿½ï¿½ï¿½Ç¤Ô´ï¿½ï¿½ï¿½ï¿½Ñºï¿½ï¿½Ò§ï¿½ï¿½ï¿½ï¿½ï¿½
 '		comm.CommandText = "spCheckLottoNumber(157, " & Session("gameid") & ")"
 '		comm.CommandType = adCmdStoredProc
 '		comm.Execute
 
 		Server.ScriptTimeout = 60
-	end if   ' µÃÇ¨àÅ¢
+	end if   ' ï¿½ï¿½Ç¨ï¿½Å¢
 
 	num2up="": num3up="": num2down="": num3down1="": num3down2="": num3down3="": num3down4=""
 	strSql="Select * from tb_open_game where game_id="&Session("gameid")
@@ -163,7 +163,7 @@ function txt3down4_checkkey() {
 var chkkey
 	chkkey = event.keyCode;
 	if (chkkey == 13) {
-		document.all.form1.chk1.value="µÃÇ¨àÅ¢";
+		document.all.form1.chk1.value="ï¿½ï¿½Ç¨ï¿½Å¢";
 		document.all.form1.submit();
 	}
 }
@@ -174,26 +174,26 @@ var chkkey
 	<INPUT TYPE="hidden" name="chk1" value="">
 	<TABLE  align=center class=table_blue>        	
 		<tr align=center bgColor=#66CCFF  class=head_white>
-			<td colspan=7 >ÇÑ¹·Õè&nbsp;&nbsp;&nbsp;<%=formatdatetime(now(),2)%></td>
+			<td colspan=7 >ï¿½Ñ¹ï¿½ï¿½ï¿½&nbsp;&nbsp;&nbsp;<%=formatdatetime(now(),2)%></td>
 		</tr>
 		<tr align=center bgColor=#66CCFF  class=head_blue>
-			<td>3 º¹ ÍÍ¡</td>
+			<td>3 ï¿½ï¿½ ï¿½Í¡</td>
 			<td><INPUT TYPE="text" id="txt3up" NAME="txt3up" size=3 style="width:32;" maxlength=3 value="<%=num3up%>" onKeyUp="txt3up_checkkey();"></td>
-			<td>2 ÅèÒ§ ÍÍ¡</td>
+			<td>2 ï¿½ï¿½Ò§ ï¿½Í¡</td>
 			<td><INPUT TYPE="text" NAME="txt2down" size=2 style="width:22;" maxlength=2 value="<%=num2down%>" onKeyUp="txt2down_checkkey();"></td>
-			<td>3 ÅèÒ§ ÍÍ¡</td>
+			<td>3 ï¿½ï¿½Ò§ ï¿½Í¡</td>
 			<td><INPUT TYPE="text" NAME="txt3down1" size=3 style="width:32;" maxlength=3 value="<%=num3down1%>" onKeyUp="txt3down1_checkkey();">&nbsp;<INPUT TYPE="text" NAME="txt3down2" size=5 maxlength=3 style="width:32;" value="<%=num3down2%>" onKeyUp="txt3down2_checkkey();">&nbsp;<INPUT TYPE="text" NAME="txt3down3" size=5 maxlength=3 style="width:32;" value="<%=num3down3%>" onKeyUp="txt3down3_checkkey();">&nbsp;<INPUT TYPE="text" NAME="txt3down4" size=5 style="width:32;" maxlength=3 value="<%=num3down4%>" onKeyUp="txt3down4_checkkey();"></td>
-			<td><input type=button onClick="document.all.form1.chk1.value='µÃÇ¨àÅ¢'; document.all.form1.submit();" name="chk" value="µÃÇ¨àÅ¢"></td>
+			<td><input type=button onClick="document.all.form1.chk1.value='ï¿½ï¿½Ç¨ï¿½Å¢'; document.all.form1.submit();" name="chk" value="ï¿½ï¿½Ç¨ï¿½Å¢"></td>
 		</tr>
 	</table>
 	</FORM>
 	<br>
-	<CENTER><FONT SIZE="+1" COLOR="#FF0000"><B>àÁ×èÍá¡éä¢àÅ¢ÍÍ¡ á¡éä¢â¾Â à»ÅÕèÂ¹á»Å§ÃÒ¤Ò µéÍ§ÊÑè§µÃÇ¨àÅ¢ãËÁè·Ø¡¤ÃÑé§</B></FONT></CENTER>
+	<CENTER><FONT SIZE="+1" COLOR="#FF0000"><B>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å¢ï¿½Í¡ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Â¹ï¿½Å§ï¿½Ò¤ï¿½ ï¿½ï¿½Í§ï¿½ï¿½è§µï¿½Ç¨ï¿½Å¢ï¿½ï¿½ï¿½ï¿½Ø¡ï¿½ï¿½ï¿½ï¿½</B></FONT></CENTER>
 	<br>
 	<%
 '	If mode="click_submit" then
 
-'ª¹Ô´àÅ¢á·§
+'ï¿½ï¿½Ô´ï¿½Å¢á·§
 dim sumAllPlay
 dim sumAllPaid
 dim sumAllDisc
@@ -229,22 +229,22 @@ dim totalselfOutDisc
 	%>
 	<TABLE align=center class=table_blue>        
 		<tr bgColor=#66CCFF  class=head_black align=center>
-			<td>ãºÊÃØ»ÂÍ´à§Ô¹</td>
-			<td colspan=3>ÂÍ´·Ñé§ËÁ´</td>
-			<td colspan=3>á·§ÍÍ¡</td>
-			<td colspan=3>ÃÑºäÇé</td>
+			<td>ï¿½ï¿½ï¿½Ø»ï¿½Í´ï¿½Ô¹</td>
+			<td colspan=3>ï¿½Í´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½</td>
+			<td colspan=3>á·§ï¿½Í¡</td>
+			<td colspan=3>ï¿½Ñºï¿½ï¿½ï¿½</td>
 		</tr>
 		<tr bgColor=#66CCFF  class=head_black align=center>
-			<td >ª¹Ô´</td>
-			<td >á·§ËÑ¡ %</td>
-			<td >¶Ù¡</td>
-			<td >ÊØ·¸Ô</td>
-			<td >á·§ËÑ¡ %</td>
-			<td >¶Ù¡</td>
-			<td >ÊØ·¸Ô</td>
-			<td >á·§ËÑ¡ %</td>
-			<td >¶Ù¡</td>
-			<td >ÊØ·¸Ô</td>
+			<td >ï¿½ï¿½Ô´</td>
+			<td >á·§ï¿½Ñ¡ %</td>
+			<td >ï¿½Ù¡</td>
+			<td >ï¿½Ø·ï¿½ï¿½</td>
+			<td >á·§ï¿½Ñ¡ %</td>
+			<td >ï¿½Ù¡</td>
+			<td >ï¿½Ø·ï¿½ï¿½</td>
+			<td >á·§ï¿½Ñ¡ %</td>
+			<td >ï¿½Ù¡</td>
+			<td >ï¿½Ø·ï¿½ï¿½</td>
 		</tr>
 
 <%
@@ -275,7 +275,7 @@ dim totalselfOutDisc
 			sumselfOutPlay=0.00: sumselfOutPaid=0.00: sumselfOutDisc=0.00
 			response.write "<tr class=text_blue>"
 			response.write "	<td bgColor=#FFFFCC>"&recNumType("ref_det_desc")&"</td>"
-'àÅ¢ÃÑº·Ñé§ËÁ´
+'ï¿½Å¢ï¿½Ñºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			if not recPlay.eof then
 				if recPlay("play_type") = recNumType("ref_code")   then
 				if not IsNull(recPlay("sum_rec")) then sumAllPlay=recPlay("sum_rec")
@@ -311,16 +311,16 @@ dim totalselfOutDisc
 				response.write "<td bgColor=#E2E2E2 align=right>"&formatnumber(((cdbl(sumAllPlay)-(cdbl(sumOutPlay)+cdbl(sumselfOutPlay)))+(cdbl(sumOutPlay)+cdbl(sumselfOutPlay))),2)&"</td>"
 				response.write "<td bgColor=#E2E2E2 align=right>"&formatnumber(((cdbl(sumAllPaid)-(cdbl(sumOutPaid)+cdbl(sumselfOutPaid)))+(cdbl(sumOutPaid)+cdbl(sumselfOutPaid))),2)&"</td>"
 				response.write "<td bgColor=#E2E2E2 align=right>"&formatnumber((((cdbl(sumAllPlay)-(cdbl(sumOutPlay)+cdbl(sumselfOutPlay)))+(cdbl(sumOutPlay)+cdbl(sumselfOutPlay))))-(((cdbl(sumAllPaid)-(cdbl(sumOutPaid)+cdbl(sumselfOutPaid)))+(cdbl(sumOutPaid)+cdbl(sumselfOutPaid)))),2)&"</td>"
-'àÅ¢á·§ÍÍ¡
+'ï¿½Å¢á·§ï¿½Í¡
 				response.write "<td bgColor=#E2E2E2 align=right>"&formatnumber(-1*(cdbl(sumOutPlay)+cdbl(sumselfOutPlay)),2)&"</td>"
 				response.write "<td bgColor=#E2E2E2 align=right>"&formatnumber((cdbl(sumOutPaid)+cdbl(sumselfOutPaid)),2)&"</td>"
 				response.write "<td bgColor=#E2E2E2 align=right>"&formatnumber(((cdbl(sumOutPaid)+cdbl(sumselfOutPaid))-(cdbl(sumOutPlay)+cdbl(sumselfOutPlay))),2)&"</td>"
-'àÅ¢ÃÑºÃÑºäÇé		
+'ï¿½Å¢ï¿½Ñºï¿½Ñºï¿½ï¿½ï¿½		
 				response.write "<td bgColor=#E2E2E2 align=right>"&formatnumber((cdbl(sumAllPlay)-(cdbl(sumOutPlay)+cdbl(sumselfOutPlay))),2)&"</td>"
 				response.write "<td bgColor=#E2E2E2 align=right>"&formatnumber((cdbl(sumAllPaid)-(cdbl(sumOutPaid)+cdbl(sumselfOutPaid))),2)&"</td>"
 				response.write "<td bgColor=#E2E2E2 align=right>"&formatnumber((((cdbl(sumAllPlay)-(cdbl(sumOutPlay)+cdbl(sumselfOutPlay))))-((cdbl(sumAllPaid)-(cdbl(sumOutPaid)+cdbl(sumselfOutPaid))))),2)&"</td>"
 				recPlay.MoveNext
-				end if ' ¶éÒ play_type à´ÕÂÇ¡Ñ¹
+				end if ' ï¿½ï¿½ï¿½ play_type ï¿½ï¿½ï¿½Ç¡Ñ¹
 			else
 				response.write "<td bgColor=#E2E2E2>&nbsp;</td>"
 				response.write "<td bgColor=#E2E2E2>&nbsp;</td>"				
@@ -340,7 +340,7 @@ dim totalselfOutDisc
 		recPlay.close
 		'Total
 		response.write "<tr class=head_black>"
-		response.write "	<td bgColor=#66CCFF align=center>ÃÇÁ</td>"
+		response.write "	<td bgColor=#66CCFF align=center>ï¿½ï¿½ï¿½</td>"
 		response.write "	<td bgColor=#66CCFF align=right>"&formatnumber(totalAllPlay,2)&"</td>"
 		response.write "	<td bgColor=#66CCFF align=right>"&formatnumber(totalAllPaid,2)&"</td>"				
 		response.write "	<td bgColor=#66CCFF align=right>"&formatnumber(totalAllDisc,2)&"</td>"
@@ -356,20 +356,20 @@ dim totalselfOutDisc
 %>	
 
 	</Table>
-		<table align=center><tr><td align=center colspan=3><input type=button value='  ¾ÔÁ¾ì  ' onClick="print_summoney();">&nbsp;&nbsp;<input type=button value='  ãºÊÃØ»ÂÍ´à¡çº  ' onClick="print_sumkeep();"></td></tr></table>
+		<table align=center><tr><td align=center colspan=3><input type=button value='  ï¿½ï¿½ï¿½ï¿½ï¿½  ' onClick="print_summoney();">&nbsp;&nbsp;<input type=button value='  ï¿½ï¿½ï¿½Ø»ï¿½Í´ï¿½ï¿½  ' onClick="print_sumkeep();"></td></tr></table>
 	<br><br>
 
 <%	if 1 = 0 then %>
 	<TABLE width='40%' align=center class=table_blue>        
 		<tr bgColor=#66CCFF  class=head_black align=center>
-			<td>ãºÊÃØ»ÂÍ´à¡çº</td>
+			<td>ï¿½ï¿½ï¿½Ø»ï¿½Í´ï¿½ï¿½</td>
 		</tr>
 	</TABLE>
 	<TABLE width='40%' align=center class=table_blue>        
 		<tr bgColor=#66CCFF  class=head_black align=center>
-			<td>ÂÍ´à¡çº</td>
-			<td>ÂÍ´¨èÒÂ</td>
-			<td>ËÁÒÂàÅ¢ - ª×èÍ</td>
+			<td>ï¿½Í´ï¿½ï¿½</td>
+			<td>ï¿½Í´ï¿½ï¿½ï¿½ï¿½</td>
+			<td>ï¿½ï¿½ï¿½ï¿½ï¿½Å¢ - ï¿½ï¿½ï¿½ï¿½</td>
 		</tr>
 
 <%
@@ -412,7 +412,7 @@ dim totalselfOutDisc
 		objRec.MoveNext
 	Loop
 	objRec.Close
-'áÊ´§ÊèÇ¹µÑ´ÍÍ¡
+'ï¿½Ê´ï¿½ï¿½ï¿½Ç¹ï¿½Ñ´ï¿½Í¡
 	strSql = "SELECT sc_user.user_name, sc_user.user_id, SUM(round(tb_ticket_number.dealer_rec,2)) AS summoney, SUM(round(tb_ticket_number.pay_amt,2)) AS sumpay, SUM(round(tb_ticket_number.discount_amt,2)) AS sumdisc, sc_user.login_id  " _
 		& "FROM tb_ticket_number INNER JOIN tb_ticket_key ON tb_ticket_number.ticket_key_id = tb_ticket_key.ticket_key_id INNER JOIN tb_ticket ON tb_ticket_key.ticket_id = tb_ticket.ticket_id INNER JOIN tb_open_game ON tb_ticket.game_id = tb_open_game.game_id INNER JOIN sc_user ON tb_open_game.dealer_id = sc_user.user_id " _
 		& "WHERE (tb_ticket.ticket_status <> 'D') And (tb_ticket.ref_game_id = "&Session("gameid")&") AND (tb_ticket_number.sum_flag = 'Y') " _
@@ -431,7 +431,7 @@ dim totalselfOutDisc
 'showstr "disc " & sumAllDisc
 		Response.write "<tr class=text_black>"
 		Response.write "	<td bgColor=#FFFFCC align=right>"
-		'áÊ´§ÊÅÑº¡Ñ¹ÃÐËÇèÒ§¤¹á·§ ¡Ñºá·§ÍÍ¡ ÂÍ´ÃÑº ¤×Í ÂÍ´¨èÒÂ ÂÍ´¨èÒÂ¤×ÍÂÍ´ÃÑº
+		'ï¿½Ê´ï¿½ï¿½ï¿½Ñºï¿½Ñ¹ï¿½ï¿½ï¿½ï¿½ï¿½Ò§ï¿½ï¿½á·§ ï¿½Ñºá·§ï¿½Í¡ ï¿½Í´ï¿½Ñº ï¿½ï¿½ï¿½ ï¿½Í´ï¿½ï¿½ï¿½ï¿½ ï¿½Í´ï¿½ï¿½ï¿½Â¤ï¿½ï¿½ï¿½Í´ï¿½Ñº
 		if sumAllPaid > sumAllPlay then
 			Response.write formatnumber((sumAllPaid - sumAllPlay ),2)
 			totalAllPlay = totalAllPlay + (sumAllPaid - sumAllPlay )			
@@ -450,9 +450,9 @@ dim totalselfOutDisc
 		end if
 		Response.write "	</td>"	
 		if objRec("user_id") = 999 then 
-			Response.write "	<td bgColor=#E2E2E2>¾ÔÁ¾ìá·§ÍÍ¡</td>"	
+			Response.write "	<td bgColor=#E2E2E2>ï¿½ï¿½ï¿½ï¿½ï¿½á·§ï¿½Í¡</td>"	
 		else
-			Response.write "	<td bgColor=#E2E2E2>á·§ÍÍ¡ "&objRec("user_name")&"</td>"	
+			Response.write "	<td bgColor=#E2E2E2>á·§ï¿½Í¡ "&objRec("user_name")&"</td>"	
 		end if
 		Response.write "</tr>"
 		objRec.MoveNext
@@ -466,7 +466,7 @@ dim totalselfOutDisc
 
 %>
 	</TABLE>
-	<table align=center><tr><td align=center colspan=3><input type=button value='  ¾ÔÁ¾ì  ' onClick="print_sumkeep();"></td></tr></table>
+	<table align=center><tr><td align=center colspan=3><input type=button value='  ï¿½ï¿½ï¿½ï¿½ï¿½  ' onClick="print_sumkeep();"></td></tr></table>
 	<%
 	End if   ' 1 = 0
 'response.write " end time " & now() & "<br>"

@@ -1,4 +1,4 @@
-<%@ Language=VBScript %>
+<%@ Language=VBScript CodePage = 65001  %>
 <%OPTION EXPLICIT%>
 <% 'check_session_valid()%>
 <!--#include file="include/adovbs.inc"-->
@@ -153,10 +153,10 @@ var start=new Date();
 	}
 
 	function cleargame() {
-		if (confirm("คุณต้องการพิมพ์ หรือ เก็บโพยไว้หรือไม่ ?")) {
+		if (confirm("๏ฟฝุณ๏ฟฝ๏ฟฝอง๏ฟฝ๏ฟฝรพ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ ?")) {
 			opensave();
 		} else {
-			if (confirm("ยืนยันการล้างเลข ?")) {
+			if (confirm("๏ฟฝืน๏ฟฝัน๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝาง๏ฟฝลข ?")) {
 				document.all.gamestatus.value = "delete"    //"close";
 				document.all.form1.submit();		
 			}
@@ -191,17 +191,17 @@ var start=new Date();
 	function changegamestatus(gstatus) {
 	var myVal;
 		myVal = gstatus.value;
-		if (myVal=="เปิดทั้งหมด") {
-		//	if (confirm("คุณต้องการทำการปิดรับแทง ใช่หรือไม่ ?")) {
+		if (myVal=="๏ฟฝิด๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ") {
+		//	if (confirm("๏ฟฝุณ๏ฟฝ๏ฟฝอง๏ฟฝ๏ฟฝรทำก๏ฟฝรปิด๏ฟฝับแทง ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ ?")) {
 				document.all.gamestatus.value = "open"    //"close";
 				document.all.form1.submit();
 		//	}
-		} else if (myVal=="ปิดทั้งหมด") {
-		//	if (confirm("คุณต้องการทำการเปิดทั้งหมด ใช่หรือไม่ ?")) {
+		} else if (myVal=="๏ฟฝิด๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ") {
+		//	if (confirm("๏ฟฝุณ๏ฟฝ๏ฟฝอง๏ฟฝ๏ฟฝรทำก๏ฟฝ๏ฟฝ๏ฟฝิด๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ ?")) {
 				document.all.gamestatus.value ="close" // "open";
 				document.all.form1.submit();
 		//	}
-		} else if (myVal=="ปิดคนแทงและเปิดคนคีย์") {
+		} else if (myVal=="๏ฟฝิด๏ฟฝ๏ฟฝแทง๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝิด๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ") {
 				document.all.gamestatus.value ="key" // "key";
 				document.all.form1.submit();
 		}
@@ -304,21 +304,21 @@ dim strOrder
 		end if
 	end if
 
-	strOpen="ปิดทั้งหมด"
-	strOrder="เรียงเลข"
-	if CheckGame(Session("uid"))="OPEN" then strOpen="เปิดทั้งหมด"
-	if CheckGame(Session("uid"))="KEY" then strOpen="ปิดคนแทงและเปิดคนคีย์"
+	strOpen="๏ฟฝิด๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ"
+	strOrder="๏ฟฝ๏ฟฝ๏ฟฝยง๏ฟฝลข"
+	if CheckGame(Session("uid"))="OPEN" then strOpen="๏ฟฝิด๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ"
+	if CheckGame(Session("uid"))="KEY" then strOpen="๏ฟฝิด๏ฟฝ๏ฟฝแทง๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝิด๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ"
 	'//----- jum edit 2005-07-27 -----
 	Dim op1,op2, op3
 	op1=""
 	op2=""
 	op3=""
 	select case strOpen 
-		case "เปิดทั้งหมด"
+		case "๏ฟฝิด๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ"
 			op1="selected"
-		case "ปิดทั้งหมด"
+		case "๏ฟฝิด๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ"
 			op2="selected"
-		case "ปิดคนแทงและเปิดคนคีย์"
+		case "๏ฟฝิด๏ฟฝ๏ฟฝแทง๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝิด๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ"
 			op3="selected"
 	end select
 	'//----- jum edit 2005-07-27 -----
@@ -382,7 +382,7 @@ dim strOrder
 	objRec.Close
 	
 
-'******************* อานนท์ ไม่ใช้แล้ว 
+'******************* ๏ฟฝาน๏ฟฝ๏ฟฝ๏ฟฝ ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ 
 if 1=0 then
 	if Session("p1numtype")="rec" or Session("p1numtype")="all" then
 '		strSql = "SELECT     tb_cut_all.game_id, tb_cut_all_det.play_type, SUM(tb_cut_all_det.play_amt) AS sum_amt " _
@@ -430,7 +430,7 @@ if 1=0 then
 		end if
 		objRec.Close
 	end if
-end if   '************** ไม่ใช้แล้ว   
+end if   '************** ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ   
 %>
 <FORM id=form1 name=form action="firstpage_dealer.asp" method=post>
 	<input type="hidden" name="mode">
@@ -440,26 +440,26 @@ end if   '************** ไม่ใช้แล้ว
  			<tr>
 				<td colspan=1 class=button_green onClick="gotoPage('dealer_tudroum.asp')" align=center 
 					onMouseOver="changeStyle(this,'button_green_over')"
-					onMouseOut="changeStyle(this,'button_green')">ตัดเลข</td>
+					onMouseOut="changeStyle(this,'button_green')">๏ฟฝัด๏ฟฝลข</td>
 				<td colspan=5 class=button_green onClick="showsendto('U')" align=center
 					onMouseOver="changeStyle(this,'button_green_over')"
 					onMouseOut="changeStyle(this,'button_green')"
-				>สู้บน</td>
+				>๏ฟฝ๏ฟฝ้บน</td>
 				<td colspan=2 class=button_green onClick="showsendto('D')" align=center
 					onMouseOver="changeStyle(this,'button_green_over')"
-					onMouseOut="changeStyle(this,'button_green')">สู้ล่าง</td>
+					onMouseOut="changeStyle(this,'button_green')">๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝาง</td>
 				<td colspan=1 class=button_green onClick="gotoPage('dealer_tudroum.asp?act=out')" 			align=center
 					onMouseOver="changeStyle(this,'button_green_over')"
 					onMouseOut="changeStyle(this,'button_green')"
-				>แทงเลขออก</td>
+				>แทง๏ฟฝลข๏ฟฝอก</td>
 			</tr>   
 	<%	'if Request("stoprefresh")="1" then	%>
 <!-- 			<tr>
-				<td colspan=9 align=right><input type=button name=cmdrefresh value="Refresh อัตโนมัติ" class=button_red onClick="click_stop_refresh('0')"></td>
+				<td colspan=9 align=right><input type=button name=cmdrefresh value="Refresh ๏ฟฝัต๏ฟฝ๏ฟฝัต๏ฟฝ" class=button_red onClick="click_stop_refresh('0')"></td>
 			</tr> -->
 	<%	'else	%>
 <!-- 			<tr>
-				<td colspan=9 align=right><input type=button name=cmdrefresh value="หยุด Refresh อัตโนมัติ" class=button_red onClick="click_stop_refresh('1')"></td>
+				<td colspan=9 align=right><input type=button name=cmdrefresh value="๏ฟฝ๏ฟฝุด Refresh ๏ฟฝัต๏ฟฝ๏ฟฝัต๏ฟฝ" class=button_red onClick="click_stop_refresh('1')"></td>
 			</tr> -->
 	<%	'end if	%>
 		<tr align=center bgColor=#66CCFF  class=head_black>
@@ -474,18 +474,18 @@ end if   '************** ไม่ใช้แล้ว
 			<td><%=typenum8%></td>
 		</tr>
 		<tr align=center class=head_white>
-			<td bgColor=#66CCFF><font color="black">ยอดแทง</font></td>
-			<td bgColor=red>2 บน</td>
-			<td bgColor=black>3 บน</td>
-			<td bgColor=red>3 โต๊ด</td>
-			<td bgColor=black>2 โต๊ด</td>
-			<td bgColor=red>วิ่งบน</td>
-			<td bgColor=black>วิ่งล่าง</td>
-			<td bgColor=red>2 ล่าง</td>
-			<td bgColor=black>3 ล่าง</td>
+			<td bgColor=#66CCFF><font color="black">๏ฟฝอดแทง</font></td>
+			<td bgColor=red>2 ๏ฟฝ๏ฟฝ</td>
+			<td bgColor=black>3 ๏ฟฝ๏ฟฝ</td>
+			<td bgColor=red>3 ๏ฟฝ๏ฟฝ</td>
+			<td bgColor=black>2 ๏ฟฝ๏ฟฝ</td>
+			<td bgColor=red>๏ฟฝ๏ฟฝ่งบ๏ฟฝ</td>
+			<td bgColor=black>๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝาง</td>
+			<td bgColor=red>2 ๏ฟฝ๏ฟฝาง</td>
+			<td bgColor=black>3 ๏ฟฝ๏ฟฝาง</td>
 		</tr>
 		<tr>
-			<td valign=top bgcolor=#C0C0C0> <!-- column แรก เมนู -->
+			<td valign=top bgcolor=#C0C0C0> <!-- column ๏ฟฝรก ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ -->
 				
 				<INPUT TYPE="hidden" name="p1order">
 				<INPUT TYPE="hidden" name="p1numtype">
@@ -495,7 +495,7 @@ end if   '************** ไม่ใช้แล้ว
 				<TABLE cellSpacing=0 cellPadding=0 width='100%' border=0 align=center>        	
 					<tr>
 						<td class=head_blue>
-						<input type="button" value="รีเฟรช" style="cursor:hand;" onClick="window.open('firstpage_dealer.asp','_self')"
+						<input type="button" value="๏ฟฝ๏ฟฝ๏ฟฝรช" style="cursor:hand;" onClick="window.open('firstpage_dealer.asp','_self')"
 						onMouseOver="changeStyle(this,'button_over')"
 						onMouseOut="changeStyle(this,'')"
 						>
@@ -509,9 +509,9 @@ end if   '************** ไม่ใช้แล้ว
 						-->
 						<!-------------Jum edit 2005-07-27 ------------------>
 						<select name="cmdgame" style="width:100" onChange="changegamestatus(this);" >
-							<option value="เปิดทั้งหมด" <%=op1%>>เปิดทั้งหมด</option>
-							<option value="ปิดทั้งหมด" <%=op2%>>ปิดทั้งหมด</option>
-							<option value="ปิดคนแทงและเปิดคนคีย์" <%=op3%>>ปิดแทงเปิดคีย์</option>
+							<option value="๏ฟฝิด๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ" <%=op1%>>๏ฟฝิด๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ</option>
+							<option value="๏ฟฝิด๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ" <%=op2%>>๏ฟฝิด๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ</option>
+							<option value="๏ฟฝิด๏ฟฝ๏ฟฝแทง๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝิด๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ" <%=op3%>>๏ฟฝิดแทง๏ฟฝิด๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ</option>
 						</select>
 						<INPUT TYPE="hidden" name="gamestatus" value="">
 						<!-------------Jum edit 2005-07-27 ------------------>
@@ -522,9 +522,9 @@ end if   '************** ไม่ใช้แล้ว
 <%
 								strTmp=""
 								if Session("p1order")="num" then 
-									strTmp="เรียงตามเลข"
+									strTmp="๏ฟฝ๏ฟฝ๏ฟฝยง๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝลข"
 								elseif Session("p1order")="money" then
-									strTmp="เรียงตามเงิน"
+									strTmp="๏ฟฝ๏ฟฝ๏ฟฝยง๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝิน"
 								end if
 %>
 							<!----
@@ -541,8 +541,8 @@ end if   '************** ไม่ใช้แล้ว
 							end select
 							%>
 							<select style="width:100" name="cmborder" onChange="changeorder('<%=Session("p1order")%>');">
-								<option value="num" <%=selord1%>>เรียงตามเลข</option>
-								<option value="money" <%=selord2%>>เรียงตามเงิน</option>
+								<option value="num" <%=selord1%>>๏ฟฝ๏ฟฝ๏ฟฝยง๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝลข</option>
+								<option value="money" <%=selord2%>>๏ฟฝ๏ฟฝ๏ฟฝยง๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝิน</option>
 							</select>
 							<!---------------Jum edit 2005-07-27 --------------->
 						</td>
@@ -552,11 +552,11 @@ end if   '************** ไม่ใช้แล้ว
 <%
 								strTmp=""
 								if Session("p1numtype")="all" then 
-									strTmp="เลขรับทั้งหมด"
+									strTmp="๏ฟฝลข๏ฟฝับ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ"
 								elseif Session("p1numtype")="rec" then 
-									strTmp="เลขรับไว้"
+									strTmp="๏ฟฝลข๏ฟฝับ๏ฟฝ๏ฟฝ๏ฟฝ"
 								elseif Session("p1numtype")="out" then 
-									strTmp="เลขแทงออก"
+									strTmp="๏ฟฝลขแทง๏ฟฝอก"
 								end if
 
 %>
@@ -583,9 +583,9 @@ end if   '************** ไม่ใช้แล้ว
 
 								%>
 								<select style="width:100" name="cmbnumtype" onChange="changenumtype('<%=Session("p1numtype")%>');">
-									<option value="all" <%=sel1%>>เลขรับทั้งหมด</option>
-									<option value="rec" <%=sel2%>>เลขรับไว้</option>
-									<option value="out" <%=sel3%>>เลขแทงออก</option>
+									<option value="all" <%=sel1%>>๏ฟฝลข๏ฟฝับ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ</option>
+									<option value="rec" <%=sel2%>>๏ฟฝลข๏ฟฝับ๏ฟฝ๏ฟฝ๏ฟฝ</option>
+									<option value="out" <%=sel3%>>๏ฟฝลขแทง๏ฟฝอก</option>
 								</select>
 								<!-------------------- Jum edit 2005-07-27 ---------------------------->
 						</td>
@@ -594,61 +594,61 @@ end if   '************** ไม่ใช้แล้ว
 						<td width=20>&nbsp;</td>
 					</tr>
 					<tr>
-						<td width=20><input type=button name=cmdsetplayer value="ตั้ง WEB แทงออก"  style="width:100" style="cursor:hand;" onClick="gotoPage('dealer_web_config.asp')"
+						<td width=20><input type=button name=cmdsetplayer value="๏ฟฝ๏ฟฝ๏ฟฝ WEB แทง๏ฟฝอก"  style="width:100" style="cursor:hand;" onClick="gotoPage('dealer_web_config.asp')"
 						onMouseOver="changeStyle(this,'button_over')"
 						onMouseOut="changeStyle(this,'')"></td>
 					</tr>
 					<tr>
-						<td width=20><input type=button name=cmdsetplayer value="ตั้งคนแทง"  style="width:100" style="cursor:hand;" onClick="gotoPage('price_player_config.asp')"
+						<td width=20><input type=button name=cmdsetplayer value="๏ฟฝ๏ฟฝ้งค๏ฟฝแทง"  style="width:100" style="cursor:hand;" onClick="gotoPage('price_player_config.asp')"
 						onMouseOver="changeStyle(this,'button_over')"
 						onMouseOut="changeStyle(this,'')"
 						></td>
 					</tr>
 					<tr>
-						<td width=20><input type=button name=cmdsetplayer value="ตั้งคนคีย์"  style="width:100" style="cursor:hand;" onClick="gotoPage('user_key.asp')"
+						<td width=20><input type=button name=cmdsetplayer value="๏ฟฝ๏ฟฝ้งค๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ"  style="width:100" style="cursor:hand;" onClick="gotoPage('user_key.asp')"
 						onMouseOver="changeStyle(this,'button_over')"
 						onMouseOut="changeStyle(this,'')"
 						></td>
 					</tr>
 					<tr>
-						<td width=20><input type=button name=cmdbingo value="เลขออก/ตรวจ" style="width:100" style="cursor:hand;" onClick="gotoPage('dealer_check_number.asp')"
+						<td width=20><input type=button name=cmdbingo value="๏ฟฝลข๏ฟฝอก/๏ฟฝ๏ฟฝวจ" style="width:100" style="cursor:hand;" onClick="gotoPage('dealer_check_number.asp')"
 						onMouseOver="changeStyle(this,'button_over')"
 						onMouseOut="changeStyle(this,'')"
 						></td>
 					</tr>
 					<tr>
-						<td width=20><input type=button name=cmdalert value="ป้ายประกาศ" style="width:100" style="cursor:hand;" onClick="gotoPage('mt_alert.asp')"
+						<td width=20><input type=button name=cmdalert value="๏ฟฝ๏ฟฝ๏ฟฝยป๏ฟฝะก๏ฟฝ๏ฟฝ" style="width:100" style="cursor:hand;" onClick="gotoPage('mt_alert.asp')"
 						onMouseOver="changeStyle(this,'button_over')"
 						onMouseOut="changeStyle(this,'')"
 						></td>
 					</tr>
 					<tr>
-						<td width=20><input type=button name=cmdclarticket value="ล้างเลข" style="width:100" style="cursor:hand;" onClick="cleargame();"
+						<td width=20><input type=button name=cmdclarticket value="๏ฟฝ๏ฟฝาง๏ฟฝลข" style="width:100" style="cursor:hand;" onClick="cleargame();"
 						onMouseOver="changeStyle(this,'button_over')"
 						onMouseOut="changeStyle(this,'')"></td>
 					</tr>
 					<tr>
-						<td width=20><input type=button name=cmdclarticket value="เก็บข้อมูล" style="width:100" style="cursor:hand;" onClick="opensave();"
+						<td width=20><input type=button name=cmdclarticket value="๏ฟฝ็บข๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ" style="width:100" style="cursor:hand;" onClick="opensave();"
 						onMouseOver="changeStyle(this,'button_over')"
 						onMouseOut="changeStyle(this,'')"></td>
 					</tr>
 					<tr>
-						<td width=20><input type=button name=cmdclarticket value="ดูข้อมูลที่เก็บ" style="width:100" style="cursor:hand;" onClick="openold();"
+						<td width=20><input type=button name=cmdclarticket value="๏ฟฝูข๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝลท๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ" style="width:100" style="cursor:hand;" onClick="openold();"
 						onMouseOver="changeStyle(this,'button_over')"
 						onMouseOut="changeStyle(this,'')"></td>
 					</tr>
 					<tr>
-						<td width=20><input type=button name=cmdclarticket value="เปลี่ยน Password" style="width:100" style="cursor:hand;" onClick="change_password();"
+						<td width=20><input type=button name=cmdclarticket value="๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝยน Password" style="width:100" style="cursor:hand;" onClick="change_password();"
 						onMouseOver="changeStyle(this,'button_over')"
 						onMouseOut="changeStyle(this,'')"></td>
 					</tr>
 					<tr>
-						<td width=20><input type=button name=cmdclarticket value="วิธีกดแทงโพย" style="width:100" style="cursor:hand;" onClick="download_manual();"
+						<td width=20><input type=button name=cmdclarticket value="๏ฟฝิธีก๏ฟฝแทง๏ฟฝ๏ฟฝ" style="width:100" style="cursor:hand;" onClick="download_manual();"
 						onMouseOver="changeStyle(this,'button_over')"
 						onMouseOut="changeStyle(this,'')"></td>
 					</tr>
 					<tr>
-						<td width=20><input type=button name=cmdPrice value="ตั้งราคากลาง" style="width:100" style="cursor:hand;"  onClick="gotoPage('price_player_config_dealer.asp?dealer_id=<%=Session("uid")	%>&game_type=<%=game_type%>');"
+						<td width=20><input type=button name=cmdPrice value="๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝาคาก๏ฟฝาง" style="width:100" style="cursor:hand;"  onClick="gotoPage('price_player_config_dealer.asp?dealer_id=<%=Session("uid")	%>&game_type=<%=game_type%>');"
 						onMouseOver="changeStyle(this,'button_over')"
 						onMouseOut="changeStyle(this,'')"></td>
 					</tr>
@@ -673,14 +673,14 @@ end if   '************** ไม่ใช้แล้ว
 						<td width=20><img src="<%=pic%>" name="mypic" width="100"  border="0" style="cursor:hand;" onClick="clickpic(<%=game_type%>)"></td>
 					</tr>
 					<tr>
-						<td width=20><input type=button name=cmdDanger  value="เลขอันตราย" style="width:100" style="cursor:hand;COLOR: red;font-weight:bold;"
+						<td width=20><input type=button name=cmdDanger  value="๏ฟฝลข๏ฟฝัน๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ" style="width:100" style="cursor:hand;COLOR: red;font-weight:bold;"
 						onClick="gotoPage('frmDanger.asp?dealer_id=<%=Session("uid") %>')"	
 						onMouseOver="changeStyle(this,'button_over')"
 						onMouseOut="changeStyle(this,'')"
 						></td>
 					</tr>
 					<tr>
-						<td width=20><input type=button name=cmdSum  value="ยอดสรุปเป็นใบ" style="width:100" style="cursor:hand;"
+						<td width=20><input type=button name=cmdSum  value="๏ฟฝอด๏ฟฝ๏ฟฝุป๏ฟฝ๏ฟฝ๏ฟฝ" style="width:100" style="cursor:hand;"
 						onClick="click_cntTicketPlayer('<%=Session("uid") %>')"	
 						onMouseOver="changeStyle(this,'button_over')"
 						onMouseOut="changeStyle(this,'')"
@@ -690,8 +690,8 @@ end if   '************** ไม่ใช้แล้ว
 						<td width=20>&nbsp;</td>
 					</tr>
 				</table>
-			</td> <!-- จบ column เมนู -->
-			<td valign=top bgColor="<%=tmpColColor%>"><!-- เลข 2 บน -->
+			</td> <!-- ๏ฟฝ๏ฟฝ column ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ -->
+			<td valign=top bgColor="<%=tmpColColor%>"><!-- ๏ฟฝลข 2 ๏ฟฝ๏ฟฝ -->
 				<TABLE cellSpacing=0 cellPadding=0 width='100%' border=0 align=center>        	
 				<%
 					dim pAmt
@@ -768,9 +768,9 @@ end if
 
 				%>
 				</table>
-			</td><!-- จบเลข 2 บน -->
+			</td><!-- ๏ฟฝ๏ฟฝ๏ฟฝลข 2 ๏ฟฝ๏ฟฝ -->
 
-			<td valign=top  bgColor="<%=tmpColColor%>"><!-- เลข 3 บน -->
+			<td valign=top  bgColor="<%=tmpColColor%>"><!-- ๏ฟฝลข 3 ๏ฟฝ๏ฟฝ -->
 				<TABLE cellSpacing=0 cellPadding=0 width='100%' border=0 align=center>        	
 				<%
 					'//strSql = "exec spGetPlayNumber " & Session("gameid") & "," & mlnPlayType3Up & ",'" & Session("p1numtype") & "', '" & Session("p1order") & "', 'no' "
@@ -826,8 +826,8 @@ next_x=x
 
 				%>
 				</table>
-			</td><!-- จบเลข 3 บน -->
-			<td valign=top bgColor="<%=tmpColColor%>"><!-- เลข 3 โต๊ด -->
+			</td><!-- ๏ฟฝ๏ฟฝ๏ฟฝลข 3 ๏ฟฝ๏ฟฝ -->
+			<td valign=top bgColor="<%=tmpColColor%>"><!-- ๏ฟฝลข 3 ๏ฟฝ๏ฟฝ -->
 				<TABLE cellSpacing=0 cellPadding=0 width='100%' border=0 align=center>        	
 				<%
 					'//strSql = "exec spGetPlayNumber " & Session("gameid") & "," & mlnPlayType3Tod & ",'" & Session("p1numtype") & "', '" & Session("p1order") & "', 'no' "
@@ -880,8 +880,8 @@ end if
 next_x=x
 				%>
 				</table>
-			</td><!-- จบเลข 3 โต๊ด -->
-			<td valign=top bgColor="<%=tmpColColor%>"><!-- เลข 2 โต๊ด -->
+			</td><!-- ๏ฟฝ๏ฟฝ๏ฟฝลข 3 ๏ฟฝ๏ฟฝ -->
+			<td valign=top bgColor="<%=tmpColColor%>"><!-- ๏ฟฝลข 2 ๏ฟฝ๏ฟฝ -->
 				<TABLE cellSpacing=0 cellPadding=0 width='100%' border=0 align=center>        	
 				<%
 					'//strSql = "exec spGetPlayNumber " & Session("gameid") & "," & mlnPlayType2Tod & ",'" & Session("p1numtype") & "', '" & Session("p1order") & "', 'no' "
@@ -934,11 +934,11 @@ next_x=x
 
 				%>
 				</table>
-			</td><!-- จบเลข 2 โต๊ด -->
+			</td><!-- ๏ฟฝ๏ฟฝ๏ฟฝลข 2 ๏ฟฝ๏ฟฝ -->
 			<td valign=top colspan=2>
 				<TABLE cellSpacing=0 cellPadding=0 width='100%' border=0 align=center>        	
 				<tr>
-					<td valign=top bgColor="<%=tmpColColor%>"><!-- เลข วิ่งบน -->
+					<td valign=top bgColor="<%=tmpColColor%>"><!-- ๏ฟฝลข ๏ฟฝ๏ฟฝ่งบ๏ฟฝ -->
 						<TABLE width='100%' align=center class=table_blue>        	
 						<%
 								strSql = "exec spGetPlayNumber " & Session("gameid") & "," & mlnPlayTypeRunUp & ",'" & Session("p1numtype") & "', 'number', 'no' "
@@ -971,8 +971,8 @@ next_x=x
 
 %>
 						</table>
-					</td><!-- จบเลขวิ่งบน -->
-					<td valign=top bgColor="<%=tmpColColor%>"><!-- เลข วิ่งล่าง -->
+					</td><!-- ๏ฟฝ๏ฟฝ๏ฟฝลข๏ฟฝ๏ฟฝ่งบ๏ฟฝ -->
+					<td valign=top bgColor="<%=tmpColColor%>"><!-- ๏ฟฝลข ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝาง -->
 						<TABLE width='100%' align=center class=table_blue>        						
 						<%
 								strSql = "exec spGetPlayNumber " & Session("gameid") & "," & mlnPlayTypeRunDown & ",'" & Session("p1numtype") & "', 'number', 'no' "
@@ -1011,20 +1011,20 @@ next_x=x
 '							end if							
 						%>
 						</table>
-					</td><!-- จบเลขวิ่งล่าง -->				
+					</td><!-- ๏ฟฝ๏ฟฝ๏ฟฝลข๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝาง -->				
 				</tr>
 <%
 	dim strRecTk
-	strRecTk = "รับเข้าทีละโพย"
-	if Session("p1recmulti") = "true" then strRecTk = "รับเข้าหลายโพย"
+	strRecTk = "๏ฟฝับ๏ฟฝ๏ฟฝาท๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ"
+	if Session("p1recmulti") = "true" then strRecTk = "๏ฟฝับ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ"
 %>
 				<tr>
-					<!-- แสดง คิวโพยเข้า -->
+					<!-- ๏ฟฝสด๏ฟฝ ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ -->
 					<td valign=top colspan=2>
 						<TABLE width='100%' align=center class=table_blue>   
 							<!---- 2006-12-20
 							<tr><td class=head_white bgcolor=red align=center colspan=2 style="cursor:hand;" onClick="recmulti_click();"><%=strRecTk%></a></td></tr> -->
-							<tr><td class=head_white bgcolor=blue align=center colspan=2>คิวโพยเข้า</a></td></tr>
+							<tr><td class=head_white bgcolor=blue align=center colspan=2>๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ</a></td></tr>
 <%
 
 						strSql = "SELECT tb_open_game.game_id, tb_open_game.dealer_id, tb_ticket.ticket_id, tb_ticket.ticket_number, sc_user.user_name, tb_ticket.rec_status, tb_ticket.ticket_date " _
@@ -1035,7 +1035,7 @@ next_x=x
 '						showstr strSql
 						objRec.Open strSql, conn
 						do while not objRec.eof
-							if strRecTk = "รับเข้าหลายโพย" then
+							if strRecTk = "๏ฟฝับ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ" then
 								response.write "<tr><td class=text_red bgcolor=#99FFFF><a href='dealer_receive_ticket.asp?ticket_id="&objRec("ticket_id")&"'><input type=checkbox value='" &objRec("ticket_id")& "' name=multitkid> ("&objRec("ticket_number")&") "&objRec("user_name")&"</a></td>"
 								response.write "    <td class=text_red bgcolor=#99FFFF align=right>"&formatdatetime(objRec("ticket_date"),4)&"</td></tr>"
 							else
@@ -1047,9 +1047,9 @@ next_x=x
 						objRec.close	
 %>						
 <%
-							if strRecTk = "รับเข้าหลายโพย" then
+							if strRecTk = "๏ฟฝับ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ" then
 %>
-							<tr><td class=head_white bgcolor=red align=center colspan=2><input type=button value="รับโพย" onClick="receive_click();" style="width:80;"></a></td></tr>
+							<tr><td class=head_white bgcolor=red align=center colspan=2><input type=button value="๏ฟฝับ๏ฟฝ๏ฟฝ" onClick="receive_click();" style="width:80;"></a></td></tr>
 <%								
 							end if
 %>
@@ -1057,8 +1057,8 @@ next_x=x
 					</td>
 				</tr>
 				</table>
-			</TD> <!-- จบ วิ่งบน วิ่งล่าง -->
-			<td valign=top bgColor="<%=tmpColColor%>"><!-- เลข 2 ล่าง -->
+			</TD> <!-- ๏ฟฝ๏ฟฝ ๏ฟฝ๏ฟฝ่งบ๏ฟฝ ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝาง -->
+			<td valign=top bgColor="<%=tmpColColor%>"><!-- ๏ฟฝลข 2 ๏ฟฝ๏ฟฝาง -->
 				<TABLE cellSpacing=0 cellPadding=0 width='100%' border=0 align=center>        	
 				<%
 					strSql = "exec spGetPlayNumber " & Session("gameid") & "," & mlnPlayType2Down & ",'" & Session("p1numtype") & "', '" & Session("p1order") & "', 'no' "
@@ -1112,8 +1112,8 @@ next_x=x
 					end if
 				%>
 				</table>
-			</td><!-- จบเลข 2 ล่าง -->
-			<td valign=top bgColor="<%=tmpColColor%>"><!-- เลข 3 ล่าง -->
+			</td><!-- ๏ฟฝ๏ฟฝ๏ฟฝลข 2 ๏ฟฝ๏ฟฝาง -->
+			<td valign=top bgColor="<%=tmpColColor%>"><!-- ๏ฟฝลข 3 ๏ฟฝ๏ฟฝาง -->
 				<TABLE cellSpacing=0 cellPadding=0 width='100%' border=0 align=center>        	
 				<%
 					strSql = "exec spGetPlayNumber " & Session("gameid") & "," & mlnPlayType3Down & ",'" & Session("p1numtype") & "', '" & Session("p1order") & "', 'no' "
@@ -1166,7 +1166,7 @@ next_x=x
 					end if
 				%>
 				</table>
-			</td><!-- จบเลข 3 ล่าง -->
+			</td><!-- ๏ฟฝ๏ฟฝ๏ฟฝลข 3 ๏ฟฝ๏ฟฝาง -->
 		</tr>
 	</table>	
 	</form>
@@ -1188,17 +1188,17 @@ next_x=x
 		var t=p
 
 		//alert(t)
-		// รัฐบาล
+		// ๏ฟฝัฐ๏ฟฝ๏ฟฝ๏ฟฝ
 		if (t==1){
 			document.mypic.src ="images/price_tos.jpg"
 			document.form1.game_type.value="2"
 		}
-		// ออมสิน
+		// ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝิน
 		if (t==2){
 			document.mypic.src = "images/price_oth.jpg";
 			document.form1.game_type.value="3"
 		}
-		// อื่นๆ
+		// ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ
 		if (t==3){
 			document.mypic.src = "images/price_gov.jpg"
 			document.form1.game_type.value="1"
@@ -1226,7 +1226,7 @@ next_x=x
 	}
 </script>
 <%
-' ตรวจสอบว่าเป็ยเลขอันตรายหรือไม่
+' ๏ฟฝ๏ฟฝวจ๏ฟฝอบ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝลข๏ฟฝัน๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ
 Function isDanger(play_number, play_type)
 	Dim tmpRS , tmpDB , tmpSQL
 	set tmpDB=Server.CreateObject("ADODB.Connection")       

@@ -1,4 +1,4 @@
-<%@ Language=VBScript %>
+<%@ Language=VBScript CodePage = 65001  %>
 <%OPTION EXPLICIT%>
 <meta http-equiv="Content-Type" content="text/html; charset=windows-874">
 <!--#include file="include/adovbs.inc"-->
@@ -49,11 +49,11 @@ window.onload = sivamtime;
 <script type="text/javascript" src="include/switch.js"></script>
 <script language=javascript>
 function ClickRefresh(url,rf_rate) {
-	if (document.all.cmdrefresh.value=="Refresh ÍÑµâ¹ÁÑµÔ") {
-		document.all.cmdrefresh.value="ËÂØ´ Refresh ÍÑµâ¹ÁÑµÔ";
+	if (document.all.cmdrefresh.value=="Refresh ï¿½Ñµï¿½ï¿½Ñµï¿½") {
+		document.all.cmdrefresh.value="ï¿½ï¿½Ø´ Refresh ï¿½Ñµï¿½ï¿½Ñµï¿½";
 		rf_rate="0";
 	} else {
-		document.all.cmdrefresh.value="Refresh ÍÑµâ¹ÁÑµÔ";
+		document.all.cmdrefresh.value="Refresh ï¿½Ñµï¿½ï¿½Ñµï¿½";
 		rf_rate="1";
 	}
 	url = url + '?stoprefresh='+rf_rate;
@@ -105,7 +105,7 @@ dim strSql
 dim bMsg
 	bMsg=""
 
-	if Session("uid")<>"0"  And Session("uid")<>"" Then '--jum à¾ÔèÁ And Session("uid")<>""
+	if Session("uid")<>"0"  And Session("uid")<>"" Then '--jum ï¿½ï¿½ï¿½ï¿½ And Session("uid")<>""
 		if Session("utype")="A" then
 		else
 			if Session("utype")="P" then

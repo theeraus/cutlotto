@@ -1,5 +1,8 @@
-<!--#include virtual="masterpage.asp"-->
-<% Sub ContentPlaceHolder() %>
+<%OPTION EXPLICIT%>
+<% Response.CacheControl = "no-cache" %>
+<% Response.AddHeader "Pragma", "no-cache" %> 
+<% Response.Expires = -1 %>
+<!--#include file="mdlGeneral.asp"-->
 <%
 	if trim(Session("uid"))="" then 	response.redirect "signin.asp"
 
@@ -12,7 +15,26 @@
 	game_id=Session("gameid")
 	SQL="exec spJCntTicketByPlayerOfDealer " & game_id	
 %>
-
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<TITLE>ค่าใช้จ่ายการใช้ระบบ</TITLE>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="cache-control" content="no-cache"> 
+<meta http-equiv="pragma" content="no-cache"> 
+<meta http-equiv="expires" content="-1">
+<link href="include/code.css" rel="stylesheet" type="text/css">
+<script language="JavaScript" src="include/dialog.js"></script>
+<script src="include/js_function.js" language="javascript"></script>
+	<link href="assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/skins/header/base/light.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/skins/header/menu/light.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/skins/brand/navy.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/skins/aside/navy.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/global.css" rel="stylesheet" type="text/css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    
 <script language="javascript">
     function click_player(player_id) {
         var ParmA = ""; //document.form1.proj_code.value;
@@ -387,6 +409,6 @@
 		</tr>
 	</TABLE>
     </form>
-
-
-<% End Sub  %>
+	</center>
+</BODY>
+</HTML>

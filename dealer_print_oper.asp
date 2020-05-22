@@ -3,6 +3,11 @@
 <% Response.AddHeader "Pragma", "no-cache" %> 
 <% Response.Expires = -1 %>
 <%
+Response.ContentType = "text/html"
+Response.AddHeader "Content-Type", "text/html;charset=UTF-8"
+Response.CodePage = 65001
+Response.CharSet = "UTF-8"
+
 		if trim(Session("uid"))="" then 	response.redirect "signin.asp"
 		Dim objRS , objDB , SQL	
 		Dim dealer_id, tmp_Color
@@ -24,7 +29,7 @@
 <html>
 <head>
 <title>.:: config price ::. </title>
-<meta http-equiv="Content-Type" content="text/html; charset=windows-874">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta http-equiv="cache-control" content="no-cache"> 
 <meta http-equiv="pragma" content="no-cache"> 
 <meta http-equiv="expires" content="-1">
@@ -62,7 +67,7 @@ function doPrint()   {
 				set objRS=objDB.Execute(SQL)
 				while not objRS.eof
 				
-						'<!----------------------áÊ´§¢éÍÁÙÅ 1 ÃÒÂ¡ÒÃ user ------------------------------------->
+						'<!----------------------à¹à¸ªà¸”à¸‡à¸‚à¹‰à¸­à¸¡à¸¹à¸¥ 1 à¸£à¸²à¸¢à¸à¸²à¸£ user ------------------------------------->
 						%>
 						<tr>
 							<td class="table_blue" align="left" width="60"><%=objRS("login_id")%>	</td>

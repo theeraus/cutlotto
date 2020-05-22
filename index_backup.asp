@@ -1,4 +1,4 @@
-<%@ Language=VBScript %>
+<%@ Language=VBScript CodePage = 65001  %>
 <%OPTION EXPLICIT%>
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">

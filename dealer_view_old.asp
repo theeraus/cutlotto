@@ -1,4 +1,4 @@
-<%@ Language=VBScript %>
+<%@ Language=VBScript CodePage = 65001  %>
 <%OPTION EXPLICIT%>
 <% Response.CacheControl = "no-cache" %>
 <% Response.AddHeader "Pragma", "no-cache" %> 
@@ -41,12 +41,20 @@
 %>			
 <html>
 <head>
-<title>.:: ‡°Á∫¢ÈÕ¡Ÿ≈ ::. </title>
-<meta http-equiv="Content-Type" content="text/html; charset=windows-874">
+<title>.:: ‡πÄ‡∏Å‡πá‡∏ö‡∏Ç‡πâ‡∏≠‡∏°‡∏π‡∏• ::. </title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta http-equiv="cache-control" content="no-cache"> 
 <meta http-equiv="pragma" content="no-cache"> 
 <meta http-equiv="expires" content="-1">
 <link href="include/code.css" rel="stylesheet" type="text/css">
+	<link href="assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/skins/header/base/light.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/skins/header/menu/light.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/skins/brand/navy.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/skins/aside/navy.css" rel="stylesheet" type="text/css" />
+	<link href="assets/css/global.css" rel="stylesheet" type="text/css" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <STYLE>
    PB { page-break-after: always }
 </STYLE>
@@ -131,8 +139,8 @@ function ShowTicket(ticket_id)
 					i=i+1
 					objRS.MoveNext
 				wend
-				'---- · ¥ß‚æ¬ ·∂«≈– 33 §Ë“
-				%><table  border="0"  cellpadding="1" cellspacing="1" width="100%" bgcolor="#D4D4D4"><%
+				'---- ‡πÅ‡∏™‡∏î‡∏á‡πÇ‡∏û‡∏¢ ‡πÅ‡∏ñ‡∏ß‡∏•‡∏∞ 33 ‡∏Ñ‡πà‡∏≤
+				%><table  border="0"  cellpadding="1" cellspacing="1" width="100%" bgcolor="#D4D4D4" class="table"><%
 				for i=1 to 33
 					j=i+line_per_page
 					k=j+line_per_page					
@@ -141,14 +149,14 @@ function ShowTicket(ticket_id)
 					<td class="tdbody_blue" width="40" align="center" nowrap>&nbsp;
 					<%  if ar_disp(i,2) <> "" then
 							'Response.write ar_disp(i,2)
-							If ar_disp(i,2)="∫" Then
+							If ar_disp(i,2)="‡∏ö" Then
 								Response.write "<font color='#000000'>" & ar_disp(i,2) & "</font>"								
 							End If
-							If ar_disp(i,2)="≈" Then
+							If ar_disp(i,2)="‡∏•" Then
 								Response.write "<font color='red'>" & ar_disp(i,2) & "</font>"								
 							End if							
-							If ar_disp(i,2)="∫+≈" Then
-								Response.write "<font color='#000000'>∫</font>+<font color='red'>≈</font>"								
+							If ar_disp(i,2)="‡∏ö+‡∏•" Then
+								Response.write "<font color='#000000'>‡∏ö</font>+<font color='red'>‡∏•</font>"								
 							End if
 						else
 							Response.write "-"

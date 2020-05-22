@@ -1,3 +1,4 @@
+<% Response.CodePage = 65001%>
 <html>
 <head>
 <title>.:: Link Web ::. </title>
@@ -21,13 +22,13 @@
   <!--******************************************************************news*********************************************************************************-->
     
     
-<!--group_type // DB:msg_type  =  2  = ข้อความ Dealer-->
+<!--group_type // DB:msg_type  =  2  = ๏ฟฝ๏ฟฝอค๏ฟฝ๏ฟฝ๏ฟฝ Dealer-->
     
     <form name="form_news" action="msg_dealer.asp" method="post">
     <input type="hidden" name="group_type" value="2">
 	<input type="hidden" name="edit_msg_id">
 	<center><br>
-    <strong class="tdbody">	&bull;  #  แจ้งข่าวสารลูกค้า #  &bull;</strong>
+    <strong class="tdbody">	&bull;  #  ๏ฟฝ้งข๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝูก๏ฟฝ๏ฟฝ๏ฟฝ #  &bull;</strong>
     
     
 	<table  border="0"  cellpadding="1" cellspacing="1"  width="100%">
@@ -49,8 +50,8 @@
             <tr>
 					
                     <td class="textbig_white" align="center" bgcolor="#000066" colspan="2"></td>
-                    <td class="textbig_white" align="center" bgcolor="#000066">ข่าวสาร</td>
-                    <td class="textbig_white" align="center" bgcolor="#000066">การแสดงผล</td>
+                    <td class="textbig_white" align="center" bgcolor="#000066">๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ</td>
+                    <td class="textbig_white" align="center" bgcolor="#000066">๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝสด๏ฟฝ๏ฟฝ๏ฟฝ</td>
 			</tr>
 							
 			
@@ -97,17 +98,17 @@ function clickpic(p){
 	var t=p
 
 	//alert(t)
-	// รัฐบาล
+	// ๏ฟฝัฐ๏ฟฝ๏ฟฝ๏ฟฝ
 	if (t==1){
 		document.mypic.src ="images/price_tos.jpg"
 		document.form_news.game_type.value="2"
 	}
-	// ออมสิน
+	// ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝิน
 	if (t==2){
 		document.mypic.src = "images/price_oth.jpg";
 		document.form_news.game_type.value="3"
 	}
-	// อื่นๆ
+	// ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ
 	if (t==3){
 		document.mypic.src = "images/price_gov.jpg"
 		document.form_news.game_type.value="1"
@@ -125,7 +126,7 @@ function click_edit(msg_id){
 
 
 function click_del(msg_id,msg_detail){
-	if (confirm('คุณต้องการลบรายการ ' + msg_detail+' ?' )){
+	if (confirm('๏ฟฝุณ๏ฟฝ๏ฟฝอง๏ฟฝ๏ฟฝ๏ฟฝลบ๏ฟฝ๏ฟฝยก๏ฟฝ๏ฟฝ ' + msg_detail+' ?' )){
 		document.form_news.mode.value="delete";
 		document.form_news.edit_msg_id.value=msg_id;
 		document.form_news.submit();
@@ -139,13 +140,13 @@ function click_cancel(){
 }
 
 
-// แก้ไขแล้ว  Edit
+// ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ  Edit
 // ========================================
 
 function click_edit_save(msg_id){
 	if (document.form_news.msg_detail.value=="")
 	{
-		alert("กรุณากรอกข้อมูลข่าวสาร")
+		alert("๏ฟฝ๏ฟฝุณาก๏ฟฝอก๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝลข๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ")
 		document.form_news.msg_detail.focus();
 		return false
 	}
@@ -162,7 +163,7 @@ function click_edit_save(msg_id){
 
 
 
-// แก้ไขแล้ว  ปุ่มเพิ่ม
+// ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ  ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ
 // ========================================
 
 function click_add(){	
@@ -175,13 +176,13 @@ function click_add(){
 
 
 
-// แก้ไขแล้ว  ปุ่มบันทึก ขณะเพิ่ม
+// ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ  ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝัน๏ฟฝึก ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ
 // ========================================
 
 
 function click_add_save(){
 	if (document.form_news.msg_detail.value==""){
-		alert('ผิดพลาด : กรุณากรอกข้อมูลข่าวสาร')
+		alert('๏ฟฝิด๏ฟฝ๏ฟฝาด : ๏ฟฝ๏ฟฝุณาก๏ฟฝอก๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝลข๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ')
 		document.form_news.msg_detail.focus();
 		return
 	}
@@ -222,7 +223,7 @@ function click_status(user_id){
       }
 	  
 	  
-	  //เช็ค กด enter
+	  //๏ฟฝ๏ฟฝ ๏ฟฝ๏ฟฝ enter
 function chkEnter(obj){
 		var k=event.keyCode
 		if (k == 13){	

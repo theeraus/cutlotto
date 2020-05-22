@@ -3,6 +3,11 @@
 <% Response.AddHeader "Pragma", "no-cache" %> 
 <% Response.Expires = -1 %>
 <%
+Response.ContentType = "text/html"
+Response.AddHeader "Content-Type", "text/html;charset=UTF-8"
+Response.CodePage = 65001
+Response.CharSet = "UTF-8"
+
 		if trim(Session("uid"))="" then 	response.redirect "signin.asp"
 		Dim objRS , objDB , SQL	
 		Dim dealer_id, tmp_Color

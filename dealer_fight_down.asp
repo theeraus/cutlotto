@@ -1,6 +1,13 @@
-<!--#include virtual="masterpage.asp"-->
-<% Sub ContentPlaceHolder() %>
-
+<%@ Language=VBScript CodePage = 65001  %>
+<%OPTION EXPLICIT%>
+<% Response.CacheControl = "no-cache" %>
+<% Response.AddHeader "Pragma", "no-cache" %> 
+<% Response.Expires = -1 %>
+<%check_session_valid()%>
+<!--#include file="include/adovbs.inc"-->
+<!--#include file="include/config.inc"-->
+<!--#include file="mdlGeneral.asp"-->
+<%Response.Buffer = True%>
 <%
 
 Dim objRec
@@ -29,8 +36,23 @@ dim strOrder, strNumType
 	end if
 
 %>
-
+<HTML>
+<HEAD>
+<META NAME="GENERATOR" Content="Microsoft Visual Studio 6.0">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta http-equiv="cache-control" content="no-cache"> 
+<meta http-equiv="pragma" content="no-cache"> 
+<meta http-equiv="expires" content="-1">
 <LINK href="include/code.css" type=text/css rel=stylesheet>
+<script language="JavaScript" src="include/normalfunc.js"></script>
+<link href="assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
+<link href="assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
+<link href="assets/css/skins/header/base/light.css" rel="stylesheet" type="text/css" />
+<link href="assets/css/skins/header/menu/light.css" rel="stylesheet" type="text/css" />
+<link href="assets/css/skins/brand/navy.css" rel="stylesheet" type="text/css" />
+<link href="assets/css/skins/aside/navy.css" rel="stylesheet" type="text/css" />
+<link href="assets/css/global.css" rel="stylesheet" type="text/css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
 <script Language="VBScript" >	
 	sub cmborder_onChange()
@@ -106,7 +128,8 @@ dim strOrder, strNumType
 	}
 
 </script>
-
+</HEAD>
+<BODY topmargin=0 leftmargin=0 onLoad="document.all.txtsuu.focus();">
 <%
 	strSql = "exec spA_GetFightInfo  " & Session("gameid") & ",'D'"
 	set objRs = conn.Execute(strSql)
@@ -198,7 +221,7 @@ dim strOrder, strNumType
 							</TD>
 						</TR>
 						<TR>
-							<TD><INPUT TYPE="button" class="inputE" value="วิเคราะห์ล่าง"  onClick="open_analysis();"  style="cursor:hand; width: 100px;"> 
+							<TD><INPUT TYPE="button" class="btn btn-primary btn-sm" value="วิเคราะห์ล่าง"  onClick="open_analysis();"  style="cursor:hand; width: 100px;"> 
 							</TD>
 						</TR>
 
@@ -326,7 +349,16 @@ dim strOrder, strNumType
 			</TD>
 		</TR>
 	</Table>
-
+</Body>
+</Html>
+<%
+sub GenEmptyCol(cntCol, cntRow)
+dim i
+	for i = 1 to (5 - cntCol)
+		response.write "<td width=100 class=box2>&nbsp;</td>"
+	next 
+end sub
+%>
 <script language="javascript">
 	function chkEnter(obj){
 		var k=event.keyCode
@@ -354,4 +386,3 @@ dim strOrder, strNumType
 	}
 </script>
 <!-- jum 2006-12-20 -->
-<% End sub %>

@@ -1,48 +1,5 @@
-<!--#include virtual="masterpage.asp"-->
-<%
-Function GetTotalPlay(p,g)
-	Dim objRS , objDB , SQL
-	set objDB=Server.CreateObject("ADODB.Connection")       
-	objDB.Open Application("constr")
-	Set objRS =Server.CreateObject("ADODB.Recordset")
-	SQL="exec spGetTotalPlay " & p & "," & g
-	set objRS=objDB.Execute(SQL)
-	if not objRs.EOF then
-		GetTotalPlay = objRS("total_play_amt")
-	else
-		GetTotalPlay=0
-	end if
-	set objRS=nothing
-	set objDB=nothing
-End Function
-
-Function GetGameDesc(g)
-	select case g
-		case 1 
-			GetGameDesc="รัฐบาล"
-		case 2
-			GetGameDesc="ออมสิน/ธกส"
-		case 3
-			GetGameDesc="ตั้งราคาอื่น"
-		case else
-			GetGameDesc=""
-	end select
-End Function
-Function GetPlayerName(p)
-	Dim objRS , objDB , SQL
-	set objDB=Server.CreateObject("ADODB.Connection")       
-	objDB.Open Application("constr")
-	Set objRS =Server.CreateObject("ADODB.Recordset")
-	SQL="exec spGet_PlayerName " & p
-	set objRS=objDB.Execute(SQL)
-	if not objRs.EOF then
-		GetPlayerName = objRS("player_name")
-	end if
-	set objRS=nothing
-	set objDB=nothing
-End Function
-%>
-<% Sub ContentPlaceHolder() %>
+<%@ Language=VBScript CodePage = 65001  %>
+<%OPTION EXPLICIT%>
 <%
 		if trim(Session("uid"))="" then 	response.redirect "signin.asp"
 		Dim ticket_id, line_per_page,i,j,k , dealer_id
@@ -99,10 +56,21 @@ End Function
 			set objDB=nothing
 			response.redirect ("firstpage_dealer.asp")
 		end if
-
-		
-
 %>			
+<html>
+<head>
+<title>.:: คิวโพยเข้า : เจ้ามือ ::. </title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="include/code.css" rel="stylesheet" type="text/css">
+
+<link href="assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
+<link href="assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
+<link href="assets/css/skins/header/base/light.css" rel="stylesheet" type="text/css" />
+<link href="assets/css/skins/header/menu/light.css" rel="stylesheet" type="text/css" />
+<link href="assets/css/skins/brand/navy.css" rel="stylesheet" type="text/css" />
+<link href="assets/css/skins/aside/navy.css" rel="stylesheet" type="text/css" />
+<link href="assets/css/global.css" rel="stylesheet" type="text/css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
 <script>
 function change (picurl,n) {
@@ -117,8 +85,8 @@ function change (picurl,n) {
 	}
 }
 </script>
-
-
+</head>
+<body topmargin="0"  leftmargin="0">
 	<center>
 	<form name="form1" action="dealer_receive_ticket.asp" method="post">
 	<input type="hidden" name="status_ticket" >
@@ -136,7 +104,7 @@ function change (picurl,n) {
 			%>
 			<table  border="0"  cellpadding="1" cellspacing="0" width="500">
 				<tr>
-					<td class="tdbody_red">เลขที่ &nbsp;<%=objRS("login_id")%></td>
+					<td class="tdbody_red">เลขที่  &nbsp;<%=objRS("login_id")%></td>
 					<td class="tdbody_red">ชื่อ &nbsp;<%=objRS("player_name")%></td>
 					<td class="tdbody">ใบที่ &nbsp;<%=objRS("ticket_number")%></td>
 					<td class="tdbody">ยอดแทงรวม  &nbsp;<%=formatnumber(GetTotalPlay(objRS("player_id"),objRS("game_id")),0)%></td>
@@ -146,8 +114,8 @@ function change (picurl,n) {
 			<%
 			SQL="exec spGet_tb_ticket_key_by_ticket_id " & ticket_id
 
+'response.write SQL
 			set objRS=objDB.Execute(SQL)
-
 			Dim ar_disp
 			reDim ar_disp(99,4)
 			Dim type_show
@@ -169,7 +137,7 @@ function change (picurl,n) {
 					objRS.MoveNext
 				wend
 				'---- แสดงโพย แถวละ 33 ค่า
-				%><table  border="0"  cellpadding="1" cellspacing="1" width="500" bgcolor="#D4D4D4"><%
+				%><table  border="0"  cellpadding="1" cellspacing="1" width="500" bgcolor="#D4D4D4" class="table"><%
 				for i=1 to 33
 					j=i+line_per_page
 					k=j+line_per_page					
@@ -202,7 +170,7 @@ function change (picurl,n) {
 	%>
 			</td>
 			<td>
-				<table>
+				<table class="table">
 					<tr>
 						<td>
 						<input type="button" class="inputG" value="รับ" onClick="click_receive();" style="cursor:hand;width: 75px; ">
@@ -243,8 +211,26 @@ function change (picurl,n) {
 
 	</form>
 	</center>
+</body>
+</html>
+<%
 
-
+Function GetTotalPlay(p,g)
+	Dim objRS , objDB , SQL
+	set objDB=Server.CreateObject("ADODB.Connection")       
+	objDB.Open Application("constr")
+	Set objRS =Server.CreateObject("ADODB.Recordset")
+	SQL="exec spGetTotalPlay " & p & "," & g
+	set objRS=objDB.Execute(SQL)
+	if not objRs.EOF then
+		GetTotalPlay = objRS("total_play_amt")
+	else
+		GetTotalPlay=0
+	end if
+	set objRS=nothing
+	set objDB=nothing
+End Function
+%>
 <script language="javascript">
 	function click_receive(){
 		document.form1.status_ticket.value="receive_ticket";	
@@ -264,5 +250,145 @@ function change (picurl,n) {
 	}
 	
 </script>
-
-<% End sub %>
+<%
+Sub PrintPrice(dealer_id, player_id, game_id)
+	Dim objRS , objDB , SQL, login_id
+	set objDB=Server.CreateObject("ADODB.Connection")       
+	objDB.Open Application("constr")
+	Set objRS =Server.CreateObject("ADODB.Recordset")
+	Dim game_type
+	SQL="select game_type from tb_open_game where game_id=" & game_id
+	Set objRS=objDB.Execute(SQL)
+	If Not  objRS.eof Then
+		game_type=objRS("game_type")
+	End If 
+	SQL="select login_id from sc_user where user_id=" & player_id
+	Set objRS=objDB.Execute(SQL)
+	If Not  objRS.eof Then
+		login_id=objRS("login_id")
+	End If 
+	%>		
+		<table width="300"  border="0" cellspacing="1" cellpadding="1" bgcolor="#E8E8E8">
+				<%
+				Dim bgcolor
+				select case game_type
+						case 1
+							bgcolor="red"
+						case 2
+							bgcolor="red"
+						case 3
+							bgcolor="red"					
+				end select
+				%>
+				<tr>
+					<td class="tdbody1" align="left" bgcolor="<%=bgcolor%>" colspan="3">
+						<%=GetGameDesc(game_type)%>		
+					</td>
+				</tr>
+				<tr>
+					<td class="tdbody1" bgcolor="#ff9999" align="left">หมายเลข : <%=login_id%></td>
+					<td class="tdbody1" bgcolor="#ff9999" align="left" colspan="2">ชื่อ : <%=GetPlayerName(player_id)%></td>
+				</tr>
+				<tr>
+					<td class="tdbody1" bgcolor="#ffd8cc" align="center">ชนิด</td>
+					<td class="tdbody1" bgcolor="#ffd8cc" align="center">จ่าย</td>
+					<td class="tdbody1" bgcolor="#ffd8cc" align="center">ลด (%)</td>
+				</tr>
+				<%
+					SQL="exec spGet_tb_price_player_by_dealer_id_player_id_game_type " & 	dealer_id & "," & player_id & "," & game_type
+					set objRS=objDB.Execute(SQL)
+					i=1
+					while not objRS.eof
+						if objRS("ref_det_desc")=" " then
+				%>
+					<tr>
+						<td class="tdbody1" bgcolor="#ffd8cc" align="center">&nbsp;</td>
+						<td bgcolor="#ff9999" align="center" >&nbsp;</td>
+						<td bgcolor="#ff9999" align="center">&nbsp;</td>
+					</tr>
+				<%
+						else
+				%>
+					<tr>
+						<td class="tdbody1" bgcolor="#ffd8cc" align="center">&nbsp;<%=objRS("ref_det_desc")%></td>
+						<td bgcolor="#ff9999" align="center" >
+							<input type="text" name="p<%=objRS("play_type")%>"  value="<%=objRS("pay_amt")%>" class="input1" size="5" maxLength="3" id="idL<%=i%>" onKeyDown="chkEnter(this);" >
+						</td>
+						<td bgcolor="#ff9999" align="center">
+							<input type="text" name="d<%=objRS("play_type")%>" value="<%=objRS("discount_amt")%>" class="input1" size="5" maxLength="2" 
+							id="idR<%=i%>" onKeyDown="chkEnter(this);">
+						</td>
+					</tr>
+				<%
+						i=i+1
+					end if
+					objRS.MoveNext
+					wend
+				%>
+			</table>		
+			<table>
+				
+					<%
+					SQL="exec spJSelectPlayerDet " & player_id & ", " & Session("gameid")	
+					Set objRS=objDB.Execute(SQL)
+					Dim limit_play
+					Dim can_play,sum_play
+					If Not objRS.eof Then						
+						If CDbl(objRS("limit_play"))>0 then
+							limit_play=FormatNumber(objRS("limit_play"),0)
+						Else
+							limit_play=0
+						End if
+						If CDbl(objRS("sum_play"))>0 then
+							sum_play=FormatNumber(objRS("sum_play"),0)
+						Else
+							sum_play=0
+						End If								
+						If ( CDbl(objRS("limit_play")) - CDbl(objRS("sum_play")) ) > 0 Then
+							can_play=FormatNumber(CDbl(objRS("limit_play")) - CDbl(objRS("sum_play")),0)
+						Else
+							can_play=0
+						End If
+					End If 
+					%>
+				<tr class="head_black">
+					<td>
+						เครดิต :</td><td align="right"><%=FormatNumber(limit_play,0)%>
+					</td>
+				</tr>
+				<tr class="head_black">
+					<td>
+						คงเหลือ : </td><td align="right"><%=FormatNumber(can_play,0)%>
+					</td>
+				</tr>
+			</table>		
+		<%
+	set objRS=nothing
+	set objDB=nothing
+End Sub 
+Function GetGameDesc(g)
+	select case g
+		case 1 
+			GetGameDesc="รัฐบาล"
+		case 2
+			GetGameDesc="ออมสิน/ธกส"
+		case 3
+			GetGameDesc="ตั้งราคาอื่น"
+		case else
+			GetGameDesc=""
+	end select
+End Function
+Function GetPlayerName(p)
+	Dim objRS , objDB , SQL
+	set objDB=Server.CreateObject("ADODB.Connection")       
+	objDB.Open Application("constr")
+	Set objRS =Server.CreateObject("ADODB.Recordset")
+	SQL="exec spGet_PlayerName " & p
+	set objRS=objDB.Execute(SQL)
+	if not objRs.EOF then
+		GetPlayerName = objRS("player_name")
+	end if
+	set objRS=nothing
+	set objDB=nothing
+End Function
+%>

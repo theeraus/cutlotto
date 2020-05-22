@@ -9,14 +9,14 @@
 	var showToday = 1		// 0 - don't show; 1 - show
 	var imgDir = "images/new_calendar/"			// directory for images ... e.g. var imgDir="/img/"
 
-	var gotoString = "๏ฟฝ๏ฟฝับ๏ฟฝ๏ฟฝ๏ฟฝอน๏ฟฝัจ๏ฟฝุบัน"
-	var todayString = "๏ฟฝัน๏ฟฝ๏ฟฝ๏ฟฝ"
-	var weekString = "๏ฟฝัป๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ"
-	var scrollLeftMessage = "๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝอน๏ฟฝ๏ฟฝ๏ฟฝอน๏ฟฝ๏ฟฝอนหน๏ฟฝ๏ฟฝ ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝรถ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝาง๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝอน๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝาง๏ฟฝัต๏ฟฝ๏ฟฝัต๏ฟฝ"
-	var scrollRightMessage = "๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝอน๏ฟฝ๏ฟฝ๏ฟฝอน๏ฟฝัด๏ฟฝ ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝรถ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝาง๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝอน๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝาง๏ฟฝัต๏ฟฝ๏ฟฝัต๏ฟฝ"
-	var selectMonthMessage = "๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝอก๏ฟฝ๏ฟฝอน"
-	var selectYearMessage = "๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝอก๏ฟฝ๏ฟฝ"
-	var selectDateMessage = "๏ฟฝ๏ฟฝ๏ฟฝอก๏ฟฝัน๏ฟฝ๏ฟฝ๏ฟฝ [date]" // do not replace [date], it will be replaced by date.
+	var gotoString = "กลับไปเดือนปัจจุบัน"
+	var todayString = "วันนี้"
+	var weekString = "สัปดาห์"
+	var scrollLeftMessage = "กดเพื่อเลื่อนไปเดือนก่อนหน้า สามารถกดค้างเพื่อเลื่อนไปอย่างอัตโนมัติ"
+	var scrollRightMessage = "กดเพื่อเลื่อนไปเดือนถัดไป สามารถกดค้างเพื่อเลื่อนไปอย่างอัตโนมัติ"
+	var selectMonthMessage = "กดเพื่อเลือกเดือน"
+	var selectYearMessage = "กดเพื่อเลือกปี"
+	var selectDateMessage = "เลือกวันที่ [date]" // do not replace [date], it will be replaced by date.
 
 	var	crossobj, crossMonthObj, crossYearObj, monthSelected, yearSelected, dateSelected, omonthSelected, oyearSelected, odateSelected, monthConstructed, yearConstructed, intervalID1, intervalID2, timeoutID1, timeoutID2, ctlToPlaceValue, ctlNow, dateFormat, nStartingYear
 
@@ -128,15 +128,15 @@
 		document.write ("</table></div><div id='selectMonth' style='z-index:+999;position:absolute;visibility:hidden;'></div><div id='selectYear' style='z-index:+999;position:absolute;visibility:hidden;'></div>");
 	}
 
-	var	monthName =	new	Array("๏ฟฝ๏ฟฝ๏ฟฝาค๏ฟฝ","๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝาพัน๏ฟฝ๏ฟฝ","๏ฟฝีนาค๏ฟฝ","๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝยน","๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝาค๏ฟฝ","๏ฟฝิถุน๏ฟฝยน","๏ฟฝรก๏ฟฝาค๏ฟฝ","๏ฟฝิง๏ฟฝาค๏ฟฝ","๏ฟฝัน๏ฟฝ๏ฟฝยน","๏ฟฝ๏ฟฝ๏ฟฝาค๏ฟฝ","๏ฟฝ๏ฟฝศจิก๏ฟฝยน","๏ฟฝัน๏ฟฝาค๏ฟฝ");
-    var	monthNameAbbr =	new	Array("๏ฟฝ.๏ฟฝ.","๏ฟฝ.๏ฟฝ.","๏ฟฝ๏ฟฝ.๏ฟฝ.","๏ฟฝ๏ฟฝ.๏ฟฝ.","๏ฟฝ.๏ฟฝ.","๏ฟฝ๏ฟฝ.๏ฟฝ.","๏ฟฝ.๏ฟฝ.","๏ฟฝ.๏ฟฝ.","๏ฟฝ.๏ฟฝ.","๏ฟฝ.๏ฟฝ.","๏ฟฝ.๏ฟฝ.","๏ฟฝ.๏ฟฝ.");
+	var	monthName =	new	Array("มกราคม","กุมภาพันธ์","มีนาคม","เมษายน","พฤษภาคม","มิถุนายน","กรกฎาคม","สิงหาคม","กันยายน","ตุลาคม","พฤศจิกายน","ธันวาคม");
+    var	monthNameAbbr =	new	Array("ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค.");
 	if (startAt==0)
 	{
-		dayName = new Array	("๏ฟฝ๏ฟฝ.","๏ฟฝ.","๏ฟฝ.","๏ฟฝ.","๏ฟฝ๏ฟฝ.","๏ฟฝ.","๏ฟฝ.")
+		dayName = new Array	("อา.","จ.","อ.","พ.","พฤ.","ศ.","ส.")
 	}
 	else
 	{
-		dayName = new Array	("๏ฟฝ.","๏ฟฝ.","๏ฟฝ.","๏ฟฝ๏ฟฝ.","๏ฟฝ.","๏ฟฝ.","๏ฟฝ๏ฟฝ.")
+		dayName = new Array	("จ.","อ.","พ.","พฤ.","ศ.","ส.","อา.")
 	}
 	var	styleAnchor="text-decoration:none;color:black;"
 	var	styleLightBorder="border-style:solid;border-width:1px;border-color:#a0a0a0;"

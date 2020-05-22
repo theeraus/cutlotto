@@ -2,9 +2,10 @@
 <% Response.CacheControl = "no-cache" %>
 <% Response.AddHeader "Pragma", "no-cache" %> 
 <% Response.Expires = -1 %>
+<% Response.CodePage = 65001%>
 <html>
 <head>
-<title>.:: �ʹᷧ��� : ��ᷧ ::. </title>
+<title>.:: ยอดแทงรวม : คนแทง ::. </title>
 <meta http-equiv="Content-Type" content="text/html; charset=windows-874">
 <meta http-equiv="cache-control" content="no-cache"> 
 <meta http-equiv="pragma" content="no-cache"> 
@@ -31,7 +32,7 @@
 	<table width="320"  border="0" cellspacing="1" cellpadding="1" bgcolor="#606060">
 		<tr>
 			<td class="tdbody1" bgcolor="#FFFFA4" align="center" width="150">&nbsp;</td>
-			<td class="tdbody1" bgcolor="#FFFFA4" align="center" width="170">�ʹ</td>
+			<td class="tdbody1" bgcolor="#FFFFA4" align="center" width="170">ยอด</td>
 		</tr>
 	<%
 	if not objRS.eof then
@@ -55,11 +56,11 @@
 		wend
 		%>
 		<tr>
-			<td class="tdbody1" bgcolor="#B3FFD9" align="center" colspan="1"><b>���</b>&nbsp;</td>
+			<td class="tdbody1" bgcolor="#B3FFD9" align="center" colspan="1"><b>รวม</b>&nbsp;</td>
 			<td class="tdbody1" bgcolor="#B3FFD9" align="right"><b><u><%=FormatN(grand_total,0)%></u></b>&nbsp;&nbsp;&nbsp;</td> 
 		</tr> 
 		</table><br>
-		<input type="button" value="�Դ˹�ҵ�ҧ���" onClick="window.close();" style="cursor:hand;">
+		<input type="button" value="ปิดหน้าต่างนี้" onClick="window.close();" style="cursor:hand;">
 		</center>
 		<%
 	end if
