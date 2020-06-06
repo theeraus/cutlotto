@@ -635,16 +635,17 @@ end if   '************** ไม่ใช้แล้ว
 								%>
 <style>
 	.kt-widget-3 .kt-widget-3__content{
-		height: 100px;
+		height: 100px ;
 	}
 </style>
-	<div class="row">
+<div class="kt-content">
+	<div class="row" style="margin-bottom: 30px;">
 		<div class="col-lg-4 col-xl-4 order-lg-1 order-xl-1">
 
 			<!--begin::Portlet-->
-			<div class="kt-portlet kt-portlet--fit kt-portlet--height-fluid">
+			<div class="kt-portlet kt-portlet--fit kt-portlet--height-fluid" style="height:100px">
 				<div class="kt-portlet__body kt-portlet__body--fluid">
-					<div class="kt-widget-3 kt-widget-3--danger">
+					<div class="kt-widget-3 kt-widget-3--danger" >
 						<div class="kt-widget-3__content">
 							<div class="kt-widget-3__content-info">
 								<div class="kt-widget-3__content-section">
@@ -666,9 +667,9 @@ end if   '************** ไม่ใช้แล้ว
 		<div class="col-lg-4 col-xl-4 order-lg-1 order-xl-1">
 
 			<!--begin::Portlet-->
-			<div class="kt-portlet kt-portlet--fit kt-portlet--height-fluid">
+			<div class="kt-portlet kt-portlet--fit kt-portlet--height-fluid" style="height:100px">
 				<div class="kt-portlet__body kt-portlet__body--fluid">
-					<div class="kt-widget-3 kt-widget-3--warning">
+					<div class="kt-widget-3 kt-widget-3--warning" >
 						<div class="kt-widget-3__content">
 							<div class="kt-widget-3__content-info">
 								<div class="kt-widget-3__content-section">
@@ -690,9 +691,9 @@ end if   '************** ไม่ใช้แล้ว
 			<div class="col-lg-4 col-xl-4 order-lg-1 order-xl-1">
 
 			<!--begin::Portlet-->
-			<div class="kt-portlet kt-portlet--fit kt-portlet--height-fluid">
+			<div class="kt-portlet kt-portlet--fit kt-portlet--height-fluid" style="height:100px">
 				<div class="kt-portlet__body kt-portlet__body--fluid">
-					<div class="kt-widget-3 kt-widget-3--brand">
+					<div class="kt-widget-3 kt-widget-3--brand" >
 						<div class="kt-widget-3__content">
 							<div class="kt-widget-3__content-info">
 								<div class="kt-widget-3__content-section">
@@ -712,7 +713,9 @@ end if   '************** ไม่ใช้แล้ว
 			<!--end::Portlet-->
 		</div>
 		
-	</div>							
+	</div>		
+</div>
+					
 	<FORM id=form1 name=form action="firstpage_dealer.asp" method=post>
 		<input type="hidden" name="mode">
 		<input type="hidden" name="game_type">
