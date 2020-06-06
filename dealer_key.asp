@@ -7,7 +7,7 @@
 	Dim save,i
 	save=Request("save")
 	game_id=Session("gameid")
-	'-- µÈÕß‰ªÀ“¡“°ËÕπ«Ë“ login π’È‰¥È grame_id À¡“¬‡≈¢Õ–‰√
+	'-- ‡∏ï‡πâ‡∏≠‡∏á‡πÑ‡∏õ‡∏´‡∏≤‡∏°‡∏≤‡∏Å‡πà‡∏≠‡∏ô‡∏ß‡πà‡∏≤ login ‡∏ô‡∏µ‡πâ‡πÑ‡∏î‡πâ grame_id ‡∏´‡∏°‡∏≤‡∏¢‡πÄ‡∏•‡∏Ç‡∏≠‡∏∞‡πÑ‡∏£
 	if game_id="" then game_id="1"
 	player_id=Session("uid")
 
@@ -20,9 +20,9 @@
 		Set objRS =Server.CreateObject("ADODB.Recordset")
 		'--- insert into tb_ticket		
 		ticket_number=Getticket_number(player_id , game_id )
-		rec_status=1 '  Ëß
-		send_status=1  '  Ëß‡®È“¡◊Õ‡®È“¢Õß
-		key_from=1       ' ·∑ß®“° com 
+		rec_status=1 ' ‡∏™‡πà‡∏á
+		send_status=1  ' ‡∏™‡πà‡∏á‡πÄ‡∏à‡πâ‡∏≤‡∏°‡∏∑‡∏≠‡πÄ‡∏à‡πâ‡∏≤‡∏Ç‡∏≠‡∏á
+		key_from=1       ' ‡πÅ‡∏ó‡∏á‡∏à‡∏≤‡∏Å com 
 		key_id=Session("uid")
 		SQL="exec spInsert_tb_ticket " & game_id & ", "  & _
 															ticket_number & ", " & _
@@ -39,7 +39,7 @@
 					key_number=Request("key_number_col1" & i )
 					key_money=Request("key_money_col1" & i )
 					key_seq=i
-					number_status=1    '   Ëß
+					number_status=1    '  ‡∏™‡πà‡∏á
 					if updown_type <>""  and  key_number<>"" and  key_money <>"" then
 						'--- insert into tb_ticket_key
 						SQL="exec spInsert_tb_ticket_key " & _
@@ -50,7 +50,7 @@
 									"'" & key_money &  "'," & _
 									number_status 					
 						set objRS=objDB.Execute(SQL)
-						'--- ·µË≈–µ—«‡≈¢∑’Ë·∑ß®–µÈÕß save ≈ß tb_ticket_number ‚¥¬°“√·¬°ª√–‡¿∑°“√·∑ß
+						'--- ‡πÅ‡∏ï‡πà‡∏•‡∏∞‡∏ï‡∏±‡∏ß‡πÄ‡∏•‡∏Ç‡∏ó‡∏µ‡πà‡πÅ‡∏ó‡∏á‡∏à‡∏∞‡∏ï‡πâ‡∏≠‡∏á save ‡∏•‡∏á tb_ticket_number ‡πÇ‡∏î‡∏¢‡∏Å‡∏≤‡∏£‡πÅ‡∏¢‡∏Å‡∏õ‡∏£‡∏∞‡πÄ‡∏†‡∏ó‡∏Å‡∏≤‡∏£‡πÅ‡∏ó‡∏á
 
 					end if
 			next
@@ -111,13 +111,13 @@ Function GetTotalPlay(p,g)
 	set objDB=nothing
 End Function
 Function convUpDownType(t)
-	if t="≈" then
+	if t="‡∏•" then
 		convUpDownType=1
 	end if
-	if t="∫" then
+	if t="‡∏ö" then
 		convUpDownType=2
 	end if
-	if t="∫+≈" then
+	if t="‡∏ö+‡∏•" then
 		convUpDownType=3
 	end if
 End Function
@@ -137,7 +137,7 @@ End Function
 %>
 <html>
 <head>
-<title>.:: §’¬Ï·∑ß‚æ¬ : §π·∑ß ::. </title>
+<title>.:: ‡∏Ñ‡∏µ‡∏¢‡πå‡πÅ‡∏ó‡∏á‡πÇ‡∏û‡∏¢ : ‡∏Ñ‡∏ô‡πÅ‡∏ó‡∏á ::. </title>
 <meta http-equiv="Content-Type" content="text/html; charset=windows-874">
 <meta http-equiv="cache-control" content="no-cache"> 
 <meta http-equiv="pragma" content="no-cache"> 
@@ -156,62 +156,62 @@ End Function
 		</tr>
 		<tr valign="top">
 			<td width="200" align="right">
-				<table  border="0"  cellpadding="1" cellspacing="0"><!----  table top Level 2 ∑“ß´È“¬  ---->
+				<table  border="0"  cellpadding="1" cellspacing="0"><!----  table top Level 2 ‡∏ó‡∏≤‡∏á‡∏ã‡πâ‡∏≤‡∏¢  ---->
 					<tr>
-						<td width="100" height="30"><input  size="20" type="button" name="b_updown_type" value="  ≈Ë“ß " class="button_lower"  style="cursor:hand;" onclick="click_updown_type()"></td>
+						<td width="100" height="30"><input  size="20" type="button" name="b_updown_type" value="  ‡∏•‡πà‡∏≤‡∏á " class="button_lower"  style="cursor:hand;" onclick="click_updown_type()"></td>
 					</tr>
 					<tr>
-						<td><input type="button" name="b_send" value="   Ëß " class="button_send"  style="cursor:hand;" onClick="clicksubmit()"></td>
+						<td><input type="button" name="b_send" value="  ‡∏™‡πà‡∏á " class="button_send"  style="cursor:hand;" onClick="clicksubmit()"></td>
 					</tr>				
 					<tr>
 						<td>
 							<table width="240">
 								<tr>
-									<td class="tdbody" align="right"> Ëß</td>
+									<td class="tdbody" align="right">‡∏™‡πà‡∏á</td>
 									<td class="tdbody" align="right">=</td>
 									<td class="tdbody" align="right"><%=GetSend(player_id,game_id)%></td>
-									<td class="tdbody" align="right">„∫</td>
+									<td class="tdbody" align="right">‡πÉ‡∏ö</td>
 								</tr>
 								<tr>
-									<td class="tdbody" align="right">√—∫·≈È«</td>
+									<td class="tdbody" align="right">‡∏£‡∏±‡∏ö‡πÅ‡∏•‡πâ‡∏ß</td>
 									<td class="tdbody" align="right">=</td>
 									<td class="tdbody" align="right"><%=GetReceive(player_id,game_id)%></td>
-									<td class="tdbody" align="right">„∫</td>
+									<td class="tdbody" align="right">‡πÉ‡∏ö</td>
 								</tr>
 								<tr>
-									<td class="tdbody" align="right">√Õ√—∫</td>
+									<td class="tdbody" align="right">‡∏£‡∏≠‡∏£‡∏±‡∏ö</td>
 									<td class="tdbody" align="right">=</td>
 									<td class="tdbody" align="right"><%=GetSend(player_id,game_id) - GetReceive(player_id,game_id)%></td>
-									<td class="tdbody" align="right">„∫</td>
+									<td class="tdbody" align="right">‡πÉ‡∏ö</td>
 								</tr>
 								<tr>
-									<td class="tdbody" align="right">‡≈¢§◊π</td>
+									<td class="tdbody" align="right">‡πÄ‡∏•‡∏Ç‡∏Ñ‡∏∑‡∏ô</td>
 									<td class="tdbody" align="right">=</td>
 									<td class="tdbody" align="right"><%=GetReturn(player_id,game_id)%></td>
-									<td class="tdbody" align="right">„∫</td>
+									<td class="tdbody" align="right">‡πÉ‡∏ö</td>
 								</tr>
 								<tr>
-									<td class="tdbody" align="right"><b>¬Õ¥·∑ß√«¡</b></td>
+									<td class="tdbody" align="right"><b>‡∏¢‡∏≠‡∏î‡πÅ‡∏ó‡∏á‡∏£‡∏ß‡∏°</b></td>
 									<td class="tdbody" align="right"><b>=</b></td>
 									<td class="tdbody" align="right"><b>
 									<%=formatnumber(GetTotalPlay(player_id,game_id),0)%></b></td>
-									<td class="tdbody" align="right"><b>∫“∑</b></td>
+									<td class="tdbody" align="right"><b>‡∏ö‡∏≤‡∏ó</b></td>
 								</tr>
 								<tr>
-									<td class="tdbody" align="right">¬Õ¥„∫π’È</td>
+									<td class="tdbody" align="right">‡∏¢‡∏≠‡∏î‡πÉ‡∏ö‡∏ô‡∏µ‡πâ</td>
 									<td class="tdbody" align="right">=</td>
 									<td class="tdbody" align="right"><span id="this_play_amt"></span></td>
-									<td class="tdbody" align="right">∫“∑</td>
+									<td class="tdbody" align="right">‡∏ö‡∏≤‡∏ó</td>
 								</tr>
 							</table>
 						</td>
 					</tr>
-				</table> <!----  table top Level 2 ∑“ß´È“¬  ---->
+				</table> <!----  table top Level 2 ‡∏ó‡∏≤‡∏á‡∏ã‡πâ‡∏≤‡∏¢  ---->
 			</td>
 			<td>
-				<table border="0"  cellpadding="1" cellspacing="0"><!----  table top Level 2 ∑“ß¢«“„™È„π°“√§’¬Ï¢ÈÕ¡Ÿ≈ ---->
+				<table border="0"  cellpadding="1" cellspacing="0"><!----  table top Level 2 ‡∏ó‡∏≤‡∏á‡∏Ç‡∏ß‡∏≤‡πÉ‡∏ä‡πâ‡πÉ‡∏ô‡∏Å‡∏≤‡∏£‡∏Ñ‡∏µ‡∏¢‡πå‡∏Ç‡πâ‡∏≠‡∏°‡∏π‡∏• ---->
 					<tr>
-						<td class="tdbody" align="right" colspan="18"><b>„∫∑’Ë <%=Getticket_number(player_id , game_id )%></b></td>
+						<td class="tdbody" align="right" colspan="18"><b>‡πÉ‡∏ö‡∏ó‡∏µ‡πà <%=Getticket_number(player_id , game_id )%></b></td>
 					</tr>
 					<%
 						i=1
@@ -225,7 +225,7 @@ End Function
 						<td><input type="text" size="11" maxLength="11" class="input1"  name="key_money_col1<%=i%>" onKeyDown="chkEnter(this);" 
 						id="c13<%=right("00" & i,2)%>" onBlur="iBlur(this)"></td>
 
-						<!------------------- ∂È“‡ªÁπ‚∑√»—æ∑Ï‰¡ËµÈÕß· ¥ß 2  column π’È ------------------------>
+						<!------------------- ‡∏ñ‡πâ‡∏≤‡πÄ‡∏õ‡πá‡∏ô‡πÇ‡∏ó‡∏£‡∏®‡∏±‡∏û‡∏ó‡πå‡πÑ‡∏°‡πà‡∏ï‡πâ‡∏≠‡∏á‡πÅ‡∏™‡∏î‡∏á 2  column ‡∏ô‡∏µ‡πâ ------------------------>
 						<td width="20">&nbsp;</td>
 						<td align="center" bgcolor="#0F0FF9"></td>
 						<td align="center">&nbsp;&nbsp;<input type="text" size="3" class="input1" name="updown_type_col2<%=i%>"  id="c21<%=right("00" & i,2)%>"></td>
@@ -242,13 +242,13 @@ End Function
 						<td><input type="text" size="11" maxLength="11" class="input1" name="key_money_col3<%=i%>" onKeyDown="chkEnter(this);"
 						id="c33<%=right("00" & i,2)%>" onBlur="iBlur(this)"></td>
 						<td class="tdbody" align="right"><%=i%></td>
-						<!------------------- ∂È“‡ªÁπ‚∑√»—æ∑Ï‰¡ËµÈÕß· ¥ß 2  column π’È ------------------------>
+						<!------------------- ‡∏ñ‡πâ‡∏≤‡πÄ‡∏õ‡πá‡∏ô‡πÇ‡∏ó‡∏£‡∏®‡∏±‡∏û‡∏ó‡πå‡πÑ‡∏°‡πà‡∏ï‡πâ‡∏≠‡∏á‡πÅ‡∏™‡∏î‡∏á 2  column ‡∏ô‡∏µ‡πâ ------------------------>
 					</tr>
 					<%
 							i=i+1
 						wend
 					%>					
-				</table> <!----  table top Level 2 ∑“ß¢«“„™È„π°“√§’¬Ï¢ÈÕ¡Ÿ≈ ---->
+				</table> <!----  table top Level 2 ‡∏ó‡∏≤‡∏á‡∏Ç‡∏ß‡∏≤‡πÉ‡∏ä‡πâ‡πÉ‡∏ô‡∏Å‡∏≤‡∏£‡∏Ñ‡∏µ‡∏¢‡πå‡∏Ç‡πâ‡∏≠‡∏°‡∏π‡∏• ---->
 			</td>
 		</tr>
 	</table> <!----  table top Level 1  ---->
@@ -270,24 +270,24 @@ End Function
 		var i=o.id
 		var id, next_obj
 		var n , l, m , c, strl , prev 
-		// c1    1   01    =  ™ÿ¥∑’Ë 1        ∫π/≈Ë“ß      ∫√√∑—¥∑’Ë     c m n
+		// c1    1   01    =  ‡∏ä‡∏∏‡∏î‡∏ó‡∏µ‡πà 1        ‡∏ö‡∏ô/‡∏•‡πà‡∏≤‡∏á      ‡∏ö‡∏£‡∏£‡∏ó‡∏±‡∏î‡∏ó‡∏µ‡πà     c m n
 		
 		if (k == 13){	
-			l=i.substring(3,5);   // ∫√√∑—¥∑’Ë ‡∑Ë“‰√  ∂È“‡ªÁπ 33 µÈÕß°≈—∫‰ª∑’Ë 1 „À¡Ë
-			c=lefty(i,2);			  // ™◊ËÕ¢Õß id ∑’Ë‡√“ enter ¡“ c1 
+			l=i.substring(3,5);   // ‡∏ö‡∏£‡∏£‡∏ó‡∏±‡∏î‡∏ó‡∏µ‡πà ‡πÄ‡∏ó‡πà‡∏≤‡πÑ‡∏£  ‡∏ñ‡πâ‡∏≤‡πÄ‡∏õ‡πá‡∏ô 33 ‡∏ï‡πâ‡∏≠‡∏á‡∏Å‡∏•‡∏±‡∏ö‡πÑ‡∏õ‡∏ó‡∏µ‡πà 1 ‡πÉ‡∏´‡∏°‡πà
+			c=lefty(i,2);			  // ‡∏ä‡∏∑‡πà‡∏≠‡∏Ç‡∏≠‡∏á id ‡∏ó‡∏µ‡πà‡πÄ‡∏£‡∏≤ enter ‡∏°‡∏≤ c1 
 			m=i.substring(2,3); 	
 			m=parseInt(m)+1
 			if (m>3){ 					
-				//--- ™ËÕßÀ≈—ß∂È“„ Ë‡≈¢·∑ß·≈È«‰¡Ë¡ Ë‡ß‘π·∑ß°¥ºË“π „ÀÈ„ Ë‡ß‘π·∑ß‡À¡◊Õπ∫√√∑—¥∫π 
+				//--- ‡∏ä‡πà‡∏≠‡∏á‡∏´‡∏•‡∏±‡∏á‡∏ñ‡πâ‡∏≤‡πÉ‡∏™‡πà‡πÄ‡∏•‡∏Ç‡πÅ‡∏ó‡∏á‡πÅ‡∏•‡πâ‡∏ß‡πÑ‡∏°‡πà‡∏°‡∏™‡πà‡πÄ‡∏á‡∏¥‡∏ô‡πÅ‡∏ó‡∏á‡∏Å‡∏î‡∏ú‡πà‡∏≤‡∏ô ‡πÉ‡∏´‡πâ‡πÉ‡∏™‡πà‡πÄ‡∏á‡∏¥‡∏ô‡πÅ‡∏ó‡∏á‡πÄ‡∏´‡∏°‡∏∑‡∏≠‡∏ô‡∏ö‡∏£‡∏£‡∏ó‡∏±‡∏î‡∏ö‡∏ô 
 				id = c + 3 + l
 				next_obj = document.getElementById(  id )	
 				if (l!="01"){								
 					if (next_obj.value=="" ){					
-						id = c + 3 + desc1(l)    // desc1 ‡ªÁπ fumction ≈∫ 1 
+						id = c + 3 + desc1(l)    // desc1 ‡πÄ‡∏õ‡πá‡∏ô fumction ‡∏•‡∏ö 1 
 						next_obj.value = document.getElementById(  id ).value				
 					}
 				}
-				//--- ‡æ‘Ë¡®”π«π‡ß‘π¢Õß „∫‚æ¬				
+				//--- ‡πÄ‡∏û‡∏¥‡πà‡∏°‡∏à‡∏≥‡∏ô‡∏ß‡∏ô‡πÄ‡∏á‡∏¥‡∏ô‡∏Ç‡∏≠‡∏á ‡πÉ‡∏ö‡πÇ‡∏û‡∏¢				
 				if (document.all.this_play_amt.innerText==""){ document.all.this_play_amt.innerText=0 }
 				document.all.this_play_amt.innerText=convert_number(parseInt(
 				replaceChars(document.all.this_play_amt.innerText)) +  parseInt(next_obj.value));
@@ -309,7 +309,7 @@ End Function
 					}
 					c="c"  +  c ;				
 				}
-				// ∂È“‡ªÁπ°“√ enter ∑’Ë®”π«π‡ß‘π „ÀÈ‡Õ“ ∫π/≈Ë“ß „ Ë∑’Ë pay_type
+				// ‡∏ñ‡πâ‡∏≤‡πÄ‡∏õ‡πá‡∏ô‡∏Å‡∏≤‡∏£ enter ‡∏ó‡∏µ‡πà‡∏à‡∏≥‡∏ô‡∏ß‡∏ô‡πÄ‡∏á‡∏¥‡∏ô ‡πÉ‡∏´‡πâ‡πÄ‡∏≠‡∏≤ ‡∏ö‡∏ô/‡∏•‡πà‡∏≤‡∏á ‡πÉ‡∏™‡πà‡∏ó‡∏µ‡πà pay_type
 				id = c + 1 + l
 				next_obj = document.getElementById(  id )
 				next_obj.value=document.form1.master_pay_type.value;
@@ -325,35 +325,35 @@ End Function
 		var b = document.getElementById("b_updown_type") 
 		var n = document.form1.where_cursor.value 
 		var l 	, id 
-		//--- À“«Ë“ ª√–‡¿∑°“√·∑ß ∫√√∑—¥µËÕ‰ª
+		//--- ‡∏´‡∏≤‡∏ß‡πà‡∏≤ ‡∏õ‡∏£‡∏∞‡πÄ‡∏†‡∏ó‡∏Å‡∏≤‡∏£‡πÅ‡∏ó‡∏á ‡∏ö‡∏£‡∏£‡∏ó‡∏±‡∏î‡∏ï‡πà‡∏≠‡πÑ‡∏õ
 		var col = n.substring(1,2) 
-		l=n.substring(3,5);   // ∫√√∑—¥∑’Ë ‡∑Ë“‰√  ∂È“‡ªÁπ 33 µÈÕß°≈—∫‰ª∑’Ë 1 „À¡
+		l=n.substring(3,5);   // ‡∏ö‡∏£‡∏£‡∏ó‡∏±‡∏î‡∏ó‡∏µ‡πà ‡πÄ‡∏ó‡πà‡∏≤‡πÑ‡∏£  ‡∏ñ‡πâ‡∏≤‡πÄ‡∏õ‡πá‡∏ô 33 ‡∏ï‡πâ‡∏≠‡∏á‡∏Å‡∏•‡∏±‡∏ö‡πÑ‡∏õ‡∏ó‡∏µ‡πà 1 ‡πÉ‡∏´‡∏°
 		id = 'c'+col + '1'+ l ; 
 		next_obj = document.getElementById(  id )
-		if (t=="  ≈Ë“ß "){
-			document.form1.b_updown_type.value="  ∫π  ";		
-			document.form1.master_pay_type.value="∫";
+		if (t=="  ‡∏•‡πà‡∏≤‡∏á "){
+			document.form1.b_updown_type.value="  ‡∏ö‡∏ô  ";		
+			document.form1.master_pay_type.value="‡∏ö";
 			b.className="button_upper" ;
 		}
-		if (t=="  ∫π  "){
-			document.form1.b_updown_type.value=" ∫+≈ ";		
-			document.form1.master_pay_type.value="∫+≈";
+		if (t=="  ‡∏ö‡∏ô  "){
+			document.form1.b_updown_type.value=" ‡∏ö+‡∏• ";		
+			document.form1.master_pay_type.value="‡∏ö+‡∏•";
 			b.className="button_ul" ;
 		}
-		if (t==" ∫+≈ "){
-			document.form1.b_updown_type.value="  ≈Ë“ß ";		
-			document.form1.master_pay_type.value="≈";
+		if (t==" ‡∏ö+‡∏• "){
+			document.form1.b_updown_type.value="  ‡∏•‡πà‡∏≤‡∏á ";		
+			document.form1.master_pay_type.value="‡∏•";
 			b.className="button_lower" ;
 		}
-		// æ√ÈÕ¡°—∫‡ª≈’Ë¬π §Ë“¢Õß pay_type ¢Õß∫—π∑—¥π—Èπ¥È«¬
+		// ‡∏û‡∏£‡πâ‡∏≠‡∏°‡∏Å‡∏±‡∏ö‡πÄ‡∏õ‡∏•‡∏µ‡πà‡∏¢‡∏ô ‡∏Ñ‡πà‡∏≤‡∏Ç‡∏≠‡∏á pay_type ‡∏Ç‡∏≠‡∏á‡∏ö‡∏±‡∏ô‡∏ó‡∏±‡∏î‡∏ô‡∏±‡πâ‡∏ô‡∏î‡πâ‡∏ß‡∏¢
 		next_obj.value=document.form1.master_pay_type.value
-		// °≈—∫‰ª set focus ∑’Ë‡¥‘¡
+		// ‡∏Å‡∏•‡∏±‡∏ö‡πÑ‡∏õ set focus ‡∏ó‡∏µ‡πà‡πÄ‡∏î‡∏¥‡∏°
 		next_obj = document.getElementById(  n)
 		next_obj.focus();
 	}
 </script>
 <SCRIPT FOR=window EVENT=onload LANGUAGE="JScript">
-	document.form1.updown_type_col11.value="≈"
+	document.form1.updown_type_col11.value="‡∏•"
 	document.form1.master_pay_type.value=document.form1.updown_type_col11.value
 	document.form1.key_number_col11.focus();
 </SCRIPT>

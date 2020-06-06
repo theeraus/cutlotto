@@ -975,7 +975,7 @@ End Function
 							<td><input type="text" style="width:98;" maxLength="14" class="form-control"
 									name="key_money_col1<%=i%>" onKeyDown="chkEnter(this,2);"
 									id="c13<%=right("00" & i,2)%>" onFocus="iBlur(this)" onKeyUp="pressPlus(this)"
-									onBlur="chkSum(this)" pattern="[0-9]*"></td>
+									onBlur="chkSum(this)" ></td>
 
 							<!------------------- ถ้าเป็นโทรศัพท์ไม่ต้องแสดง 2  column นี้ ------------------------>
 							<td>&nbsp;</td>
@@ -994,7 +994,7 @@ End Function
 							<td><input type="text" style="width:98;" maxLength="14" class="form-control"
 									name="key_money_col2<%=i%>" id="c23<%=right("00" & i,2)%>" onFocus="iBlur(this)"
 									onKeyUp="pressPlus(this)" onKeyDown="chkEnter(this,2);" onBlur="chkSum(this)"
-									pattern="[0-9]*"></td>
+									></td>
 
 							<td width="10">&nbsp;</td>
 							<td align="center" bgcolor="red"></td>
@@ -1013,7 +1013,7 @@ End Function
 							<td><input type="text" style="width:98;" maxLength="14" class="form-control"
 									name="key_money_col3<%=i%>" onKeyDown="chkEnter(this,2);"
 									id="c33<%=right("00" & i,2)%>" onFocus="iBlur(this)" onKeyUp="pressPlus(this)"
-									onBlur="chkSum(this)" pattern="[0-9]*"></td>
+									onBlur="chkSum(this)" ></td>
 							<td class="tdbody" align="center">
 								<p style="background-color:#ff9999; margin-left:10px; padding:5px; color: #0000FF;">
 									<%=i%></p>
@@ -1062,6 +1062,7 @@ End Function
 	}
 	// เช็คกรณีที่ไม่มีการกด enter ใช้ mourse ชี้เพื่อเปลี่ยน box ในการคีย์ เช่นกลับไปแก้ไขจำนวนเงิน
 	function chkSum(obj) {
+
 		var gbl_cankeynextrow = document.form1.gbl_cankeynextrow.value;
 		if (gbl_cankeynextrow != 1) {
 			return;
@@ -1327,6 +1328,7 @@ End Function
 	}
 
 	function click_shwSign(c, l) {
+		console.log("click_shwSign",c);
 		id = c + Right('0' + l, 2);
 		if (c == 'c21' && l == 1) {
 			c = 'c11';
@@ -2209,7 +2211,9 @@ End Function
 	<!-- Begin
 	var isNN = (navigator.appName.indexOf("Netscape") != -1);
 
-	function autoTab(input, len, e) {}
+	function autoTab(input, len, e) {
+		//console.log("xxx")
+	}
 
 	function XautoTab(input, len, e) {
 		var keyCode = (isNN) ? e.which : e.keyCode;

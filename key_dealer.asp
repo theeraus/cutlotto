@@ -19,7 +19,7 @@ var line_all=0;
 	line_per_page=33
 	save=Request("save")
 	game_id=Session("gameid")
-	'-- ��ͧ����ҡ�͹��� login ����� grame_id �����Ţ����
+	'-- ต้องไปหามาก่อนว่า login นี้ได้ grame_id หมายเลขอะไร
 	ticket_id=Request("ticket_id")
 	if game_id="" then game_id="1"
 	player_id=Session("uid")
@@ -27,9 +27,9 @@ var line_all=0;
 	if save="save" then		
 		'--- insert into tb_ticket		
 		ticket_number=Getticket_number(player_id , game_id )
-		rec_status=3 ' �Ѻ�ҧ��ǹ
-		send_status=1  ' ����������Ңͧ
-		key_from=1       ' ᷧ�ҡ com 
+		rec_status=3 ' รับบางส่วน
+		send_status=1  ' ส่งเจ้ามือเจ้าของ
+		key_from=1       ' แทงจาก com 
 		key_id=Session("uid")
 		SQL="exec spEdit_tb_ticket " & ticket_id & "," & rec_status
 		set objRS=objDB.Execute(SQL)																
@@ -42,7 +42,7 @@ var line_all=0;
 				key_number=Request("key_number_col1" & i )
 				key_money=Request("key_money_col1" & i )
 				key_seq=Request("key_seq_col1" & i ) '//i				
-				number_status=3    '  �Ѻ�ҧ��ǹ					
+				number_status=3    '  รับบางส่วน					
 
 				'--- insert into tb_ticket_key
 				if updown_type<>"" and key_number<>"" and key_money<>"" then	
@@ -56,13 +56,13 @@ var line_all=0;
 					set objRS=objDB.Execute(SQL)
 				end if	
 
-				'--- ���е���Ţ���ᷧ�е�ͧ save ŧ tb_ticket_number �¡���¡���������ᷧ
+				'--- แต่ละตัวเลขที่แทงจะต้อง save ลง tb_ticket_number โดยการแยกประเภทการแทง
 				updown_type=convUpDownType(Request("updown_type_col2" & i ))
 				key_number=Request("key_number_col2" & i )
 				key_money=Request("key_money_col2" & i )
 				'//key_seq=i+33
 				key_seq=Request("key_seq_col2" & i ) 
-				number_status=3    '  �Ѻ�ҧ��ǹ
+				number_status=3    '  รับบางส่วน
 				if updown_type<>"" and key_number<>"" and key_money<>"" then	
 					SQL="exec spEdit_tb_ticket_key " & _
 								ticket_id & ", " & _
@@ -79,7 +79,7 @@ var line_all=0;
 				if updown_type<>"" and key_number<>"" and key_money<>"" then						
 					'//key_seq=i+33+33
 					key_seq=Request("key_seq_col3" & i )
-					number_status=3    '  �Ѻ�ҧ��ǹ
+					number_status=3    '  รับบางส่วน
 					SQL="exec spEdit_tb_ticket_key " & _
 								ticket_id & ", " & _
 								key_seq & "," & _
@@ -90,11 +90,11 @@ var line_all=0;
 					set objRS=objDB.Execute(SQL)
 				end if
 		Next
-		' 2008-03-04  JUM ��Ǩ�� �ӹǹ�Թ�Ѻ����Ţ �������͹��� tb_ticket.rec_status=2 �Ѻ������
+		' 2008-03-04  JUM ตรวจดู จำนวนเงินกับตัวเลข ถ้าเหมือนเดิม tb_ticket.rec_status=2 รับทั้งหมด
 		SQL="exec spJUpdateRec_Status " & ticket_id
 		objDB.Execute(SQL)
 
-		'-- 20070914 ��� ref_game_id <> null  update tb_ticket_number.cut_type=1
+		'-- 20070914 ถ้า ref_game_id <> null  update tb_ticket_number.cut_type=1
 		SQL="exec spJUpdateCut_Type " & ticket_id
 		objDB.Execute(SQL)
 
@@ -166,13 +166,13 @@ Function GetTotalPlay(p,g)
 	set objDB=nothing
 End Function
 Function convUpDownType(t)
-	if t="�" then
+	if t="ล" then
 		convUpDownType=1
 	end if
-	if t="�" then
+	if t="บ" then
 		convUpDownType=2
 	end if
-	if t="�+�" then
+	if t="บ+ล" then
 		convUpDownType=3
 	end if
 End Function
@@ -193,7 +193,7 @@ Function Getticket_number( p, g )
 End Function
 
 if ticket_id<>"" then
-'-------- ����繡����� ticket ��仹Ӣ�����������ʴ�
+'-------- ถ้าเป็นการแก้ไข ticket จะไปนำข้อมูลเดิมมาแสดง
 
 	SQL="exec spGet_tb_ticket_key_by_ticket_id " & ticket_id
 	'response.write SQL
@@ -227,7 +227,7 @@ end if
 %>
 <html>
 <head>
-<title>.:: ����ᷧ�� : ��ᷧ ::. </title>
+<title>.:: คีย์แทงโพย : คนแทง ::. </title>
 <meta http-equiv="Content-Type" content="text/html; charset=windows-874">
 <link href="include/code.css" rel="stylesheet" type="text/css">
 </head>
@@ -245,17 +245,17 @@ end if
 		</tr>
 		<tr valign="top">
 			<td width="280" align="left"><br><br><br>
-				<table  border="0"  cellpadding="1" cellspacing="0" width="100%"><!----  table top Level 2 �ҧ����  ---->
+				<table  border="0"  cellpadding="1" cellspacing="0" width="100%"><!----  table top Level 2 ทางซ้าย  ---->
 					<tr>
 						<td height="30" align="right">
-						<input  size="20" type="hidden" name="b_updown_type" value="  ��ҧ " class="button_lower"  style="cursor:hand;" onclick="click_updown_type()" readonly></td>
+						<input  size="20" type="hidden" name="b_updown_type" value="  ล่าง " class="button_lower"  style="cursor:hand;" onclick="click_updown_type()" readonly></td>
 					</tr>
 					<tr>
 						<td align="right">
-						<input type="button" class="inputE" value="�ѹ�֡" style="cursor:hand; width: 75px;" onClick="clicksubmit()">
+						<input type="button" class="inputE" value="บันทึก" style="cursor:hand; width: 75px;" onClick="clicksubmit()">
 						</td>
 					</tr>								
-				</table> <!----  table top Level 2 �ҧ����  ---->
+				</table> <!----  table top Level 2 ทางซ้าย  ---->
 			</td>
 			<td>
 			<%
@@ -266,20 +266,20 @@ end if
 				%>
 				<table  border="0"  cellpadding="1" cellspacing="0" width="500">
 					<tr>
-						<td class="tdbody_red">�Ţ��� &nbsp;<%=objRS("login_id")%></td>
-						<td class="tdbody_red">���� &nbsp;<%=objRS("player_name")%></td>
-						<td class="tdbody">㺷�� &nbsp;<%=objRS("ticket_number")%></td>
-						<td class="tdbody">�ʹᷧ���  &nbsp;<%=formatnumber(GetTotalPlay(objRS("player_id"),objRS("game_id")),0)%></td>
-						<td class="tdbody">�ʹ㺹�� &nbsp;<%=formatnumber(objRS("total_play_amt"),0)%></td>
+						<td class="tdbody_red">เลขที่ &nbsp;<%=objRS("login_id")%></td>
+						<td class="tdbody_red">ชื่อ &nbsp;<%=objRS("player_name")%></td>
+						<td class="tdbody">ใบที่ &nbsp;<%=objRS("ticket_number")%></td>
+						<td class="tdbody">ยอดแทงรวม  &nbsp;<%=formatnumber(GetTotalPlay(objRS("player_id"),objRS("game_id")),0)%></td>
+						<td class="tdbody">ยอดใบนี้ &nbsp;<%=formatnumber(objRS("total_play_amt"),0)%></td>
 					</tr>
 				</table><br>
 			<%
 			end if
 			%>
 				<table border="0"  cellpadding="1" cellspacing="0" width="500">
-				<!----  table top Level 2 �ҧ�����㹡�ä�������� ---->
+				<!----  table top Level 2 ทางขวาใช้ในการคีย์ข้อมูล ---->
 					<tr>
-						<td class="tdbody" align="right" colspan="18"><b>㺷�� <%=objRS("ticket_number")%></b></td>
+						<td class="tdbody" align="right" colspan="18"><b>ใบที่ <%=objRS("ticket_number")%></b></td>
 					</tr>
 					<%
 						Dim readonly1, readonly2, readonly3
@@ -312,41 +312,41 @@ end if
 						show_up3=""
 						show_down3=""
 						If ar_disp(i,2)<>"" then
-							If InStr(ar_disp(i,2),"�")>0 Then
-								show_down1="<font color='red'>�</font>"
-								If InStr(ar_disp(i,2),"�")>0 Then
-									show_up1="�+"
+							If InStr(ar_disp(i,2),"ล")>0 Then
+								show_down1="<font color='red'>ล</font>"
+								If InStr(ar_disp(i,2),"บ")>0 Then
+									show_up1="บ+"
 								End If
 							else
-								If InStr(ar_disp(i,2),"�")>0 Then
-									show_up1="�"
+								If InStr(ar_disp(i,2),"บ")>0 Then
+									show_up1="บ"
 								End if							
 							End If 
 							show_up1=show_up1 & show_down1
 						End If 
 
 						If ar_disp(j,2)<>"" then
-							If InStr(ar_disp(j,2),"�")>0 Then
-								show_down2="<font color='red'>�</font>"
-								If InStr(ar_disp(j,2),"�")>0 Then
-									show_up2="�+"
+							If InStr(ar_disp(j,2),"ล")>0 Then
+								show_down2="<font color='red'>ล</font>"
+								If InStr(ar_disp(j,2),"บ")>0 Then
+									show_up2="บ+"
 								End If
 							else
-								If InStr(ar_disp(j,2),"�")>0 Then
-									show_up2="�"
+								If InStr(ar_disp(j,2),"บ")>0 Then
+									show_up2="บ"
 								End if							
 							End If 
 							show_up2=show_up2 & show_down2
 						End If 
 						If ar_disp(k,2)<>"" then
-							If InStr(ar_disp(k,2),"�")>0 Then
-								show_down3="<font color='red'>�</font>"
-								If InStr(ar_disp(k,2),"�")>0 Then
-									show_up3="�+"
+							If InStr(ar_disp(k,2),"ล")>0 Then
+								show_down3="<font color='red'>ล</font>"
+								If InStr(ar_disp(k,2),"บ")>0 Then
+									show_up3="บ+"
 								End If
 							else
-								If InStr(ar_disp(k,2),"�")>0 Then
-									show_up3="�"
+								If InStr(ar_disp(k,2),"บ")>0 Then
+									show_up3="บ"
 								End if							
 							End If 
 							show_up3=show_up3 & show_down3
@@ -370,7 +370,7 @@ end if
 						id="c13<%=right("00" & i,2)%>" onBlur="iBlur(this)" value="<%=ar_disp(i,4)%>" 
 						onKeyUp="pressPlus(this);" <%=readonly1%>></td>
 
-						<!------------------- ��������Ѿ������ͧ�ʴ� 2  column ��� ------------------------>
+						<!------------------- ถ้าเป็นโทรศัพท์ไม่ต้องแสดง 2  column นี้ ------------------------>
 						<td width="20">&nbsp;</td>
 						<td align="center" bgcolor="red"></td>
 						<input type="hidden" name="key_seq_col2<%=i%>"  value="<%=ar_disp(j,5)%>"> <!-- key_seq -->
@@ -401,13 +401,13 @@ end if
 						id="c33<%=right("00" & i,2)%>" onBlur="iBlur(this)" value="<%=ar_disp(k,4)%>" 
 						onKeyUp="pressPlus(this);" <%=readonly3%>></td>
 						<td class="tdbody_blue" align="right"><%=i%></td>
-						<!------------------- ��������Ѿ������ͧ�ʴ� 2  column ��� ------------------------>
+						<!------------------- ถ้าเป็นโทรศัพท์ไม่ต้องแสดง 2  column นี้ ------------------------>
 					</tr>
 					<%
 							i=i+1
 						wend
 					%>					
-				</table> <!----  table top Level 2 �ҧ�����㹡�ä�������� ---->
+				</table> <!----  table top Level 2 ทางขวาใช้ในการคีย์ข้อมูล ---->
 			</td>
 		</tr>
 	</table> <!----  table top Level 1  ---->
@@ -436,43 +436,43 @@ function chkEnter(obj){
 		var id, next_obj
 		var n , l, m , c, strl , prev , Len
 		var onumber,tmpobj
-		// c1    1   01    =  �ش��� 1        ��/��ҧ      ��÷Ѵ���     c m n
-		//-- �óշ�� user ������ # , + ���繡����Ѻ  � � ���� �+�
+		// c1    1   01    =  ชุดที่ 1        บน/ล่าง      บรรทัดที่     c m n
+		//-- กรณีที่ user กดคีย์ # , + จะเป็นการสลับ  บ ล หรือ บ+ล
 		if ( k==107  ) {
 			click_updown_type(obj)
 		}
 		if (k == 13){	
-			//---- ����繡�ä������á����Թ��ͧ������ҧ
+			//---- ถ้าเป็นการคีย์ตัวแรกค่าเงินต้องห้ามว่าง
 			if (i=='c1301'){
 				if (o.value=='' ){
-					alert('�Դ��Ҵ : ��سҡ�͡�Թᷧ !!!')
+					alert('ผิดพลาด : กรุณากรอกเงินแทง !!!')
 					return false
 				}
 			}
-			l=i.substring(3,5);   // ��÷Ѵ��� �����  ����� 33 ��ͧ��Ѻ价�� 1 ����
-			c=lefty(i,2);			  // ���ͧ͢ id ������ enter �� c1 			
+			l=i.substring(3,5);   // บรรทัดที่ เท่าไร  ถ้าเป็น 33 ต้องกลับไปที่ 1 ใหม่
+			c=lefty(i,2);			  // ชื่อของ id ที่เรา enter มา c1 			
 			m=i.substring(2,3); 	
-			//---- �礡�ä�������ŷ���ͧ �Ţᷧ��ͧ�繵���Ţ��ҹ�� 
+			//---- เช็คการคีย์ข้อมูลที่ช่อง เลขแทงต้องเป็นตัวเลขเท่านั้น 
 			if (parseInt(m)==2){				
 				if (o.value=='' ){
-					alert('�Դ��Ҵ : ��سҡ�͡�Ţᷧ !!!')
+					alert('ผิดพลาด : กรุณากรอกเลขแทง !!!')
 					return false
 				}
 
 				if( isNaN(lefty(o.value,3))){
-					alert('�Դ��Ҵ : ��سҡ�͡�Ţᷧ�繵���Ţ��ҹ�� !!!')
+					alert('ผิดพลาด : กรุณากรอกเลขแทงเป็นตัวเลขเท่านั้น !!!')
 					return false
 				}
 				id=c+'1'+l
 				next_obj = document.getElementById(  id )	
-				// �Ţᷧ ��͡ 123* ��  ��Ƿ�� 4 �� * ����ҹ��
+				// เลขแทง กรอก 123* ได้  ตัวที่ 4 เป็น * ได้เท่านั้น
 				if (o.value.length==4){
 					if (o.value.substring(3,4)!="*" && o.value.substring(3,4)!=' ' ){
-						alert('�Դ��Ҵ : ��ҵ�ͧ���ᷧ�Ţǧ��� ��ͧ����Ẻ  123*  !!!')
+						alert('ผิดพลาด : ถ้าต้องการแทงเลขวงกลม ต้องคีย์แบบ  123*  !!!')
 						return false
 					}			
-					if (next_obj.value!="�"){
-						alert('�Դ��Ҵ : ǧ��� ᷧ��੾�� �� ��ҹ�� !!!')
+					if (next_obj.value!="บ"){
+						alert('ผิดพลาด : วงกลม แทงได้เฉพาะ บน เท่านั้น !!!')
 						return false
 					}
 					var n1,n2,n3
@@ -480,84 +480,84 @@ function chkEnter(obj){
 					n2=o.value.substring(1,2)
 					n3=o.value.substring(2,3)
 					if (n1==n2 && n2==n3 && n1==n3){
-						alert('�Դ��Ҵ : �Ţ�ͧ����ͧᷧẺǧ���  !!!')
+						alert('ผิดพลาด : เลขตองไม่ต้องแทงแบบวงกลม  !!!')
 						return false
 					}
 						
 				}
-				// ���ᷧ �+� ���������Ţ 3 ��� 
+				// การแทง บ+ล ห้ามคีย์เลข 3 ตัว 
 				
-				//if (next_obj.value=="�+�"){
+				//if (next_obj.value=="บ+ล"){
 				//	if (o.value.length>=3){
-				//		alert('�Դ��Ҵ : ᷧ �+� ���������Ţᷧ 3 ��ѡ !!!')
+				//		alert('ผิดพลาด : แทง บ+ล ห้ามคีย์เลขแทง 3 หลัก !!!')
 				//		return false
 				//}
 				//} 
 			}
-			//-- ��ͧ����繨ӹǹ�Թᷧ ��ͧ�� ����Ţ * ��ҹ��
+			//-- ช่องที่เป็นจำนวนเงินแทง ต้องเป็น ตัวเลข * เท่านั้น
 			if (parseInt(m)==3){				
-				//--- ��ͧ��ѧ�������Ţᷧ�����������Թᷧ����ҹ �������Թᷧ����͹��÷Ѵ�� 
+				//--- ช่องหลังถ้าใส่เลขแทงแล้วไม่ใส่เงินแทงกดผ่าน ให้ใส่เงินแทงเหมือนบรรทัดบน 
 				id = c + 3 + l				
 				next_obj = document.getElementById(  id )	
 				if (l!="01"){								
 					if (next_obj.value=="" ){										
-						id = c + 3 + desc1(l)    // desc1 �� fumction ź 1 
+						id = c + 3 + desc1(l)    // desc1 เป็น fumction ลบ 1 
 						next_obj.value = document.getElementById(  id ).value				
 					}
 				}else{					
 					if (next_obj.value=="" ){
-						var ta =parseInt(i.substring(1,2)) -1 ;  // Ŵ 1 �� column ��͹˹�� 
+						var ta =parseInt(i.substring(1,2)) -1 ;  // ลด 1 เป็น column ก่อนหน้า 
 						id="c"+ta+'333'	
 						tmpobj = document.getElementById(  id ).value
 						next_obj.value =tmpobj 
 					}
 				}				
-				//--- ��ͧ��ѧ�������Ţᷧ�����������Թᷧ����ҹ �������Թᷧ����͹��÷Ѵ�� 
+				//--- ช่องหลังถ้าใส่เลขแทงแล้วไม่ใส่เงินแทงกดผ่าน ให้ใส่เงินแทงเหมือนบรรทัดบน 
 				if ( canKeyNumber(o.value) ){
-					// ����� �+� ����ö����ӹǹ�Թᷧ��  71=100/400 �� 100 ��ҧ 400
+					// ถ้าเป็น บ+ล สามารถคีย์จำนวนเงินแทงเป็น  71=100/400 บน 100 ล่าง 400
 					id=c+'1'+l
 					next_obj = document.getElementById(  id )	
 					id=c+'2'+l
 					onumber= document.getElementById(  id )	
-					if (next_obj.value=="�+�" && onumber.value.length<=3){
+					if (next_obj.value=="บ+ล" && onumber.value.length<=3){
 						if ( canKeyUPDN(o.value) ){
-							alert('�Դ��Ҵ : ��سһ�͹�ӹǹ�Թᷧ�繵���Ţ [0-9] , * ���� / ��ҹ�� !!!')
+							alert('ผิดพลาด : กรุณาป้อนจำนวนเงินแทงเป็นตัวเลข [0-9] , * หรือ / เท่านั้น !!!')
 							return false;
 						}
 					}else{
-						alert('�Դ��Ҵ : ��سһ�͹�ӹǹ�Թᷧ�繵���Ţ [0-9] ���� * ��ҹ�� !!!')
+						alert('ผิดพลาด : กรุณาป้อนจำนวนเงินแทงเป็นตัวเลข [0-9] หรือ * เท่านั้น !!!')
 						return false;
 					}
 				}
-				//--- �礵���Ţᷧ�óշ����� �Թᷧ�� 19*900 �е�ͧ�����Ţᷧ�� 1 ��ѡ��ҹ��	
+				//--- เช็คตัวเลขแทงกรณีที่คีย์ เงินแทงเป็น 19*900 จะต้องคีย์เลขแทงเป็น 1 หลักเท่านั้น	
 				id= c+'2'+l
 				next_obj = document.getElementById(  id )	
 				if(next_obj.value.length==4){
 					if( isNaN(o.value)){
-						alert('�Դ��Ҵ : ǧ��� �Ţᷧ ��ͧ�繵���Ţ��ҹ�� !!!')
+						alert('ผิดพลาด : วงกลม เลขแทง ต้องเป็นตัวเลขเท่านั้น !!!')
 						return false
 					}
 				}
 				if (lefty(o.value,3)=='19*'){
 					if (next_obj.value.length>1){
-						alert('�Դ��Ҵ : ��سҡ�͡���������١��ͧ \n ��ҵ�ͧ���ᷧ 19 �ҧ��ͧ�����Ţᷧ 1 ��ѡ��ҹ�� !!!')
+						alert('ผิดพลาด : กรุณากรอกข้อมูลให้ถูกต้อง \n ถ้าต้องการแทง 19 หางต้องคีย์เลขแทง 1 หลักเท่านั้น !!!')
 						return false;
 					}
 				}
 				x=o.value
 				if (x.substring(x.length-1,x.length)=="*"){
-					alert('�Դ��Ҵ : ��سҡ�͡���������١��ͧ \n ��ҵ�ͧ���ᷧ�� ����� *999 ���� 999*999 !!!')
+					alert('ผิดพลาด : กรุณากรอกข้อมูลให้ถูกต้อง \n ถ้าต้องการแทงโต๊ด พิมพ์ *999 หรือ 999*999 !!!')
 					return false;
 				}
-				//����ͧ�ӹǹ�Թ ��������  * 2 ���� 
+				//ที่ช่องจำนวนเงิน ห้ามคีย์  * 2 ครั้ง 
 				if (!canKeyStar(o.value)){
-					alert('�Դ��Ҵ :  ��سҡ�͡�ӹǹ�Թᷧ���١��ͧ !!!')
+					alert('ผิดพลาด :  กรุณากรอกจำนวนเงินแทงให้ถูกต้อง !!!')
 					return false;
 				}
-				// �ӹǹ�Թᷧ��ͧ �ҡ���� 0 ������� 8/5/49
-				//����͡ 2006-11-18
+				// จำนวนเงินแทงต้อง มากกว่า 0 เริ่มเช็ค 8/5/49
+				//เอาออก 2006-11-18
 				//if (o.value<=0){
-				//	alert('�Դ��Ҵ :  ��سҡ�͡�ӹǹ�Թᷧ��ͧ�ҡ���� 0 !!!')
+				//	alert('ผิดพลาด :  กรุณากรอกจำนวนเงินแทงต้องมากกว่า 0 !!!')
 				//	return false;
 				//}
 
@@ -565,7 +565,7 @@ function chkEnter(obj){
 			
 			m=parseInt(m)+1
 			if (m>3){ 										
-				//------- validate data �ա�ͺ
+				//------- validate data อีกรอบ
 				var o1=document.getElementById(  c+1+l )
 				var o2=document.getElementById(  c+2+l )
 				var o3=document.getElementById(  c+3+l )
@@ -574,10 +574,10 @@ function chkEnter(obj){
 				}
 				//-------
 				
-				//--- �����ӹǹ�Թ�ͧ ���				
+				//--- เพิ่มจำนวนเงินของ ใบโพย				
 				//sum_PlayAmt();
-				//sum_PlayAmt(o.value,c,l); // �觨ӹǹ�Թ��� ��������� 
-				// ����¹��礵͹ onBlur
+				//sum_PlayAmt(o.value,c,l); // ส่งจำนวนเงินที่ คีย์แล้วไป 
+				// เปลี่ยนไปเช็คตอน onBlur
 				//--------------------------------------------
 				
 				if (l=="08"){l="8"}   // bug 
@@ -591,13 +591,13 @@ function chkEnter(obj){
 					l="01"
 					c = parseInt(i.substring(1,2) )  + 1  ; 
 					if (c> <%=col_per_page %>) {
-						alert( "�ѹ�֡������")
+						alert( "บันทึกข้อมูล")
 						clicksubmit()
 						return;
 					}
 					c="c"  +  c ;				
 				}
-				// ����繡�� enter ���ӹǹ�Թ ������ ��/��ҧ ����� pay_type
+				// ถ้าเป็นการ enter ที่จำนวนเงิน ให้เอา บน/ล่าง ใส่ที่ pay_type
 				//-- jum
 				//id = c + 1 + l
 				//next_obj = document.getElementById(  id )
@@ -617,24 +617,24 @@ function XchkEnter(obj){
 		var id, next_obj
 		var n , l, m , c
 		if ( k==13  ) {
-			l=i.substring(3,5);   // ��÷Ѵ��� �����  ����� 33 ��ͧ��Ѻ价�� 1 ���
+			l=i.substring(3,5);   // บรรทัดที่ เท่าไร  ถ้าเป็น 33 ต้องกลับไปที่ 1 ใหม
 			l=inc1(l)
 			c=lefty(i,3)+l
 			if (l>33){
 				l="01"
 				c = parseInt(i.substring(1,2) )  + 1  ; 
 				if (c>3) {
-					alert( "�ѹ�֡������")
+					alert( "บันทึกข้อมูล")
 					document.form1.submit();
 					return;
 				}
 				c="c"  +  c +'3'+l;				
 			}
 			if (o.value=='' ){
-				alert('�Դ��Ҵ : ��سҡ�͡�Թᷧ !!!')
+				alert('ผิดพลาด : กรุณากรอกเงินแทง !!!')
 				return false
 			}
-			// c1    1   01    =  �ش��� 1        ��/��ҧ      ��÷Ѵ���     c m n
+			// c1    1   01    =  ชุดที่ 1        บน/ล่าง      บรรทัดที่     c m n
 			id= c
 			next_obj = document.getElementById(  id )
 			next_obj.focus();
@@ -649,7 +649,7 @@ function sum_PlayAmt(){
 		var n1,n2,n3
 		sumVar=0
 		if (document.all.this_play_amt.innerText==""){ document.all.this_play_amt.innerText=0 }
-		// ����� ���Ѿ����繡�ä��� ������
+		// ถ้าเป็น โทรศัพท์จะเป็นการคีย์ แถวเดียว
 		
 		for (i=1; i<= <%=col_per_page %> ; i++){
 				for (j=0; j< <%=line_per_page %> ; j++){
@@ -674,15 +674,15 @@ function sum_PlayAmt(){
 								x=parseInt(x1) + parseInt(x3)
 							}
 						}
-						//----- ����� �+� �е�ͧ�ǡ �Թ����
-						//�+�	13	=	100*200
+						//----- ถ้าเป็น บ+ล จะต้องบวก เงินเพิ่ม
+						//บ+ล	13	=	100*200
 						id='c'+i+'1'+inc1(j)					
 						up_down	= document.getElementById(  id )
-						if (up_down.value=='�+�'){
+						if (up_down.value=='บ+ล'){
 							x = parseInt(x)	* 2
 						}
 						//--- 2005-07-01 // 
-						//-- ����繡óա�ä���ǧ��� 123*=100  , 223*=100
+						//-- ถ้าเป็นกรณีการคีย์วงกลม 123*=100  , 223*=100
 						id='c'+i+'2'+inc1(j)
 						next_obj = document.getElementById(  id )
 						
@@ -697,7 +697,7 @@ function sum_PlayAmt(){
 							}
 						}
 
-						// ����繡ó� ���� �+� �Թ 100/200 
+						// ถ้าเป็นกรณี คีย์ บ+ล เงิน 100/200 
 						x2=o.indexOf('/')
 						if (x2>0){
 							x1=o.substring(0,x2)					
@@ -717,7 +717,7 @@ function canKeyUPDN(v ){
 		for (i=0; i<=LengthStr - 1 ; i++){
 			a = v.substring(i  , parseInt(i)+1 ) 
 			if  (! ( !  isNaN(a)   || a=='*' || a=='/' ) ) {
-				//����� �+� ����ö������ 71-100/400 �� = ᷧ 2 �� 100 2 ��ҧ 400
+				//ถ้าเป็น บ+ล สามารถคีย์เป็น 71-100/400 ได้ = แทง 2 บน 100 2 ล่าง 400
 				return true
 			}					
 		}		
@@ -728,7 +728,7 @@ function canKeyUPDN(v ){
 		for (i=0; i<=LengthStr - 1 ; i++){
 			a = v.substring(i  , parseInt(i)+1 ) 
 			if  (! ( !  isNaN(a)   || a=='*' ) ) {
-				//����� �+� ����ö������ 71-100/400 �� = ᷧ 2 �� 100 2 ��ҧ 400
+				//ถ้าเป็น บ+ล สามารถคีย์เป็น 71-100/400 ได้ = แทง 2 บน 100 2 ล่าง 400
 
 				return true
 			}					
@@ -750,7 +750,7 @@ function canKeyUPDN(v ){
 				slash=slash + a
 			}		
 		}		
-		// 㹡�ä���ӹǹ�Թ��ͧ�� * / ���ҧ����ҧ˹����ҹ��
+		// ในการคีย์จำนวนเงินต้องมี * / อย่างใดอย่างหนึ่งเท่านั้น
 		//if (star!='' && slash!=''){
 		//	return false
 		//}
@@ -767,52 +767,52 @@ function click_updown_type(){
 		var n =document.form1.where_cursor.value 
 		var l 	, id , chkcol_money
 		var k=event.keyCode
-		//--- ����� ���������ᷧ ��÷Ѵ����
+		//--- หาว่า ประเภทการแทง บรรทัดต่อไป
 		var col = n.substring(1,2) 
-		l=n.substring(3,5);   // ��÷Ѵ��� �����  ����� 33 ��ͧ��Ѻ价�� 1 ���
+		l=n.substring(3,5);   // บรรทัดที่ เท่าไร  ถ้าเป็น 33 ต้องกลับไปที่ 1 ใหม
 		var csign=n.substring(1,2);
 		id = 'c'+col + '1'+ l ; 
 		next_obj = document.getElementById(  id )
 
-		if (t=="  ��ҧ "){
-			document.form1.b_updown_type.value="  ��  ";		
-			document.form1.master_pay_type.value="�";
+		if (t=="  ล่าง "){
+			document.form1.b_updown_type.value="  บน  ";		
+			document.form1.master_pay_type.value="บ";
 			b.className="button_upper" ;
 
 			id='signUp'+csign+ l
 			sign_obj = document.getElementById(  id )
-			sign_obj.innerHTML="�"; 
+			sign_obj.innerHTML="บ"; 
 			
 
 		}
-		if (t=="  ��  "){
-		    document.form1.b_updown_type.value=" �+� ";		
-			document.form1.master_pay_type.value="�+�";
+		if (t=="  บน  "){
+		    document.form1.b_updown_type.value=" บ+ล ";		
+			document.form1.master_pay_type.value="บ+ล";
 			b.className="button_ul" ;
 
 			id='signUp'+csign+ l
 			sign_obj = document.getElementById(  id )
-			sign_obj.innerHTML="�+<font color='red'>�</font>";
+			sign_obj.innerHTML="บ+<font color='red'>ล</font>";
 
 
 			
 
 		}
-		if (t==" �+� "){
-			document.form1.b_updown_type.value="  ��ҧ ";		
-			document.form1.master_pay_type.value="�";
+		if (t==" บ+ล "){
+			document.form1.b_updown_type.value="  ล่าง ";		
+			document.form1.master_pay_type.value="ล";
 			b.className="button_lower" ;
 
 			id='signUp'+csign+ l
 			sign_obj = document.getElementById(  id )
-			sign_obj.innerHTML="<font color='red'>�</font>";
+			sign_obj.innerHTML="<font color='red'>ล</font>";
 
 		}
-		// ������Ѻ����¹ ��Ңͧ pay_type �ͧ�ѹ�Ѵ��鹴���
+		// พร้อมกับเปลี่ยน ค่าของ pay_type ของบันทัดนั้นด้วย
 		next_obj.value=document.form1.master_pay_type.value
-		// ��Ѻ� set focus ������
+		// กลับไป set focus ที่เดิม
 		next_obj = document.getElementById( n)
-		if (k!=107){ // ����繡�á� + ����ͧ����͹ focus
+		if (k!=107){ // ถ้าเป็นการกด + ไม่ต้องเลื่อน focus
 			next_obj.focus();
 		}
 
@@ -820,7 +820,7 @@ function click_updown_type(){
 </script>
 <SCRIPT FOR=window EVENT=onload LANGUAGE="JScript">
 	<%if ticket_id="" then %>
-	document.form1.updown_type_col11.value="�"
+	document.form1.updown_type_col11.value="ล"
 	<% end if%>
 	document.form1.master_pay_type.value=document.form1.updown_type_col11.value
 	document.form1.key_number_col11.focus();
@@ -878,28 +878,28 @@ function validate_input_data(){
 			id = 'c'+j+'3'+ inc1(i-1) ; 
 			o2 = document.getElementById(  id )
 if( parseFloat(kk)<parseFloat(line_all)  && (o1.value=="" || o2.value=="") ) {
-alert('�Դ��Ҵ : ����ź�Ţᷧ !!!' + (line_all))
+alert('ผิดพลาด : ห้ามลบเลขแทง !!!' + (line_all))
 o1.focus();
 return false;
 }
-			// �����ҧ����Թᷧ ����Ţᷧ������ü�ҹ��
+			// ถ้าว่างทั้งเงินแทง และเลขแทงไม่เป็นไรผ่านได้
 			if (1==1){
 				id = 'c'+j+'3'+ inc1(i-1) ; 
 				next_obj = document.getElementById(  id )
 
 				if ( canKeyNumber(next_obj.value) ){
-					// ����� �+� ����ö����ӹǹ�Թᷧ��  71=100/400 �� 100 ��ҧ 400
+					// ถ้าเป็น บ+ล สามารถคีย์จำนวนเงินแทงเป็น  71=100/400 บน 100 ล่าง 400
 					id = 'c'+j+'1'+ inc1(i-1) ; 
 					o = document.getElementById(  id )	
 					id = 'c'+j+'2'+ inc1(i-1) ; 
 					onumber= document.getElementById(  id )	
-					if (o.value=="�+�" && onumber.value.length<=3){
+					if (o.value=="บ+ล" && onumber.value.length<=3){
 						if ( canKeyUPDN(next_obj.value) ){
-							alert('�Դ��Ҵ : ��سһ�͹�ӹǹ�Թᷧ�繵���Ţ [0-9] , * ���� / ��ҹ�� !!!')
+							alert('ผิดพลาด : กรุณาป้อนจำนวนเงินแทงเป็นตัวเลข [0-9] , * หรือ / เท่านั้น !!!')
 							return false;
 						}
 					}else{
-						alert('�Դ��Ҵ : ��سһ�͹�ӹǹ�Թᷧ�繵���Ţ [0-9] ���� * ��ҹ�� !!!')
+						alert('ผิดพลาด : กรุณาป้อนจำนวนเงินแทงเป็นตัวเลข [0-9] หรือ * เท่านั้น !!!')
 						return false;
 					}
 				}
@@ -907,30 +907,30 @@ return false;
 				id = 'c'+j+'2'+ inc1(i-1) ; 
 				obj2 = document.getElementById(  id )
 				if( isNaN(lefty(obj2.value,3))){
-					alert('�Դ��Ҵ : ��سҡ�͡�Ţᷧ�繵���Ţ��ҹ�� \n ��ҵ�ͧ���ᷧ�Ţǧ��� ��ͧ����Ẻ  123*')
+					alert('ผิดพลาด : กรุณากรอกเลขแทงเป็นตัวเลขเท่านั้น \n ถ้าต้องการแทงเลขวงกลม ต้องคีย์แบบ  123*')
 					obj2.focus();
 					return false
 				}	
-				// ����ҹ��  2005-07-20
+				// ให้ผ่านได้  2005-07-20
 				//if (obj2.value!=''){
 				//	if (next_obj.value==''){
-				//		alert('�Դ��Ҵ : ��سҵ�Ǩ�ͺ�ӹǹ�Թᷧ xxx!!!')
+				//		alert('ผิดพลาด : กรุณาตรวจสอบจำนวนเงินแทง xxx!!!')
 				//		next_obj.focus();
 				//		return false
 				//	}
 				//}
-				// ����ҹ��  2005-07-20
+				// ให้ผ่านได้  2005-07-20
 				id = 'c'+j+'1'+ inc1(i-1) ; 
 				o = document.getElementById(  id )	
-				// �Ţᷧ ��͡ 123* ��  ��Ƿ�� 4 �� * ����ҹ��
+				// เลขแทง กรอก 123* ได้  ตัวที่ 4 เป็น * ได้เท่านั้น
 				if (obj2.value.length==4){
 					if (obj2.value.substring(3,4)!="*" && obj2.value.substring(3,4)!=' ' ){
-						alert('�Դ��Ҵ : ��ҵ�ͧ���ᷧ�Ţǧ��� ��ͧ����Ẻ  123* xxxxxx!!!')
+						alert('ผิดพลาด : ถ้าต้องการแทงเลขวงกลม ต้องคีย์แบบ  123* xxxxxx!!!')
 						obj2.focus();
 						return false
 					}	
-					if (o.value!='�'){
-						alert('�Դ��Ҵ : ǧ���ᷧ��੾�� �� ��ҹ�� !!!')
+					if (o.value!='บ'){
+						alert('ผิดพลาด : วงกลมแทงได้เฉพาะ บน เท่านั้น !!!')
 						return false
 					}					
 					var n1,n2,n3
@@ -938,42 +938,42 @@ return false;
 					n2=obj2.value.substring(1,2)
 					n3=obj2.value.substring(2,3)
 					if (n1==n2 && n2==n3 && n1==n3){
-						alert('�Դ��Ҵ : �Ţ�ͧ����ͧᷧẺǧ���  !!!')
+						alert('ผิดพลาด : เลขตองไม่ต้องแทงแบบวงกลม  !!!')
 						return false
 					}
 					if( isNaN(next_obj.value)){
-						alert('�Դ��Ҵ : ǧ��� �Ţᷧ ��ͧ�繵���Ţ��ҹ�� !!!')
+						alert('ผิดพลาด : วงกลม เลขแทง ต้องเป็นตัวเลขเท่านั้น !!!')
 						next_obj.focus();
 						return false
 					}
 				}
-				// ���ᷧ �+� ���������Ţ 3 ��� 
-				//if (o.value=="�+�"){
+				// การแทง บ+ล ห้ามคีย์เลข 3 ตัว 
+				//if (o.value=="บ+ล"){
 				//	if (obj2.value.length>=3){
-				//		alert('�Դ��Ҵ : ᷧ �+� ���������Ţᷧ 3 ��ѡ !!!')
+				//		alert('ผิดพลาด : แทง บ+ล ห้ามคีย์เลขแทง 3 หลัก !!!')
 				//		return false
 				//	}
 				//} 
-				// ����ҹ��  2005-07-20
+				// ให้ผ่านได้  2005-07-20
 				//if (next_obj.value!=''){
 				//	if (obj2.value==''){
-				//		alert('�Դ��Ҵ : ��سҵ�Ǩ�ͺ �Ţᷧ !!!')
+				//		alert('ผิดพลาด : กรุณาตรวจสอบ เลขแทง !!!')
 				//		obj2.focus();
 				//		return false
 				//	}
 				//}
-				// ����ҹ��  2005-07-20
-				//����ͧ�ӹǹ�Թ ��������  * 2 ���� 
+				// ให้ผ่านได้  2005-07-20
+				//ที่ช่องจำนวนเงิน ห้ามคีย์  * 2 ครั้ง 
 				if (!canKeyStar(next_obj.value)){
-					alert('�Դ��Ҵ :  ��سҡ�͡�ӹǹ�Թᷧ���١��ͧ !!!')
+					alert('ผิดพลาด :  กรุณากรอกจำนวนเงินแทงให้ถูกต้อง !!!')
 					return false;
 				}
 
-				// �ӹǹ�Թᷧ��ͧ �ҡ���� 0 ��ҡ�Ѻ�������� 8/5/49
-				//����͡ 20061118
+				// จำนวนเงินแทงต้อง มากกว่า 0 เอากลับมาเช็คใหม่ 8/5/49
+				//เอาออก 20061118
 				//if (obj2.value!=''){
 				//	if (next_obj.value<=0){
-				//		alert('�Դ��Ҵ :  ��سҡ�͡�ӹǹ�Թᷧ��ͧ�ҡ���� 0 !!!')
+				//		alert('ผิดพลาด :  กรุณากรอกจำนวนเงินแทงต้องมากกว่า 0 !!!')
 				//		return false;
 				//	}
 				//}
@@ -999,8 +999,8 @@ return false;
 }
 
 function validate_1(o1,o2,o3){
-	// �� function �������͹�Ѻ validate_input_data ����� 1 ��¡�� ��� ��Ǩ�ͺ�Ѻ�óշ���ա�� copy �ӹǹ�Թ�ҡ��÷Ѵ��
-	if (o1.value=='�'){
+	// เป็น function ที่เหมือนกับ validate_input_data แต่ทำแค่ 1 รายการ ให้ ตรวจสอบกับกรณีที่มีการ copy จำนวนเงินจากบรรทัดบน
+	if (o1.value=='บ'){
 		if ( !isNaN(o2.value) && !isNaN(o3.value) ){
 			return true;
 		}
@@ -1017,7 +1017,7 @@ function validate_1(o1,o2,o3){
 			return true;			
 		}
 	}
-	if (o1.value=='�+�'){
+	if (o1.value=='บ+ล'){
 
 		if (o2.value.length>1 && o2.value.length<3  && o3.value.indexOf('*') > 0  ){
 			return true;
@@ -1030,7 +1030,7 @@ function validate_1(o1,o2,o3){
 		}
 	
 	}
-	if (o1.value=='�'){
+	if (o1.value=='ล'){
 		if ( !isNaN(o2.value) && !isNaN(o3.value) ){
 			return true;
 		}
@@ -1041,7 +1041,7 @@ function validate_1(o1,o2,o3){
 			return true;
 		}
 	}
-	alert('�Դ��Ҵ : ��ä���ᷧ����͡�˹�ͨҡ����˹�');
+	alert('ผิดพลาด : การคีย์แทงอยู่นอกเหนือจากที่กำหนด');
 	return false;
 }
 function iBlur(o){

@@ -633,26 +633,106 @@ end if   '************** ไม่ใช้แล้ว
 							end select
 
 								%>
+<style>
+	.kt-widget-3 .kt-widget-3__content{
+		height: 100px;
+	}
+</style>
+	<div class="row">
+		<div class="col-lg-4 col-xl-4 order-lg-1 order-xl-1">
+
+			<!--begin::Portlet-->
+			<div class="kt-portlet kt-portlet--fit kt-portlet--height-fluid">
+				<div class="kt-portlet__body kt-portlet__body--fluid">
+					<div class="kt-widget-3 kt-widget-3--danger">
+						<div class="kt-widget-3__content">
+							<div class="kt-widget-3__content-info">
+								<div class="kt-widget-3__content-section">
+									<div class="kt-widget-3__content-title">ยอดแทง</div>
+									<div class="kt-widget-3__content-desc">TOTAL BET</div>
+								</div>
+								<div class="kt-widget-3__content-section">
+									<span class="kt-widget-3__content-number"><%=sumall%><span>฿</span></span>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!--end::Portlet-->
+		</div>
+		<div class="col-lg-4 col-xl-4 order-lg-1 order-xl-1">
+
+			<!--begin::Portlet-->
+			<div class="kt-portlet kt-portlet--fit kt-portlet--height-fluid">
+				<div class="kt-portlet__body kt-portlet__body--fluid">
+					<div class="kt-widget-3 kt-widget-3--warning">
+						<div class="kt-widget-3__content">
+							<div class="kt-widget-3__content-info">
+								<div class="kt-widget-3__content-section">
+									<div class="kt-widget-3__content-title">ยอดสูงสุดงวดนี้</div>
+									<div class="kt-widget-3__content-desc">HIGHT TOTAL BET</div>
+								</div>
+								<div class="kt-widget-3__content-section">
+									<span class="kt-widget-3__content-number"><%=FormatNumber(Session("rsumall"),0)%><span>฿</span></span>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!--end::Portlet-->
+		</div>
+			<div class="col-lg-4 col-xl-4 order-lg-1 order-xl-1">
+
+			<!--begin::Portlet-->
+			<div class="kt-portlet kt-portlet--fit kt-portlet--height-fluid">
+				<div class="kt-portlet__body kt-portlet__body--fluid">
+					<div class="kt-widget-3 kt-widget-3--brand">
+						<div class="kt-widget-3__content">
+							<div class="kt-widget-3__content-info">
+								<div class="kt-widget-3__content-section">
+									<div class="kt-widget-3__content-title">เครดิตเหลือ</div>
+									<div class="kt-widget-3__content-desc"> TOTAL CREDIT</div>
+								</div>
+								<div class="kt-widget-3__content-section">
+									<span class="kt-widget-3__content-number"><%=FormatNumber(Session("limit_play")-Session("rsumall"),0)%><span>฿</span></span>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!--end::Portlet-->
+		</div>
+		
+	</div>							
 	<FORM id=form1 name=form action="firstpage_dealer.asp" method=post>
 		<input type="hidden" name="mode">
 		<input type="hidden" name="game_type">
 
 		<TABLE width='100%' align=center border="0">
-			<tr align=center bgColor="#4f4f4f" class=head_black>
+			<tr align=center  class="btn-info">
 				<td class="style4" bgcolor="White">
 					<font color="white"></font>
 				</td>
 				<td class="style1">
 					<font color="white">ยอดแทง</font>
 				</td>
-				<td class="style1" bgcolor="#0099FF">
-					<font color="black"><b>เครดิต</b></font>
+				<td class="style1" >
+					<font color="white"><b>เครดิต</b></font>
 				</td>
-				<td class="style1" bgcolor="#0099FF">
-					<font color="black"><b>ยอดสูงสุดงวดนี้</b></font>
+				<td class="style1">
+					<font color="white"><b>ยอดสูงสุดงวดนี้</b></font>
 				</td>
-				<td class="style1" bgcolor="#0099FF">
-					<font color="black"><b>เครดิตเหลือ</b></font>
+				<td class="style1">
+					<font color="white"><b>เครดิตเหลือ</b></font>
 				</td>
 				<td class="style1">&nbsp;</td>
 				<td class="style1">
@@ -662,7 +742,7 @@ end if   '************** ไม่ใช้แล้ว
 					<font color="white"></font>
 				</td>
 				<td class="style1">
-					<input type="button" class="inputM btn btn-primary btn-sm" value="Refresh"
+					<input type="button" class="inputM btn btn-warning  btn-sm" value="Refresh"
 						style="cursor:hand; width: 75px;" onClick="window.open('firstpage_dealer.asp','_self')"></td>
 			</tr>
 			<tr align=center bgColor="#282828" class=head_black>
@@ -672,14 +752,14 @@ end if   '************** ไม่ใช้แล้ว
 				<td class="style1">
 					<font color="white"><%=sumall%></font>
 				</td>
-				<td bgcolor="#0099FF" align="center">
-					<font color="black"><%=FormatNumber(Session("limit_play"),0)%></font>
+				<td  align="center">
+					<font color="white"><%=FormatNumber(Session("limit_play"),0)%></font>
 				</td>
-				<td bgcolor="#0099FF" align="center">
-					<font color="black"><%=FormatNumber(Session("rsumall"),0)%></font>
+				<td  align="center">
+					<font color="white"><%=FormatNumber(Session("rsumall"),0)%></font>
 				</td>
-				<td bgcolor="#0099FF" align="center">
-					<font color="black"><%=FormatNumber(Session("limit_play")-Session("rsumall"),0)%></font>
+				<td  align="center">
+					<font color="white"><%=FormatNumber(Session("limit_play")-Session("rsumall"),0)%></font>
 				</td>
 				<td>
 					<font color="white"></font>
@@ -710,8 +790,8 @@ end if   '************** ไม่ใช้แล้ว
 			</tr>
 			<tr>
 				<td colspan=1 align=center height="25" bgcolor="White">&nbsp;</td>
-				<td colspan=5 class=button_red align=center height="25">สู้บน</td>
-				<td colspan=3 class=button_green align=center height="25">สู้ล่าง</td>
+				<td colspan=5 class="btn-success" align=center height="25">สู้บน</td>
+				<td colspan=3 class="btn-warning" align=center height="25">สู้ล่าง</td>
 				<!--<td colspan=1 class=button_green align=center  height="25">&nbsp;</td>-->
 			</tr>
 			<%	'if Request("stoprefresh")="1" then	%>

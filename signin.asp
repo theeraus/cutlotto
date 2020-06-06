@@ -9,6 +9,18 @@
     <meta http-equiv="cache-control" content="no-cache">
     <meta http-equiv="pragma" content="no-cache">
     <meta http-equiv="expires" content="-1">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700">
+
+    <link href="assets/plugins/custom/fullcalendar/fullcalendar.bundle.css" rel="stylesheet" type="text/css" />
+
+    <link href="assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
+    
+    <link href="assets/css/skins/header/base/light.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/skins/header/menu/light.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/skins/brand/navy.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/skins/aside/navy.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/global.css" rel="stylesheet" type="text/css" />
     <LINK href="include/code.css" type=text/css rel=stylesheet>
 
 
@@ -46,34 +58,30 @@
         <FORM id=FORM1 name=FORM1 action="mdlCheckUser.asp" target="_self" method=post>
             <input type=hidden name=chkid value=<%=Session.SessionID%>>
 
-            <table width="400" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#ed0202">
+            <table width="400" border="0" align="center" cellpadding="0" cellspacing="1" >
                 <tr>
-                    <td>
-                        <table width="100%" border="0" align="center" cellpadding="1" cellspacing="0" bgcolor="#006699">
-                            <tr bgcolor="#ed0202">
-                                <td height="35" colspan="2" align="center"><b>Member Login</b></td>
+                    <td >
+                        <table width="100%" border="0" align="center" cellpadding="1" cellspacing="0" >
+                            <tr >
+                                <td height="50" colspan="2" align="center" class="btn-primary" style="color:#fff"  ><b>Member Login</b></td>
                             </tr>
                             <tr height="30" bgcolor="#F5F5F5">
                                 <td width="150" align="right">&nbsp;</td>
                                 <td>&nbsp;</td>
                             </tr>
-                            <tr height="30" bgcolor="#F5F5F5">
+                            <tr height="50" bgcolor="#F5F5F5">
                                 <td width="150" align="right">Username : &nbsp;</td>
-                                <td><input id=text1 name=txtUserName style="width:150px"
+                                <td><input id=text1 name=txtUserName style="width:200px" class="form-control"
                                         onKeyDown="txtUserName_checkkey();"></td>
                             </tr>
-                            <tr height="30" bgcolor="#F5F5F5">
+                            <tr height="50" bgcolor="#F5F5F5">
                                 <td align="right">Password : &nbsp;</td>
-                                <td><input id=password1 type="password" name=password1 style="width:150px"
+                                <td><input id=password1 type="password" name=password1 style="width:200px" class="form-control"
                                         onKeyDown="password1_checkkey();"></td>
                             </tr>
-                            <tr height="20" bgcolor="#F5F5F5">
-                                <td align="right">&nbsp;</td>
-                                <td>&nbsp;</td>
-                            </tr>
-                            <tr height="40" bgcolor="#F5F5F5">
+                            <tr height="50" bgcolor="#F5F5F5">
                                 <td colspan="2" align="center">
-                                    <input id=button1 type=button class="buttonlog" value="LOG IN"
+                                    <input id=button1 type=button class="btn btn-primary" value="LOG IN" style="width:100px"
                                         onClick="return clicksubmit();">
                                 </td>
                             </tr>

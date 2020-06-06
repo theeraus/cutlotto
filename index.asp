@@ -68,7 +68,7 @@ end if
 	<LINK href="include/stylesmenu.css" type=text/css rel="stylesheet">
 	<script language="JavaScript" src="include/normalfunc.js"></script>
 	<script language="JavaScript" src="include/js_function.js"></script>
-	<TITLE>Welcome Cut Lotto</TITLE>
+	<TITLE>Welcome DSS Tool </TITLE>
 
 </head>
 
@@ -80,7 +80,7 @@ end if
 	<div id="kt_header_mobile" class="kt-header-mobile  kt-header-mobile--fixed ">
 		<div class="kt-header-mobile__logo">
 			<a href="index.html">
-				<img alt="Logo" src="assets/media/logos/logo-6.png" />
+				<img alt="Logo" src="assets/media/logos/logo-dtool.png" />
 			</a>
 
 		</div>
@@ -106,7 +106,7 @@ end if
 				<!-- begin::Aside Brand -->
 				<div class="kt-aside__brand kt-grid__item " id="kt_aside_brand">
 					<div class="kt-aside__brand-logo">
-						<img alt="Logo" src="assets/media/logos/logo-6.png" />
+						<img alt="Logo" src="assets/media/logos/logo-dtool.png" style="width:120px" />
 					</div>
 					<div class="kt-aside__brand-tools">
 						<button class="kt-aside__brand-aside-toggler kt-aside__brand-aside-toggler--left"
