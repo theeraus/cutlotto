@@ -92,6 +92,8 @@ Response.CharSet = "UTF-8"
 '			strSql=strSql & " and  b.login_id='" & bdealer & "' and b.user_type='D' "				
 		End if
 'showstr strSql & " xxx " & bdealer & " yy " & Request("txtdealer")
+
+
 		rs.Open strSql,objConn
 		if not rs.eof then
 			RndPw = Mid(rs("user_password"),1,1)
@@ -111,7 +113,7 @@ Response.CharSet = "UTF-8"
 					Session("refreshtime")=rs("refresh_time")
 				end If
 				If Session("utype")="K" Then CheckGame(Session("uid"))
- 
+ 				Session("dealer_credit")=FormatNumber(rs("dealer_credit"),0)
 				Session("limit_play")=FormatNumber(rs("limit_play"),0)
 				if not isnull(rs("geb_ses")) then
 					Session("geb_ses") = rs("geb_ses")

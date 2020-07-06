@@ -13,7 +13,7 @@ Response.CharSet = "UTF-8"
 dim objRec
 dim recNumType
 dim recPlay
-dim strSql
+dim strSql, sql2
 dim i
 dim strOpen
 
@@ -25,6 +25,8 @@ dim num3down2
 dim num3down3
 dim num3down4
 Dim mode
+Dim isCalculate 
+isCalculate = false
 mode=Request("mode")
 	
 	Set objRec = Server.CreateObject ("ADODB.Recordset")
@@ -34,10 +36,26 @@ mode=Request("mode")
 	strOpen="เปิดรับแทง"
 	if CheckGame(Session("uid"))="OPEN" then strOpen="ปิดรับแทง"
 
+	sql2 = "select* from tb_usercredit where game_id=" & Session("gameid") 
+	objRec.Open sql2, conn
+	if not objRec.eof then
+		isCalculate = true
+	end if
+	objRec.close
+
 	if Request("chk1")="ตรวจเลข" then
 		Server.ScriptTimeout = 2400		
 		'jum เพิ่มให้เก็บจำนวนเงิน 2008-12-08
-		strSql = "exec spA_ChangePasswordOverLimitChk " & Session("uid") & ", " & Session("gameid") 
+		strSql = "exec spA_CheckDealorCredit " & Session("uid") & ", " & Session("gameid") 
+		objRec.Open strSql, conn
+		if not objRec.eof then
+			if objRec("overlimit") = "yes" then
+				response.redirect("notify_notcredit.asp")
+				response.end
+			end if
+		end if
+		objRec.close
+
 		conn.Execute(strSql)	
 		'jum เพิ่มให้เก็บจำนวนเงิน 2008-12-08
 		strSql="Update tb_open_game set " _
@@ -115,6 +133,9 @@ mode=Request("mode")
 <link href="assets/css/skins/aside/navy.css" rel="stylesheet" type="text/css" />
 <link href="assets/css/global.css" rel="stylesheet" type="text/css" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+
 
 <script language=Javascript>
 	function print_summoney() {
@@ -200,9 +221,16 @@ var chkkey
     </style>
 
 <BODY topmargin=0 leftmargin=0 onLoad="document.form1.txt3up.focus();">
+	<% if isCalculate= false then %>
+	<br>
+		<CENTER><FONT SIZE="+1" COLOR="#FF0000"><B>กรุณาตรวจสอบข้อมูลให้ถูกต้องก่อนการตรวจเลข</B></FONT></CENTER>
+	<br>
+	<% else %>
+		<CENTER><FONT SIZE="+1" COLOR="green"><B>ออกผลรางวัลแล้ว</B></FONT></CENTER>
+	<% end if %>
 	<FORM METHOD=POST ACTION="dealer_check_number.asp" name="form1">
 	<input type="hidden" name="mode" value="click_submit">	
-	<INPUT TYPE="hidden" name="chk1" value="">
+	<INPUT TYPE="hidden" name="chk1" id="chk1" value="">
 	<TABLE  align=center class="table" width="55%">        	
 		<tr align=center bgColor=red  class=head_white>
 			<td colspan=7 >วันที่&nbsp;&nbsp;&nbsp;<%=formatdatetime(now(),2)%></td>
@@ -214,13 +242,16 @@ var chkkey
 			<td><INPUT TYPE="text" NAME="txt2down" size=2 style="width:22;" maxlength=2 value="<%=num2down%>" onKeyUp="txt2down_checkkey();"></td>
 			<td class="auto-style2"><strong>3 ล่าง ออก</strong></td>
 			<td><INPUT TYPE="text" NAME="txt3down1" size=3 style="width:32;" maxlength=3 value="<%=num3down1%>" onKeyUp="txt3down1_checkkey();">&nbsp;<INPUT TYPE="text" NAME="txt3down2" size=5 maxlength=3 style="width:32;" value="<%=num3down2%>" onKeyUp="txt3down2_checkkey();">&nbsp;<INPUT TYPE="text" NAME="txt3down3" size=5 maxlength=3 style="width:32;" value="<%=num3down3%>" onKeyUp="txt3down3_checkkey();">&nbsp;<INPUT TYPE="text" NAME="txt3down4" size=5 style="width:32;" maxlength=3 value="<%=num3down4%>" onKeyUp="txt3down4_checkkey();"></td>
-			<td><input type=button class="btn btn-primary btn-sm" onClick="document.all.form1.chk1.value='ตรวจเลข'; document.all.form1.submit();" style="cursor:hand; width: 75px;" name="chk" value="ตรวจเลข"></td>
+			<td></td>
 		</tr>
 	</table>
+	<div style="text-align: center;">
+		<input type="button" class="btn btn-primary" id="calculate_lotto"  
+		   <% if isCalculate=true then %> disabled <% end if %>
+		   style="cursor:hand; width: 205px;" name="chk" value="ตรวจเลข">
+	</div>
 	</FORM>
-	<br>
-	<CENTER><FONT SIZE="+1" COLOR="#FF0000"><B>เมื่อแก้ไขเลขออก แก้ไขโพย เปลี่ยนแปลงราคา ต้องสั่งตรวจเลขใหม่ทุกครั้ง</B></FONT></CENTER>
-	<br>
+
 	<%
 '	If mode="click_submit" then
 
@@ -499,5 +530,22 @@ dim totalselfOutDisc
 	<%
 	End if   ' 1 = 0
 	%>
+
+
+	<script>
+		$("#calculate_lotto").click(function(){
+			$.confirm({
+			title: 'กรุณายืนยันการตรวจเลขหวย!',
+			content: 'โปรดทราบว่าเมื่อคุณกดตรวจเลขแล้วระบบจะทำการหักเครดิตในระบบของคุณตามเงื่อนไขการคิดค่าบริการ และเมื่อคุณกดตรวจเลขแล้วจะไม่สามารถกดซ้ำได้อีกในหวยงวดนั้นๆ',
+			buttons: {
+				ยืนยัน: function () {
+					document.all.form1.chk1.value='ตรวจเลข'; 
+					document.all.form1.submit();
+				},
+				ยกเลิก: function () {}
+				}
+			});
+		});
+	</script>
 </body>
 </html>

@@ -155,7 +155,7 @@ end if
 								srcPage=Request("page")
 							end if
 						%>
-						<IFRAME marginWidth=0 marginHeight=0 src="<%=srcPage%>" frameBorder=no width="100%"
+						<IFRAME  marginWidth=0 marginHeight=0 src="<%=srcPage%>" frameBorder=no width="100%"
 							height="100%" name="bodyFrame" align="left">
 						</IFRAME>
 

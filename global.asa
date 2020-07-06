@@ -1,7 +1,7 @@
 <SCRIPT LANGUAGE="VBScript" RUNAT="Server">
 Sub Application_OnStart
 
-Application("constr")= "PROVIDER=SQLOLEDB;DATA SOURCE=202.9.90.42;UID=lotto_winner;PWD=lotto.com;DATABASE=LTMILLION "
+Application("constr")= "PROVIDER=SQLOLEDB;DATA SOURCE=139.99.52.29;UID=lotto_winner;PWD=lotto.com;DATABASE=LTMILLION"
 
 	Session("uid")			= "0"	    
 	Session("uname")		= ""	    

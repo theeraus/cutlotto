@@ -404,22 +404,25 @@ dim stUser
 		data-ktmenu-dropdown-timeout="500">
 		<ul class="kt-menu__nav ">
 			<li class="kt-menu__item" style="margin: 10px;">
-				<a href="javascript:;" class="btn btn-google">
+			<% if Session("utype") ="D" then %>
+				<a href="javascript:;" class="btn btn-primary">
 					คุณ <%=Session("logid")%>&nbsp;<%=Session("uname")%> <br>
-					เครดิตคงเหลือ <%=Session("limit_play") %>
+					เงินคงเหลือในระบบ <%=Session("dealer_credit") %>
 				</a>
+			<% end if%>
+
 			</li>
 
 			<% if usertype="A" then %>
 			<li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--open kt-menu__item--here"
 				aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
 				<a href="javascript:void(0)" onclick="gotoPage('mt_listdealer.asp')"
-					class="kt-menu__link kt-menu__toggle"><i class="kt-menu__link-icon flaticon2-layers"></i>
+					class="kt-menu__link kt-menu__toggle"><i class="kt-menu__link-icon flaticon-buildings"></i>
 					<span class="kt-menu__link-text">หน้าแรก</span></a>
 			</li>
 			<li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
 				<a href="javascript:;" class="kt-menu__link kt-menu__toggle"><i
-						class="kt-menu__link-icon flaticon2-settings"></i>
+						class="kt-menu__link-icon flaticon-settings"></i>
 					<span class="kt-menu__link-text">ตั้งค่า</span><i class="kt-menu__ver-arrow la la-angle-right"></i>
 				</a>
 				<div class="kt-menu__submenu "><span class="kt-menu__arrow"></span>
@@ -473,16 +476,30 @@ dim stUser
 				</div>
 			</li>
 
+
+			<li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--open kt-menu__item--here"	
+				aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
+				<a href="javascript:void(0)" onclick="gotoPage('mt_dealer_notify_money.asp')"
+					class="kt-menu__link kt-menu__toggle"><i class="kt-menu__link-icon flaticon-chat-1"></i>
+					<span class="kt-menu__link-text">ดีลเลอร์แจ้งโอนเงิน</span></a>
+			</li>
+			<li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--open kt-menu__item--here"	
+				aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
+				<a href="javascript:void(0)" onclick="gotoPage('mt_dealer_transection.asp')"
+					class="kt-menu__link kt-menu__toggle"><i class="kt-menu__link-icon flaticon-coins"></i>
+					<span class="kt-menu__link-text">รายการธุรกรรมดีลเลอร์</span></a>
+			</li>
+
 			<li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--open kt-menu__item--here"
 				aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
 				<a href="javascript:void(0)" onclick="gotoPage('mt_listdealer_AddMoney.asp')"
-					class="kt-menu__link kt-menu__toggle"><i class="kt-menu__link-icon flaticon2-talk"></i>
+					class="kt-menu__link kt-menu__toggle"><i class="kt-menu__link-icon flaticon-piggy-bank"></i>
 					<span class="kt-menu__link-text">เติมเงินดีลเลอร์</span></a>
 			</li>
 			<li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--open kt-menu__item--here"
 				aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
 				<a href="javascript:void(0)" onclick="gotoPage('mt_listdealer_Price.asp')"
-					class="kt-menu__link kt-menu__toggle"><i class="kt-menu__link-icon flaticon2-bell"></i>
+					class="kt-menu__link kt-menu__toggle"><i class="kt-menu__link-icon flaticon-alert-2"></i>
 					<span class="kt-menu__link-text">รายงานค่าเช่าเจ้ามือ</span></a>
 			</li>
 			<li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--open kt-menu__item--here"
@@ -689,18 +706,53 @@ dim stUser
 				</div>
 			</li>
 
+			<li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
+				<a href="javascript:;" class="kt-menu__link kt-menu__toggle"><i
+						class="kt-menu__link-icon flaticon2-poll-symbol"></i>
+					<span class="kt-menu__link-text">แจ้งชำระเงิน</span><i class="kt-menu__ver-arrow la la-angle-right"></i>
+				</a>
+
+				<div class="kt-menu__submenu "><span class="kt-menu__arrow"></span>
+					<ul class="kt-menu__subnav">
+						<li class="kt-menu__item " aria-haspopup="true">
+							<a href="javascript:;" class="kt-menu__link "  onclick="gotoPage('confirm_money.asp')">
+								<i class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i>
+								<span class="kt-menu__link-text">แจ้งการโอนเงิน</span><span class="kt-menu__link-badge"></a>
+						</li>
+						<li class="kt-menu__item " aria-haspopup="true">
+							<a href="javascript:;" class="kt-menu__link " onclick="gotoPage('history_money.asp')">
+								<i class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i>
+								<span class="kt-menu__link-text">ประวัติการเติมเงิน</span><span
+									class="kt-menu__link-badge"></a>
+						</li>
+						<li class="kt-menu__item " aria-haspopup="true">
+							<a href="javascript:;" class="kt-menu__link " onclick="gotoPage('pricing.asp')">
+								<i class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i>
+								<span class="kt-menu__link-text">การคิดค่าบริการ</span><span
+									class="kt-menu__link-badge"></a>
+						</li>
+						<li class="kt-menu__item " aria-haspopup="true">
+							<a href="javascript:;" class="kt-menu__link " onclick="gotoPage('dealer_transection.asp')">
+								<i class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i>
+								<span class="kt-menu__link-text">รายการเครดิตในบัญชี</span><span
+									class="kt-menu__link-badge"></a>
+						</li>
+					</ul>
+				</div>
+			</li>
+
 			<li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--open kt-menu__item--here"
 				aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
 				<a href="javascript:;" onclick="gotoPage('firstpage_announce.asp')"
 					class="kt-menu__link kt-menu__toggle"><i class="kt-menu__link-icon flaticon2-talk"></i>
 					<span class="kt-menu__link-text">ป้ายประกาศ</span></a>
 			</li>
-			<li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--open kt-menu__item--here"
+			<!-- <li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--open kt-menu__item--here"
 				aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
 				<a href="javascript:;" onclick="gotoPage('cntPricePlayer.asp')" class="kt-menu__link kt-menu__toggle"><i
 						class="kt-menu__link-icon flaticon2-bell"></i>
 					<span class="kt-menu__link-text">แจ้งชำระเงิน</span></a>
-			</li>
+			</li> -->
 			<li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--open kt-menu__item--here"
 				aria-haspopup="true" data-ktmenu-submenu-toggle="hover">
 				<a href="javascript:void(0)" onclick="download_manual();" class="kt-menu__link kt-menu__toggle"><i
