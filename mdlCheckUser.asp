@@ -55,6 +55,8 @@ Response.CharSet = "UTF-8"
 	Set objConn = Server.CreateObject ("ADODB.Connection")
 	objConn.Open Application("constr")	
 	
+
+
 	chkOk = false
 	LenPw = len(Request("password1"))
 		Set rs = server.createobject("ADODB.Recordset")
@@ -92,7 +94,6 @@ Response.CharSet = "UTF-8"
 '			strSql=strSql & " and  b.login_id='" & bdealer & "' and b.user_type='D' "				
 		End if
 'showstr strSql & " xxx " & bdealer & " yy " & Request("txtdealer")
-
 
 		rs.Open strSql,objConn
 		if not rs.eof then

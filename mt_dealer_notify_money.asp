@@ -87,7 +87,7 @@
         </thead>
        <tbody>
         <%  
-            SQL = "select r.id, r.created_date, r.user_id,u.user_name,r.bank_name,r.money_transfer,r.transfer_date,r.transfer_status,r.note from pay_requestion r join sc_user u on r.user_id = u.user_id order by created_date"
+            SQL = "select r.id, CONVERT(VARCHAR(30), r.created_date, 120) as created_date, r.user_id,u.user_name,r.bank_name,r.money_transfer,r.transfer_date,r.transfer_status,r.note from pay_requestion r join sc_user u on r.user_id = u.user_id order by created_date"
 
             set objRS=conn.Execute(SQL)
             while not objRS.eof 

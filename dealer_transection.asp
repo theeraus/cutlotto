@@ -60,7 +60,7 @@
         </thead>
         <tbody>
         <%  
-            sql = "select u.user_name,u.user_id, py.tran_type, py.before_money, py.transfer_money,py.current_money,py.note, py.created_date " _
+            sql = "select u.user_name,u.user_id, py.tran_type, py.before_money, py.transfer_money,py.current_money,py.note, CONVERT(VARCHAR(30), py.created_date, 120) as created_date " _
                 & "from [dbo].[pay_transection] py join  sc_user u on u.user_id = py.user_id "  _ 
                 & "where py.user_id = '" & Session("uid") & "'" _
                 & "order by create_date desc"

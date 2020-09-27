@@ -725,8 +725,14 @@ dim stUser
 								<span class="kt-menu__link-text">ประวัติการเติมเงิน</span><span
 									class="kt-menu__link-badge"></a>
 						</li>
-						<li class="kt-menu__item " aria-haspopup="true">
+						<!-- <li class="kt-menu__item " aria-haspopup="true">
 							<a href="javascript:;" class="kt-menu__link " onclick="gotoPage('pricing.asp')">
+								<i class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i>
+								<span class="kt-menu__link-text">การคิดค่าบริการ</span><span
+									class="kt-menu__link-badge"></a>
+						</li> -->
+						<li class="kt-menu__item " aria-haspopup="true">
+							<a href="http://cutlotto.com/cntPricePlayer.php" class="kt-menu__link " target="_blank">
 								<i class="kt-menu__link-bullet kt-menu__link-bullet--line"><span></span></i>
 								<span class="kt-menu__link-text">การคิดค่าบริการ</span><span
 									class="kt-menu__link-badge"></a>

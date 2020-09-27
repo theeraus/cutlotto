@@ -58,12 +58,12 @@
         </thead>
         <tbody>
         <%  
-            sql = "select* from pay_requestion where user_id = '" & Session("uid") & "' order by created_date"
+            sql = "select CONVERT(VARCHAR(30), created_date, 120) as createdate2,* from pay_requestion where user_id = '" & Session("uid") & "' order by created_date"
             set objRS=objDB.Execute(SQL)
             while not objRS.eof 
         %>
             <tr>
-                <td><%= objRS("created_date") %></td>
+                <td><%= objRS("createdate2") %></td>
                 <td><%= objRS("bank_name") %></td>
                 <td><%= objRS("money_transfer") %></td>
                 <td><%= objRS("transfer_date") %></td>

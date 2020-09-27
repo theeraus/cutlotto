@@ -43,6 +43,7 @@ mode=Request("mode")
 	end if
 	objRec.close
 
+
 	if Request("chk1")="ตรวจเลข" then
 		Server.ScriptTimeout = 2400		
 		'jum เพิ่มให้เก็บจำนวนเงิน 2008-12-08
