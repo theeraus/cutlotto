@@ -92,7 +92,9 @@
 <script>
 
     $(document).ready( function () {
-        $('#kt_table_1').DataTable();
+        $('#kt_table_1').DataTable({
+            "order" : [[0,"desc"]]
+        });
     });
 
 </script>

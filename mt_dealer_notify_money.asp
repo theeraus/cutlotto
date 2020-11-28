@@ -204,7 +204,9 @@
 <script>
 
     $(document).ready( function () {
-        $('#kt_table_1').DataTable();
+        $('#kt_table_1').DataTable({
+            "order" : [[0,"desc"]]
+        });
 
         $(".edit-btn").click(function(){
             var tran_id = $(this).attr("tran_id");
